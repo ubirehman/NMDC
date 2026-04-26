@@ -30,7 +30,28 @@ RUN --mount=type=cache,target=/root/.npm \
   fi
 
 # ============================================
-# Stage 2: Build Next.js application in standalone mode
+# Stage 2: Development stage with live reload
+# ============================================
+
+FROM node:${NODE_VERSION} AS development
+
+# Set working directory
+WORKDIR /app
+
+# Reuse installed dependencies and provide a dev server entrypoint.
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY . .
+
+ENV NODE_ENV=development
+ENV PORT=3120
+ENV HOSTNAME="0.0.0.0"
+
+EXPOSE 3120
+
+CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0", "--port", "3120"]
+
+# ============================================
+# Stage 3: Build Next.js application in standalone mode
 # ============================================
 
 FROM node:${NODE_VERSION} AS builder
@@ -68,7 +89,7 @@ RUN if [ -f package-lock.json ]; then \
   fi
 
 # ============================================
-# Stage 3: Run Next.js application
+# Stage 4: Run Next.js application
 # ============================================
 
 FROM node:${NODE_VERSION} AS runner

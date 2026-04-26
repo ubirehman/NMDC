@@ -1,53 +1,26 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Next.js Docker Example - Standalone Mode",
-  description:
-    "A production-ready example demonstrating how to Dockerize Next.js applications using standalone mode.",
-  keywords: [
-    "Next.js",
-    "Docker",
-    "standalone mode",
-    "containerization",
-    "React",
-    "Node.js",
-  ],
-  openGraph: {
-    title: "Next.js Docker Example - Standalone Mode",
-    description:
-      "A production-ready example demonstrating how to Dockerize Next.js applications using standalone mode.",
-    type: "website",
+  title: {
+    default: "NMDC Group",
+    template: "%s | NMDC Group",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Next.js Docker Example - Standalone Mode",
-    description:
-      "A production-ready example demonstrating how to Dockerize Next.js applications using standalone mode.",
-  },
+  description: "NMDC Group website.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0d2638",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className="antialiased">
         {children}
       </body>
     </html>
