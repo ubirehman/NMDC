@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --brand-navy: #0d2638;
-  --brand-navy-deep: #05263b;
-  --brand-sky: #29b7e3;
-  --brand-white: #ffffff;
+  --primary-navy-blue: #0d2638;
+  --primary-deep-navy-blue: #05263b;
+  --primary-sky-blue: #29b7e3;
+  --surface-white: #ffffff;
   --content-200: #e2e8f0;
+  --glass-navy-60: #06182699;
+  --glass-navy-88: #061826e0;
+  --glass-deep-navy-72: #05263bb8;
+  --overlay-hero-top: #0415234d;
+  --overlay-hero-mid: #04152375;
+  --overlay-hero-bottom: #030e1bd1;
+  --overlay-side-start: #0519295c;
+  --overlay-side-mid: #0519291f;
+  --overlay-side-end: #05192938;
+  --effect-cyan-glow: #29d7e35e;
+
+  --brand-navy: var(--primary-navy-blue);
+  --brand-navy-deep: var(--primary-deep-navy-blue);
+  --brand-sky: var(--primary-sky-blue);
+  --brand-white: var(--surface-white);
 }
 
 @theme inline {
-  --color-brand-navy: var(--brand-navy);
-  --color-brand-navy-deep: var(--brand-navy-deep);
-  --color-brand-sky: var(--brand-sky);
-  --color-brand-white: var(--brand-white);
-  --color-content-200: var(--content-200);
+  --color-primary-navy-blue: #0d2638;
+  --color-primary-deep-navy-blue: #05263b;
+  --color-primary-sky-blue: #29b7e3;
+  --color-surface-white: #ffffff;
+  --color-content-200: #e2e8f0;
+  --color-glass-navy-60: #06182699;
+  --color-glass-navy-88: #061826e0;
+  --color-glass-deep-navy-72: #05263bb8;
+  --color-overlay-hero-top: #0415234d;
+  --color-overlay-hero-mid: #04152375;
+  --color-overlay-hero-bottom: #030e1bd1;
+  --color-overlay-side-start: #0519295c;
+  --color-overlay-side-mid: #0519291f;
+  --color-overlay-side-end: #05192938;
+  --color-effect-cyan-glow: #29d7e35e;
+
+  --color-brand-navy: #0d2638;
+  --color-brand-navy-deep: #05263b;
+  --color-brand-sky: #29b7e3;
+  --color-brand-white: #ffffff;
   --font-sans: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 html,
 body {
-  background: var(--brand-white);
-  color: var(--brand-navy);
+  background: var(--surface-white);
+  color: var(--primary-navy-blue);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

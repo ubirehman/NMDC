@@ -21,7 +21,7 @@ export function BrandCard({ brand }: BrandCardProps) {
     <Link
       href={brand.href}
       aria-label={brand.name}
-      className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)]"
+      className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5  drop-shadow-md hover:drop-shadow-white focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]"
     >
       <Image
         src={brand.image.src}
@@ -31,7 +31,7 @@ export function BrandCard({ brand }: BrandCardProps) {
         className={`object-cover ${imagePositionClassName}`}
       />
 
-      <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[rgba(5,38,59,0.72)] px-2 backdrop-blur-[26.5px]">
+      <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px]">
         {brand.logo ? (
           <Image
             src={brand.logo.src}

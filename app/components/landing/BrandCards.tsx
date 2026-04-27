@@ -56,7 +56,7 @@ export function BrandCards({ brands }: BrandCardsProps) {
           aria-label="Previous brands"
           onClick={() => scrollBy(-SCROLL_STEP)}
           disabled={!canPrev}
-          className="flex size-10 items-center justify-center rounded-full border border-content-200 bg-white text-brand-navy backdrop-blur-[10px] transition-opacity disabled:opacity-40"
+          className="flex size-10 items-center justify-center rounded-full border border-content-200 bg-white text-brand-navy text-primary-navy-blue backdrop-blur-[10px] transition-opacity disabled:opacity-40"
         >
           <ArrowLeft className="size-4" />
         </button>
@@ -65,7 +65,7 @@ export function BrandCards({ brands }: BrandCardsProps) {
           aria-label="Next brands"
           onClick={() => scrollBy(SCROLL_STEP)}
           disabled={!canNext}
-          className="flex size-10 items-center justify-center rounded-full border border-content-200 bg-white text-brand-navy backdrop-blur-[10px] transition-opacity disabled:opacity-40"
+          className="flex size-10 items-center justify-center rounded-full border border-content-200 bg-white text-brand-navy text-primary-navy-blue backdrop-blur-[10px] transition-opacity disabled:opacity-40"
         >
           <ArrowRight className="size-4" />
         </button>

@@ -7,7 +7,7 @@ import { nmdcGroupLandingContent as content } from "./content";
 export function NmdcGroupLandingPage() {
   return (
     <main className="overflow-x-hidden">
-      <section className="relative isolate min-h-[100svh] w-full bg-brand-navy">
+      <section className="relative isolate min-h-[100svh] w-full bg-brand-navy bg-primary-navy-blue">
         <Image
           src={content.hero.background.src}
           alt={content.hero.background.alt}
@@ -17,11 +17,11 @@ export function NmdcGroupLandingPage() {
           className="object-cover object-[58%_center] md:object-center"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,21,35,0.30)_0%,rgba(4,21,35,0.46)_58%,rgba(3,14,27,0.82)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-overlay-hero-top)_0%,var(--color-overlay-hero-mid)_58%,var(--color-overlay-hero-bottom)_100%)]"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,25,41,0.36)_0%,rgba(5,25,41,0.12)_34%,rgba(5,25,41,0.22)_100%)]"
+          className="absolute inset-0 bg-black/50 bg-[linear-gradient(90deg,var(--color-overlay-side-start)_0%,var(--color-overlay-side-mid)_34%,var(--color-overlay-side-end)_100%)]"
           aria-hidden="true"
         />
 
