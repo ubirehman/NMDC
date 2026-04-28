@@ -38,7 +38,7 @@ export function Hero({ hero }: HeroProps) {
         </span>
         <span
           aria-hidden="true"
-          className="flex size-12 items-center justify-center rounded-full bg-brand-sky bg-primary-sky-blue text-white transition-transform hover:rotate-45"
+          className="flex size-12 items-center justify-center rounded-full bg-brand-sky bg-primary-sky-blue text-white transition-transform group-hover:rotate-45"
         >
           <ArrowUpRight className="size-5" />
         </span>

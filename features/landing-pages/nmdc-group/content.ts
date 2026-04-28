@@ -1,5 +1,8 @@
 import type { LandingContent } from "../../../app/components/landing/types";
 
+const dredgingMarineAppUrl =
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121";
+
 export const nmdcGroupLandingContent: LandingContent = {
   brand: {
     name: "NMDC Group",
@@ -9,10 +12,10 @@ export const nmdcGroupLandingContent: LandingContent = {
   nav: {
     links: [
       { label: "Home", href: "/", active: true },
-      { label: "NMDC Overview", href: "#overview" },
-      { label: "People & Culture", href: "#people" },
-      { label: "Technology", href: "#technology" },
-      { label: "Safeen Subsea", href: "#safeen" },
+      { label: "NMDC Overview", href: "/nmdc-group/nmdc-overview" },
+      { label: "People & Culture", href: "/nmdc-group/people-and-culture" },
+      { label: "Technology", href: "/nmdc-group/technology" },
+      { label: "Safeen Subsea", href: "/nmdc-group/safeen-subsea" },
     ],
   },
   hero: {
@@ -36,7 +39,7 @@ export const nmdcGroupLandingContent: LandingContent = {
     {
       id: "dm",
       name: "NMDC Dredging & Marine",
-      href: "#dm",
+      href: dredgingMarineAppUrl,
       image: {
         src: "/images/landing/card-dm.webp",
         alt: "NMDC Dredging & Marine vessel",

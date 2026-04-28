@@ -8,6 +8,7 @@ type BrandCardProps = {
 };
 
 export function BrandCard({ brand }: BrandCardProps) {
+  const isDredgingMarine = brand.id === "dm";
   const imagePositionClassName =
     {
       dm: "object-[42%_50%]",
@@ -21,24 +22,47 @@ export function BrandCard({ brand }: BrandCardProps) {
     <Link
       href={brand.href}
       aria-label={brand.name}
-      className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-0.5  drop-shadow-md hover:drop-shadow-white focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]"
+      className={`group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${
+        isDredgingMarine
+          ? "border-white hover:border-primary-sky-blue hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] focus-visible:border-primary-sky-blue focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:border-primary-sky-blue active:shadow-[0_0_20px_0_rgba(41,183,227,0.82)]"
+          : "border-white drop-shadow-md hover:drop-shadow-white focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]"
+      }`}
     >
       <Image
         src={brand.image.src}
         alt={brand.image.alt}
         fill
         sizes="150px"
-        className={`object-cover ${imagePositionClassName}`}
+        className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02] ${imagePositionClassName}`}
       />
 
-      <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px]">
+      {isDredgingMarine ? (
+        <div
+          className="absolute inset-0 bg-primary-sky-blue/0 transition-colors duration-200 group-hover:bg-primary-sky-blue/12 group-focus-visible:bg-primary-sky-blue/12 group-active:bg-primary-sky-blue/20"
+          aria-hidden="true"
+        />
+      ) : null}
+
+      {isDredgingMarine ? (
+        <span className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full border border-white/24 bg-[#05263b]/78 text-white opacity-0 shadow-[0_10px_24px_rgba(0,0,0,0.25)] backdrop-blur-[12px] transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <ArrowRight className="size-4" />
+        </span>
+      ) : null}
+
+      <div
+        className={`absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg px-2 backdrop-blur-[26.5px] transition-colors duration-200 ${
+          isDredgingMarine
+            ? "bg-glass-deep-navy-72 group-hover:bg-primary-sky-blue group-focus-visible:bg-primary-sky-blue group-active:bg-primary-blue"
+            : "bg-glass-deep-navy-72"
+        }`}
+      >
         {brand.logo ? (
           <Image
             src={brand.logo.src}
             alt={brand.logo.alt}
             width={140}
             height={32}
-            className="max-h-7 w-auto object-contain"
+            className="max-h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100"
           />
         ) : (
           <span className="flex w-full items-center justify-between gap-2 pl-1">

@@ -11,14 +11,17 @@ services:
       NODE_ENV: development
       PORT: "3120"
       HOSTNAME: "0.0.0.0"
+      NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
       CHOKIDAR_USEPOLLING: "true"
       WATCHPACK_POLLING: "true"
     ports:
       - "3120:3120"
+      - "3121:3121"
     volumes:
       - .:/app
       - /app/node_modules
       - /app/.next
+      - /app/apps/nmdc-dredging-marine/.next
     restart: unless-stopped
 
   # Production standalone service
@@ -32,21 +35,8 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3120"
+      NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
     ports:
-      - "3121:3120"
-    restart: unless-stopped
-
-  # Production Bun service
-  nextjs-standalone-with-bun:
-    profiles: ["bun"]
-    build:
-      context: .
-      dockerfile: Dockerfile.bun
-    image: nextjs-standalone-bun-image
-    container_name: nextjs-standalone-bun-container
-    environment:
-      NODE_ENV: production
-      PORT: "3120"
-    ports:
-      - "3122:3120"
+      - "3120:3120"
+      - "3121:3121"
     restart: unless-stopped

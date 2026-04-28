@@ -17,10 +17,6 @@ export function NmdcGroupLandingPage() {
           className="object-cover object-[58%_center] md:object-center"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,var(--color-overlay-hero-top)_0%,var(--color-overlay-hero-mid)_58%,var(--color-overlay-hero-bottom)_100%)]"
-          aria-hidden="true"
-        />
-        <div
           className="absolute inset-0 bg-black/50 bg-[linear-gradient(90deg,var(--color-overlay-side-start)_0%,var(--color-overlay-side-mid)_34%,var(--color-overlay-side-end)_100%)]"
           aria-hidden="true"
         />
@@ -32,7 +28,7 @@ export function NmdcGroupLandingPage() {
           links={content.nav.links}
         />
 
-        <div className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[1240px] px-5 pt-28 pb-10 md:min-h-[786px] md:px-10 md:pt-0 md:pb-0">
+        <div className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[1240px] px-5 pt-12 pb-10 md:min-h-[786px] md:px-10 md:pt-0 md:pb-0">
           <div className="flex min-h-[calc(100svh-7rem)] flex-col justify-end gap-10 md:block md:min-h-0 md:h-[786px]">
             <div className="md:absolute md:left-0 md:top-[244px]">
               <Hero hero={content.hero} />

@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "nmdc-dredging-marine",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "start": "node .next/standalone/apps/nmdc-dredging-marine/server.js"
+  }
+}

@@ -45,10 +45,11 @@ COPY . .
 ENV NODE_ENV=development
 ENV PORT=3120
 ENV HOSTNAME="0.0.0.0"
+ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 
-EXPOSE 3120
+EXPOSE 3120 3121
 
-CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0", "--port", "3120"]
+CMD ["npm", "run", "dev:all"]
 
 # ============================================
 # Stage 3: Build Next.js application in standalone mode
@@ -66,6 +67,7 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 
 ENV NODE_ENV=production
+ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -79,11 +81,11 @@ ENV NODE_ENV=production
 # .next/cache/fetch-cache from being included in the final image, meaning
 # cached fetch responses from the build won't be available at runtime.
 RUN if [ -f package-lock.json ]; then \
-    npm run build; \
+    npm run build:all; \
   elif [ -f yarn.lock ]; then \
-    corepack enable yarn && yarn build; \
+    corepack enable yarn && yarn build:all; \
   elif [ -f pnpm-lock.yaml ]; then \
-    corepack enable pnpm && pnpm build; \
+    corepack enable pnpm && pnpm build:all; \
   else \
     echo "No lockfile found." && exit 1; \
   fi
@@ -101,33 +103,25 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3120
 ENV HOSTNAME="0.0.0.0"
+ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the run time.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-# Copy production assets
-COPY --from=builder --chown=node:node /app/public ./public
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown node:node .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=node:node /app/.next/standalone ./
-COPY --from=builder --chown=node:node /app/.next/static ./.next/static
-
-# If you want to persist the fetch cache generated during the build so that
-# cached responses are available immediately on startup, uncomment this line:
-# COPY --from=builder --chown=node:node /app/.next/cache ./.next/cache
+# Copy the built multi-app workspace. This intentionally keeps the root
+# NMDC Group app and the standalone D&M Next app together so one container
+# can serve both ports.
+COPY --from=builder --chown=node:node /app ./
 
 # Switch to non-root user for security best practices
 USER node
 
-# Expose port 3120 to allow HTTP traffic
-EXPOSE 3120
+# Expose both Next.js apps:
+# - 3120: NMDC Group
+# - 3121: NMDC Dredging & Marine
+EXPOSE 3120 3121
 
-# Start Next.js standalone server
-CMD ["node", "server.js"]
+# Start both Next.js apps in one container
+CMD ["npm", "run", "start:all"]

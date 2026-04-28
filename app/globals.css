@@ -3,6 +3,7 @@
 :root {
   --primary-navy-blue: #0d2638;
   --primary-deep-navy-blue: #05263b;
+  --primary-blue: #0072bc;
   --primary-sky-blue: #29b7e3;
   --surface-white: #ffffff;
   --content-200: #e2e8f0;
@@ -26,6 +27,7 @@
 @theme inline {
   --color-primary-navy-blue: #0d2638;
   --color-primary-deep-navy-blue: #05263b;
+  --color-primary-blue: #0072bc;
   --color-primary-sky-blue: #29b7e3;
   --color-surface-white: #ffffff;
   --color-content-200: #e2e8f0;
