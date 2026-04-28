@@ -10,6 +10,9 @@
   --dm-text: #0d2638;
   --dm-muted: #53667d;
   --dm-glass: #06182699;
+  --primary-sky-blue: #29b7e3;
+  --primary-blue: #0072bc;
+  --glass-deep-navy-72: #05263bb8;
 }
 
 @theme inline {
@@ -21,12 +24,23 @@
   --color-dm-card: #eef5f8;
   --color-dm-text: #0d2638;
   --color-dm-muted: #53667d;
+  --color-primary-sky-blue: #29b7e3;
+  --color-primary-blue: #0072bc;
+  --color-glass-deep-navy-72: #05263bb8;
   --font-sans: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--dm-ice);
   color: var(--dm-text);
   font-family: var(--font-sans);

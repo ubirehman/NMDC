@@ -1,17 +1,17 @@
 import type { Metadata, Viewport } from "next";
+import { nmdcDredgingMarineContent as content } from "../content/content";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "NMDC Dredging & Marine",
-    template: "%s | NMDC Dredging & Marine"
+    default: content.metadata.titleDefault,
+    template: content.metadata.titleTemplate
   },
-  description:
-    "NMDC Dredging & Marine standalone website for marine construction, vessels, hydraulic physical modelling, and caisson methods."
+  description: content.metadata.description
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05263b",
+  themeColor: content.metadata.themeColor,
   width: "device-width",
   initialScale: 1
 };
@@ -25,4 +25,3 @@ export default function RootLayout({
     </html>
   );
 }
-

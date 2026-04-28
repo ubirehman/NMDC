@@ -45,24 +45,31 @@ test("D&M pages include the PDF navigation and major sections", () => {
   assert.match(content, /Capabilities/);
   assert.match(content, /Al Mirfa/);
   assert.match(content, /GHASHA/);
-  assert.match(page, /home-dredger-ghasha\.jpg/);
-  assert.match(page, /href="\/overview"/);
-  assert.match(page, /id="capabilities"/);
-  assert.match(page, /Dredging &amp;/);
-  assert.match(page, /Construction/);
-  assert.match(page, /At a glance/);
-  assert.match(page, /NMDC Dredging &amp; Marine/);
+  assert.match(content, /nmdcDredgingMarineContent/);
+  assert.match(content, /home-dredger-ghasha\.jpg/);
+  assert.match(content, /href: "\/overview"/);
+  assert.match(content, /id: "capabilities"/);
+  assert.match(content, /Dredging & Marine/);
+  assert.match(content, /Construction/);
+  assert.match(content, /At a glance/);
+  assert.match(content, /NMDC Dredging & Marine/);
+  assert.match(page, /nmdcDredgingMarineContent as content/);
+  assert.match(page, /content\.home/);
+  assert.match(page, /content\.overview/);
+  assert.match(page, /content\.marineVessels/);
+  assert.match(page, /content\.hydraulicPhysicalModel/);
+  assert.match(page, /content\.caissonMethod/);
   assert.match(page, /bg-dm-navy px-5 pb-16 pt-\[132px\]/);
   assert.match(page, /bg-dm-ice px-5 py-12/);
-  assert.match(page, /vessel-al-mirfa\.jpg/);
-  assert.match(page, /Featured marine vessels/);
-  assert.match(page, /View specification/);
+  assert.match(content, /vessel-al-mirfa\.jpg/);
+  assert.match(content, /Featured marine vessels/);
+  assert.match(content, /View specification/);
   assert.match(page, /text-\[22px\] font-bold leading-7 text-white/);
-  assert.match(page, /Testing facility/);
+  assert.match(content, /Testing facility/);
   assert.match(page, /Play \$\{title\}|Play /);
-  assert.match(page, /Construction and installation process/i);
-  assert.match(content, /hydraulicTestingFacilities/);
-  assert.match(content, /caissonCapabilities/);
+  assert.match(content, /Construction and installation process/i);
+  assert.match(content, /testingFacilities/);
+  assert.match(content, /caissonMethod/);
   assert.match(content, /global expertise with cutting-edge technology/);
   assert.match(content, /Dredging & Reclamation/);
   assert.match(content, /Marine Logistics/);
@@ -73,6 +80,35 @@ test("D&M pages include the PDF navigation and major sections", () => {
   );
   assert.match(readFileSync("apps/nmdc-dredging-marine/app/marine-vessels/[slug]/page.tsx", "utf8"), /generateStaticParams/);
   assert.match(page, /DredgingMarineVesselDetailPage/);
+});
+
+test("D&M home cards match the NMDC Group brand card shell", () => {
+  const dmCards = readFileSync(
+    "apps/nmdc-dredging-marine/components/DmHomeCardRail.tsx",
+    "utf8",
+  );
+  const dmGlobals = readFileSync(
+    "apps/nmdc-dredging-marine/app/globals.css",
+    "utf8",
+  );
+
+  assert.match(dmCards, /h-\[200px\] w-\[150px\]/);
+  assert.match(dmCards, /rounded-2xl border-\[1\.2px\] border-white bg-white/);
+  assert.match(dmCards, /shadow-\[0_12px_32px_-6px_rgba\(5,20,31,0\.76\)\]/);
+  assert.match(dmCards, /hover:border-primary-sky-blue/);
+  assert.match(dmCards, /group-hover:bg-primary-sky-blue\/12/);
+  assert.match(dmCards, /bg-\[#05263b\]\/78/);
+  assert.match(dmCards, /absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg/);
+  assert.match(dmCards, /bg-glass-deep-navy-72/);
+  assert.match(dmCards, /group-hover:bg-primary-sky-blue/);
+  assert.match(dmCards, /group-active:bg-primary-blue/);
+  assert.match(dmCards, /backdrop-blur-\[26\.5px\]/);
+  assert.match(dmCards, /whitespace-pre text-left text-xs font-medium leading-\[1\.5\] text-white/);
+  assert.match(dmGlobals, /--color-primary-sky-blue:\s*#29b7e3;/);
+  assert.match(dmGlobals, /--color-primary-blue:\s*#0072bc;/);
+  assert.match(dmGlobals, /--color-glass-deep-navy-72:\s*#05263bb8;/);
+  assert.match(dmGlobals, /box-sizing:\s*border-box;/);
+  assert.match(dmGlobals, /overflow-x:\s*hidden;/);
 });
 
 test("D&M extracted PDF assets are available", () => {
@@ -86,6 +122,154 @@ test("D&M extracted PDF assets are available", () => {
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
+});
+
+test("D&M hydraulic physical model page follows the Coastal and Hydrodynamic PDF", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+
+  for (const asset of [
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-center-hero.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-center-overview.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-center-360.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-center-video.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-test-rubble-breakwater.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-test-coastal-protection.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-test-marina-breakwater.jpg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(content, /spans approximately 2800 sqm/);
+  assert.match(content, /3D Wave Basin: 40\.6 m/);
+  assert.match(content, /Advanced wave generation system by HR Wallingford/);
+  assert.match(content, /Core Expertises/);
+  assert.match(content, /Hydraulic & Coastal Studies/);
+  assert.match(content, /Structural & Stability Testing/);
+  assert.match(content, /Sediment & Morphodynamics/);
+  assert.match(content, /2D Flume Physical Modeling Test - Coastal Protection/);
+  assert.match(content, /3D Basin Physical Modeling - Marina Rubble mound Breakwater/);
+  assert.match(page, /HydraulicInfoCard/);
+  assert.match(page, /HydraulicCapabilityCard/);
+  assert.match(page, /HydraulicMediaFrame/);
+  assert.match(page, /hydraulic\.media/);
+  assert.match(page, /hydraulic\.overview\.infoCards/);
+  assert.match(page, /hydraulic\.testingFacilities\.items/);
+});
+
+test("D&M caisson method page follows the Caisson Method PDF", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+
+  for (const asset of [
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-method-hero.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-method-video.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-method-carousel.jpg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(content, /gravity-based structures provide a combination/);
+  assert.match(content, /Gantry Hydraulic Slip-Form System/);
+  assert.match(content, /Launch and Towing/);
+  assert.match(content, /ballasted with seawater/);
+  assert.match(content, /Technical and Economic Advantages of Caissons in Marine Engineering/);
+  assert.match(content, /High production rate due to the ability to prefabricate off-site/);
+  assert.match(content, /Less maintenance and repair requirements/);
+  assert.match(page, /CaissonProcessCard/);
+  assert.match(page, /CaissonAdvantagesPanel/);
+  assert.match(page, /caisson\.overview\.paragraph/);
+  assert.match(page, /caisson\.process\.steps/);
+  assert.match(page, /caisson\.advantages\.items/);
+  assert.match(page, /caisson\.carousel\.image/);
+});
+
+test("D&M caisson method mobile layout follows the mobile PDF", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+  const icons = readFileSync(
+    "apps/nmdc-dredging-marine/components/icons.tsx",
+    "utf8",
+  );
+
+  assert.match(content, /eyebrowAccent: "NMDC - Dredging &"/);
+  assert.match(content, /eyebrowSuffix: "Marine"/);
+  assert.match(content, /icon: "fabrication"/);
+  assert.match(content, /icon: "launch"/);
+  assert.match(content, /icon: "installation"/);
+  assert.match(page, /CaissonStepIcon/);
+  assert.match(page, /text-justify/);
+  assert.match(page, /text-\[24px\] font-bold leading-\[36px\]/);
+  assert.match(page, /h-\[260px\].*md:h-\[360px\]/s);
+  assert.match(page, /h-\[312px\].*md:h-\[560px\]/s);
+  assert.match(page, /CarouselControls largeMobile/);
+  assert.match(icons, /CaissonFabricationIcon/);
+  assert.match(icons, /CaissonLaunchIcon/);
+  assert.match(icons, /CaissonInstallationIcon/);
+});
+
+test("D&M marine vessel specification pages use the extracted PDF content", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+
+  for (const pdf of [
+    "al-sadr.pdf",
+    "al-yassat.pdf",
+    "jananah.pdf",
+    "sarb.pdf",
+    "ghasha.pdf",
+  ]) {
+    assert.equal(
+      existsSync(`apps/nmdc-dredging-marine/public/documents/marine-vessels/${pdf}`),
+      true,
+      `${pdf} should be available for download`,
+    );
+  }
+
+  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/al-sadr\.pdf"/);
+  assert.match(content, /Power Submersible Dredge Pump/);
+  assert.match(content, /BV Registration Number/);
+  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/al-yassat\.pdf"/);
+  assert.match(content, /Navigation Area/);
+  assert.match(content, /On Board Crew Accomodation/);
+  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/jananah\.pdf"/);
+  assert.match(content, /04882 R/);
+  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/sarb\.pdf"/);
+  assert.match(content, /Backhoe Dredger/);
+  assert.match(content, /Fuel & Water Capacity/);
+  assert.match(content, /Bucket Capacity/);
+  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/ghasha\.pdf"/);
+  assert.match(content, /Trailing Suction Hopper Dredger/);
+  assert.match(content, /Total Installed Power/);
+  assert.match(content, /9674 kW/);
+  assert.match(content, /leftPanels/);
+  assert.match(content, /panels/);
+  assert.match(page, /detailLeftPanels/);
+  assert.match(page, /detailPanels/);
 });
 
 test("Docker runs the NMDC Group and D&M apps together", () => {

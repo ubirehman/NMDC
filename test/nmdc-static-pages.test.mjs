@@ -102,10 +102,58 @@ test("inner NMDC pages follow the PDF section order", () => {
   assert.match(technology, /NMDC AI platforms/);
   assert.doesNotMatch(technology, /bg-\[#062c45\] px-5 py-10 text-white/);
 
-  assert.match(safeen, /bg-white px-5 py-10 md:px-10 md:py-12/);
-  assert.match(safeen, /safeen-vessel\.jpg/);
+  assert.match(safeen, /safeenOverview/);
+  assert.match(safeen, /safeenVideo/);
   assert.match(safeen, /OUR PRODUCTS/);
   assert.doesNotMatch(safeen, /Key Facts\./);
+});
+
+test("NMDC Safeen Subsea follows the supplied desktop PDF layout", () => {
+  const safeen = readFileSync(
+    "features/landing-pages/nmdc-safeen-subsea/NmdcSafeenSubseaPage.tsx",
+    "utf8",
+  );
+  const content = readFileSync(
+    "features/landing-pages/nmdc-safeen-subsea/content.ts",
+    "utf8",
+  );
+
+  assert.match(content, /safeenHero/);
+  assert.match(content, /safeenOverview/);
+  assert.match(content, /safeen-subsea-hero\.jpg/);
+  assert.match(content, /specificationLabel: "View Specifications"/);
+  assert.match(safeen, /SafeenProductCard/);
+  assert.match(safeen, /object-cover object-bottom/);
+  assert.match(safeen, /md:whitespace-nowrap/);
+  assert.match(safeen, /md:h-\[487px\]/);
+  assert.match(safeen, /md:text-\[48px\]/);
+  assert.match(safeen, /md:grid-cols-\[minmax\(0,744px\)_438px\]/);
+  assert.match(safeen, /border-y border-\[#c8d5e3\]/);
+  assert.match(safeen, /bg-\[#001d2d\]/);
+  assert.match(safeen, /md:grid-cols-4/);
+  assert.match(safeen, /bg-\[#e5edf6\].*md:rounded-\[20px\].*md:border-\[2px\].*md:border-primary-sky-blue/s);
+  assert.match(safeen, /h-\[320px\].*md:h-\[640px\]/s);
+  assert.match(safeen, /bg-\[#113f57\]\/88.*md:rounded-\[22px\]/s);
+  assert.match(safeen, /ArrowUpRight/);
+  assert.match(safeen, /h-\[316px\].*md:h-\[480px\]/s);
+});
+
+test("NMDC Safeen Subsea follows the supplied mobile PDF layout", () => {
+  const safeen = readFileSync(
+    "features/landing-pages/nmdc-safeen-subsea/NmdcSafeenSubseaPage.tsx",
+    "utf8",
+  );
+
+  assert.match(safeen, /h-\[318px\].*md:h-\[487px\]/s);
+  assert.match(safeen, /pb-\[107px\].*md:pb-\[128px\]/s);
+  assert.match(safeen, /max-w-\[320px\].*text-center.*text-\[24px\]/s);
+  assert.match(safeen, /text-\[16px\] leading-6.*md:text-\[20px\]/s);
+  assert.match(safeen, /min-h-\[122px\].*border-0.*md:border-\[2px\]/s);
+  assert.match(safeen, /h-\[320px\].*md:h-\[640px\]/s);
+  assert.match(safeen, /h-\[48px\].*min-w-\[160px\].*md:h-\[70px\]/s);
+  assert.match(safeen, /text-\[14px\] leading-\[27px\].*md:text-\[18px\]/s);
+  assert.match(safeen, /justify-self-center.*md:justify-self-end/s);
+  assert.match(safeen, /h-\[316px\].*md:h-\[480px\]/s);
 });
 
 test("landing navigation targets every implemented NMDC group page", () => {

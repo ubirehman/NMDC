@@ -1,23 +1,69 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "../../../app/components/landing/Header";
-import { ArrowLeft, ArrowRight } from "../../../app/components/landing/icons";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+} from "../../../app/components/landing/icons";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
 import {
   nmdcSafeenSubseaBrand,
   nmdcSafeenSubseaNavLinks,
   safeenCapabilities,
   safeenEnablers,
+  safeenHero,
+  safeenOverview,
   safeenProducts,
+  safeenVideo,
 } from "./content";
+
+type SafeenProduct = (typeof safeenProducts)[number];
+
+function getProductImagePosition(title: string) {
+  return title === "Safeen NAV" ? "object-[50%_50%]" : "object-center";
+}
+
+function SafeenProductCard({ product }: { product: SafeenProduct }) {
+  return (
+    <article>
+      <figure className="relative overflow-hidden rounded-[18px] bg-primary-navy-blue md:rounded-[20px]">
+        <Image
+          src={product.image}
+          alt={product.alt}
+          width={1240}
+          height={640}
+          sizes="(min-width: 768px) 1240px, calc(100vw - 40px)"
+          className={`h-[320px] w-full object-cover md:h-[640px] ${getProductImagePosition(product.title)}`}
+        />
+        <figcaption className="absolute left-5 top-5 flex h-[48px] min-w-[160px] items-center justify-center rounded-[19px] bg-[#113f57]/88 px-6 text-center text-[16px] font-bold leading-6 text-white backdrop-blur-[14px] md:left-8 md:top-8 md:h-[70px] md:min-w-[246px] md:rounded-[22px] md:px-8 md:text-[22px] md:leading-7">
+          {product.title}
+        </figcaption>
+      </figure>
+
+      <div className="mt-6 grid gap-5 rounded-[20px] bg-[#e5edf6] px-4 py-7 text-primary-navy-blue/78 md:min-h-[162px] md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:px-8 md:py-7">
+        <p className="min-w-0 text-[14px] leading-[27px] md:text-[18px] md:leading-[30px]">
+          {product.copy}
+        </p>
+        <Link
+          href={product.specificationHref}
+          className="inline-flex items-center gap-2 justify-self-center whitespace-nowrap text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue md:justify-self-end md:text-[18px]"
+        >
+          {product.specificationLabel}
+          <ArrowUpRight className="size-5" />
+        </Link>
+      </div>
+    </article>
+  );
+}
 
 export function NmdcSafeenSubseaPage() {
   return (
     <main className="overflow-x-hidden bg-white text-primary-navy-blue">
-      <section className="relative isolate min-h-122 overflow-hidden bg-primary-navy-blue px-5 pb-8 pt-[112px] text-white md:px-10 md:pb-0 md:pt-[124px]">
+      <section className="relative isolate h-[318px] overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
-          src="/images/landing/safeen-hero.jpg"
-          alt="SAFEEN offshore marine operations"
+          src={safeenHero.image}
+          alt={safeenHero.alt}
           fill
           priority
           sizes="100vw"
@@ -34,147 +80,113 @@ export function NmdcSafeenSubseaPage() {
           links={nmdcSafeenSubseaNavLinks}
         />
 
-        <div className="relative z-10 mx-auto  min-h-[230px] w-full max-w-[1240px] items-end gap-8 md:min-h-[310px] md:gap-16">
-          <div>
-            <h1 className="text-[28px] font-bold leading-[1.12] md:pb-12 md:text-[38px] text-center">
-              NMDC Group{" "}
-              <span className="text-primary-sky-blue">
-                Safeen Subsea &amp; AD Ports JV.
-              </span>
-            </h1>
-          </div>
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end justify-center pb-[107px] md:justify-start md:pb-[128px]">
+          <h1 className="max-w-[320px] text-center text-[24px] font-bold uppercase leading-[31px] md:max-w-[1240px] md:whitespace-nowrap md:text-left md:text-[48px] md:leading-[58px]">
+            {safeenHero.titlePrefix}{" "}
+            <span className="text-primary-sky-blue">
+              {safeenHero.titleAccent}
+            </span>
+          </h1>
         </div>
       </section>
 
-      <section className="bg-white px-5 py-10 md:px-10 md:py-12">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,650px)_390px] md:items-start md:gap-12">
-          <section>
-            <p className="text-sm leading-6 text-primary-navy-blue/76">
-              SAFEEN supports multiple sectors including oil and gas, offshore
-              wind, ports and terminals and large-scale marine infrastructure
-              projects. This enables:
+      <section className="bg-white px-5 pb-0 pt-12 md:px-10 md:py-[49px]">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,744px)_438px] md:items-center md:gap-[58px]">
+          <section className="text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px]">
+            <p>
+              {safeenOverview.lead}
             </p>
-            <ul className="mt-6 grid gap-3 text-sm font-medium leading-6 text-primary-navy-blue">
+            <ul className="my-5 list-disc space-y-1 border-y border-[#c8d5e3] py-4 pl-6">
               {safeenEnablers.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 size-1.5 shrink-0 rounded-full bg-primary-sky-blue"
-                  />
-                  <span>{item}</span>
-                </li>
+                <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="mt-6 text-sm leading-6 text-primary-navy-blue/70">
-              The company&apos;s integrated operating model ensures that
-              offshore execution is supported by UAE-based infrastructure and
-              capabilities.
+            <p>
+              {safeenOverview.closing}
             </p>
           </section>
 
           <Image
-            src="/images/landing/safeen-vessel.jpg"
-            alt="SAFEEN offshore vessel"
-            width={520}
-            height={300}
-            className="h-[230px] w-full rounded-[6px] object-cover"
+            src={safeenOverview.image}
+            alt={safeenOverview.alt}
+            width={438}
+            height={399}
+            sizes="(min-width: 768px) 438px, calc(100vw - 40px)"
+            className="h-[300px] w-full rounded-[20px] object-cover object-bottom md:h-[399px]"
           />
         </div>
       </section>
 
-      <section className="bg-[#062c45] px-5 py-10 text-white md:px-10 md:py-12">
+      <section className="bg-[#001d2d] px-5 py-14 text-white md:px-10 md:py-[118px]">
         <div className="mx-auto w-full max-w-[1240px]">
-            <h2 className="text-[24px] font-bold uppercase leading-8">
-              Capabilities.
-            </h2>
-            <div className="mt-5 grid gap-4 md:grid-cols-4">
-              {safeenCapabilities.map((capability) => (
-                <article
-                  key={capability}
-                  className="rounded-[6px] bg-white p-5 text-sm font-bold leading-6 text-primary-navy-blue"
-                >
-                  {capability}
-                </article>
-              ))}
-            </div>
+          <h2 className="text-[32px] font-bold uppercase leading-10 md:text-[48px] md:leading-[58px]">
+            Capabilities.
+          </h2>
+          <div className="mt-[39px] grid gap-3 md:mt-12 md:grid-cols-4 md:gap-4">
+            {safeenCapabilities.map((capability) => (
+              <article
+                key={capability}
+                className="min-h-[122px] rounded-[12px] border-0 bg-[#e5edf6] px-8 py-8 text-[18px] font-bold leading-7 text-primary-navy-blue md:h-[170px] md:rounded-[20px] md:border-[2px] md:border-primary-sky-blue md:py-8 md:text-[24px] md:leading-[36px]"
+              >
+                {capability}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-10 md:px-10 md:py-14">
+      <section className="px-5 py-12 md:px-10 md:py-[54px]">
         <div className="mx-auto w-full max-w-[1240px]">
-            <h2 className="text-[22px] font-bold uppercase leading-7 text-[#06447a]">
-              OUR PRODUCTS
-            </h2>
-            <div className="mt-6 grid gap-8">
-              {safeenProducts.map((product) => (
-                <article
-                  key={product.title}
-                  className="overflow-hidden rounded-[6px] bg-[#eef5f8]"
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.alt}
-                    width={1240}
-                    height={520}
-                    className="h-[240px] w-full object-cover object-bottom md:h-[360px]"
+          <h2 className="text-[32px] font-bold uppercase leading-10 text-[#06447a] md:text-[32px] md:leading-10">
+            OUR PRODUCTS
+          </h2>
+          <div className="mt-12 grid gap-11 md:gap-16">
+            {safeenProducts.map((product) => (
+              <SafeenProductCard key={product.title} product={product} />
+            ))}
+          </div>
+
+          <div className="mt-10 md:mt-16">
+            <div className="relative overflow-hidden rounded-[20px] bg-primary-navy-blue">
+              <Image
+                src={safeenVideo.image}
+                alt={safeenVideo.alt}
+                width={1240}
+                height={480}
+                sizes="(min-width: 768px) 1240px, calc(100vw - 40px)"
+                className="h-[316px] w-full object-cover md:h-[480px]"
+              />
+              <button
+                type="button"
+                aria-label={safeenVideo.playLabel}
+                className="absolute inset-0 flex items-center justify-center bg-black/42 transition-colors hover:bg-black/32 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
+              >
+                <span className="flex size-20 items-center justify-center rounded-full bg-[rgba(7,48,59,0.54)] backdrop-blur-[8px] md:size-[88px]">
+                  <span
+                    aria-hidden="true"
+                    className="ml-1 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-primary-sky-blue"
                   />
-                  <div className="grid gap-5 p-5 md:grid-cols-[180px_1fr_auto] md:items-start md:p-6">
-                    <h3 className="text-[20px] font-bold leading-7 text-primary-navy-blue">
-                      {product.title}
-                    </h3>
-                    <p className="text-sm leading-6 text-primary-navy-blue/72">
-                      {product.copy}
-                    </p>
-                    <Link
-                      href="#"
-                      className="text-sm font-bold leading-5 text-primary-sky-blue transition-colors hover:text-primary-blue"
-                    >
-                      Download Specifications
-                    </Link>
-                  </div>
-                </article>
-              ))}
+                </span>
+              </button>
             </div>
 
-            <div className="mt-8 overflow-hidden rounded-[6px] bg-primary-navy-blue">
-              <div className="relative">
-                <Image
-                  src="/images/landing/safeen-vessel.jpg"
-                  alt="SAFEEN Surveyor vessel"
-                  width={1240}
-                  height={520}
-                  className="h-[240px] w-full object-cover md:h-[420px]"
-                />
-                <button
-                  type="button"
-                  aria-label="Play SAFEEN vessel video"
-                  className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors hover:bg-black/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
-                >
-                  <span className="flex size-12 items-center justify-center rounded-full bg-[rgba(7,48,59,0.64)] backdrop-blur-[8px]">
-                    <span
-                      aria-hidden="true"
-                      className="ml-0.5 h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-primary-sky-blue"
-                    />
-                  </span>
-                </button>
-              </div>
-              <div className="flex justify-center gap-2 bg-white py-4">
-                <button
-                  type="button"
-                  aria-label="Previous product"
-                  className="flex size-8 items-center justify-center rounded-full border border-content-200 text-primary-navy-blue/60 transition-colors hover:border-primary-sky-blue hover:text-primary-navy-blue"
-                >
-                  <ArrowLeft className="size-4" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next product"
-                  className="flex size-8 items-center justify-center rounded-full bg-primary-sky-blue text-primary-navy-blue transition-colors hover:bg-primary-blue hover:text-white"
-                >
-                  <ArrowRight className="size-4" />
-                </button>
-              </div>
+            <div className="mt-7 flex justify-center gap-6">
+              <button
+                type="button"
+                aria-label="Previous product"
+                className="flex size-[48px] items-center justify-center rounded-full border border-content-200 text-primary-blue transition-colors hover:border-primary-sky-blue hover:text-primary-navy-blue"
+              >
+                <ArrowLeft className="size-6" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next product"
+                className="flex size-[48px] items-center justify-center rounded-full bg-primary-sky-blue text-primary-blue transition-colors hover:bg-primary-blue hover:text-white"
+              >
+                <ArrowRight className="size-6" />
+              </button>
             </div>
+          </div>
         </div>
       </section>
 

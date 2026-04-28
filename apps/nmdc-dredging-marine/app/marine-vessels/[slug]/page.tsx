@@ -1,8 +1,8 @@
-import { dmVessels } from "../../../content/content";
+import { nmdcDredgingMarineContent as content } from "../../../content/content";
 import { DredgingMarineVesselDetailPage } from "../../pages";
 
 export function generateStaticParams() {
-  return dmVessels.map((vessel) => ({ slug: vessel.slug }));
+  return content.marineVessels.items.map((vessel) => ({ slug: vessel.slug }));
 }
 
 export default async function Page({
@@ -13,4 +13,3 @@ export default async function Page({
   const { slug } = await params;
   return <DredgingMarineVesselDetailPage slug={slug} />;
 }
-

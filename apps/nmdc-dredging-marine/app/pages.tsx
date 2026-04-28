@@ -4,17 +4,17 @@ import type { ReactNode } from "react";
 import { DmHomeCardRail } from "../components/DmHomeCardRail";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
-import { ArrowLeft, ArrowRight } from "../components/icons";
 import {
-  caissonSteps,
-  caissonCapabilities,
-  dmCapabilities,
-  dmHomeCards,
-  dmVessels,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  CaissonFabricationIcon,
+  CaissonInstallationIcon,
+  CaissonLaunchIcon,
+} from "../components/icons";
+import {
   getDmNavLinks,
-  hydraulicCapabilities,
-  hydraulicTestingFacilities,
-  overviewIntro,
+  nmdcDredgingMarineContent as content,
 } from "../content/content";
 
 type HeroProps = {
@@ -77,26 +77,40 @@ function DmHero({
   );
 }
 
-function CarouselControls({ dark = false }: { dark?: boolean }) {
+function CarouselControls({
+  dark = false,
+  largeMobile = false,
+}: {
+  dark?: boolean;
+  largeMobile?: boolean;
+}) {
   return (
-    <div className="mt-5 flex items-center justify-center gap-3">
+    <div
+      className={`flex items-center justify-center ${
+        largeMobile ? "mt-8 gap-7 md:mt-5 md:gap-3" : "mt-5 gap-3"
+      }`}
+    >
       <button
         type="button"
         aria-label="Previous item"
-        className={`flex size-8 items-center justify-center rounded-full border transition-colors ${
+        className={`flex items-center justify-center rounded-full border transition-colors ${
+          largeMobile ? "size-[58px] md:size-8" : "size-8"
+        } ${
           dark
             ? "border-white/28 text-white/72 hover:border-white hover:text-white"
             : "border-dm-text/16 text-dm-text/60 hover:border-dm-cyan hover:text-dm-text"
         }`}
       >
-        <ArrowLeft className="size-4" />
+        <ArrowLeft className={largeMobile ? "size-7 md:size-4" : "size-4"} />
       </button>
       <button
         type="button"
         aria-label="Next item"
-        className="flex size-8 items-center justify-center rounded-full bg-dm-cyan text-white transition-colors hover:bg-dm-blue"
+        className={`flex items-center justify-center rounded-full bg-dm-cyan text-white transition-colors hover:bg-dm-blue ${
+          largeMobile ? "size-[58px] md:size-8" : "size-8"
+        }`}
       >
-        <ArrowRight className="size-4" />
+        <ArrowRight className={largeMobile ? "size-7 md:size-4" : "size-4"} />
       </button>
     </div>
   );
@@ -126,6 +140,71 @@ function SectionHeading({
         {title}
       </h2>
     </div>
+  );
+}
+
+function getVesselCardImageClass(slug: string) {
+  const base = "object-cover transition-transform duration-500";
+
+  switch (slug) {
+    case "al-mirfa":
+      return `${base} object-[52%_50%] group-hover:scale-[1.03]`;
+    case "jananah":
+      return `${base} origin-bottom scale-[2.18] object-[54%_100%] group-hover:scale-[2.25]`;
+    case "sarb":
+      return `${base} object-[50%_44%] group-hover:scale-[1.03]`;
+    case "ghasha":
+      return `${base} object-[52%_50%] group-hover:scale-[1.03]`;
+    default:
+      return `${base} object-center group-hover:scale-[1.03]`;
+  }
+}
+
+type VesselCardProps = {
+  vessel: (typeof content.marineVessels.items)[number];
+};
+
+function MarineVesselCard({ vessel }: VesselCardProps) {
+  return (
+    <Link
+      href={`/marine-vessels/${vessel.slug}`}
+      className="group relative block h-[420px] overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_18px_45px_-30px_rgba(4,28,42,0.65)] md:aspect-[398/421] md:h-auto md:min-h-[360px]"
+    >
+      <Image
+        src={vessel.image}
+        alt={vessel.name}
+        fill
+        sizes="(min-width: 768px) 398px, calc(100vw - 40px)"
+        className={getVesselCardImageClass(vessel.slug)}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 flex h-[129px] flex-col justify-start rounded-t-[18px] bg-[linear-gradient(101deg,rgba(4,38,55,0.98)_0%,rgba(8,72,78,0.86)_100%)] px-4 pb-4 pt-[17px] text-white backdrop-blur-[10px] md:h-[134px]"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-x-0 bottom-0 h-[129px] px-4 pb-4 pt-[16px] text-white md:h-[134px]">
+        <div className="text-center">
+          <h2 className="text-[16px] font-bold leading-[20px] text-dm-cyan">
+            {vessel.name}
+          </h2>
+          <p className="mt-[2px] text-[14px] leading-[18px] text-white">
+            {vessel.type}
+          </p>
+        </div>
+        <dl className="mt-[17px] grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 gap-y-[12px] text-[14px] leading-[18px] text-white md:grid-cols-2 md:gap-x-6">
+          {vessel.specs.map(([label, value], index) => (
+            <div
+              key={label}
+              className={`whitespace-nowrap ${
+                index % 2 === 0 ? "text-left" : "text-right"
+              }`}
+            >
+              <dt className="inline font-normal">{label}: </dt>
+              <dd className="inline font-normal">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </Link>
   );
 }
 
@@ -175,12 +254,14 @@ function MediaPanel({
 }
 
 export function DredgingMarineHomePage() {
+  const home = content.home;
+
   return (
     <main className="overflow-x-hidden">
       <section className="relative isolate min-h-[100svh] w-full bg-dm-navy">
         <Image
-          src="/images/dm/home-dredger-ghasha.jpg"
-          alt="Dredging vessel operating at sea"
+          src={home.hero.background.src}
+          alt={home.hero.background.alt}
           fill
           priority
           sizes="100vw"
@@ -198,19 +279,21 @@ export function DredgingMarineHomePage() {
             <div className="md:absolute md:left-0 md:top-[244px]">
               <div className="flex w-full max-w-[559px] flex-col gap-6 text-white md:gap-8">
                 <h1 className="max-w-[547px] text-[28px] font-bold uppercase leading-[1.18] tracking-[-0.2px] md:text-[48px] md:leading-[56px] md:tracking-[-0.5px]">
-                  <span className="block text-white md:inline">Achieving</span>
+                  <span className="block text-white md:inline">
+                    {home.hero.headline.leading}
+                  </span>
                   <span className="block text-white md:inline">
                     <span className="hidden md:inline"> </span>
-                    Excellence With
+                    {home.hero.headline.neutral}
                   </span>
                   <br />
                   <span className="text-dm-cyan">
                     <span className="block md:inline">
-                      Dredging &amp; Marine
+                      {home.hero.headline.accent[0]}
                     </span>
                     <span className="block md:inline">
                       <span className="hidden md:inline"> </span>
-                      Construction
+                      {home.hero.headline.accent[1]}
                     </span>
                   </span>
                 </h1>
@@ -221,33 +304,29 @@ export function DredgingMarineHomePage() {
                     className="mt-[2px] h-[43px] w-[3px] shrink-0 rounded-[20px] bg-dm-cyan shadow-[0_0_6px_0_rgba(41,183,227,0.75)]"
                   />
                   <p className="flex-1 pt-[1px] text-[13px] leading-[1.45] text-white md:text-[16px] md:leading-[1.5]">
-                    NMDC Dredging &amp; Marine delivers complex marine
-                    infrastructure, dredging, reclamation, and coastal
-                    development projects with a modern fleet and proven
-                    engineering capability.
+                    {home.hero.subhead}
                   </p>
                 </div>
 
                 <Link
-                  href="/overview"
+                  href={home.hero.cta.href}
                   className="group inline-flex items-center gap-0.5 self-start"
                 >
-                  <span className="flex h-12 min-w-[136px] items-center justify-center rounded-full bg-white px-6 text-base font-medium text-dm-navy transition-colors group-hover:bg-dm-cyan group-hover:text-white md:w-[174px]">
-                    <span className="md:hidden">Explore</span>
-                    <span className="hidden md:inline">More</span>
+                  <span className="flex h-12 min-w-[136px] items-center justify-center rounded-full bg-white px-6 text-base font-medium text-primary-blue transition-colors hover:bg-primary-sky-blue md:w-[174px]">
+                    {home.hero.cta.label}
                   </span>
                   <span
                     aria-hidden="true"
-                    className="flex size-12 items-center justify-center rounded-full bg-dm-cyan text-white transition-transform group-hover:translate-x-0.5"
+                    className="flex size-12 items-center justify-center rounded-full bg-primary-sky-blue text-white transition-transform -rotate-45 group-hover:rotate-0"
                   >
-                    <ArrowRight className="size-5" />
+                    <ArrowUpRight className="size-5" />
                   </span>
                 </Link>
               </div>
             </div>
 
-            <div className="md:absolute md:bottom-[58px] md:right-0">
-              <DmHomeCardRail cards={dmHomeCards} />
+            <div className="md:absolute md:translate-y-12 md:bottom-[58px] md:right-0">
+              <DmHomeCardRail cards={home.cards} />
             </div>
           </div>
         </div>
@@ -257,27 +336,29 @@ export function DredgingMarineHomePage() {
 }
 
 export function DredgingMarineOverviewPage() {
+  const overview = content.overview;
+
   return (
     <main className="overflow-x-hidden bg-white text-dm-text">
       <section className="relative isolate bg-dm-navy px-5 pb-16 pt-[132px] text-white md:px-10 md:pb-20 md:pt-[154px]">
-        <Header links={getDmNavLinks("/overview")} />
+        <Header links={getDmNavLinks(overview.activeHref)} />
         <div className="mx-auto grid min-w-0 w-full max-w-[1120px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,440px)_1fr] md:items-center">
           <div className="min-w-0 w-full max-w-[350px] md:max-w-[460px]">
             <p className="text-[18px] font-bold leading-6 text-dm-cyan md:text-[22px]">
-              NMDC - Dredging &amp; Marine
+              {overview.eyebrow}
             </p>
             <h1 className="mt-3 text-[34px] font-bold leading-[1.08] text-white md:text-[48px]">
-              At a glance
+              {overview.title}
             </h1>
             <div className="mt-5 space-y-3 break-words text-sm leading-6 text-white/78 md:text-[15px] md:leading-7">
-              {overviewIntro.map((paragraph) => (
+              {overview.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
           <Image
-            src="/images/dm/vessel-al-mirfa.jpg"
-            alt="NMDC dredging vessel"
+            src={overview.image.src}
+            alt={overview.image.alt}
             width={760}
             height={520}
             className="h-[280px] min-w-0 w-full max-w-[350px] rounded-[8px] object-cover md:h-[420px] md:max-w-full"
@@ -285,13 +366,16 @@ export function DredgingMarineOverviewPage() {
         </div>
       </section>
 
-      <section id="capabilities" className="bg-dm-ice px-5 py-12 md:px-10 md:py-16">
+      <section
+        id={overview.capabilities.id}
+        className="bg-dm-ice px-5 py-12 md:px-10 md:py-16"
+      >
         <div className="mx-auto w-full max-w-[1120px]">
           <h2 className="text-[28px] font-bold uppercase leading-[1.12] text-dm-blue md:text-[36px]">
-            Capabilities
+            {overview.capabilities.title}
           </h2>
           <div className="mt-8 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3">
-            {dmCapabilities.map((capability) => (
+            {overview.capabilities.items.map((capability) => (
               <article
                 key={capability.title}
                 className="group relative min-w-0 w-full max-w-[350px] overflow-hidden rounded-[6px] bg-dm-navy p-4 text-white shadow-[0_16px_38px_-28px_rgba(5,38,59,0.72)] transition-transform duration-200 hover:-translate-y-1 md:max-w-none"
@@ -329,221 +413,504 @@ export function DredgingMarineOverviewPage() {
 }
 
 export function DredgingMarineVesselsPage() {
-  return (
-    <main className="overflow-x-hidden bg-white text-dm-text">
-      <DmHero
-        activeHref="/marine-vessels"
-        image="/images/dm/vessel-al-sadr.jpg"
-        eyebrow="NMDC Dredging and Marine"
-        title="Marine Vessels"
-        copy="Explore NMDC D&M's dredging and marine construction fleet."
-      />
+  const marineVessels = content.marineVessels;
+  const heroMeta = marineVessels.hero.copy.split("|").map((item) => item.trim());
 
-      <section className="bg-dm-ice px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <SectionHeading
-            eyebrow="NMDC Dredging & Marine"
-            title="Featured marine vessels"
-          />
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {dmVessels.map((vessel) => (
-              <Link
-                key={vessel.slug}
-                href={`/marine-vessels/${vessel.slug}`}
-                className="group overflow-hidden rounded-[8px] bg-dm-navy text-white"
+  return (
+    <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
+      <section className="relative isolate h-[362px] overflow-hidden bg-dm-deep-navy px-5 text-white md:h-[488px] md:px-10">
+        <Image
+          src={marineVessels.hero.mobileImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[50%_50%] md:hidden"
+        />
+        <Image
+          src={marineVessels.hero.image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover object-[center_62%] md:block"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.56)_0%,rgba(3,15,26,0.46)_45%,rgba(3,15,26,0.70)_100%)]"
+          aria-hidden="true"
+        />
+        <Header links={getDmNavLinks(marineVessels.hero.activeHref)} />
+        <div className="relative z-10 mx-auto hidden h-full w-full max-w-[1240px] flex-col justify-end pb-[86px] pt-[128px] md:flex">
+          <h1 className="flex flex-wrap items-baseline gap-x-[18px] text-[34px] font-bold leading-[1.12] md:text-[48px] md:leading-[58px]">
+            <span className="text-dm-cyan">{marineVessels.hero.eyebrow}</span>
+            <span className="hidden text-white/90 md:inline">|</span>
+            <span className="text-white">{marineVessels.hero.title}</span>
+          </h1>
+          <p className="mt-[15px] flex flex-wrap items-center gap-x-3 text-[16px] leading-[24px] text-white md:text-[18px] md:leading-[26px]">
+            {heroMeta.map((item, index) => (
+              <span
+                key={item}
+                className={
+                  index === 0
+                    ? undefined
+                    : "border-l border-white/85 pl-3"
+                }
               >
-                <Image
-                  src={vessel.image}
-                  alt={vessel.name}
-                  width={620}
-                  height={360}
-                  className="h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="p-5">
-                  <p className="text-xs font-bold uppercase leading-5 text-dm-cyan">
-                    Marine Vessels
-                  </p>
-                  <h2 className="mt-1 text-[22px] font-bold leading-7 text-white">{vessel.name}</h2>
-                  <p className="mt-2 text-sm leading-5 text-white/72">{vessel.type}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-dm-cyan">
-                    View specification
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
+                {item}
+              </span>
+            ))}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#f4f4f6] px-5 pb-[263px] pt-[47px] md:px-10 md:pb-[100px] md:pt-[100px]">
+        <div className="mx-auto w-full max-w-[1240px]">
+          <div className="grid gap-[25px] md:grid-cols-3 md:gap-x-6 md:gap-y-10">
+            {marineVessels.items.map((vessel) => (
+              <MarineVesselCard key={vessel.slug} vessel={vessel} />
             ))}
           </div>
-          <CarouselControls />
         </div>
       </section>
 
       <Footer />
     </main>
+  );
+}
+
+type DetailPanelItem = {
+  readonly label: string;
+  readonly value: string;
+};
+
+type DetailPanelData = {
+  readonly title: string;
+  readonly items: readonly DetailPanelItem[];
+};
+
+function VesselDetailPanel({ panel }: { panel: DetailPanelData }) {
+  return (
+    <article className="rounded-[22px] bg-[#e5edf6] px-6 py-[23px] text-black">
+      <h3 className="text-[20px] font-bold leading-7 text-dm-cyan">
+        {panel.title}
+      </h3>
+      <div className="mt-[11px]">
+        {panel.items.map((item) => (
+          <div
+            key={`${panel.title}-${item.label}`}
+            className="border-b border-dashed border-[#9ab0c7] py-[13px] last:border-b-0"
+          >
+            <h4 className="text-[16px] font-bold leading-6">{item.label}</h4>
+            {item.value ? (
+              <p className="mt-[11px] break-words text-[16px] font-normal leading-6 text-dm-muted">
+                {item.value}
+              </p>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </article>
   );
 }
 
 export function DredgingMarineVesselDetailPage({ slug }: { slug: string }) {
-  const vessel = dmVessels.find((item) => item.slug === slug) ?? dmVessels[0];
+  const marineVessels = content.marineVessels;
+  const vessel =
+    marineVessels.items.find((item) => item.slug === slug) ??
+    marineVessels.items[0];
+  const vesselDetail = vessel.detail;
+  const heroMeta = vesselDetail.heroMeta.split("|").map((item) => item.trim());
+  const heroKicker =
+    "heroKicker" in vesselDetail
+      ? vesselDetail.heroKicker
+      : marineVessels.detail.kicker;
+  const detailImage = "image" in vesselDetail ? vesselDetail.image : vessel.image;
+  const detailPanels =
+    "panels" in vesselDetail
+      ? vesselDetail.panels
+      : "machinery" in vesselDetail && vesselDetail.machinery.length > 0
+        ? [{ title: "Machinery", items: vesselDetail.machinery }]
+        : [];
+  const detailLeftPanels =
+    "leftPanels" in vesselDetail ? vesselDetail.leftPanels : [];
 
   return (
-    <main className="overflow-x-hidden bg-white text-dm-text">
-      <DmHero
-        activeHref="/marine-vessels"
-        image={vessel.image}
-        eyebrow={`${vessel.name} | Marine Vessels`}
-        title="Specification"
-        copy={vessel.type}
-      />
+    <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
+      <section className="relative isolate h-[430px] overflow-hidden bg-dm-deep-navy px-5 text-white md:h-[488px] md:px-10">
+        <Image
+          src={vesselDetail.heroImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.48)_0%,rgba(3,15,26,0.42)_45%,rgba(3,15,26,0.66)_100%)]"
+          aria-hidden="true"
+        />
+        <Header links={getDmNavLinks("/marine-vessels")} />
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] flex-col justify-end pb-[86px] pt-[128px]">
+          <h1 className="flex max-w-full flex-wrap items-baseline gap-x-2 text-[30px] font-bold leading-[1.12] md:gap-x-[18px] md:text-[48px] md:leading-[58px]">
+            <span className="text-dm-cyan">{vessel.name}</span>
+            <span className="hidden text-white/90 md:inline">|</span>
+            <span className="basis-full break-words text-white md:basis-auto">
+              {heroKicker}
+            </span>
+          </h1>
+          <span className="sr-only text-[22px] font-bold leading-7 text-white">
+            {vessel.name}
+          </span>
+          <p className="mt-[15px] flex flex-wrap items-center gap-x-3 text-[16px] leading-[24px] text-white md:text-[18px] md:leading-[26px]">
+            {heroMeta.map((item, index) => (
+              <span
+                key={item}
+                className={
+                  index === 0 ? undefined : "border-l border-white/85 pl-3"
+                }
+              >
+                {item}
+              </span>
+            ))}
+          </p>
+        </div>
+      </section>
 
-      <section className="bg-dm-ice px-5 py-12 md:px-10 md:py-16">
+      <section className="bg-[#f4f4f6] px-5 pb-[100px] pt-[102px] md:px-10">
         <div className="mx-auto w-full max-w-[1240px]">
-          <Link
-            href="/marine-vessels"
-            className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-dm-blue"
-          >
-            <ArrowLeft className="size-4" />
-            All Marine Vessels
-          </Link>
-          <div className="grid gap-8 md:grid-cols-[320px_1fr]">
-          <aside className="rounded-[8px] bg-dm-navy p-6 text-white">
-            <h2 className="text-[22px] font-bold leading-7">{vessel.name}</h2>
-            <p className="mt-2 text-sm leading-5 text-white/72">{vessel.type}</p>
-            <div className="mt-8 space-y-3">
-              {dmVessels.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/marine-vessels/${item.slug}`}
-                  className={`flex items-center justify-between rounded-[6px] px-3 py-3 text-sm font-bold transition-colors ${
-                    item.slug === vessel.slug
-                      ? "bg-dm-cyan text-white"
-                      : "bg-white/7 text-white/78 hover:bg-white/12 hover:text-white"
-                  }`}
-                >
-                  {item.name}
-                  <ArrowRight className="size-4" />
-                </Link>
+          <div className="mx-auto w-full max-w-[1034px]">
+            <Link
+              href="/marine-vessels"
+              className="inline-flex items-center gap-3 text-[16px] font-bold leading-6 text-dm-muted transition-colors hover:text-dm-blue"
+            >
+              <ArrowLeft className="size-5" />
+              {marineVessels.detail.backLabel}
+            </Link>
+
+            <h2 className="mt-[16px] text-[42px] font-bold leading-[52px] text-dm-cyan">
+              {marineVessels.detail.title}
+            </h2>
+
+            <div className="mt-[36px] grid gap-6 text-[16px] font-bold leading-6 text-dm-muted md:grid-cols-3">
+              {vesselDetail.classification.map(([label, value]) => (
+                <p key={label}>
+                  {label} <span className="px-2">{value}</span>
+                </p>
               ))}
             </div>
-          </aside>
-          <div className="rounded-[8px] bg-white p-6 shadow-[0_16px_50px_-35px_rgba(5,38,59,0.75)]">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm font-bold uppercase leading-5 text-dm-cyan">
-                  Marine Vessels
-                </p>
-                <h2 className="mt-2 text-[24px] font-bold uppercase leading-8 text-dm-blue">
-                  Specification
-                </h2>
-              </div>
-              <p className="hidden text-right text-sm font-bold leading-5 text-dm-text/54 md:block">
-                {vessel.name}
-              </p>
-            </div>
-            <div className="mt-6 grid overflow-hidden rounded-[8px] md:grid-cols-[260px_1fr]">
-              <dl className="bg-dm-navy p-5 text-white">
-                {vessel.specs.map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="flex items-center justify-between gap-4 border-b border-white/10 py-3 last:border-0"
-                  >
-                    <dt className="text-xs font-bold uppercase leading-5 text-white/62">
-                      {label}
-                    </dt>
-                    <dd className="text-right text-sm font-bold leading-5">{value}</dd>
-                  </div>
+
+            <div className="mt-[32px] grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 self-start">
+                <article className="rounded-[22px] bg-dm-navy px-6 py-[23px] text-white md:min-h-[421px]">
+                  <h3 className="text-[20px] font-bold leading-7 text-dm-cyan">
+                    Technical Details
+                  </h3>
+                  <dl className="mt-[15px]">
+                    {vesselDetail.technicalDetails.map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="flex flex-col gap-2 border-b border-dashed border-white/28 py-[18px] text-[16px] leading-6 last:border-b-0 md:flex-row md:items-center md:justify-between md:gap-8"
+                      >
+                        <dt className="font-bold text-white">{label}</dt>
+                        <dd className="break-words text-left font-medium text-white md:shrink-0 md:text-right">
+                          {value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </article>
+
+                {detailLeftPanels.map((panel) => (
+                  <VesselDetailPanel key={panel.title} panel={panel} />
                 ))}
-              </dl>
-              <div className="bg-dm-card p-5">
-                <h3 className="text-[18px] font-bold leading-6 text-dm-text">
-                  {vessel.type}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-dm-text/68">
-                  A fleet asset configured for demanding dredging and marine
-                  construction work, supporting NMDC D&amp;M projects across
-                  ports, coastal protection, reclamation, and offshore work
-                  areas.
-                </p>
+              </div>
+
+              <div className="grid gap-6 self-start">
+                {detailPanels.map((panel) => (
+                  <VesselDetailPanel key={panel.title} panel={panel} />
+                ))}
               </div>
             </div>
-            <Image
-              src={vessel.image}
-              alt={vessel.name}
-              width={900}
-              height={520}
-              className="mt-8 h-[260px] w-full rounded-[8px] object-cover md:h-[420px]"
-            />
-            <CarouselControls />
+
+            <div className="mt-[38px] flex items-center justify-end gap-8 border-t border-[#c8d4df] pt-0">
+              <a
+                href={vesselDetail.specificationFile}
+                download
+                className="inline-flex items-center gap-3 text-[18px] font-bold leading-7 text-dm-cyan transition-colors hover:text-dm-blue"
+              >
+                <span className="text-[22px] leading-none" aria-hidden="true">
+                  ⇩
+                </span>
+                {marineVessels.detail.viewSpecificationLabel}
+              </a>
+            </div>
           </div>
+
+          <Image
+            src={detailImage}
+            alt={vessel.name}
+            width={1240}
+            height={560}
+            className="mt-[19px] h-[360px] w-full rounded-[18px] object-cover md:h-[560px]"
+          />
+
+          <div className="mt-[50px] flex items-center justify-center">
+            <CarouselControls />
           </div>
         </div>
       </section>
 
       <Footer />
     </main>
+  );
+}
+
+type HydraulicInfoCardData =
+  (typeof content.hydraulicPhysicalModel.overview.infoCards)[number];
+type HydraulicMediaData = (typeof content.hydraulicPhysicalModel.media)[number];
+type HydraulicCapabilityData =
+  (typeof content.hydraulicPhysicalModel.capabilities.items)[number];
+
+function HydraulicInfoCard({ card }: { card: HydraulicInfoCardData }) {
+  const isDark = card.tone === "dark";
+
+  return (
+    <article
+      className={`min-w-0 rounded-[18px] px-5 py-6 md:rounded-[22px] md:px-8 md:py-[34px] ${
+        isDark
+          ? "bg-dm-deep-navy text-white"
+          : "bg-[#e5edf6] text-dm-muted"
+      }`}
+    >
+      <div className="flex min-w-0 gap-4 md:gap-5">
+        <span
+          className={`mt-1 flex size-8 shrink-0 items-center justify-center rounded-full border-2 ${
+            isDark
+              ? "border-dm-cyan bg-dm-cyan/12"
+              : "border-dm-cyan bg-white"
+          }`}
+          aria-hidden="true"
+        >
+          <span
+            className={`block size-3 rounded-[3px] border-2 ${
+              isDark ? "border-white" : "border-dm-cyan"
+            }`}
+          />
+        </span>
+        <div className="min-w-0">
+          <h2
+            className={`text-[20px] font-bold leading-7 md:text-[24px] md:leading-8 ${
+              isDark ? "text-white" : "text-dm-blue"
+            }`}
+          >
+            {card.title}
+          </h2>
+          <ul
+            className={`mt-4 space-y-3 text-[15px] leading-6 md:text-[18px] md:leading-8 ${
+              isDark ? "text-white/82" : "text-dm-muted"
+            }`}
+          >
+            {card.items.map((item) => (
+              <li key={item} className="relative min-w-0 break-words pl-4">
+                <span
+                  className={`absolute left-0 top-[0.72em] size-1.5 rounded-full ${
+                    isDark ? "bg-dm-cyan" : "bg-dm-blue"
+                  }`}
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function HydraulicMediaFrame({ item }: { item: HydraulicMediaData }) {
+  const isVideo = item.type === "video";
+
+  return (
+    <figure className="relative overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)]">
+      <Image
+        src={item.image}
+        alt={item.alt}
+        width={1240}
+        height={isVideo ? 520 : 390}
+        className={`w-full object-cover ${
+          isVideo
+            ? "h-[245px] object-[50%_43%] md:h-[430px]"
+            : "h-[188px] object-center md:h-[390px]"
+        }`}
+      />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.05)_0%,rgba(3,15,26,0.24)_100%)]"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        {isVideo ? (
+          <button
+            type="button"
+            aria-label="Play hydraulic physical model video"
+            className="flex size-14 items-center justify-center rounded-full bg-white/94 text-dm-blue shadow-[0_16px_34px_rgba(0,0,0,0.26)] transition-colors hover:bg-dm-cyan hover:text-white md:size-[78px]"
+          >
+            <span
+              className="ml-1 block h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-current md:border-y-[12px] md:border-l-[20px]"
+              aria-hidden="true"
+            />
+          </button>
+        ) : (
+          <div
+            className="flex size-[72px] items-center justify-center rounded-full border-[3px] border-white bg-dm-deep-navy/42 text-[19px] font-bold leading-none text-white backdrop-blur-sm md:size-[96px] md:text-[26px]"
+            aria-label="360 view"
+          >
+            360
+          </div>
+        )}
+      </div>
+    </figure>
+  );
+}
+
+function HydraulicCapabilityCard({
+  capability,
+  wide = false,
+}: {
+  capability: HydraulicCapabilityData;
+  wide?: boolean;
+}) {
+  return (
+    <article
+      className={`min-w-0 rounded-[14px] border-2 border-dm-cyan bg-white px-5 py-6 text-dm-muted md:px-7 md:py-8 ${
+        wide ? "md:col-span-2" : ""
+      }`}
+    >
+      <h3 className="text-[20px] font-bold leading-7 text-dm-blue md:text-[24px] md:leading-8">
+        {capability.title}
+      </h3>
+      <ul
+        className={`mt-5 grid gap-x-8 gap-y-3 text-[15px] leading-6 md:text-[18px] md:leading-8 ${
+          wide ? "md:grid-cols-2" : "md:grid-cols-1"
+        }`}
+      >
+        {capability.points.map((point) => (
+          <li key={point} className="relative min-w-0 break-words pl-5">
+            <span
+              className="absolute left-0 top-[0.68em] size-2 rounded-full bg-dm-cyan"
+              aria-hidden="true"
+            />
+            {point}
+          </li>
+        ))}
+      </ul>
+    </article>
   );
 }
 
 export function HydraulicPhysicalModelPage() {
-  return (
-    <main className="overflow-x-hidden bg-white text-dm-text">
-      <DmHero
-        activeHref="/hydraulic-physical-model"
-        image="/images/dm/hydraulic-hero.jpg"
-        eyebrow="NMDC Dredging & Marine"
-        title="Coastal & Hydrodynamic Center"
-        copy="Physical modelling supports coastal design, wave action studies, and verification of marine structures before construction."
-      />
+  const hydraulic = content.hydraulicPhysicalModel;
 
-      <section className="bg-white px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <div className="grid gap-10 md:grid-cols-[minmax(0,540px)_1fr] md:items-center">
-            <div>
-              <SectionHeading
-                eyebrow="Hydraulic physical modelling"
-                title="Coastal & Hydrodynamic Center"
-              />
-              <p className="mt-5 text-sm leading-6 text-dm-text/70 md:text-[15px] md:leading-7">
-                Physical modelling helps validate coastal and marine designs
-                before construction by simulating waves, currents, structural
-                stability, and operational conditions at model scale.
-              </p>
-            </div>
-            <MediaPanel
-              image="/images/dm/hydraulic-hero.jpg"
-              title="NMDC Dredging & Marine Coastal and Hydrodynamic Center"
-            />
-          </div>
+  return (
+    <main className="overflow-x-hidden bg-white text-dm-muted">
+      <section className="relative isolate h-[362px] overflow-hidden bg-dm-deep-navy px-5 text-white md:h-[488px] md:px-10">
+        <Image
+          src={hydraulic.hero.image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[52%_50%] md:object-[50%_46%]"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.34)_0%,rgba(3,15,26,0.38)_44%,rgba(3,15,26,0.70)_100%)]"
+          aria-hidden="true"
+        />
+        <Header links={getDmNavLinks(hydraulic.hero.activeHref)} />
+        <div className="relative z-10 mx-auto flex h-full w-[calc(100vw-40px)] min-w-0 max-w-[1240px] items-end pb-[45px] pt-[128px] md:w-full md:pb-[76px]">
+          <h1 className="w-full max-w-[320px] break-words text-[28px] font-bold uppercase leading-[1.16] text-white md:max-w-[760px] md:text-[48px] md:leading-[58px]">
+            <span className="block">{hydraulic.hero.title.neutral}</span>
+            <span className="block text-dm-cyan">
+              {hydraulic.hero.title.accent}
+            </span>
+          </h1>
         </div>
       </section>
 
-      <section className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <SectionHeading eyebrow="Capabilities" title="Testing capability" light />
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {hydraulicCapabilities.map((capability) => (
-              <article
-                key={capability}
-                className="rounded-[8px] border border-white/10 bg-white p-5 text-dm-text"
-              >
-                <h2 className="text-[18px] font-bold leading-6">{capability}</h2>
-              </article>
+      <section className="bg-white px-5 py-12 md:px-10 md:py-[96px]">
+        <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
+          <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-8 md:grid-cols-[minmax(0,672px)_461px] md:items-start md:justify-between">
+            <div className="order-2 min-w-0 space-y-5 text-[15px] leading-7 text-dm-muted md:order-1 md:text-[18px] md:leading-8">
+              {hydraulic.overview.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="break-words">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <Image
+              src={hydraulic.overview.image.src}
+              alt={hydraulic.overview.image.alt}
+              width={461}
+              height={319}
+              className="order-1 h-[230px] min-w-0 w-full rounded-[12px] object-cover object-center md:order-2 md:h-[319px]"
+            />
+          </div>
+          <div className="mt-10 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:mt-[58px] md:grid-cols-2 md:gap-6">
+            {hydraulic.overview.infoCards.map((card) => (
+              <HydraulicInfoCard key={card.title} card={card} />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-dm-ice px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <SectionHeading
-            eyebrow="Hydraulic Physical Model Testing Facility"
-            title="Testing facility"
-          />
-          <div className="mt-8 grid gap-6">
-            {hydraulicTestingFacilities.map((facility) => (
-              <div key={facility.title}>
-                <MediaPanel image={facility.image} title={facility.title} />
+      <section className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-[96px]">
+        <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
+          <div className="grid min-w-0 gap-[42px] md:gap-[72px]">
+            {hydraulic.media.map((item) => (
+              <HydraulicMediaFrame key={item.image} item={item} />
+            ))}
+          </div>
+
+          <div className="mt-[62px] md:mt-[96px]">
+            <h2 className="text-[30px] font-bold uppercase leading-[1.15] text-white md:text-[42px] md:leading-[52px]">
+              {hydraulic.capabilities.title}
+            </h2>
+            <div className="mt-8 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-6 md:mt-[42px] md:grid-cols-2">
+              {hydraulic.capabilities.items.map((capability, index) => (
+                <HydraulicCapabilityCard
+                  key={capability.title}
+                  capability={capability}
+                  wide={index === hydraulic.capabilities.items.length - 1}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f4f4f6] px-5 py-12 md:px-10 md:py-[96px]">
+        <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
+          <p className="text-sm font-bold uppercase leading-5 text-dm-cyan">
+            {hydraulic.testingFacilities.eyebrow}
+          </p>
+          <h2 className="mt-2 max-w-[760px] text-[30px] font-bold uppercase leading-[1.15] text-dm-blue md:text-[42px] md:leading-[52px]">
+            {hydraulic.testingFacilities.title}
+          </h2>
+          <div className="mt-9 grid min-w-0 gap-12 md:mt-[54px] md:gap-[78px]">
+            {hydraulic.testingFacilities.items.map((facility) => (
+              <figure key={facility.title} className="min-w-0">
+                <h3 className="break-words text-[20px] font-bold uppercase leading-7 text-dm-blue md:text-[24px] md:leading-8">
+                  {facility.title}
+                </h3>
+                <Image
+                  src={facility.image}
+                  alt={facility.alt}
+                  width={1240}
+                  height={650}
+                  className="mt-5 h-[232px] w-full rounded-[14px] object-cover object-center md:mt-6 md:h-[560px]"
+                />
                 <CarouselControls />
-              </div>
+              </figure>
             ))}
           </div>
         </div>
@@ -554,84 +921,153 @@ export function HydraulicPhysicalModelPage() {
   );
 }
 
-export function CaissonMethodPage() {
-  return (
-    <main className="overflow-x-hidden bg-white text-dm-text">
-      <DmHero
-        activeHref="/caisson-method"
-        image="/images/dm/caisson-hero.jpg"
-        eyebrow="NMDC Dredging & Marine Caisson Method"
-        title="Caisson Method"
-        copy="Precast caissons provide a practical and efficient solution for marine infrastructure and coastal protection projects."
-      />
+type CaissonProcessStep = (typeof content.caissonMethod.process.steps)[number];
 
-      <section className="bg-dm-ice px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,540px)_1fr] md:items-start">
-          <div>
-            <SectionHeading
-              eyebrow="Caisson Method"
-              title="Construction and installation process"
+function CaissonStepIcon({ icon }: { icon: CaissonProcessStep["icon"] }) {
+  const className = "size-6 text-dm-cyan";
+
+  if (icon === "launch") {
+    return <CaissonLaunchIcon className={className} />;
+  }
+
+  if (icon === "installation") {
+    return <CaissonInstallationIcon className={className} />;
+  }
+
+  return <CaissonFabricationIcon className={className} />;
+}
+
+function CaissonProcessCard({ step }: { step: CaissonProcessStep }) {
+  return (
+    <article className="mx-1 min-w-0 rounded-[20px] border-2 border-dm-cyan bg-[#e5edf6] px-[18px] py-[22px] text-dm-text md:mx-0 md:rounded-[14px] md:px-7 md:py-6">
+      <div className="flex min-w-0 items-center gap-2.5 md:gap-4">
+        <span
+          className="flex size-6 shrink-0 items-center justify-center"
+          aria-hidden="true"
+        >
+          <CaissonStepIcon icon={step.icon} />
+        </span>
+        <h3 className="min-w-0 text-[16px] font-bold uppercase leading-6 text-dm-text md:text-[14px] md:leading-5">
+          {step.title}
+        </h3>
+      </div>
+      <p className="mt-4 break-words text-justify text-[14px] leading-[24px] text-dm-text/78 md:text-left md:text-[14px] md:leading-6">
+        {step.copy}
+      </p>
+    </article>
+  );
+}
+
+function CaissonAdvantagesPanel({
+  title,
+  items,
+}: {
+  title: string;
+  items: readonly string[];
+}) {
+  return (
+    <article className="mx-1 mt-[56px] rounded-[20px] bg-[#e5edf6] px-5 py-[34px] text-dm-text md:mx-0 md:mt-[32px] md:rounded-[14px] md:px-8 md:py-8">
+      <h2 className="text-[24px] font-bold leading-[36px] md:text-[24px] md:leading-8">
+        {title}
+      </h2>
+      <ul className="mt-6 space-y-1 text-[18px] font-bold leading-[30px] text-dm-text/74 md:mt-5 md:space-y-2.5 md:text-[16px] md:font-normal md:leading-7 md:text-dm-text/86">
+        {items.map((item) => (
+          <li key={item} className="relative min-w-0 break-words pl-7">
+            <span
+              className="absolute left-0 top-[0.72em] size-1.5 rounded-full bg-dm-text/70"
+              aria-hidden="true"
             />
-            <p className="mt-5 text-sm leading-6 text-dm-text/70">
-              The caisson method uses reinforced precast concrete units that
-              are launched, floated, positioned, sunk, and filled to form
-              resilient marine infrastructure.
+            {item}
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+export function CaissonMethodPage() {
+  const caisson = content.caissonMethod;
+
+  return (
+    <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
+      <section className="relative isolate overflow-hidden bg-[#183d4d] px-5 pb-[34px] pt-[124px] text-white md:px-10 md:pb-[90px] md:pt-[146px]">
+        <Header links={getDmNavLinks(caisson.hero.activeHref)} />
+        <div className="mx-auto grid w-[calc(100vw-40px)] min-w-0 max-w-[1240px] gap-[30px] md:w-full md:grid-cols-[minmax(0,492px)_minmax(0,714px)] md:items-center md:justify-between md:gap-[34px]">
+          <div className="min-w-0">
+            <h1 className="text-[24px] font-bold leading-[36px] md:text-[31px] md:leading-[38px]">
+              <span className="text-dm-cyan">
+                {caisson.overview.eyebrowAccent}
+              </span>
+              <span className="text-white"> {caisson.overview.eyebrowSuffix}</span>
+              <br />
+              <span className="text-white">{caisson.overview.title}</span>
+            </h1>
+            <p className="mt-5 max-w-[492px] break-words text-[14px] leading-[21px] text-white md:text-[16px] md:leading-[24px]">
+              {caisson.overview.paragraph}
             </p>
-            <div className="mt-6 grid gap-3">
-              {caissonSteps.map((step, index) => (
-                <article
-                  key={step}
-                  className="rounded-[8px] border border-dm-cyan/35 bg-white p-4"
-                >
-                  <p className="text-xs font-bold uppercase text-dm-cyan">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-1 text-[17px] font-bold leading-6">{step}</h3>
-                </article>
-              ))}
-            </div>
           </div>
           <Image
-            src="/images/dm/caisson-installation.jpg"
-            alt="Caisson construction and installation"
-            width={800}
-            height={560}
-            className="h-[320px] w-full rounded-[8px] object-cover md:h-[520px]"
+            src={caisson.hero.image}
+            alt={caisson.hero.alt}
+            width={714}
+            height={360}
+            sizes="(min-width: 768px) 714px, 312px"
+            priority
+            className="mx-1 h-[260px] w-[calc(100%-8px)] rounded-[26px] object-cover object-[66%_72%] md:mx-0 md:h-[360px] md:w-full md:rounded-[22px]"
           />
         </div>
       </section>
 
-      <section className="bg-white px-5 py-12 md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <MediaPanel
-            image="/images/dm/caisson-hero.jpg"
-            title="Caisson method installation sequence"
-          />
-        </div>
-      </section>
+      <section className="bg-[#f4f4f6] px-5 py-12 md:px-10 md:py-[112px]">
+        <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
+          <h2 className="text-[32px] font-bold uppercase leading-[39px] text-dm-blue md:text-[42px] md:leading-[52px]">
+            {caisson.process.title}
+          </h2>
 
-      <section className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-16">
-        <div className="mx-auto w-full max-w-[1240px]">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title="Construction and installation"
-            light
-          />
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {caissonCapabilities.map((capability) => (
-              <article
-                key={capability.title}
-                className="rounded-[8px] bg-white p-5 text-dm-text"
-              >
-                <h2 className="text-[18px] font-bold leading-6">
-                  {capability.title}
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-dm-text/68">
-                  {capability.copy}
-                </p>
-              </article>
+          <div className="mt-8 grid min-w-0 gap-[18px] md:mt-[38px] md:gap-5">
+            {caisson.process.steps.map((step) => (
+              <CaissonProcessCard key={step.title} step={step} />
             ))}
           </div>
+
+          <figure className="relative mx-1 mt-10 overflow-hidden rounded-[20px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)] md:mx-0 md:mt-[42px] md:rounded-[14px]">
+            <Image
+              src={caisson.process.video.image}
+              alt={caisson.process.video.alt}
+              width={1240}
+              height={560}
+              sizes="(min-width: 768px) 1240px, 312px"
+              className="h-[260px] w-full object-cover object-[50%_43%] md:h-[560px]"
+            />
+            <div className="absolute inset-0 bg-black/32" aria-hidden="true" />
+            <button
+              type="button"
+              aria-label="Play Caisson Method video"
+              className="absolute left-1/2 top-1/2 flex size-[70px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dm-deep-navy/70 text-dm-cyan shadow-[0_16px_34px_rgba(0,0,0,0.26)] transition-colors hover:bg-dm-cyan hover:text-white md:size-[78px]"
+            >
+              <span
+                className="ml-1 block h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-current md:border-y-[12px] md:border-l-[20px]"
+                aria-hidden="true"
+              />
+            </button>
+          </figure>
+
+          <CaissonAdvantagesPanel
+            title={caisson.advantages.title}
+            items={caisson.advantages.items}
+          />
+
+          <figure className="mx-1 mt-[56px] md:mx-0 md:mt-[32px]">
+            <Image
+              src={caisson.carousel.image}
+              alt={caisson.carousel.alt}
+              width={1240}
+              height={560}
+              sizes="(min-width: 768px) 1240px, 312px"
+              className="h-[312px] w-full rounded-[20px] object-cover object-center md:h-[560px] md:rounded-[14px]"
+            />
+            <CarouselControls largeMobile />
+          </figure>
         </div>
       </section>
 
