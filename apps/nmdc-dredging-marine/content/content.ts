@@ -44,40 +44,33 @@ export const dmHomeCards = [
 ];
 
 export const overviewIntro = [
-  "NMDC Dredging & Marine is a specialist marine construction and dredging business delivering major infrastructure projects across ports, waterways, islands, beaches, and offshore development zones.",
-  "The business combines a modern dredging fleet, experienced engineering teams, and practical construction methods to deliver dredging, reclamation, coastal protection, and geotechnical works."
-];
-
-export const overviewStats = [
-  { value: "45+", label: "Years of marine construction experience" },
-  { value: "6", label: "Featured dredging and marine vessels" },
-  { value: "5", label: "Core marine capability streams" }
+  "NMDC Dredging & Marine combines global expertise with cutting-edge technology to deliver dredging, reclamation and construction services of exceptional quality. Working across the energy, tourism and urban development sectors, we shape the marine environments around us. The company's expertise spans a wide range of services, including dredging, reclamation, geotechnical works, and marine logistics. Its Marine Civil Works division executes complex projects such as jetties, marinas, breakwaters, and man-made islands, ensuring superior craftsmanship and structural integrity. Advanced ground improvement techniques like vibro compaction and stone column installation enhance soil stability, while hydrographic and geophysical surveys guide projects from concept to completion."
 ];
 
 export const dmCapabilities = [
   {
-    title: "Capital Dredging",
-    copy: "Large-scale dredging and marine construction for ports, waterways, islands, and coastal infrastructure.",
+    title: "Dredging & Reclamation",
+    copy: "NMDC Dredging & Marine has risen to become the Middle East's leading provider of dredging and reclamation services. Our highly professional dredging operation harnesses innovative equipment and technology to deliver turnkey solutions for ports, harbors, artificial islands, beaches, land reclamation, intake and outfall dredging.",
     image: "/images/dm/overview-vessel.jpg"
   },
   {
-    title: "Reclamation",
-    copy: "Integrated land reclamation and shoreline formation supported by NMDC's modern dredging fleet.",
-    image: "/images/dm/vessel-al-mirfa.jpg"
-  },
-  {
-    title: "Maintenance Dredging",
-    copy: "Reliable channel, basin, intake, and outfall dredging to keep marine assets operational.",
-    image: "/images/dm/vessel-al-yassat.jpg"
+    title: "Survey",
+    copy: "As key players in our field, we know the importance of regular and reliable surveying. We conduct surveys before, during and after each project, led by a dedicated, highly experienced team.",
+    image: "/images/dm/hydraulic-model-1.jpg"
   },
   {
     title: "Marine Construction",
-    copy: "Breakwaters, revetments, caissons, and coastal protection works delivered through practical engineering methods.",
+    copy: "Our marine construction capabilities include breakwaters, revetments, groyne and related rock works, concrete armor protection, marina and pontoon construction, and sheet and tubular steel piling works. We also erect gravity quay walls, retaining and diaphragm walls, boat ramps, and slipways.",
     image: "/images/dm/caisson-installation.jpg"
   },
   {
-    title: "Geotechnical Investigation",
-    copy: "Marine investigation and field data support for construction planning and design validation.",
+    title: "Marine Logistics",
+    copy: "We offer a wide range of marine logistics services, such as project logistics for transferring cargo, materials, and equipment from source to destination, along with offshore support services using a diverse fleet of vessels and barges.",
+    image: "/images/dm/vessel-sarb.jpg"
+  },
+  {
+    title: "Geotechnical Works",
+    copy: "We specialize in comprehensive ground improvement and geotechnical solutions, guiding projects from initial concept to final execution. Services include vibro and surface compaction, vibro replacement with stone columns, geotechnical investigation, vibro coring, and geophysical survey.",
     image: "/images/dm/hydraulic-model-2.jpg"
   }
 ];

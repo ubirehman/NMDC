@@ -56,7 +56,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
             key={card.title}
             href={card.href}
             aria-label={card.title}
-            className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-dm-cyan hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:translate-y-0 active:scale-[0.98] active:border-dm-cyan active:shadow-[0_0_20px_0_rgba(41,183,227,0.82)] focus-visible:-translate-y-0.5 focus-visible:border-dm-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dm-cyan focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)]"
+            className="group relative block h-[184px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-dm-cyan hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:translate-y-0 active:scale-[0.98] active:border-dm-cyan active:shadow-[0_0_20px_0_rgba(41,183,227,0.82)] focus-visible:-translate-y-0.5 focus-visible:border-dm-cyan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dm-cyan focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] md:h-[200px]"
           >
             <Image
               src={card.image}

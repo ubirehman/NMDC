@@ -2,9 +2,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "dev:dm": "npm --prefix apps/nmdc-dredging-marine run dev",
     "dev:all": "NEXT_PUBLIC_DREDGING_MARINE_APP_URL=${NEXT_PUBLIC_DREDGING_MARINE_APP_URL:-http://localhost:3121} npm run dev -- --hostname 0.0.0.0 --port 3120 & npm run dev:dm -- -- --hostname 0.0.0.0 --port 3121",
-    "build": "next build",
-    "build:dm": "npm --prefix apps/nmdc-dredging-marine run build",
+    "test": "node --test test/*.test.mjs",
+    "build": "next build && node scripts/copy-standalone-assets.mjs root",
+    "build:dm": "npm --prefix apps/nmdc-dredging-marine run build && node scripts/copy-standalone-assets.mjs dm",
     "build:all": "npm run build && npm run build:dm",
     "start": "node .next/standalone/server.js",
     "start:dm": "npm --prefix apps/nmdc-dredging-marine run start",
