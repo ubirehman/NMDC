@@ -6,6 +6,9 @@ const dredgingMarineAppUrl =
 const infraAppUrl =
   process.env.NEXT_PUBLIC_INFRA_APP_URL ?? "http://localhost:3122";
 
+const ltsAppUrl =
+  process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
+
 export const nmdcGroupLandingContent: LandingContent = {
   brand: {
     name: "NMDC Group",
@@ -81,7 +84,7 @@ export const nmdcGroupLandingContent: LandingContent = {
     {
       id: "lts",
       name: "NMDC LTS",
-      href: "#lts",
+      href: ltsAppUrl,
       image: {
         src: "/images/landing/card-lts.webp",
         alt: "NMDC LTS vessel",

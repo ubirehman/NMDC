@@ -4,16 +4,19 @@
     "dev": "next dev --webpack",
     "dev:dm": "npm --prefix apps/nmdc-dredging-marine run dev",
     "dev:infra": "npm --prefix apps/nmdc-infra run dev",
-    "dev:all": "NEXT_PUBLIC_DREDGING_MARINE_APP_URL=${NEXT_PUBLIC_DREDGING_MARINE_APP_URL:-http://localhost:3121} NEXT_PUBLIC_INFRA_APP_URL=${NEXT_PUBLIC_INFRA_APP_URL:-http://localhost:3122} npm run dev -- --hostname 0.0.0.0 --port 3120 & npm run dev:dm -- -- --hostname 0.0.0.0 --port 3121 & npm run dev:infra -- -- --hostname 0.0.0.0 --port 3122",
+    "dev:lts": "npm --prefix apps/nmdc-lts run dev",
+    "dev:all": "NEXT_PUBLIC_DREDGING_MARINE_APP_URL=${NEXT_PUBLIC_DREDGING_MARINE_APP_URL:-http://localhost:3121} NEXT_PUBLIC_INFRA_APP_URL=${NEXT_PUBLIC_INFRA_APP_URL:-http://localhost:3122} NEXT_PUBLIC_LTS_APP_URL=${NEXT_PUBLIC_LTS_APP_URL:-http://localhost:3123} npm run dev -- --hostname 0.0.0.0 --port 3120 & npm run dev:dm -- -- --hostname 0.0.0.0 --port 3121 & npm run dev:infra -- -- --hostname 0.0.0.0 --port 3122 & npm run dev:lts -- -- --hostname 0.0.0.0 --port 3123",
     "test": "node --test test/*.test.mjs",
     "build": "next build && node scripts/copy-standalone-assets.mjs root",
     "build:dm": "npm --prefix apps/nmdc-dredging-marine run build && node scripts/copy-standalone-assets.mjs dm",
     "build:infra": "npm --prefix apps/nmdc-infra run build && node scripts/copy-standalone-assets.mjs infra",
-    "build:all": "npm run build && npm run build:dm && npm run build:infra",
+    "build:lts": "npm --prefix apps/nmdc-lts run build && node scripts/copy-standalone-assets.mjs lts",
+    "build:all": "npm run build && npm run build:dm && npm run build:infra && npm run build:lts",
     "start": "node .next/standalone/server.js",
     "start:dm": "npm --prefix apps/nmdc-dredging-marine run start",
     "start:infra": "npm --prefix apps/nmdc-infra run start",
-    "start:all": "NEXT_PUBLIC_DREDGING_MARINE_APP_URL=${NEXT_PUBLIC_DREDGING_MARINE_APP_URL:-http://localhost:3121} NEXT_PUBLIC_INFRA_APP_URL=${NEXT_PUBLIC_INFRA_APP_URL:-http://localhost:3122} PORT=3120 HOSTNAME=0.0.0.0 npm run start & PORT=3121 HOSTNAME=0.0.0.0 npm run start:dm & PORT=3122 HOSTNAME=0.0.0.0 npm run start:infra"
+    "start:lts": "npm --prefix apps/nmdc-lts run start",
+    "start:all": "NEXT_PUBLIC_DREDGING_MARINE_APP_URL=${NEXT_PUBLIC_DREDGING_MARINE_APP_URL:-http://localhost:3121} NEXT_PUBLIC_INFRA_APP_URL=${NEXT_PUBLIC_INFRA_APP_URL:-http://localhost:3122} NEXT_PUBLIC_LTS_APP_URL=${NEXT_PUBLIC_LTS_APP_URL:-http://localhost:3123} PORT=3120 HOSTNAME=0.0.0.0 npm run start & PORT=3121 HOSTNAME=0.0.0.0 npm run start:dm & PORT=3122 HOSTNAME=0.0.0.0 npm run start:infra & PORT=3123 HOSTNAME=0.0.0.0 npm run start:lts"
   },
   "dependencies": {
     "next": "latest",

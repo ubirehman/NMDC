@@ -64,6 +64,32 @@ const apps = {
       "static",
     ),
   },
+  lts: {
+    publicDir: path.join(root, "apps", "nmdc-lts", "public"),
+    staticDir: path.join(root, "apps", "nmdc-lts", ".next", "static"),
+    standaloneDir: path.join(root, "apps", "nmdc-lts", ".next", "standalone"),
+    standalonePublicDir: path.join(
+      root,
+      "apps",
+      "nmdc-lts",
+      ".next",
+      "standalone",
+      "apps",
+      "nmdc-lts",
+      "public",
+    ),
+    standaloneStaticDir: path.join(
+      root,
+      "apps",
+      "nmdc-lts",
+      ".next",
+      "standalone",
+      "apps",
+      "nmdc-lts",
+      ".next",
+      "static",
+    ),
+  },
 };
 
 function copyDir(from, to) {
@@ -93,6 +119,7 @@ if (target === "all") {
   copyForApp("root");
   copyForApp("dm");
   copyForApp("infra");
+  copyForApp("lts");
 } else if (target in apps) {
   copyForApp(target);
 } else {

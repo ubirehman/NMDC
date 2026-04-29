@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "nmdc-lts",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "start": "node .next/standalone/apps/nmdc-lts/server.js"
+  }
+}

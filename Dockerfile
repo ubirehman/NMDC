@@ -47,8 +47,9 @@ ENV PORT=3120
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
+ENV NEXT_PUBLIC_LTS_APP_URL="http://localhost:3123"
 
-EXPOSE 3120 3121 3122
+EXPOSE 3120 3121 3122 3123
 
 CMD ["npm", "run", "dev:all"]
 
@@ -70,6 +71,7 @@ COPY . .
 ENV NODE_ENV=production
 ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
+ENV NEXT_PUBLIC_LTS_APP_URL="http://localhost:3123"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -107,6 +109,7 @@ ENV PORT=3120
 ENV HOSTNAME="0.0.0.0"
 ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
 ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
+ENV NEXT_PUBLIC_LTS_APP_URL="http://localhost:3123"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -114,8 +117,8 @@ ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
 # ENV NEXT_TELEMETRY_DISABLED=1
 
 # Copy the built multi-app workspace. This intentionally keeps the root
-# NMDC Group app, the standalone D&M app, and the standalone NMDC Infra app
-# together so one container can serve all ports.
+# NMDC Group app, the standalone D&M app, the standalone NMDC Infra app,
+# and the standalone NMDC LTS app together so one container can serve all ports.
 COPY --from=builder --chown=node:node /app ./
 
 # Switch to non-root user for security best practices
@@ -125,7 +128,8 @@ USER node
 # - 3120: NMDC Group
 # - 3121: NMDC Dredging & Marine
 # - 3122: NMDC Infra
-EXPOSE 3120 3121 3122
+# - 3123: NMDC LTS
+EXPOSE 3120 3121 3122 3123
 
 # Start all Next.js apps in one container
 CMD ["npm", "run", "start:all"]
