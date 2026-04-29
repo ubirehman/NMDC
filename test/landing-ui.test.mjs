@@ -4,12 +4,19 @@ import test from "node:test";
 
 const header = readFileSync("app/components/landing/Header.tsx", "utf8");
 const brandCard = readFileSync("app/components/landing/BrandCard.tsx", "utf8");
+const brandCards = readFileSync("app/components/landing/BrandCards.tsx", "utf8");
 const globals = readFileSync("app/globals.css", "utf8");
+const hero = readFileSync("app/components/landing/Hero.tsx", "utf8");
+const groupLanding = readFileSync(
+  "features/landing-pages/nmdc-group/NmdcGroupLandingPage.tsx",
+  "utf8",
+);
 
 test("mobile header exposes an interactive navigation menu", () => {
   assert.match(header, /"use client"/);
   assert.match(header, /useState/);
   assert.match(header, /aria-expanded=\{isMenuOpen\}/);
+  assert.match(header, /h-14[\s\S]*md:h-\[72px\]/);
   assert.match(header, /md:hidden[\s\S]*links\.map/);
 });
 
@@ -50,9 +57,29 @@ test("header keeps Figma glass color fallback while using palette utilities", ()
   assert.match(header, /border-\[1px\] border-gray-50\/20/);
 });
 
+test("desktop header navigation uses the PDF-sized link typography", () => {
+  assert.match(header, /text-\[16px\] font-bold leading-6/);
+});
+
 test("mobile navigation is a left sliding drawer, not a dropdown", () => {
   assert.match(header, /fixed inset-y-0 left-0/);
   assert.match(header, /translate-x-0/);
   assert.match(header, /-translate-x-full/);
   assert.doesNotMatch(header, /top-\[calc\(100%\+10px\)\]/);
+});
+
+test("NMDC Group landing matches the 1440x786 PDF artboard geometry", () => {
+  assert.match(groupLanding, /min-h-\[max\(786px,100svh\)\]/);
+  assert.match(groupLanding, /md:bottom-\[80px\]/);
+  assert.match(hero, /md:gap-6/);
+  assert.match(hero, /max-w-\[320px\][^"]*md:max-w-\[559px\]/);
+  assert.match(brandCards, /md:w-\[822px\]/);
+  assert.doesNotMatch(groupLanding, /h-\[786px\]/);
+});
+
+test("brand card logos are cropped into a larger label frame", () => {
+  assert.match(brandCard, /logoFrameClassName/);
+  assert.match(brandCard, /h-10 w-\[118px\]/);
+  assert.match(brandCard, /object-cover/);
+  assert.doesNotMatch(brandCard, /max-h-7/);
 });

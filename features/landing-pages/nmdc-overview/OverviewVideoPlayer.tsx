@@ -22,7 +22,7 @@ export function OverviewVideoPlayer({
   };
 
   return (
-    <div className="relative mx-auto w-full max-w-[1040px] overflow-hidden rounded-[6px] bg-primary-navy-blue">
+    <div className="relative mx-auto w-full max-w-[1240px] overflow-hidden rounded-[6px] bg-primary-navy-blue">
       <video
         ref={videoRef}
         className="aspect-[2.22/1] w-full bg-primary-navy-blue object-cover"

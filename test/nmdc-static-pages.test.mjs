@@ -23,7 +23,7 @@ const pages = [
     content: "features/landing-pages/nmdc-technology/content.ts",
     component: "NmdcTechnologyPage",
     phrases: [
-      "Technology & AI",
+      "Technology & Ai",
       "NMDC AI Hub",
       "Digital Integration Across NMDC",
       "Oracle Fusion Procurement & Supply Chain AI Platform",
@@ -77,6 +77,11 @@ test("inner NMDC pages follow the PDF section order", () => {
     "features/landing-pages/nmdc-technology/NmdcTechnologyPage.tsx",
     "utf8",
   );
+  const technologyContent = readFileSync(
+    "features/landing-pages/nmdc-technology/content.ts",
+    "utf8",
+  );
+  const technologyDesign = `${technology}\n${technologyContent}`;
   const safeen = readFileSync(
     "features/landing-pages/nmdc-safeen-subsea/NmdcSafeenSubseaPage.tsx",
     "utf8",
@@ -86,8 +91,22 @@ test("inner NMDC pages follow the PDF section order", () => {
   assert.match(people, /bg-\[#f5fcff\]/);
   assert.match(people, /maharaSections/);
   assert.match(people, /border-\[2px\] border-primary-sky-blue/);
-  assert.match(people, /(?:h-\[321px\]|h-80\.25)/);
-  assert.match(people, /md:h-\[265px\]/);
+  assert.match(people, /h-\[318px\]/);
+  assert.match(people, /md:h-\[487px\]/);
+  assert.match(people, /md:pb-\[89px\]/);
+  assert.match(people, /md:hidden\" mobile/);
+  assert.match(people, /mobile\s+\?\s+"h-\[177px\]/);
+  assert.match(people, /px-\[15px\] py-5 md:hidden/);
+  assert.match(people, /index === 0 \? "h-\[540px\]" : "h-\[320px\]"/);
+  assert.match(people, /pb-\[87px\] pt-12 md:hidden/);
+  assert.match(people, /lg:grid-cols-\[minmax\(0,618px\)_minmax\(0,606px\)\]/);
+  assert.match(people, /lg:gap-4/);
+  assert.match(people, /md:min-h-\[1159px\]/);
+  assert.match(people, /md:min-h-\[177px\]/);
+  assert.match(people, /md:text-\[48px\]/);
+  assert.match(people, /md:h-\[610px\]/);
+  assert.match(people, /showPlay=\{index === 1\}/);
+  assert.match(people, /<NmdcFooter variant="compact" \/>/);
   assert.doesNotMatch(people, /mt-48/);
   assert.match(people, /<Header/);
   assert.match(people, /nmdcPeopleCultureNavLinks/);
@@ -99,13 +118,61 @@ test("inner NMDC pages follow the PDF section order", () => {
   assert.doesNotMatch(people, /shadow-\[0_24px_70px/);
 
   assert.match(technology, /bg-\[#f4f7fa\]/);
-  assert.match(technology, /NMDC AI platforms/);
+  assert.match(technologyDesign, /Applications in Our AI Hub/);
+  assert.doesNotMatch(technologyDesign, /NMDC AI platforms/);
   assert.doesNotMatch(technology, /bg-\[#062c45\] px-5 py-10 text-white/);
 
   assert.match(safeen, /safeenOverview/);
   assert.match(safeen, /safeenVideo/);
   assert.match(safeen, /OUR PRODUCTS/);
   assert.doesNotMatch(safeen, /Key Facts\./);
+});
+
+test("NMDC Technology follows the supplied desktop PDF layout", () => {
+  const technology = readFileSync(
+    "features/landing-pages/nmdc-technology/NmdcTechnologyPage.tsx",
+    "utf8",
+  );
+  const technologyContent = readFileSync(
+    "features/landing-pages/nmdc-technology/content.ts",
+    "utf8",
+  );
+  const technologyDesign = `${technology}\n${technologyContent}`;
+
+  assert.match(technology, /md:h-\[487px\]/);
+  assert.match(technologyDesign, /Technology &(?:amp; )?Ai/);
+  assert.match(technologyDesign, /NMDC AI Hub - Empowering a Smarter, Safer and More/);
+  assert.match(technology, /lg:grid-cols-\[minmax\(0,609px\)_minmax\(0,609px\)\]/);
+  assert.match(technologyDesign, /Digital Integration Across NMDC/);
+  assert.match(technologyDesign, /bg-\[#062c45\].*Digital Integration Across NMDC/s);
+  assert.match(technologyDesign, /Applications in Our AI Hub/);
+  assert.match(technologyDesign, /Know more-/);
+  assert.match(technology, /technologyMedia/);
+  assert.match(technology, /OverviewVideoPlayer/);
+  assert.match(technology, /NmdcFooter/);
+});
+
+test("NMDC Technology follows the supplied mobile PDF layout", () => {
+  const technology = readFileSync(
+    "features/landing-pages/nmdc-technology/NmdcTechnologyPage.tsx",
+    "utf8",
+  );
+  const technologyContent = readFileSync(
+    "features/landing-pages/nmdc-technology/content.ts",
+    "utf8",
+  );
+  const technologyDesign = `${technology}\n${technologyContent}`;
+
+  assert.match(technology, /h-\[290px\].*md:h-\[487px\]/s);
+  assert.match(technologyDesign, /Powering NMDC Group.*intelligent systems.*digital innovation/s);
+  assert.match(technology, /MobileTechnologyContent/);
+  assert.match(technology, /hidden md:block/);
+  assert.match(technology, /md:hidden/);
+  assert.match(technology, /technologyMedia\[0\].*h-\[207px\]/s);
+  assert.match(technology, /technologyMedia\[1\].*h-\[325px\]/s);
+  assert.match(technology, /MobileTechnologySection/);
+  assert.match(technology, /technologySections\[0\].*OverviewVideoPlayer.*technologySections\[1\]/s);
+  assert.match(technology, /break-words/);
 });
 
 test("NMDC Safeen Subsea follows the supplied desktop PDF layout", () => {

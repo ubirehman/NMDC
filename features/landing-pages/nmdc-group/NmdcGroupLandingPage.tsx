@@ -7,7 +7,7 @@ import { nmdcGroupLandingContent as content } from "./content";
 export function NmdcGroupLandingPage() {
   return (
     <main className="overflow-x-hidden">
-      <section className="relative isolate min-h-[100svh] w-full bg-brand-navy bg-primary-navy-blue">
+      <section className="relative isolate min-h-[max(786px,100svh)] w-full overflow-hidden bg-brand-navy bg-primary-navy-blue">
         <Image
           src={content.hero.background.src}
           alt={content.hero.background.alt}
@@ -28,12 +28,12 @@ export function NmdcGroupLandingPage() {
           links={content.nav.links}
         />
 
-        <div className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[1240px] px-5 pt-12 pb-10 md:min-h-[786px] md:px-10 md:pt-0 md:pb-0">
-          <div className="flex min-h-[calc(100svh-7rem)] flex-col justify-end gap-10 md:block md:min-h-0 md:h-[786px]">
+        <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px] px-5 pt-12 pb-10 md:px-10 md:pt-0 md:pb-0">
+          <div className="flex min-h-[max(786px,100svh)] flex-col justify-end gap-10 md:block">
             <div className="md:absolute md:left-0 md:top-[244px]">
               <Hero hero={content.hero} />
             </div>
-            <div className="md:absolute md:right-0 md:bottom-[58px]">
+            <div className="md:absolute md:right-0 md:bottom-[80px]">
               <BrandCards brands={content.brands} />
             </div>
           </div>

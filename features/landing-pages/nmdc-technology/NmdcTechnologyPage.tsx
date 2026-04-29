@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { SVGProps } from "react";
 import { Header } from "../../../app/components/landing/Header";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
 import { OverviewVideoPlayer } from "../nmdc-overview/OverviewVideoPlayer";
@@ -7,24 +8,32 @@ import {
   aiPlatforms,
   nmdcTechnologyBrand,
   nmdcTechnologyNavLinks,
+  technologyApplications,
+  technologyHero,
+  technologyIntro,
   technologyMedia,
   technologySections,
+  technologyVideo,
 } from "./content";
 
 export function NmdcTechnologyPage() {
   return (
-    <main className="overflow-x-hidden bg-white text-primary-navy-blue">
-      <section className="relative isolate overflow-hidden min-h-122 bg-primary-navy-blue px-5 pb-7 pt-[112px] text-white md:px-10 md:pb-0 md:pt-[124px]">
+    <main className="overflow-x-hidden bg-[#f4f7fa] text-[#43536a]">
+      <section className="relative isolate h-[290px] overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
-          src="/images/landing/technology-hero.jpg"
-          alt="NMDC AI Hub command center"
+          src={technologyHero.image}
+          alt={technologyHero.imageAlt}
           fill
           priority
           sizes="100vw"
           className="object-cover object-center"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.36)_0%,rgba(3,15,26,0.58)_55%,rgba(3,15,26,0.88)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,15,26,0.72)_0%,rgba(3,15,26,0.42)_48%,rgba(3,15,26,0.76)_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.36)_0%,rgba(0,0,0,0.10)_45%,rgba(0,0,0,0.22)_100%)]"
           aria-hidden="true"
         />
         <Header
@@ -34,109 +43,310 @@ export function NmdcTechnologyPage() {
           links={nmdcTechnologyNavLinks}
         />
 
-        <div className="relative z-10 mx-auto grid min-h-[230px] w-full max-w-[1240px] items-end gap-8 md:min-h-[300px] md:grid-cols-[minmax(0,520px)_minmax(420px,1fr)] md:gap-12">
-          <div>
-            <p className="text-[20px] font-bold leading-7 text-primary-sky-blue md:text-[26px]">
-              Technology &amp; AI
-            </p>
-            <h1 className="mt-4 max-w-[560px] pb-8 text-[24px] font-bold leading-[1.18] md:pb-12 md:text-[34px]">
-              Powering NMDC Group&apos;s future with intelligent systems and
-              digital innovation.
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[34px] md:pb-[137px]">
+          <div className="max-w-[620px]">
+            <h1 className="text-[30px] font-bold leading-[36px] text-white md:text-[48px] md:leading-[58px]">
+              <span className="hidden md:inline">Technology &amp; Ai</span>
+              <span className="md:hidden">Technology &amp; AI</span>
             </h1>
+            <p className="mt-[9px] max-w-[320px] text-[14px] font-normal leading-[21px] text-white md:hidden">
+              {technologyHero.subtitle}
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f4f7fa] px-5 py-10 md:px-10 md:py-12">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,650px)_minmax(360px,430px)] md:items-start md:gap-10">
+      <MobileTechnologyContent />
+
+      <section className="hidden md:block bg-[#f4f7fa] md:px-10 md:pb-[100px] md:pt-12">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8 lg:grid-cols-[minmax(0,609px)_minmax(0,609px)] lg:gap-6">
           <div>
-            <h2 className="text-[22px] font-bold leading-[1.2] text-[#06447a] md:text-[28px]">
-              NMDC AI Hub - Empowering a Smarter, Safer and More Connected
-              Future
+            <h2 className="max-w-[590px] text-[22px] font-bold leading-[30px] text-[#43536a] md:text-[24px] md:leading-[30px]">
+              {technologyIntro.title}
             </h2>
-            <p className="mt-4 text-sm leading-6 text-primary-navy-blue/72">
-              The NMDC AI HUB is the Group&apos;s central digital platform,
-              bringing together all AI-powered tools and smart systems across
-              NMDC Group into one intelligent interface. It reflects our
-              commitment to innovation, efficiency, and safety across every
-              project and business unit.
+            <p className="mt-5 max-w-[590px] text-[16px] leading-[27px] text-[#43536a] md:text-[18px] md:leading-[29px]">
+              {technologyIntro.copy}
             </p>
 
-            <div className="mt-6 grid gap-4">
-              {technologySections.map((section) => (
-                <article
-                  key={section.title}
-                  className="rounded-[6px] bg-white p-5 shadow-[0_14px_34px_-30px_rgba(5,38,59,0.6)]"
-                >
-                  <h3 className="text-[18px] font-bold leading-6 text-[#06447a]">
-                    {section.title}
-                  </h3>
-                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-primary-navy-blue/76">
-                    {section.points.map((point) => (
-                      <li key={point} className="flex gap-3">
-                        <span
-                          aria-hidden="true"
-                          className="mt-2 size-1.5 shrink-0 rounded-full bg-primary-sky-blue"
-                        />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div className="mt-[34px] grid gap-9">
+              {technologySections.map((section, index) =>
+                index === 0 ? (
+                  <article
+                    key={section.title}
+                    className="rounded-[15px] bg-[#062c45] px-6 py-6 text-white md:h-[339px] md:px-6 md:py-6"
+                  >
+                    <SectionHeading
+                      title={section.title}
+                      icon={section.icon}
+                      inverted
+                    />
+                    <SectionList
+                      points={section.points}
+                      className="mt-4 text-white"
+                    />
+                  </article>
+                ) : (
+                  <article key={section.title}>
+                    <SectionHeading title={section.title} icon={section.icon} />
+                    <SectionList
+                      points={section.points}
+                      className="mt-4 text-[#43536a]"
+                    />
+                  </article>
+                ),
+              )}
             </div>
 
-            <section className="mt-5 rounded-[6px] bg-[#062c45] p-5 text-white">
-              <h2 className="text-[18px] font-bold leading-6">
-                NMDC AI platforms
+            <section className="mt-9">
+              <h2 className="text-[22px] font-bold leading-[30px] text-[#43536a]">
+                {technologyApplications.title}
               </h2>
-              <div className="mt-4 grid gap-0.5">
-                {aiPlatforms.map((platform) => (
-                  <div
-                    key={platform}
-                    className="border-t border-white/14 py-2.5 text-sm font-bold leading-5 text-white/88"
+              <div className="mt-[18px] rounded-[22px] border border-primary-sky-blue/45 bg-[#062c45] px-6 pb-7 pt-2 text-white md:min-h-[812px]">
+                <div>
+                  {aiPlatforms.map((platform) => (
+                    <div
+                      key={platform}
+                      className="border-b border-white/16 py-[17px] text-[20px] font-bold leading-[26px] text-primary-sky-blue md:text-[22px] md:leading-[30px]"
+                    >
+                      {platform}
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-7 text-center text-[18px] font-bold leading-7 text-white md:text-[24px]">
+                  {technologyApplications.knowMoreLabel}{" "}
+                  <Link
+                    href={technologyApplications.href}
+                    className="text-primary-sky-blue underline underline-offset-4 transition-colors hover:text-white"
                   >
-                    {platform}
-                  </div>
-                ))}
+                    {technologyApplications.href}
+                  </Link>
+                </p>
               </div>
-              <p className="mt-4 text-sm font-bold leading-5 text-white">
-                Know more-{" "}
-                <Link
-                  href="https://ai.nmdc-group.com/"
-                  className="text-primary-sky-blue transition-colors hover:text-white"
-                >
-                  https://ai.nmdc-group.com/
-                </Link>
-              </p>
             </section>
           </div>
 
-          <aside className="grid gap-5">
-            {technologyMedia.map((image) => (
+          <aside className="grid content-start gap-8">
+            {technologyMedia.map((image, index) => (
               <Image
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
-                width={620}
-                height={360}
-                className="h-[220px] w-full rounded-[6px] object-cover shadow-[0_18px_50px_-32px_rgba(5,38,59,0.7)] md:h-auto"
+                width={609}
+                height={index === 0 ? 352 : 865}
+                className={`w-full rounded-[22px] bg-[#062c45] object-cover ${
+                  index === 0
+                    ? "h-[220px] md:h-[352px]"
+                    : "h-[420px] md:h-[865px]"
+                }`}
               />
             ))}
           </aside>
         </div>
-      </section>
 
-      <section className="bg-white px-5 py-10 md:px-10 md:py-12">
-        <div className="mx-auto w-full max-w-[1240px]">
+        <div className="mx-auto mt-[52px] w-full max-w-[1240px] [&>div]:rounded-[22px]">
           <OverviewVideoPlayer
-            poster="/images/landing/technology-video.jpg"
-            sources={[{ src: "/videos/nmdc-group-overview.mp4", type: "video/mp4" }]}
+            poster={technologyVideo.poster}
+            sources={technologyVideo.sources}
           />
         </div>
       </section>
 
       <NmdcFooter />
     </main>
+  );
+}
+
+function MobileTechnologyContent() {
+  return (
+    <section className="bg-[#f4f7fa] md:hidden">
+      <div className="bg-white px-5 pb-4 pt-[30px]">
+        <h2 className="text-[20px] font-bold leading-[28px] text-[#43536a]">
+          {technologyIntro.title}
+        </h2>
+        <p className="mt-[18px] text-[14px] leading-[23px] text-[#43536a]">
+          {technologyIntro.copy}
+        </p>
+      </div>
+
+      <Image
+        src={technologyMedia[0].src}
+        alt={technologyMedia[0].alt}
+        width={360}
+        height={207}
+        className="h-[207px] w-full object-cover"
+      />
+      <Image
+        src={technologyMedia[1].src}
+        alt={technologyMedia[1].alt}
+        width={360}
+        height={325}
+        className="h-[325px] w-full object-cover"
+      />
+
+      <MobileTechnologySection section={technologySections[0]} inverted />
+
+      <div className="[&>div]:max-w-none [&>div]:rounded-none [&_button>span]:size-[70px] [&_video]:!aspect-auto [&_video]:!h-[232px]">
+        <OverviewVideoPlayer
+          poster={technologyVideo.poster}
+          sources={technologyVideo.sources}
+        />
+      </div>
+
+      <MobileTechnologySection section={technologySections[1]} />
+
+      <section className="bg-[#062c45] px-5 pb-[99px] pt-[34px] text-white">
+        <h2 className="text-[20px] font-bold leading-[28px]">
+          {technologyApplications.title}
+        </h2>
+        <div className="mt-4">
+          {aiPlatforms.map((platform) => (
+            <div
+              key={platform}
+              className="break-words border-b border-white/16 py-[14px] text-[14px] leading-[21px] text-primary-sky-blue"
+            >
+              {platform}
+            </div>
+          ))}
+        </div>
+        <p className="mt-[26px] break-words text-[16px] leading-6 text-white">
+          {technologyApplications.knowMoreLabel}
+          <Link
+            href={technologyApplications.href}
+            className="text-primary-sky-blue underline underline-offset-4"
+          >
+            {technologyApplications.href}
+          </Link>
+        </p>
+      </section>
+    </section>
+  );
+}
+
+function MobileTechnologySection({
+  section,
+  inverted = false,
+}: {
+  section: (typeof technologySections)[number];
+  inverted?: boolean;
+}) {
+  const points = section.mobilePoints ?? section.points;
+
+  return (
+    <article
+      className={`px-5 pb-1 pt-[34px] ${
+        inverted ? "bg-[#062c45] text-white" : "bg-white text-[#43536a]"
+      }`}
+    >
+      <SectionHeading
+        title={section.title}
+        icon={section.icon}
+        inverted={inverted}
+        mobile
+      />
+      <div className={`mt-[18px] border-t ${inverted ? "border-white/16" : "border-[#c7d0da]"}`} />
+      <SectionList
+        points={points}
+        className={`mt-[18px] ${inverted ? "text-white" : "text-[#43536a]"}`}
+        mobile
+      />
+    </article>
+  );
+}
+
+function SectionHeading({
+  title,
+  icon,
+  inverted = false,
+  mobile = false,
+}: {
+  title: string;
+  icon: string;
+  inverted?: boolean;
+  mobile?: boolean;
+}) {
+  const iconClassName = "mt-0.5 size-[22px] shrink-0 text-primary-sky-blue";
+
+  return (
+    <h2
+      className={`flex items-start gap-3 font-bold ${
+        mobile ? "text-[20px] leading-[28px]" : "text-[22px] leading-[30px]"
+      } ${
+        inverted ? "text-white" : "text-[#43536a]"
+      }`}
+    >
+      {icon === "bolt" ? (
+        <BoltIcon className={iconClassName} />
+      ) : (
+        <NetworkIcon className={iconClassName} />
+      )}
+      <span>{title}</span>
+    </h2>
+  );
+}
+
+function SectionList({
+  points,
+  className,
+  mobile = false,
+}: {
+  points: string[];
+  className: string;
+  mobile?: boolean;
+}) {
+  return (
+    <ul
+      className={`grid ${
+        mobile
+          ? "gap-[14px] text-[14px] leading-[23px]"
+          : "gap-0.5 text-[16px] leading-[27px] md:text-[18px] md:leading-[27px]"
+      } ${className}`}
+    >
+      {points.map((point) => (
+        <li key={point} className="flex gap-3">
+          <span
+            aria-hidden="true"
+            className="mt-[11px] size-1 shrink-0 rounded-full bg-current"
+          />
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function NetworkIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      {...props}
+    >
+      <path d="M12 5v6" strokeLinecap="round" />
+      <path d="M6 13h12" strokeLinecap="round" />
+      <rect x="9.5" y="2.5" width="5" height="5" rx="1" />
+      <rect x="3.5" y="15.5" width="5" height="5" rx="1" />
+      <rect x="15.5" y="15.5" width="5" height="5" rx="1" />
+      <path d="M6 13v2.5M18 13v2.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function BoltIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      {...props}
+    >
+      <path
+        d="M13 2 4 14h7l-1 8 10-13h-7l1-7Z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

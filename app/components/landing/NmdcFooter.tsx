@@ -7,9 +7,19 @@ import {
   nmdcPageLinks,
 } from "./nmdcShared";
 
-export function NmdcFooter() {
+type NmdcFooterProps = {
+  variant?: "default" | "compact";
+};
+
+export function NmdcFooter({ variant = "default" }: NmdcFooterProps) {
+  const isCompact = variant === "compact";
+
   return (
-    <footer className="relative isolate overflow-hidden bg-[#061832] px-5 py-8 text-white md:px-10 md:py-12">
+    <footer
+      className={`relative isolate overflow-hidden bg-[#061832] px-5 py-8 text-white md:px-10 ${
+        isCompact ? "md:min-h-[487px] md:py-10" : "md:min-h-[658px] md:py-12"
+      }`}
+    >
       <div
         className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,20,40,0.96)_0%,rgba(4,31,58,0.92)_50%,rgba(0,127,137,0.78)_100%)]"
         aria-hidden="true"
@@ -19,7 +29,11 @@ export function NmdcFooter() {
         aria-hidden="true"
       />
 
-      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:grid-cols-[1.2fr_0.8fr_1.1fr] md:gap-16 md:px-10 md:py-10">
+      <div
+        className={`mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:grid-cols-[1.2fr_0.8fr_1.1fr] md:gap-16 md:px-10 ${
+          isCompact ? "md:min-h-[407px] md:py-8" : "md:min-h-[525px] md:py-10"
+        }`}
+      >
         <div>
           <Image
             src={nmdcBrand.logo}

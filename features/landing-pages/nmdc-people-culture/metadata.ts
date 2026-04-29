@@ -11,3 +11,15 @@ export const nmdcPeopleCultureMetadata: Metadata = {
     type: "website",
   },
 };
+
+export const nmdcMaharaFreshGraduateMetadata: Metadata = {
+  title: "Mahara Fresh Graduate Development Program | People & Culture",
+  description:
+    "NMDC Group Mahara Fresh Graduate Development Program and national talent initiatives.",
+  openGraph: {
+    title: "Mahara Fresh Graduate Development Program | NMDC Group",
+    description:
+      "Details on Mahara, women empowerment, leadership communication, and continuous development initiatives.",
+    type: "website",
+  },
+};

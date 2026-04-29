@@ -1,2 +1,3 @@
+export { NmdcAtAGlancePage } from "./NmdcAtAGlancePage";
 export { NmdcOverviewPage } from "./NmdcOverviewPage";
-export { nmdcOverviewMetadata } from "./metadata";
+export { nmdcAtAGlanceMetadata, nmdcOverviewMetadata } from "./metadata";

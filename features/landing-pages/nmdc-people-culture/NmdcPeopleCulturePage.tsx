@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "../../../app/components/landing/icons";
 import { Header } from "../../../app/components/landing/Header";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
@@ -17,7 +18,7 @@ import {
 export function NmdcPeopleCulturePage() {
   return (
     <main className="overflow-x-hidden bg-white text-primary-navy-blue">
-      <section className="relative isolate flex h-80.25 items-end min-h-122 overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[265px] md:px-10">
+      <section className="relative isolate flex h-[318px] items-end overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
           src="/images/landing/people-hero-boardroom.jpg"
           alt="NMDC people and culture event"
@@ -38,14 +39,14 @@ export function NmdcPeopleCulturePage() {
           links={nmdcPeopleCultureNavLinks}
         />
 
-        <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-[84px] md:pb-[37px]">
+        <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-[84px] md:pb-[89px]">
           <div className="grid gap-5 md:grid-cols-[430px_1fr] md:items-start md:gap-20">
-            <h1 className="whitespace-nowrap text-center text-[23px] font-bold uppercase leading-[1.05] md:whitespace-normal md:text-left md:text-[46px]">
+            <h1 className="whitespace-nowrap text-center text-[23px] font-bold uppercase leading-[1.05] md:whitespace-normal md:text-left md:text-[48px] md:leading-[58px]">
               NMDC PEOPLE &amp;{" "}
               <br className="hidden md:block" />
               <span className="text-primary-sky-blue">CULTURE</span>
             </h1>
-            <p className="mx-auto max-w-[318px] text-center text-[13px] leading-[1.45] text-white md:mx-0 md:max-w-[690px] md:justify-self-end md:text-[22px] md:leading-[1.25]">
+            <p className="mx-auto max-w-[318px] text-center text-[13px] leading-[1.45] text-white md:mx-0 md:max-w-[730px] md:justify-self-end md:pt-[43px] md:text-[24px] md:leading-[32px]">
               We are defined by a strong and cohesive company culture. We strive
               to cultivate a working environment where everyone can thrive.
             </p>
@@ -53,7 +54,7 @@ export function NmdcPeopleCulturePage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-11 pt-12 md:bg-[#f5fcff] md:px-10 md:pb-[101px] md:pt-[119px]">
+      <section className="bg-white px-5 pb-11 pt-12 md:bg-[#f5fcff] md:px-10 md:pb-[135px] md:pt-[109px]">
         <div className="mx-auto w-full max-w-[1240px]">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-[62px]">
             <h2 className="shrink-0 text-[20px] font-bold uppercase leading-[1.35] text-[#06447a] md:text-[28px] md:leading-[1.12]">
@@ -71,24 +72,24 @@ export function NmdcPeopleCulturePage() {
             <p className="text-[16px] font-medium uppercase leading-6 text-[#485a70]">
               {emiratizationContent.eyebrow}
             </p>
-            <div className="mt-7 grid gap-7 text-[15px] leading-[1.45] text-[#43556c] md:text-[16px] md:leading-[1.42]">
+            <div className="mt-7 grid gap-[14px] text-[15px] leading-[1.45] text-[#43556c] md:text-[16px] md:leading-[22px]">
               {emiratizationContent.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 md:mt-14 lg:mt-[56px] lg:grid-cols-[minmax(0,609px)_minmax(0,591px)] lg:gap-20">
+          <div className="mt-8 grid gap-6 md:mt-14 lg:mt-[38px] lg:grid-cols-[minmax(0,618px)_minmax(0,606px)] lg:gap-4">
             <section>
               <MasarIntroCard />
 
-              <div className="hidden min-h-[86px] items-center rounded-[18px] bg-[#dfe7f0] px-8 md:flex md:px-9">
-                <h2 className="text-[16px] font-bold leading-6 text-primary-navy-blue">
+              <div className="hidden min-h-[88px] items-center rounded-[20px] bg-[#dfe7f0] px-8 md:flex">
+                <h2 className="text-[20px] font-bold leading-6 text-primary-navy-blue">
                   Masar programm for UAE nationals
                 </h2>
               </div>
 
-              <div className="mt-5 grid gap-[18px] md:mt-6 md:gap-5">
+              <div className="mt-5 grid gap-[18px] md:mt-[18px] md:gap-[18px]">
                 {masarTracks.map((track) => (
                   <ProgramBlock
                     key={track.title}
@@ -103,25 +104,28 @@ export function NmdcPeopleCulturePage() {
 
             <MobileMaharaCard />
 
-            <section className="hidden rounded-[18px] bg-[#dfe7f0] px-8 py-8 md:block md:px-9 md:py-8">
-              <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[24px]">
+            <section className="hidden overflow-hidden rounded-[20px] bg-[#dfe7f0] px-8 py-8 md:block md:h-[1159px] md:min-h-[1159px] md:px-[30px] md:py-[26px]">
+              <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[28px] md:leading-[36px]">
                 Mahara Fresh Graduate Development Program
               </h2>
-              <div className="mt-6 grid gap-6">
+              <div className="mt-6 grid gap-7">
                 {maharaSections.map((section, index) => (
                   <section key={section.title}>
-                    <h3 className="text-[16px] font-bold leading-[1.35] text-[#43556c]">
+                    <h3 className="text-[16px] font-bold leading-[1.35] text-[#43556c] md:text-[20px] md:leading-[28px]">
                       {section.title}
                     </h3>
-                    <div className="mt-2 grid gap-5 text-[15px] leading-[1.43] text-[#43556c]">
+                    <div className="mt-2 grid gap-5 text-[15px] leading-[1.43] text-[#43556c] md:text-[18px] md:leading-[28px]">
                       {section.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
                     </div>
                     {index === maharaSections.length - 1 ? (
-                      <p className="mt-2 text-[15px] leading-none text-[#43556c]">
-                        ...
-                      </p>
+                      <Link
+                        href="/nmdc-group/people-and-culture/mahara-fresh-graduate-development-program"
+                        className="mt-2 inline-flex text-[15px] font-bold leading-none text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[18px]"
+                      >
+                        Read more...
+                      </Link>
                     ) : null}
                   </section>
                 ))}
@@ -129,21 +133,21 @@ export function NmdcPeopleCulturePage() {
             </section>
           </div>
 
-          <StatsGrid className="mt-10 hidden md:grid" />
+          <StatsGrid className="mt-[50px] hidden md:grid" />
         </div>
       </section>
 
       <MobileMediaGallery />
 
-      <section className="hidden bg-[#062c45] px-5 py-12 md:block md:px-10 md:py-[111px]">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8">
-          {peopleCultureGallery.slice(0, 2).map((image) => (
-            <MediaPanel key={image.src} image={image} />
+      <section className="hidden bg-[#062c45] px-5 py-12 md:block md:px-10 md:pb-0 md:pt-[258px]">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:gap-[95px]">
+          {peopleCultureGallery.slice(0, 2).map((image, index) => (
+            <MediaPanel key={image.src} image={image} showPlay={index === 1} />
           ))}
         </div>
       </section>
 
-      <NmdcFooter />
+      <NmdcFooter variant="compact" />
     </main>
   );
 }
@@ -160,20 +164,20 @@ function ProgramBlock({
   cohort: string;
 }) {
   return (
-    <article className="rounded-[14px] border-[2px] border-primary-sky-blue bg-[#dfe7f0] px-[15px] py-[23px] md:rounded-[18px] md:px-9 md:py-8">
+    <article className="rounded-[14px] border-[2px] border-primary-sky-blue bg-[#dfe7f0] px-[15px] py-5 md:h-[197px] md:min-h-[197px] md:rounded-[20px] md:px-[30px] md:py-[28px]">
       <div className="flex items-center gap-4 md:gap-4">
         <TrackIcon
           title={title}
-          className="size-[22px] shrink-0 text-[#53667d] md:size-6 md:text-primary-sky-blue"
+          className="size-[22px] shrink-0 text-[#53667d] md:size-7 md:text-primary-sky-blue"
         />
-        <h3 className="text-[16px] font-bold uppercase leading-6 text-primary-navy-blue">
+        <h3 className="text-[16px] font-bold uppercase leading-6 text-primary-navy-blue md:text-[20px]">
           {title}
         </h3>
       </div>
       <p className="mt-4 text-[16px] leading-[1.45] text-[#43556c] md:hidden">
         {mobileCopy}
       </p>
-      <p className="mt-5 hidden text-[15px] leading-[1.45] text-[#43556c] md:block">
+      <p className="mt-5 hidden text-[15px] leading-[1.45] text-[#43556c] md:block md:text-[16px] md:leading-[23px]">
         {copy}
       </p>
       <p className="mt-4 text-[16px] font-semibold leading-[1.45] text-[#43556c] md:hidden">
@@ -201,25 +205,25 @@ function StatsGrid({
           key={stat.year}
           className={`bg-[#062c45] text-white ${
             mobile
-              ? "min-h-[177px] rounded-[20px] px-6 py-7"
-              : "rounded-[10px] p-5 md:min-h-[100px]"
+              ? "h-[177px] rounded-[20px] px-6 py-7"
+              : "rounded-[20px] px-6 py-7 md:h-[177px] md:min-h-[177px]"
           }`}
         >
           <p
             className={`font-bold uppercase text-white/70 ${
-              mobile ? "text-[13px] leading-5" : "text-[11px] leading-4"
+              mobile ? "text-[13px] leading-5" : "text-[13px] leading-5"
             }`}
           >
             EMIRATIZATION RATE (NMDC GROUP)
           </p>
           <p
             className={`font-bold leading-none text-primary-sky-blue ${
-              mobile ? "mt-6 text-[48px]" : "mt-4 text-[34px] md:text-[42px]"
+              mobile ? "mt-6 text-[48px]" : "mt-6 text-[48px] md:text-[48px]"
             }`}
           >
             {stat.value}
           </p>
-          <p className={mobile ? "mt-4 text-[22px] font-bold" : "mt-2 text-sm font-bold"}>
+          <p className="mt-4 text-[22px] font-bold">
             {stat.year}
           </p>
         </article>
@@ -230,7 +234,7 @@ function StatsGrid({
 
 function MasarIntroCard() {
   return (
-    <div className="rounded-[14px] border-[2px] border-primary-sky-blue bg-[#dfe7f0] px-[15px] py-6 md:hidden">
+    <div className="rounded-[14px] border-[2px] border-primary-sky-blue bg-[#dfe7f0] px-[15px] py-5 md:hidden">
       <h2 className="text-[18px] font-bold uppercase leading-[1.4] text-primary-navy-blue">
         Masar programm for UAE nationals
       </h2>
@@ -243,7 +247,7 @@ function MasarIntroCard() {
 
 function MobileMaharaCard() {
   return (
-    <section className="rounded-[20px] bg-[#dfe7f0] px-4 py-6 md:hidden">
+    <section className="rounded-[20px] bg-[#dfe7f0] px-4 py-5 md:hidden">
       <h2 className="text-[18px] font-bold leading-[1.25] text-primary-navy-blue">
         Mahara Fresh Graduate
         <br />
@@ -252,19 +256,19 @@ function MobileMaharaCard() {
       <p className="mt-7 text-[19px] leading-[1.55] text-[#43556c]">
         {maharaSections[0].paragraphs[0]}
       </p>
-      <button
-        type="button"
-        className="mt-8 text-[18px] font-bold leading-6 text-primary-blue"
+      <Link
+        href="/nmdc-group/people-and-culture/mahara-fresh-graduate-development-program"
+        className="mt-8 inline-flex text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
       >
         Read more...
-      </button>
+      </Link>
     </section>
   );
 }
 
 function MobileMediaGallery() {
   return (
-    <section className="bg-[#062c45] px-5 py-12 md:hidden">
+    <section className="bg-[#062c45] px-5 pb-[87px] pt-12 md:hidden">
       <div className="grid gap-8">
         {peopleCultureMobileGallery.map((image, index) => (
           <article key={image.src}>
@@ -275,7 +279,7 @@ function MobileMediaGallery() {
                 width={646}
                 height={index === 0 ? 1080 : 510}
                 className={`w-full object-cover ${
-                  index === 0 ? "h-[540px]" : "h-[255px]"
+                  index === 0 ? "h-[540px]" : "h-[320px]"
                 }`}
               />
               {index === 0 ? null : (
@@ -436,49 +440,53 @@ function TrackIcon({
 
 function MediaPanel({
   image,
+  showPlay,
 }: {
   image: {
     src: string;
     alt: string;
   };
+  showPlay: boolean;
 }) {
   return (
     <article>
-      <div className="relative overflow-hidden rounded-[6px] bg-primary-navy-blue">
+      <div className="relative overflow-hidden rounded-[6px] bg-primary-navy-blue md:rounded-[20px]">
         <Image
           src={image.src}
           alt={image.alt}
           width={1040}
           height={520}
-          className="h-[230px] w-full object-cover md:h-[420px]"
+          className="h-[230px] w-full object-cover md:h-[610px]"
         />
-        <button
-          type="button"
-          aria-label={`Play ${image.alt}`}
-          className="absolute inset-0 flex items-center justify-center bg-black/16 transition-colors hover:bg-black/6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
-        >
-          <span className="flex size-11 items-center justify-center rounded-full bg-[rgba(7,48,59,0.62)] backdrop-blur-[8px]">
-            <span
-              aria-hidden="true"
-              className="ml-0.5 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-primary-sky-blue"
-            />
-          </span>
-        </button>
+        {showPlay ? (
+          <button
+            type="button"
+            aria-label={`Play ${image.alt}`}
+            className="absolute inset-0 flex items-center justify-center bg-black/35 transition-colors hover:bg-black/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
+          >
+            <span className="flex size-11 items-center justify-center rounded-full bg-[rgba(7,48,59,0.62)] backdrop-blur-[8px] md:size-[112px] md:bg-black/40">
+              <span
+                aria-hidden="true"
+                className="ml-0.5 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-primary-sky-blue md:ml-1 md:border-y-[18px] md:border-l-[28px]"
+              />
+            </span>
+          </button>
+        ) : null}
       </div>
-      <div className="mt-4 flex justify-center gap-2">
+      <div className="mt-4 flex justify-center gap-2 md:mt-10 md:gap-6">
         <button
           type="button"
           aria-label="Previous item"
-          className="flex size-8 items-center justify-center rounded-full border border-white/18 text-white/72 transition-colors hover:border-white hover:text-white"
+          className="flex size-8 items-center justify-center rounded-full border border-white/18 text-white/72 transition-colors hover:border-white hover:text-white md:size-16 md:border-white/80"
         >
-          <ArrowLeft className="size-4" />
+          <ArrowLeft className="size-4 md:size-8" />
         </button>
         <button
           type="button"
           aria-label="Next item"
-          className="flex size-8 items-center justify-center rounded-full bg-white text-primary-navy-blue transition-colors hover:bg-primary-sky-blue"
+          className="flex size-8 items-center justify-center rounded-full bg-white text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white md:size-16"
         >
-          <ArrowRight className="size-4" />
+          <ArrowRight className="size-4 md:size-8" />
         </button>
       </div>
     </article>

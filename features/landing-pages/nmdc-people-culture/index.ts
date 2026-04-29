@@ -1,2 +1,6 @@
+export { NmdcMaharaFreshGraduatePage } from "./NmdcMaharaFreshGraduatePage";
 export { NmdcPeopleCulturePage } from "./NmdcPeopleCulturePage";
-export { nmdcPeopleCultureMetadata } from "./metadata";
+export {
+  nmdcMaharaFreshGraduateMetadata,
+  nmdcPeopleCultureMetadata,
+} from "./metadata";

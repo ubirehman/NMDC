@@ -8,8 +8,8 @@ type HeroProps = {
 
 export function Hero({ hero }: HeroProps) {
   return (
-    <div className="flex w-full max-w-[559px] flex-col gap-6 text-white md:gap-8">
-      <h1 className="max-w-[547px] text-[28px] font-bold leading-[1.18] tracking-[-0.2px] md:text-[48px] md:leading-[56px] md:tracking-[-0.5px]">
+    <div className="flex w-full max-w-[320px] flex-col gap-6 text-white md:max-w-[559px] md:gap-6">
+      <h1 className="max-w-[320px] text-[28px] font-bold leading-[1.18] tracking-[-0.2px] md:max-w-[547px] md:text-[48px] md:leading-[56px] md:tracking-[-0.5px]">
         <span className="text-brand-sky text-primary-sky-blue">
           {hero.headline.leadingAccent}
         </span>
@@ -18,7 +18,7 @@ export function Hero({ hero }: HeroProps) {
         <span className="text-white">{hero.headline.trailingAccent}</span>
       </h1>
 
-      <div className="flex w-full max-w-[559px] items-stretch gap-3">
+      <div className="flex w-full max-w-[320px] items-stretch gap-3 md:max-w-[559px]">
         <span
           aria-hidden="true"
           className="mt-[2px] h-[43px] w-[3px] shrink-0 rounded-[20px] bg-brand-sky bg-primary-sky-blue shadow-[0_0_6px_0_var(--color-effect-cyan-glow)]"

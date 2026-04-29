@@ -17,6 +17,14 @@ export function BrandCard({ brand }: BrandCardProps) {
       lts: "object-[48%_45%]",
       product: "object-[52%_50%]",
     }[brand.id] ?? "object-center";
+  const logoFrameClassName =
+    {
+      dm: "h-10 w-[118px]",
+      energy: "h-10 w-[118px]",
+      infra: "h-10 w-[118px]",
+      lts: "h-[34px] w-[116px]",
+    }[brand.id] ?? "h-10 w-[118px]";
+  const logoImageClassName = brand.id === "lts" ? "object-contain" : "object-cover";
 
   return (
     <Link
@@ -57,13 +65,15 @@ export function BrandCard({ brand }: BrandCardProps) {
         }`}
       >
         {brand.logo ? (
-          <Image
-            src={brand.logo.src}
-            alt={brand.logo.alt}
-            width={140}
-            height={32}
-            className="max-h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100"
-          />
+          <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>
+            <Image
+              src={brand.logo.src}
+              alt={brand.logo.alt}
+              fill
+              sizes="118px"
+              className={`${logoImageClassName} transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100`}
+            />
+          </span>
         ) : (
           <span className="flex w-full items-center justify-between gap-2 pl-1">
             <span className="whitespace-pre text-left text-xs font-medium leading-[1.5] text-white">

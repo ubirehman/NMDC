@@ -11,3 +11,15 @@ export const nmdcOverviewMetadata: Metadata = {
     type: "website",
   },
 };
+
+export const nmdcAtAGlanceMetadata: Metadata = {
+  title: "At a Glance | NMDC Overview",
+  description:
+    "A detailed at-a-glance overview of NMDC Group's EPC and dredging capabilities.",
+  openGraph: {
+    title: "At a Glance | NMDC Group",
+    description:
+      "A leading global EPC and dredging contractor positioned to execute complex national megaprojects.",
+    type: "website",
+  },
+};
