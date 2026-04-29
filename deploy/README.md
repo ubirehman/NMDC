@@ -37,9 +37,9 @@ curl -I http://nmdcgroups.com/dredging/
 ```
 
 
-```CMD
-docker compose --profile prod down
-docker compose --profile prod up -d --build
-docker ps
-
+```Docker CMD
+sudo docker compose down --remove-orphans && \
+sudo docker rm -f nextjs-dev-container nextjs-standalone-container 2>/dev/null || true && \
+sudo docker compose --profile prod up -d --build nextjs-standalone && \
+sudo docker ps
 ```
