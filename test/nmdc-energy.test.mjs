@@ -5,6 +5,8 @@ import test from "node:test";
 const energyFiles = [
   "apps/nmdc-energy/app/page.tsx",
   "apps/nmdc-energy/app/overview/page.tsx",
+  "apps/nmdc-energy/app/overview/at-a-glance/page.tsx",
+  "apps/nmdc-energy/app/yard-highlights/page.tsx",
   "apps/nmdc-energy/app/pages.tsx",
   "apps/nmdc-energy/app/layout.tsx",
   "apps/nmdc-energy/app/globals.css",
@@ -118,6 +120,7 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(route, /NmdcEnergyOverviewPage/);
   assert.match(content, /overview:\s*\{/);
   assert.match(content, /At a Glance/);
+  assert.match(content, /href: "\/overview\/at-a-glance"/);
   assert.match(content, /National Petroleum Construction Company/);
   assert.match(content, /ICV Score/);
   assert.match(content, /ICV Score 2025/);
@@ -143,6 +146,80 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(page, /shadow-\[0_18px_34px_rgba\(0,0,0,0\.22\)\]/);
   assert.match(page, /md:grid-cols-3/);
   assert.match(page, /md:grid-cols-\[390px_minmax\(0,1fr\)\]/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Energy overview read-more opens the At a Glance detail page", () => {
+  const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const route = readFileSync(
+    "apps/nmdc-energy/app/overview/at-a-glance/page.tsx",
+    "utf8",
+  );
+
+  assert.match(route, /NmdcEnergyAtAGlancePage/);
+  assert.match(content, /atAGlanceDetail:\s*\{/);
+  assert.match(content, /back:\s*\{/);
+  assert.match(content, /href: "\/overview"/);
+  assert.match(content, /label: "Back"/);
+  assert.match(content, /1\.3 million square meter yard/);
+  assert.match(content, /1,500experienced engineers/);
+  assert.match(content, /tangible value for the energy sector/);
+  assert.match(page, /function NmdcEnergyAtAGlancePage/);
+  assert.match(page, /getEnergyNavLinks\("\/overview"\)/);
+  assert.match(page, /detail\.back\.href/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,520px\)_minmax\(0,630px\)\]/);
+  assert.match(page, /md:h-\[821px\]/);
+  assert.match(page, /md:pt-\[180px\]/);
+  assert.match(page, /EnergyFooter/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF design", () => {
+  const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const route = readFileSync("apps/nmdc-energy/app/yard-highlights/page.tsx", "utf8");
+
+  for (const asset of [
+    "apps/nmdc-energy/public/images/energy/yards-hero.jpg",
+    "apps/nmdc-energy/public/images/energy/yards-aerial.jpg",
+    "apps/nmdc-energy/public/images/energy/yards-video.jpg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(route, /NmdcEnergyYardHighlightsPage/);
+  assert.match(content, /yardHighlights:\s*\{/);
+  assert.match(content, /Energy Yards/);
+  assert.match(content, /Key Highlights/);
+  assert.match(content, /ICAD-4 Yard/);
+  assert.match(content, /Mussafah Yard \(UAE\)/);
+  assert.match(content, /Area : 1,075,000 sqm/);
+  assert.match(content, /Ras Al Khair Yard \(KSA\)/);
+  assert.match(content, /\+2,100,000/);
+  assert.match(content, /\+100,000/);
+  assert.match(content, /107\.03/);
+  assert.match(content, /Guinness World Record/);
+  assert.match(content, /Yard Achievements/);
+  assert.match(content, /32,000 Metric Tons/);
+  assert.match(content, /Yard Capabilities/);
+  assert.match(content, /165,000/);
+  assert.match(content, /Robotic welding and COBOT Welding/);
+  assert.match(content, /Proximity Warning Alert System/);
+  assert.match(page, /function NmdcEnergyYardHighlightsPage/);
+  assert.match(page, /EnergyYardHighlightsHero/);
+  assert.match(page, /EnergyYardKeyHighlights/);
+  assert.match(page, /function EnergyYardArrowControls/);
+  assert.match(page, /mt-4 flex items-center justify-center gap-5 md:hidden/);
+  assert.match(page, /relative mt-4 hidden h-10 items-center justify-center md:flex/);
+  assert.match(page, /absolute right-0 text-\[13px\] font-bold leading-5 text-energy-green/);
+  assert.match(page, /EnergyYardAchievements/);
+  assert.match(page, /EnergyYardCapabilities/);
+  assert.match(page, /getEnergyNavLinks\("\/yard-highlights"\)/);
+  assert.match(page, /md:h-\[486px\]/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,760px\)_436px\]/);
+  assert.match(page, /md:grid-cols-2/);
+  assert.match(page, /EnergyFooter/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 

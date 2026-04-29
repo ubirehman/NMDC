@@ -10,6 +10,11 @@ const ltsAppUrl =
 const energyAppUrl =
   process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
 
+const infraBasePath = process.env.NEXT_PUBLIC_INFRA_BASE_PATH ?? "";
+
+const withInfraBasePath = (assetPath: string) =>
+  infraBasePath ? `${infraBasePath}${assetPath}` : assetPath;
+
 export const nmdcInfraContent = {
   brand: {
     name: "NMDC Infra",
@@ -59,7 +64,7 @@ export const nmdcInfraContent = {
         href: groupAppUrl,
         image: "/images/infra/card-platform.jpg",
         logo: {
-          src: "/images/infra/logo-group.svg",
+          src: withInfraBasePath("/images/infra/logo-group.svg"),
           alt: "NMDC Group",
         },
       },
@@ -86,7 +91,7 @@ export const nmdcInfraContent = {
         href: ltsAppUrl,
         image: "/images/infra/card-lts.jpg",
         logo: {
-          src: "/images/infra/logo-lts.svg",
+          src: withInfraBasePath("/images/infra/logo-lts.svg"),
           alt: "NMDC LTS",
         },
       },

@@ -70,10 +70,15 @@ COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 
 ENV NODE_ENV=production
-ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
-ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
-ENV NEXT_PUBLIC_LTS_APP_URL="http://localhost:3123"
-ENV NEXT_PUBLIC_ENERGY_APP_URL="http://localhost:3124"
+ENV NEXT_PUBLIC_NMDC_GROUP_APP_URL="/"
+ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="/dredging"
+ENV NEXT_PUBLIC_INFRA_APP_URL="/infra"
+ENV NEXT_PUBLIC_LTS_APP_URL="/lts"
+ENV NEXT_PUBLIC_ENERGY_APP_URL="/energy"
+ENV NEXT_PUBLIC_DREDGING_MARINE_BASE_PATH="/dredging"
+ENV NEXT_PUBLIC_INFRA_BASE_PATH="/infra"
+ENV NEXT_PUBLIC_LTS_BASE_PATH="/lts"
+ENV NEXT_PUBLIC_ENERGY_BASE_PATH="/energy"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -109,10 +114,15 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3120
 ENV HOSTNAME="0.0.0.0"
-ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="http://localhost:3121"
-ENV NEXT_PUBLIC_INFRA_APP_URL="http://localhost:3122"
-ENV NEXT_PUBLIC_LTS_APP_URL="http://localhost:3123"
-ENV NEXT_PUBLIC_ENERGY_APP_URL="http://localhost:3124"
+ENV NEXT_PUBLIC_NMDC_GROUP_APP_URL="/"
+ENV NEXT_PUBLIC_DREDGING_MARINE_APP_URL="/dredging"
+ENV NEXT_PUBLIC_INFRA_APP_URL="/infra"
+ENV NEXT_PUBLIC_LTS_APP_URL="/lts"
+ENV NEXT_PUBLIC_ENERGY_APP_URL="/energy"
+ENV NEXT_PUBLIC_DREDGING_MARINE_BASE_PATH="/dredging"
+ENV NEXT_PUBLIC_INFRA_BASE_PATH="/infra"
+ENV NEXT_PUBLIC_LTS_BASE_PATH="/lts"
+ENV NEXT_PUBLIC_ENERGY_BASE_PATH="/energy"
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

@@ -1,8 +1,14 @@
+const dredgingMarineBasePath =
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_BASE_PATH ?? "";
+
+const withDredgingMarineBasePath = (assetPath: string) =>
+  dredgingMarineBasePath ? `${dredgingMarineBasePath}${assetPath}` : assetPath;
+
 export const nmdcDredgingMarineContent = {
   brand: {
     name: "NMDC Dredging & Marine",
     logo: "/images/logo-dm.webp",
-    mobileLogo: "/images/nmdc-group-logo.svg",
+    mobileLogo: withDredgingMarineBasePath("/images/nmdc-group-logo.svg"),
     logoAlt: "NMDC Dredging & Marine"
   },
   metadata: {
@@ -166,7 +172,7 @@ export const nmdcDredgingMarineContent = {
           image: "/images/dm/vessel-al-yassat-detail.jpg",
           heroImage: "/images/dm/vessel-al-yassat-detail.jpg",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing -",
-          specificationFile: "/documents/marine-vessels/al-yassat.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-yassat.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
@@ -218,7 +224,7 @@ export const nmdcDredgingMarineContent = {
           image: "/images/dm/vessel-al-sadr-detail.jpg",
           heroImage: "/images/dm/vessel-al-sadr-detail.jpg",
           heroMeta: "Heavy Duty CSD | Date of Manufacturing 1999",
-          specificationFile: "/documents/marine-vessels/al-sadr.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-sadr.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
@@ -280,7 +286,7 @@ export const nmdcDredgingMarineContent = {
         detail: {
           heroImage: "/images/dm/vessel-al-yassat.jpg",
           heroMeta: "Heavy Duty CSD | Date of Manufacturing 2001",
-          specificationFile: "/documents/marine-vessels/al-mirfa.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-mirfa.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
@@ -329,7 +335,7 @@ export const nmdcDredgingMarineContent = {
           image: "/images/dm/vessel-jananah-detail.jpg",
           heroImage: "/images/dm/vessel-jananah-detail.jpg",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2004",
-          specificationFile: "/documents/marine-vessels/jananah.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/jananah.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
@@ -384,7 +390,7 @@ export const nmdcDredgingMarineContent = {
           heroImage: "/images/dm/vessel-sarb-detail.jpg",
           heroKicker: "Backhoe Dredger",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2020",
-          specificationFile: "/documents/marine-vessels/sarb.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/sarb.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
@@ -450,7 +456,7 @@ export const nmdcDredgingMarineContent = {
           heroImage: "/images/dm/vessel-ghasha-detail.jpg",
           heroKicker: "Trailing Suction Hopper Dredger",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2020",
-          specificationFile: "/documents/marine-vessels/ghasha.pdf",
+          specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/ghasha.pdf"),
           classification: [
             ["Classification Society", "-"],
             ["Class Notation", "-"],
