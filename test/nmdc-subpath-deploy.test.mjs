@@ -51,14 +51,23 @@ test("standalone apps are built with subpath-aware Next.js asset paths", () => {
   }
 });
 
-test("Nginx subpath proxy config preserves prefixes for Next.js basePath apps", () => {
+test("Nginx subpath proxy config preserves prefixes for Next.js basePath apps without redirect loops", () => {
   const nginxPath = "deploy/nginx/nmdcgroups.conf";
   assert.equal(existsSync(nginxPath), true, `${nginxPath} should exist`);
 
   const nginx = readFileSync(nginxPath, "utf8");
 
   for (const app of subpathApps) {
-    assert.match(nginx, new RegExp(`location = ${app.path.replace("/", "\\/")} \\{\\s*return 301 ${app.path.replace("/", "\\/")}\\/;\\s*\\}`, "s"));
+    assert.match(
+      nginx,
+      new RegExp(`location = ${app.path.replace("/", "\\/")} \\{\\s*proxy_pass http:\\/\\/127\\.0\\.0\\.1:${app.port};`, "s"),
+      `${app.name} exact base path must proxy to Next.js because the app canonicalizes ${app.path}/ back to ${app.path}`,
+    );
+    assert.doesNotMatch(
+      nginx,
+      new RegExp(`location = ${app.path.replace("/", "\\/")} \\{\\s*return 301 ${app.path.replace("/", "\\/")}\\/;\\s*\\}`, "s"),
+      `${app.name} exact base path must not redirect to ${app.path}/ because that loops with Next.js trailing-slash redirects`,
+    );
     assert.match(
       nginx,
       new RegExp(`location ${app.path.replace("/", "\\/")}\\/ \\{\\s*proxy_pass http:\\/\\/127\\.0\\.0\\.1:${app.port};`, "s"),

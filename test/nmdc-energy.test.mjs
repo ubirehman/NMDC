@@ -184,6 +184,7 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
     "apps/nmdc-energy/public/images/energy/yards-hero.jpg",
     "apps/nmdc-energy/public/images/energy/yards-aerial.jpg",
     "apps/nmdc-energy/public/images/energy/yards-video.jpg",
+    "apps/nmdc-energy/public/images/energy/guinness-world-record.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -200,6 +201,11 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(content, /\+100,000/);
   assert.match(content, /107\.03/);
   assert.match(content, /Guinness World Record/);
+  assert.match(content, /logo:\s*\{/);
+  assert.match(content, /guinness-world-record\.png/);
+  assert.match(content, /icon: "area"/);
+  assert.match(content, /icon: "capabilities"/);
+  assert.match(content, /icon: "manpower"/);
   assert.match(content, /Yard Achievements/);
   assert.match(content, /32,000 Metric Tons/);
   assert.match(content, /Yard Capabilities/);
@@ -209,6 +215,9 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(page, /function NmdcEnergyYardHighlightsPage/);
   assert.match(page, /EnergyYardHighlightsHero/);
   assert.match(page, /EnergyYardKeyHighlights/);
+  assert.match(page, /function EnergyYardFactIcon/);
+  assert.match(page, /function EnergyYardRecordLogo/);
+  assert.match(page, /keyHighlights\.record\.logo/);
   assert.match(page, /function EnergyYardArrowControls/);
   assert.match(page, /mt-4 flex items-center justify-center gap-5 md:hidden/);
   assert.match(page, /relative mt-4 hidden h-10 items-center justify-center md:flex/);
@@ -220,6 +229,7 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(page, /md:grid-cols-\[minmax\(0,760px\)_436px\]/);
   assert.match(page, /md:grid-cols-2/);
   assert.match(page, /EnergyFooter/);
+  assert.doesNotMatch(page, /rounded-sm border border-energy-green/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 

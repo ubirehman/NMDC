@@ -330,70 +330,139 @@ function EnergyYardIcon({
     stroke: "currentColor",
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
-    strokeWidth: 2,
+    strokeWidth: 2.4,
   };
 
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
       {icon === "grid" ? (
         <>
-          <path {...shared} d="M12 12h5v5h-5zM22 12h5v5h-5zM32 12h5v5h-5z" />
-          <path {...shared} d="M12 22h5v5h-5zM22 22h5v5h-5zM32 22h5v5h-5z" />
-          <path {...shared} d="M12 32h5v5h-5zM22 32h5v5h-5zM32 32h5v5h-5z" />
+          <rect {...shared} x="9" y="10" width="30" height="28" rx="3" />
+          <path {...shared} d="M15 10v28M24 10v28M33 10v28M9 19h30M9 29h30" />
+          <path {...shared} d="M14 15h2M23 15h2M32 15h2M14 24h2M23 24h2M32 24h2M14 34h2M23 34h2M32 34h2" />
         </>
       ) : icon === "expand" ? (
         <>
-          <rect {...shared} x="10" y="10" width="28" height="28" rx="2" />
-          <path {...shared} d="M17 31 31 17M24 17h7v7M17 24v7h7" />
+          <path {...shared} d="M10 33 33 10" />
+          <path {...shared} d="M22 10h11v11M26 38H12a2 2 0 0 1-2-2V22" />
+          <path {...shared} d="M38 26v10a2 2 0 0 1-2 2H26" />
         </>
       ) : icon === "worker" ? (
         <>
-          <circle {...shared} cx="24" cy="17" r="6" />
-          <path {...shared} d="M16 18h16M18 14c2-5 10-5 12 0" />
-          <path {...shared} d="M14 39v-5a10 10 0 0 1 20 0v5" />
-          <path {...shared} d="M17 39h14" />
+          <path {...shared} d="M16 18h16" />
+          <path {...shared} d="M18 17c.7-5.3 4-8 6-8s5.3 2.7 6 8" />
+          <path {...shared} d="M20 12v4M28 12v4" />
+          <circle {...shared} cx="24" cy="20" r="7" />
+          <path {...shared} d="M14 40v-5c0-5.5 4.5-10 10-10s10 4.5 10 10v5" />
+          <path {...shared} d="M18 40h12" />
         </>
-      ) : icon === "award" ? (
+      ) : icon === "award" || icon === "achievement" ? (
         <>
-          <circle {...shared} cx="24" cy="19" r="10" />
-          <path {...shared} d="m18 29-3 12 9-5 9 5-3-12" />
-          <path {...shared} d="m20 19 3 3 6-7" />
+          <path {...shared} d="M17 6h14v7c0 5-3 9-7 10-4-1-7-5-7-10V6Z" />
+          <path {...shared} d="m24 11 1.8 3.3 3.7.6-2.7 2.6.6 3.7-3.4-1.7-3.4 1.7.6-3.7-2.7-2.6 3.7-.6Z" />
+          <path {...shared} d="M14 10h-3v4c0 4.5 3.1 8.2 7.2 9.3M34 10h3v4c0 4.5-3.1 8.2-7.2 9.3" />
+          <path {...shared} d="M20 31h8M18 40h12M24 24v16" />
         </>
       ) : icon === "steel" ? (
         <>
-          <path {...shared} d="M8 15h21l11 18H19z" />
-          <path {...shared} d="M15 15 26 33M25 15l11 18" />
-          <path {...shared} d="M12 24h22" />
+          <path {...shared} d="M8 16h22l10 16H18Z" />
+          <path {...shared} d="M15 16 25 32M25 16l10 16" />
+          <path {...shared} d="M12 24h23" />
+          <path {...shared} d="M19 11h10M14 37h18" />
         </>
       ) : icon === "robot" ? (
         <>
-          <path {...shared} d="M13 34 28 19l6 6-15 15" />
-          <path {...shared} d="m25 16 7-7 7 7-7 7" />
-          <circle {...shared} cx="32" cy="16" r="3" />
-          <path {...shared} d="M10 38h16M12 31l6 6" />
+          <path {...shared} d="M9 38h17M14 31l7 7" />
+          <path {...shared} d="M15 33 30 18l6 6-15 15" />
+          <path {...shared} d="M25 13 31 7l10 10-6 6" />
+          <circle {...shared} cx="31" cy="18" r="3.5" />
+          <path {...shared} d="M36 25h5v7" />
         </>
       ) : icon === "monitor" ? (
         <>
-          <rect {...shared} x="8" y="11" width="32" height="23" rx="3" />
-          <path {...shared} d="M18 39h12M24 34v5M14 25l5-5 5 5 7-9 4 5" />
+          <rect {...shared} x="8" y="10" width="32" height="24" rx="3" />
+          <path {...shared} d="M18 39h12M24 34v5" />
+          <path {...shared} d="M14 26h6l3-7 5 11 3-7h4" />
+          <circle {...shared} cx="34" cy="23" r="1.5" />
         </>
       ) : icon === "shield" ? (
         <>
           <path {...shared} d="M24 6 38 12v10c0 10-6 17-14 20-8-3-14-10-14-20V12l14-6Z" />
           <path {...shared} d="m18 24 4 4 8-9" />
+          <path {...shared} d="M16 14h16" />
         </>
       ) : icon === "cloud" ? (
         <>
-          <path {...shared} d="M16 34h18a8 8 0 0 0 1-16 12 12 0 0 0-23-3A9 9 0 0 0 16 34Z" />
-          <path {...shared} d="M18 39v-5M24 42v-8M30 39v-5" />
+          <path {...shared} d="M16 32h18a8 8 0 0 0 1-16 12 12 0 0 0-23-3A9 9 0 0 0 16 32Z" />
+          <path {...shared} d="M17 39v-5M24 42v-8M31 39v-5" />
+          <path {...shared} d="M20 19h8M24 15v8" />
         </>
       ) : (
         <>
           <path {...shared} d="M24 7 42 39H6Z" />
           <path {...shared} d="M24 18v10M24 34h.01" />
+          <path {...shared} d="M14 39h20" />
         </>
       )}
     </svg>
+  );
+}
+
+function EnergyYardFactIcon({
+  icon,
+  className = "",
+}: {
+  icon: string;
+  className?: string;
+}) {
+  const shared = {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 2,
+  };
+
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      {icon === "area" ? (
+        <>
+          <rect {...shared} x="4" y="5" width="16" height="14" rx="2" />
+          <path {...shared} d="M9 5v14M15 5v14M4 11h16" />
+        </>
+      ) : icon === "capabilities" ? (
+        <>
+          <path {...shared} d="M12 3v4M12 17v4M3 12h4M17 12h4" />
+          <path {...shared} d="m5.6 5.6 2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" />
+          <circle {...shared} cx="12" cy="12" r="3" />
+        </>
+      ) : (
+        <>
+          <path {...shared} d="M8 9h8" />
+          <path {...shared} d="M9 8c.4-3 2.2-4.5 3-4.5S14.6 5 15 8" />
+          <circle {...shared} cx="12" cy="10.5" r="4" />
+          <path {...shared} d="M5 21v-2a7 7 0 0 1 14 0v2" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+function EnergyYardRecordLogo({
+  logo,
+}: {
+  logo: typeof content.yardHighlights.keyHighlights.record.logo;
+}) {
+  return (
+    <span className="relative block size-[72px] shrink-0 overflow-hidden rounded-full bg-black md:size-[92px]">
+      <Image
+        src={logo.src}
+        alt={logo.alt}
+        fill
+        sizes="(min-width: 768px) 92px, 72px"
+        className="object-cover"
+      />
+    </span>
   );
 }
 
@@ -517,9 +586,12 @@ function EnergyYardKeyHighlights() {
                 </h3>
                 <ul className="mt-5 grid gap-3 rounded-[8px] bg-[#113a58] px-5 py-5 text-[12px] font-bold leading-5 md:text-[13px]">
                   {yard.facts.map((fact) => (
-                    <li key={fact} className="flex gap-3">
-                      <span className="mt-1 size-3 shrink-0 rounded-sm border border-energy-green" />
-                      {fact}
+                    <li key={fact.text} className="flex gap-3">
+                      <EnergyYardFactIcon
+                        icon={fact.icon}
+                        className="mt-0.5 size-4 shrink-0 text-energy-green md:size-[18px]"
+                      />
+                      <span>{fact.text}</span>
                     </li>
                   ))}
                 </ul>
@@ -557,7 +629,7 @@ function EnergyYardKeyHighlights() {
 
         <article className="mt-8 grid gap-5 rounded-[12px] border border-[#a7b4c0] bg-white px-6 py-6 md:mt-14 md:min-h-[176px] md:grid-cols-[150px_minmax(0,1fr)] md:items-center md:px-10">
           <div className="flex items-center gap-5 md:border-r md:border-[#a7b4c0] md:pr-9">
-            <EnergyYardIcon icon="award" className="size-[72px] shrink-0 text-energy-green" />
+            <EnergyYardRecordLogo logo={keyHighlights.record.logo} />
           </div>
           <div>
             <h3 className="text-[16px] font-bold leading-6 text-energy-green">
@@ -624,7 +696,7 @@ function EnergyYardAchievements() {
       <div className="bg-[#062b43] px-5 py-8 md:px-10 md:py-[42px]">
         <div className="mx-auto grid w-full max-w-[1240px] gap-7 md:grid-cols-[230px_270px_minmax(0,1fr)] md:items-center md:gap-10">
           <div className="mx-auto grid size-[120px] place-items-center rounded-[8px] bg-white/8 text-energy-green md:size-[180px]">
-            <EnergyYardIcon icon="award" className="size-[82px] md:size-[120px]" />
+            <EnergyYardIcon icon="achievement" className="size-[82px] md:size-[120px]" />
           </div>
 
           <div className="grid grid-cols-2 divide-x divide-white/18 rounded-[10px] bg-white/0 text-center md:h-[154px] md:items-center">

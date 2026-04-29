@@ -176,36 +176,39 @@ export const nmdcEnergyContent = {
           name: "Mussafah Yard (UAE)",
           flag: "🇦🇪",
           facts: [
-            "Area : 1,075,000 sqm",
-            "Capabilities : Major structures",
-            "Man power : 15,000",
+            { icon: "area", text: "Area : 1,075,000 sqm" },
+            { icon: "capabilities", text: "Capabilities : Major structures" },
+            { icon: "manpower", text: "Man power : 15,000" },
           ],
         },
         {
           name: "ICAD-4 Yard (UAE)",
           flag: "🇦🇪",
           facts: [
-            "Area : 555,000 sqm",
-            "Capabilities : Pipe coating and modularization",
-            "Man power : 350",
+            { icon: "area", text: "Area : 555,000 sqm" },
+            { icon: "capabilities", text: "Capabilities : Pipe coating and modularization" },
+            { icon: "manpower", text: "Man power : 350" },
           ],
         },
         {
           name: "NEMY Yard (UAE)",
           flag: "🇦🇪",
           facts: [
-            "Area : 184,000 sqm",
-            "Capabilities : Modular fabrication",
-            "Man power : 3,000",
+            { icon: "area", text: "Area : 184,000 sqm" },
+            { icon: "capabilities", text: "Capabilities : Modular fabrication" },
+            { icon: "manpower", text: "Man power : 3,000" },
           ],
         },
         {
           name: "Ras Al Khair Yard (KSA)",
           flag: "🇸🇦",
           facts: [
-            "Area : 400,000 sqm",
-            "Capabilities : PDMs, jackets, offshore structures, and modularization",
-            "Man power : 15,000",
+            { icon: "area", text: "Area : 400,000 sqm" },
+            {
+              icon: "capabilities",
+              text: "Capabilities : PDMs, jackets, offshore structures, and modularization",
+            },
+            { icon: "manpower", text: "Man power : 15,000" },
           ],
         },
       ],
@@ -230,6 +233,10 @@ export const nmdcEnergyContent = {
         },
       ],
       record: {
+        logo: {
+          src: "/images/energy/guinness-world-record.png",
+          alt: "Guinness World Records",
+        },
         title: "Guinness World Record",
         body: "Holds the record for the fabrication, loadout and installation of the \"Heaviest single-module topside on a fixed steel jacket\"",
       },

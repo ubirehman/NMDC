@@ -11,6 +11,9 @@ The standalone apps are built with subpath-aware Next.js `basePath` values:
 Use `deploy/nginx/nmdcgroups.conf` on the EC2 host. The subpath `proxy_pass`
 entries intentionally do not end with `/`; this preserves the prefix that
 Next.js uses for `/_next`, image optimizer, SVG, and document assets.
+The exact subpaths, such as `/dredging`, are proxied directly instead of
+redirecting to `/dredging/` because Next.js canonicalizes `/dredging/` back to
+`/dredging`.
 
 ```bash
 sudo cp deploy/nginx/nmdcgroups.conf /etc/nginx/sites-available/nmdcgroups.com
@@ -29,5 +32,6 @@ After deployment, confirm D&M assets are prefixed:
 
 ```bash
 curl -L http://nmdcgroups.com/dredging/ | grep '/dredging/_next/static'
+curl -I http://nmdcgroups.com/dredging
 curl -I http://nmdcgroups.com/dredging/
 ```
