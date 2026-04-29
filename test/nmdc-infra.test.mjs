@@ -77,6 +77,9 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(page, /NmdcInfraHomePage/);
   assert.match(page, /InfraHomeCardRail/);
   assert.match(page, /h-\[786px\]/);
+  assert.match(page, /group inline-flex items-center gap-\[3px\]/);
+  assert.match(page, /h-\[49px\] w-\[174px\] items-center justify-center rounded-full bg-white/);
+  assert.match(page, /size-\[49px\] items-center justify-center rounded-full bg-infra-yellow/);
   assert.match(page, /md:text-\[48px\]/);
   assert.match(page, /text-infra-yellow/);
   assert.match(page, /bg-infra-yellow/);
@@ -297,6 +300,14 @@ test("NMDC Infra Ebawe product card opens the supplied detail page", () => {
   assert.match(content, /pre-stressed hollow core slabs/);
   assert.match(content, /45 pallets from Ebawe Anlagen Technik/);
   assert.match(content, /multi-step process ensures each wall/);
+  assert.match(content, /introLayout:\s*"wideImage"/);
+  assert.match(page, /const isWideImageIntro = detail\.introLayout === "wideImage"/);
+  assert.match(page, /data-product-detail-intro/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,700px\)_minmax\(0,528px\)\]/);
+  assert.match(page, /md:whitespace-nowrap/);
+  assert.match(page, /md:h-\[356px\] md:rounded-\[22px\]/);
+  assert.match(page, /md:max-w-\[650px\]/);
+  assert.match(page, /data-product-detail-rule/);
   assert.match(page, /detail\.galleryImage/);
   assert.match(page, /detail\.video/);
   assert.match(page, /detail\.features && detail\.features\.length > 0/);

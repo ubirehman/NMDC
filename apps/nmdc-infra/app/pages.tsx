@@ -38,10 +38,12 @@ function VisitButton({
   return (
     <Link
       href={href}
-      className="group inline-flex h-[49px] w-[224px] items-center justify-between rounded-full bg-white pl-[58px] pr-0 text-[15px] font-bold leading-5 text-infra-ink shadow-[0_16px_32px_rgba(0,0,0,0.18)] transition-colors hover:bg-white/92 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-infra-yellow"
+      className="group inline-flex items-center gap-[3px] text-[15px] font-bold leading-5 text-infra-ink transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-infra-yellow"
     >
-      <span>{label}</span>
-      <span className="flex size-[49px] items-center justify-center rounded-full bg-infra-yellow text-infra-ink transition-transform duration-200 group-hover:translate-x-0.5">
+      <span className="flex h-[49px] w-[174px] items-center justify-center rounded-full bg-white shadow-[0_16px_32px_rgba(0,0,0,0.18)] transition-colors group-hover:bg-white/92">
+        {label}
+      </span>
+      <span className="flex size-[49px] items-center justify-center rounded-full bg-infra-yellow text-infra-ink shadow-[0_16px_32px_rgba(0,0,0,0.18)] transition-transform duration-200 group-hover:translate-x-0.5">
         <ArrowUpRight className="size-5" />
       </span>
     </Link>
@@ -587,6 +589,7 @@ type InfraProductDetailContent = {
   backLabel: string;
   backHref: string;
   title: string;
+  introLayout?: "wideImage";
   paragraphs: readonly string[];
   readMoreLabel?: string;
   readMoreHref?: string;
@@ -1003,6 +1006,25 @@ function NmdcInfraProductDetailPage({
 }) {
   const products = content.products;
   const hero = products.hero;
+  const isWideImageIntro = detail.introLayout === "wideImage";
+  const detailContainerClassName = isWideImageIntro
+    ? "mx-auto w-full max-w-[1370px]"
+    : "mx-auto w-full max-w-[1240px]";
+  const introArticleClassName = isWideImageIntro
+    ? "mt-[46px] grid gap-[34px] md:mt-[69px] md:grid-cols-[minmax(0,700px)_minmax(0,528px)] md:items-start md:gap-[70px]"
+    : "mt-[46px] grid gap-[34px] md:mt-[69px] md:grid-cols-[minmax(0,760px)_minmax(0,399px)] md:items-start md:gap-[80px]";
+  const titleClassName = isWideImageIntro
+    ? "text-[24px] font-bold uppercase leading-[28px] text-black md:whitespace-nowrap md:text-[50px] md:leading-[60px]"
+    : "text-[24px] font-bold uppercase leading-[28px] text-black md:text-[43px] md:leading-[52px]";
+  const paragraphClassName = isWideImageIntro
+    ? "mt-[27px] grid gap-[28px] text-[20px] font-normal leading-[28px] text-[#22314b] md:mt-[42px] md:max-w-[650px] md:gap-[29px] md:text-[20px] md:leading-[28px]"
+    : "mt-[27px] grid gap-[28px] text-[20px] font-normal leading-[28px] text-[#22314b] md:mt-[42px] md:max-w-[600px] md:gap-[29px] md:text-[20px] md:leading-[28px]";
+  const heroImageClassName = isWideImageIntro
+    ? "relative h-[342px] overflow-hidden rounded-[16px] md:h-[356px] md:rounded-[22px]"
+    : "relative h-[342px] overflow-hidden rounded-[16px] md:h-[284px] md:rounded-[14px]";
+  const ruleClassName = isWideImageIntro
+    ? "mt-[23px] h-px bg-[#7b8793] md:mt-[42px]"
+    : "mt-[23px] h-px bg-[#7b8793] md:mt-[75px]";
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
@@ -1036,7 +1058,7 @@ function NmdcInfraProductDetailPage({
       </section>
 
       <section className="bg-white px-5 pb-[75px] pt-[35px] text-infra-ink md:px-10 md:pb-[96px] md:pt-[64px]">
-        <div className="mx-auto w-full max-w-[1240px]">
+        <div className={detailContainerClassName}>
           <Link
             href={detail.backHref}
             data-detail-back
@@ -1046,12 +1068,15 @@ function NmdcInfraProductDetailPage({
             {detail.backLabel}
           </Link>
 
-          <article className="mt-[46px] grid gap-[34px] md:mt-[69px] md:grid-cols-[minmax(0,760px)_minmax(0,399px)] md:items-start md:gap-[80px]">
+          <article
+            data-product-detail-intro={detail.introLayout ?? "default"}
+            className={introArticleClassName}
+          >
             <div className="min-w-0">
-              <h2 className="text-[24px] font-bold uppercase leading-[28px] text-black md:text-[43px] md:leading-[52px]">
+              <h2 className={titleClassName}>
                 {detail.title}
               </h2>
-              <div className="mt-[27px] grid gap-[28px] text-[20px] font-normal leading-[28px] text-[#22314b] md:mt-[42px] md:max-w-[600px] md:gap-[29px] md:text-[20px] md:leading-[28px]">
+              <div className={paragraphClassName}>
                 {detail.paragraphs.map((paragraph, index) => (
                   <p key={paragraph}>
                     {paragraph}
@@ -1073,19 +1098,23 @@ function NmdcInfraProductDetailPage({
               </div>
             </div>
 
-            <div className="relative h-[342px] overflow-hidden rounded-[16px] md:h-[284px] md:rounded-[14px]">
+            <div className={heroImageClassName}>
               <Image
                 src={detail.heroImage.src}
                 alt={detail.heroImage.alt}
                 fill
-                sizes="(min-width: 768px) 399px, 320px"
+                sizes={
+                  isWideImageIntro
+                    ? "(min-width: 768px) 528px, 320px"
+                    : "(min-width: 768px) 399px, 320px"
+                }
                 className="object-cover"
                 style={{ objectPosition: detail.heroImage.objectPosition }}
               />
             </div>
           </article>
 
-          <div className="mt-[23px] h-px bg-[#7b8793] md:mt-[75px]" aria-hidden="true" />
+          <div data-product-detail-rule className={ruleClassName} aria-hidden="true" />
 
           {detail.detailImage ? (
             <>

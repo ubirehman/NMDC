@@ -336,6 +336,7 @@ export const nmdcInfraContent = {
       backLabel: "Back",
       backHref: "/products",
       title: "EBAWE ANLAGENTECHNIK",
+      introLayout: "wideImage",
       paragraphs: [
         "NMDC Infra, a leader in construction services and pre-cast concrete production, is equipped with a state-of-the-art carousel line for the production of solid and sandwich panels for insulated walls, along with a production line for the casting of roof pre-cast, pre-stressed hollow core slabs.",
         "The company uses 45 pallets from Ebawe Anlagen Technik, with the complete operation of the system. The multi-step process ensures each wall adheres to the highest quality standards.",

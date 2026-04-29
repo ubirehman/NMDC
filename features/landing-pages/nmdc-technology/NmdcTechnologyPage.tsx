@@ -59,7 +59,7 @@ export function NmdcTechnologyPage() {
       <MobileTechnologyContent />
 
       <section className="hidden md:block bg-[#f4f7fa] md:px-10 md:pb-[100px] md:pt-12">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 lg:grid-cols-[minmax(0,609px)_minmax(0,609px)] lg:gap-6">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-2 md:gap-6">
           <div>
             <h2 className="max-w-[590px] text-[22px] font-bold leading-[30px] text-[#43536a] md:text-[24px] md:leading-[30px]">
               {technologyIntro.title}

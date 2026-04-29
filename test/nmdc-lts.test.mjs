@@ -5,6 +5,8 @@ import test from "node:test";
 const ltsFiles = [
   "apps/nmdc-lts/app/page.tsx",
   "apps/nmdc-lts/app/key-highlights/page.tsx",
+  "apps/nmdc-lts/app/marine-vessels/page.tsx",
+  "apps/nmdc-lts/app/whipstock-system/page.tsx",
   "apps/nmdc-lts/app/pages.tsx",
   "apps/nmdc-lts/app/layout.tsx",
   "apps/nmdc-lts/app/globals.css",
@@ -79,6 +81,11 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(page, /NmdcLtsHomePage/);
   assert.match(page, /LtsHomeCardRail/);
   assert.match(page, /h-\[776px\] md:h-\[786px\]/);
+  assert.match(page, /pt-\[136px\] md:absolute md:left-0 md:top-\[244px\]/);
+  assert.match(page, /top-\[447px\] z-10 px-5 md:absolute md:bottom-\[82px\]/);
+  assert.match(page, /group inline-flex items-center gap-\[3px\]/);
+  assert.match(page, /h-\[49px\] w-\[174px\] items-center justify-center rounded-full bg-white/);
+  assert.match(page, /size-\[49px\] items-center justify-center rounded-full bg-lts-tan/);
   assert.match(page, /md:text-\[48px\]/);
   assert.match(page, /text-lts-tan/);
   assert.match(page, /bg-lts-tan/);
@@ -157,6 +164,96 @@ test("NMDC LTS at a glance follows the supplied desktop and mobile PDF design", 
 
   assert.match(footer, /md:grid-cols-\[minmax\(0,420px\)_minmax\(0,300px\)_minmax\(0,360px\)\]/);
   assert.match(footer, /rounded-\[28px\] md:rounded-\[18px\]/);
+});
+
+test("NMDC LTS marine vessels follows the supplied desktop, mobile, and iPad desktop-layout design", () => {
+  const content = readFileSync("apps/nmdc-lts/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-lts/app/pages.tsx", "utf8");
+  const route = readFileSync(
+    "apps/nmdc-lts/app/marine-vessels/page.tsx",
+    "utf8",
+  );
+
+  for (const asset of [
+    "apps/nmdc-lts/public/images/lts/marine-vessels-hero.png",
+    "apps/nmdc-lts/public/images/lts/marine-vessel-multicat.png",
+    "apps/nmdc-lts/public/images/lts/marine-vessel-pushy-cat.png",
+    "apps/nmdc-lts/public/images/lts/marine-vessel-tug-boat.png",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(route, /NmdcLtsMarineVesselsPage/);
+  assert.match(content, /marineVessels/);
+  assert.match(content, /href: "\/marine-vessels"/);
+  assert.match(content, /Marine Vessels/);
+  assert.match(content, /Multicat M-21/);
+  assert.match(content, /Pushy Cat - P14 & Pushy Cat - P15/);
+  assert.match(content, /Tug Boat - T9/);
+  assert.match(content, /Built with Expertise/);
+  assert.match(content, /Built with Confidence/);
+  assert.match(content, /View Specifications/);
+  assert.match(content, /marine-vessels-hero\.png/);
+  assert.match(content, /marine-vessel-multicat\.png/);
+  assert.match(content, /marine-vessel-pushy-cat\.png/);
+  assert.match(content, /marine-vessel-tug-boat\.png/);
+
+  assert.match(page, /NmdcLtsMarineVesselsPage/);
+  assert.match(page, /MarineVesselsHero/);
+  assert.match(page, /LtsVesselSection/);
+  assert.match(page, /getLtsNavLinks\("\/marine-vessels"\)/);
+  assert.match(page, /h-\[360px\] md:h-\[486px\]/);
+  assert.match(page, /md:grid-cols-2/);
+  assert.match(page, /md:min-h-\[714px\]/);
+  assert.match(page, /md:border-l/);
+  assert.match(page, /md:text-\[48px\]/);
+  assert.match(page, /uppercase md:normal-case/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC LTS whipstock system follows the supplied desktop, mobile, and iPad desktop-layout design", () => {
+  const content = readFileSync("apps/nmdc-lts/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-lts/app/pages.tsx", "utf8");
+  const route = readFileSync(
+    "apps/nmdc-lts/app/whipstock-system/page.tsx",
+    "utf8",
+  );
+
+  for (const asset of [
+    "apps/nmdc-lts/public/images/lts/whipstock-hero-desktop.png",
+    "apps/nmdc-lts/public/images/lts/whipstock-hero-mobile.png",
+    "apps/nmdc-lts/public/images/lts/whipstock-system-diagram.png",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(route, /NmdcLtsWhipstockSystemPage/);
+  assert.match(content, /whipstockSystem/);
+  assert.match(content, /href: "\/whipstock-system"/);
+  assert.match(content, /EMDAD/);
+  assert.match(content, /Whipstock System/);
+  assert.match(content, /founded in 1979/);
+  assert.match(content, /Hydraulic/);
+  assert.match(content, /Mechanical/);
+  assert.match(content, /Permanent/);
+  assert.match(content, /Retrievable/);
+  assert.match(content, /View Specifications/);
+  assert.match(content, /whipstock-hero-desktop\.png/);
+  assert.match(content, /whipstock-hero-mobile\.png/);
+  assert.match(content, /whipstock-system-diagram\.png/);
+
+  assert.match(page, /NmdcLtsWhipstockSystemPage/);
+  assert.match(page, /WhipstockHero/);
+  assert.match(page, /WhipstockFeatureCard/);
+  assert.match(page, /WhipstockDiagram/);
+  assert.match(page, /getLtsNavLinks\("\/whipstock-system"\)/);
+  assert.match(page, /h-\[421px\] md:h-\[486px\]/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,560px\)_minmax\(0,670px\)\]/);
+  assert.match(page, /md:order-1/);
+  assert.match(page, /md:order-2/);
+  assert.match(page, /md:h-\[624px\]/);
+  assert.match(page, /md:w-\[1240px\]/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 
 test("NMDC LTS is wired into root scripts, Docker, compose, and brand links", () => {

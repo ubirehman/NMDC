@@ -30,8 +30,8 @@ export const nmdcLtsContent = {
     links: [
       { label: "Home", href: "/" },
       { label: "Key Highlights", href: "/key-highlights" },
-      { label: "Marine Vessels", href: "#marine-vessels" },
-      { label: "Whipstock System", href: "#whipstock-system" },
+      { label: "Marine Vessels", href: "/marine-vessels" },
+      { label: "Whipstock System", href: "/whipstock-system" },
     ],
   },
   home: {
@@ -165,6 +165,139 @@ export const nmdcLtsContent = {
         },
       ],
     },
+  },
+  marineVessels: {
+    hero: {
+      background: {
+        src: "/images/lts/marine-vessels-hero.png",
+        alt: "Marine vessel and tugboat working offshore at sunrise",
+      },
+      title: {
+        leading: "Marine",
+        accent: "Vessels",
+      },
+    },
+    vessels: [
+      {
+        title: "Multicat M-21",
+        theme: "dark",
+        image: {
+          src: "/images/lts/marine-vessel-multicat.png",
+          alt: "Multicat M-21 vessel illustration",
+        },
+        description:
+          "Muticat is a versatile, high-capacity marine vessel designed for heavy duty operations, combining strength, speed, and efficiency. Built for demanding tasks, it handles cargo, lifting, and marine support with unmatched reliability.",
+        detailsTitle: "Built with Expertise",
+        detailsSubtitle: "Constructed by NMDC LTS -Workshops",
+        bullets: [
+          "Classification: Bureau Veritas certified for safety and operational reliability",
+          "Power & Performance: 682 HP total, reaching speeds up to 14 knots",
+          "Cranes & Lifting: Equipped with cranes-22.4T at 4m and 9T at 9.4m-ideal for cargo handling and offshore operations",
+          "Material Sourcing: All materials purchased from the local market, supporting reliability",
+          "High-quality imported systems from overseas manufacturers for trusted performance",
+          "Optimized for transport, lifting, and multipurpose marine operations",
+        ],
+        specificationsLabel: "View Specifications",
+        specificationsHref: "#multicat-m-21-specifications",
+      },
+      {
+        title: "Pushy Cat - P14 & Pushy Cat - P15",
+        theme: "light",
+        image: {
+          src: "/images/lts/marine-vessel-pushy-cat.png",
+          alt: "Pushy Cat workboat illustration",
+        },
+        description:
+          "Pushy Cat is a compact, high-performance workboat designed for efficient harbor operations and marine support tasks. Combining solid construction with dependable power, it delivers consistent performance in demanding conditions.",
+        detailsTitle: "Built with Confidence",
+        mobileDetailsTitle: "Built with Expertise",
+        detailsSubtitle:
+          "Constructed by NMDC LTS -Workshops , Pushy Cat reflects proven shipbuilding expertise and quality standards, using our internals capabilities from equipment and slipways",
+        bullets: [
+          "Hull Material with high-grade steel for strength and durability, Material Sourcing Locally procured materials supporting reliability and availability",
+          "Equipment: Fitted with high-quality imported systems from overseas manufacturers",
+          "Build Timeframe: Completed in just 6 months, demonstrating efficiency and rapid delivery",
+        ],
+        specificationsLabel: "View Specifications",
+        specificationsHref: "#pushy-cat-specifications",
+      },
+      {
+        title: "Tug Boat - T9",
+        theme: "dark",
+        image: {
+          src: "/images/lts/marine-vessel-tug-boat.png",
+          alt: "Tug Boat T9 vessel illustration",
+        },
+        description:
+          "This Tug Boat is a robust, high-performance vessel designed to handle demanding harbor and port operations. With strong steel construction, reliable imported equipment, and efficient maneuverability, it is ideal for towing, pushing, and positioning vessels of all sizes.",
+        detailsTitle: "Built with Expertise",
+        detailsSubtitle:
+          "Constructed by NMDC LTS- Workshops , this Tug Boat reflects precision engineering and rapid delivery.",
+        bullets: [
+          "Classification: Bureau Veritas certified for safety and operational reliability",
+          "Hull Material: High-grade steel for maximum durability",
+          "Power & Performance: 600 HP total, reaching speeds up to 11 knots",
+          "Material Sourcing: All materials purchased from the local market to ensure reliability and availability",
+          "Equipment: Equipped with high-quality imported systems from overseas suppliers for trusted performance",
+          "Build Timeframe: Completed in just 9 months, demonstrating efficiency and rapid project execution",
+        ],
+        specificationsLabel: "View Specifications",
+        specificationsHref: "#tug-boat-t9-specifications",
+      },
+    ],
+  },
+  whipstockSystem: {
+    hero: {
+      desktopBackground: {
+        src: "/images/lts/whipstock-hero-desktop.png",
+        alt: "Tug vessel towing a barge at sea",
+      },
+      mobileBackground: {
+        src: "/images/lts/whipstock-hero-mobile.png",
+        alt: "Marine vessel working offshore",
+      },
+      title: {
+        leading: "EMDAD |",
+        accent: "Whipstock System",
+      },
+    },
+    introduction: [
+      "Emdad, founded in 1979, has a long-standing track record in delivering technical expertise and innovative solutions across the UAE and MENA region. Under NMDC’s ownership, Emdad is positioned as a cornerstone of NMDC’s oil and gas business, leveraging combined capabilities to improve service excellence, expand regional reach, and create greater value for clients. The integration also aligns with NMDC’s strategy to diversify its energy portfolio and drive sustainable growth.",
+      "Specializing in whipstock services for the oil and gas industry. They offer a range of products and solutions, including high-pressure hoses, rotating machinery, and various drilling tools. Their whipstock system is designed for efficient casing exit solutions and is equipped with hydraulic packers and mechanical anchors to support the whipstock concave in highly deviated holes.",
+      "Emdad has a strong reputation for providing innovative and integrated services, ensuring reliability and efficiency in oil and gas operations.",
+      "Whipstocks are specialized deflection tools used in drilling operations to initiate sidetracks from existing wellbores. They provide a controlled kickoff point for window milling, directional drilling, re-entry, or bypass operations.",
+    ],
+    features: [
+      {
+        icon: "hydraulic",
+        title: "Hydraulic",
+        description:
+          "Uses applied pressure through drill pipe to activate the anchor mechanism.",
+      },
+      {
+        icon: "mechanical",
+        title: "Mechanical",
+        description:
+          "Uses applied weight through drill string to set the anchor.",
+      },
+      {
+        icon: "permanent",
+        title: "Permanent",
+        description: "Remains in well for the lifetime of the sidetrack.",
+      },
+      {
+        icon: "retrievable",
+        title: "Retrievable",
+        description:
+          "Can be removed to restore casing drift ID after operations.",
+      },
+    ],
+    diagram: {
+      src: "/images/lts/whipstock-system-diagram.png",
+      alt: "Whipstock system technical diagram",
+    },
+    specificationsLabel: "View Specifications",
+    specificationsHref: "#whipstock-system-specifications",
   },
   footer: {
     background: {

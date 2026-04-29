@@ -79,7 +79,7 @@ export function NmdcPeopleCulturePage() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 md:mt-14 lg:mt-[38px] lg:grid-cols-[minmax(0,618px)_minmax(0,606px)] lg:gap-4">
+          <div className="mt-8 grid gap-6 md:mt-[38px] md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-4">
             <section>
               <MasarIntroCard />
 
