@@ -12,16 +12,19 @@ services:
       PORT: "3120"
       HOSTNAME: "0.0.0.0"
       NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
+      NEXT_PUBLIC_INFRA_APP_URL: "http://localhost:3122"
       CHOKIDAR_USEPOLLING: "true"
       WATCHPACK_POLLING: "true"
     ports:
       - "3120:3120"
       - "3121:3121"
+      - "3122:3122"
     volumes:
       - .:/app
       - /app/node_modules
       - /app/.next
       - /app/apps/nmdc-dredging-marine/.next
+      - /app/apps/nmdc-infra/.next
     restart: unless-stopped
 
   # Production standalone service
@@ -36,7 +39,9 @@ services:
       NODE_ENV: production
       PORT: "3120"
       NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
+      NEXT_PUBLIC_INFRA_APP_URL: "http://localhost:3122"
     ports:
       - "3120:3120"
       - "3121:3121"
+      - "3122:3122"
     restart: unless-stopped

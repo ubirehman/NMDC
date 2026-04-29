@@ -339,67 +339,79 @@ export function DredgingMarineOverviewPage() {
   const overview = content.overview;
 
   return (
-    <main className="overflow-x-hidden bg-white text-dm-text">
-      <section className="relative isolate bg-dm-navy px-5 pb-16 pt-[132px] text-white md:px-10 md:pb-20 md:pt-[154px]">
+    <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
+      <section className="relative isolate bg-dm-navy px-5 pb-[56px] pt-[132px] text-white md:min-h-[843px] md:px-10 md:pb-[80px] md:pt-[176px]">
         <Header links={getDmNavLinks(overview.activeHref)} />
-        <div className="mx-auto grid min-w-0 w-full max-w-[1120px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,440px)_1fr] md:items-center">
-          <div className="min-w-0 w-full max-w-[350px] md:max-w-[460px]">
-            <p className="text-[18px] font-bold leading-6 text-dm-cyan md:text-[22px]">
+        <div className="mx-auto grid min-w-0 w-full max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,482px)_minmax(0,715px)] md:items-start md:gap-[43px]">
+          <div className="min-w-0 w-full max-w-[350px] md:max-w-none md:pt-[17px]">
+            <p className="text-[20px] font-bold leading-7 text-dm-cyan md:text-[31px] md:leading-[38px]">
               {overview.eyebrow}
             </p>
-            <h1 className="mt-3 text-[34px] font-bold leading-[1.08] text-white md:text-[48px]">
+            <h1 className="mt-[11px] text-[42px] font-bold leading-[48px] text-white md:text-[64px] md:leading-[74px]">
               {overview.title}
             </h1>
-            <div className="mt-5 space-y-3 break-words text-sm leading-6 text-white/78 md:text-[15px] md:leading-7">
+            <div className="mt-[22px] space-y-3 break-words text-[16px] leading-7 text-white/90 md:text-[21px] md:leading-[28px]">
               {overview.intro.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
           </div>
-          <Image
-            src={overview.image.src}
-            alt={overview.image.alt}
-            width={760}
-            height={520}
-            className="h-[280px] min-w-0 w-full max-w-[350px] rounded-[8px] object-cover md:h-[420px] md:max-w-full"
-          />
+          <div className="relative h-[280px] min-w-0 w-full max-w-[350px] overflow-hidden rounded-[18px] md:h-[584px] md:max-w-none md:rounded-[24px]">
+            <Image
+              src={overview.image.src}
+              alt={overview.image.alt}
+              fill
+              priority
+              sizes="(min-width: 768px) 715px, calc(100vw - 40px)"
+              className="object-cover object-center"
+            />
+          </div>
         </div>
       </section>
 
       <section
         id={overview.capabilities.id}
-        className="bg-dm-ice px-5 py-12 md:px-10 md:py-16"
+        className="bg-[#f4f4f6] px-5 pb-[86px] pt-[70px] md:px-10 md:pb-[86px] md:pt-[70px]"
       >
-        <div className="mx-auto w-full max-w-[1120px]">
-          <h2 className="text-[28px] font-bold uppercase leading-[1.12] text-dm-blue md:text-[36px]">
+        <div className="mx-auto w-full max-w-[1240px]">
+          <h2 className="text-[32px] font-bold uppercase leading-[40px] text-dm-blue md:text-[48px] md:leading-[58px]">
             {overview.capabilities.title}
           </h2>
-          <div className="mt-8 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3">
-            {overview.capabilities.items.map((capability) => (
+          <div className="mt-[43px] grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:grid-cols-3 md:gap-x-[20px] md:gap-y-[20px]">
+            {overview.capabilities.items.map((capability, index) => (
               <article
                 key={capability.title}
-                className="group relative min-w-0 w-full max-w-[350px] overflow-hidden rounded-[6px] bg-dm-navy p-4 text-white shadow-[0_16px_38px_-28px_rgba(5,38,59,0.72)] transition-transform duration-200 hover:-translate-y-1 md:max-w-none"
+                className="group relative min-w-0 w-full overflow-hidden rounded-[12px] bg-dm-deep-navy px-6 pb-7 pt-6 text-white shadow-[0_16px_38px_-28px_rgba(5,38,59,0.72)] transition-transform duration-200 hover:-translate-y-1 md:min-h-[468px] md:rounded-[14px]"
               >
-                <span
-                  className="absolute right-4 top-4 grid size-7 place-items-center rounded-full border border-white/24 text-white/80"
-                  aria-hidden="true"
-                >
-                  <span className="size-2 rounded-full bg-dm-cyan" />
-                </span>
-                <Image
-                  src={capability.image}
-                  alt={capability.title}
-                  width={520}
-                  height={260}
-                  className="h-[124px] w-full rounded-[4px] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="pt-4">
-                  <h3 className="text-[16px] font-bold leading-6 text-dm-cyan">
+                <div className="flex items-start justify-between gap-5">
+                  <Image
+                    src={capability.image}
+                    alt={capability.title}
+                    width={274}
+                    height={158}
+                    className="h-[158px] w-full rounded-[6px] object-cover transition-transform duration-500 group-hover:scale-105 md:h-[158px] md:w-[274px]"
+                  />
+                  <span className="shrink-0 text-[32px] font-bold leading-none text-white md:text-[34px]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="pt-[13px]">
+                  <h3 className="text-[18px] font-bold leading-6 text-dm-cyan">
                     {capability.title}
                   </h3>
-                  <p className="mt-3 break-words text-sm leading-6 text-white/72">
+                  <p className="mt-[14px] break-words text-[15px] leading-[23px] text-white md:text-[16px] md:leading-6">
                     {capability.copy}
                   </p>
+                  {"bullets" in capability ? (
+                    <ul className="mt-2 space-y-1 text-[15px] leading-[23px] text-white md:text-[16px] md:leading-6">
+                      {capability.bullets.map((item) => (
+                        <li key={item} className="relative pl-4">
+                          <span className="absolute left-0 top-[0.72em] size-1 rounded-full bg-white" aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               </article>
             ))}

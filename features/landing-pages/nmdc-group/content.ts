@@ -3,6 +3,9 @@ import type { LandingContent } from "../../../app/components/landing/types";
 const dredgingMarineAppUrl =
   process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121";
 
+const infraAppUrl =
+  process.env.NEXT_PUBLIC_INFRA_APP_URL ?? "http://localhost:3122";
+
 export const nmdcGroupLandingContent: LandingContent = {
   brand: {
     name: "NMDC Group",
@@ -65,7 +68,7 @@ export const nmdcGroupLandingContent: LandingContent = {
     {
       id: "infra",
       name: "NMDC Infra",
-      href: "#infra",
+      href: infraAppUrl,
       image: {
         src: "/images/landing/card-infra.webp",
         alt: "NMDC Infra construction site",

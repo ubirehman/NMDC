@@ -59,8 +59,8 @@ test("D&M pages include the PDF navigation and major sections", () => {
   assert.match(page, /content\.marineVessels/);
   assert.match(page, /content\.hydraulicPhysicalModel/);
   assert.match(page, /content\.caissonMethod/);
-  assert.match(page, /bg-dm-navy px-5 pb-16 pt-\[132px\]/);
-  assert.match(page, /bg-dm-ice px-5 py-12/);
+  assert.match(page, /bg-dm-navy px-5 pb-\[56px\] pt-\[132px\]/);
+  assert.match(page, /bg-\[#f4f4f6\] px-5 pb-\[86px\] pt-\[70px\]/);
   assert.match(content, /vessel-al-mirfa\.jpg/);
   assert.match(content, /Featured marine vessels/);
   assert.match(content, /View specification/);
@@ -80,6 +80,35 @@ test("D&M pages include the PDF navigation and major sections", () => {
   );
   assert.match(readFileSync("apps/nmdc-dredging-marine/app/marine-vessels/[slug]/page.tsx", "utf8"), /generateStaticParams/);
   assert.match(page, /DredgingMarineVesselDetailPage/);
+});
+
+test("D&M At a Glance section follows the supplied desktop PDF geometry", () => {
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+
+  assert.match(page, /DredgingMarineOverviewPage/);
+  assert.match(page, /md:min-h-\[843px\]/);
+  assert.match(page, /max-w-\[1240px\]/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,482px\)_minmax\(0,715px\)\]/);
+  assert.match(page, /md:h-\[584px\]/);
+  assert.match(page, /md:text-\[31px\]/);
+  assert.match(page, /md:text-\[64px\]/);
+  assert.match(page, /md:text-\[21px\]/);
+  assert.match(page, /bg-\[#f4f4f6\] px-5 pb-\[86px\] pt-\[70px\]/);
+  assert.match(page, /md:grid-cols-3 md:gap-x-\[20px\] md:gap-y-\[20px\]/);
+  assert.match(page, /md:min-h-\[468px\]/);
+  assert.match(page, /md:h-\[158px\] md:w-\[274px\]/);
+  assert.match(page, /String\(index \+ 1\)\.padStart\(2, "0"\)/);
+  assert.match(page, /"bullets" in capability/);
+  assert.match(content, /bullets:\s*\[/);
+  assert.match(content, /Vibro and Surface Compaction/);
+  assert.match(content, /Vibro Replacement \(Stone Columns\)/);
 });
 
 test("D&M home cards match the NMDC Group brand card shell", () => {

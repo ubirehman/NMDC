@@ -115,8 +115,14 @@ export const nmdcDredgingMarineContent = {
         {
           title: "Geotechnical Works",
           copy:
-            "We specialize in comprehensive ground improvement and geotechnical solutions, guiding projects from initial concept to final execution. Services include vibro and surface compaction, vibro replacement with stone columns, geotechnical investigation, vibro coring, and geophysical survey.",
-          image: "/images/dm/hydraulic-model-2.jpg"
+            "We specialize in comprehensive ground improvement and geotechnical solutions, guiding projects from initial concept to final execution. We consistently surpass performance criteria, providing significant cost savings.",
+          image: "/images/dm/hydraulic-model-2.jpg",
+          bullets: [
+            "Vibro and Surface Compaction",
+            "Vibro Replacement (Stone Columns)",
+            "Geotechnical Investigation",
+            "Vibro Coring & Geophysical Survey"
+          ]
         }
       ]
     }
