@@ -35,3 +35,11 @@ curl -L http://nmdcgroups.com/dredging/ | grep '/dredging/_next/static'
 curl -I http://nmdcgroups.com/dredging
 curl -I http://nmdcgroups.com/dredging/
 ```
+
+
+```CMD
+docker compose --profile prod down
+docker compose --profile prod up -d --build
+docker ps
+
+```
