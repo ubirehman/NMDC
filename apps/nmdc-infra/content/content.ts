@@ -7,6 +7,9 @@ const groupAppUrl =
 const ltsAppUrl =
   process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
 
+const energyAppUrl =
+  process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
+
 export const nmdcInfraContent = {
   brand: {
     name: "NMDC Infra",
@@ -71,7 +74,7 @@ export const nmdcInfraContent = {
       },
       {
         title: "NMDC Energy",
-        href: "#energy",
+        href: energyAppUrl,
         image: "/images/infra/card-energy.jpg",
         logo: {
           src: "/images/infra/logo-energy.webp",

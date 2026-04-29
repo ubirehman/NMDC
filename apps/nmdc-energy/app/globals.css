@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --energy-navy: #062821;
+  --energy-deep-navy: #021814;
+  --energy-glass: #062821dd;
+  --energy-green: #00b765;
+  --energy-ink: #071826;
+}
+
+@theme inline {
+  --color-energy-navy: #062821;
+  --color-energy-deep-navy: #021814;
+  --color-energy-glass: #062821dd;
+  --color-energy-green: #00b765;
+  --color-energy-ink: #071826;
+  --font-sans: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--energy-navy);
+  color: white;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}

@@ -7,6 +7,9 @@ const dredgingMarineAppUrl =
 const infraAppUrl =
   process.env.NEXT_PUBLIC_INFRA_APP_URL ?? "http://localhost:3122";
 
+const energyAppUrl =
+  process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
+
 export const nmdcLtsContent = {
   brand: {
     name: "NMDC LTS",
@@ -81,7 +84,7 @@ export const nmdcLtsContent = {
       },
       {
         title: "NMDC Energy",
-        href: "#energy",
+        href: energyAppUrl,
         image: "/images/lts/card-energy.jpg",
         logo: {
           src: "/images/lts/logo-energy.webp",

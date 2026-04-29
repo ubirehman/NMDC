@@ -14,6 +14,7 @@ services:
       NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
       NEXT_PUBLIC_INFRA_APP_URL: "http://localhost:3122"
       NEXT_PUBLIC_LTS_APP_URL: "http://localhost:3123"
+      NEXT_PUBLIC_ENERGY_APP_URL: "http://localhost:3124"
       CHOKIDAR_USEPOLLING: "true"
       WATCHPACK_POLLING: "true"
     ports:
@@ -21,6 +22,7 @@ services:
       - "3121:3121"
       - "3122:3122"
       - "3123:3123"
+      - "3124:3124"
     volumes:
       - .:/app
       - /app/node_modules
@@ -28,6 +30,7 @@ services:
       - /app/apps/nmdc-dredging-marine/.next
       - /app/apps/nmdc-infra/.next
       - /app/apps/nmdc-lts/.next
+      - /app/apps/nmdc-energy/.next
     restart: unless-stopped
 
   # Production standalone service
@@ -44,9 +47,11 @@ services:
       NEXT_PUBLIC_DREDGING_MARINE_APP_URL: "http://localhost:3121"
       NEXT_PUBLIC_INFRA_APP_URL: "http://localhost:3122"
       NEXT_PUBLIC_LTS_APP_URL: "http://localhost:3123"
+      NEXT_PUBLIC_ENERGY_APP_URL: "http://localhost:3124"
     ports:
       - "3120:3120"
       - "3121:3121"
       - "3122:3122"
       - "3123:3123"
+      - "3124:3124"
     restart: unless-stopped

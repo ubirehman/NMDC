@@ -90,6 +90,32 @@ const apps = {
       "static",
     ),
   },
+  energy: {
+    publicDir: path.join(root, "apps", "nmdc-energy", "public"),
+    staticDir: path.join(root, "apps", "nmdc-energy", ".next", "static"),
+    standaloneDir: path.join(root, "apps", "nmdc-energy", ".next", "standalone"),
+    standalonePublicDir: path.join(
+      root,
+      "apps",
+      "nmdc-energy",
+      ".next",
+      "standalone",
+      "apps",
+      "nmdc-energy",
+      "public",
+    ),
+    standaloneStaticDir: path.join(
+      root,
+      "apps",
+      "nmdc-energy",
+      ".next",
+      "standalone",
+      "apps",
+      "nmdc-energy",
+      ".next",
+      "static",
+    ),
+  },
 };
 
 function copyDir(from, to) {
@@ -120,6 +146,7 @@ if (target === "all") {
   copyForApp("dm");
   copyForApp("infra");
   copyForApp("lts");
+  copyForApp("energy");
 } else if (target in apps) {
   copyForApp(target);
 } else {
