@@ -6,6 +6,9 @@ const basePath = process.env.NEXT_PUBLIC_LTS_BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   ...(basePath ? { basePath } : {}),
   devIndicators: false,
+  images: {
+    unoptimized: true,
+  },
   output: "standalone",
   turbopack: {
     root: path.resolve(process.cwd(), "../.."),

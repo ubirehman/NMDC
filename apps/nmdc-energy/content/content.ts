@@ -18,7 +18,7 @@ const withEnergyBasePath = (assetPath: string) =>
 export const nmdcEnergyContent = {
   brand: {
     name: "NMDC Energy",
-    logo: "/images/energy/logo-energy.png",
+    logo: withEnergyBasePath("/images/energy/logo-energy.png"),
     logoAlt: "NMDC Energy",
   },
   metadata: {
@@ -47,11 +47,11 @@ export const nmdcEnergyContent = {
       eyebrow: "NMDC Energy",
       title: "At a Glance",
       background: {
-        src: "/images/energy/overview-hero.jpg",
+        src: withEnergyBasePath("/images/energy/overview-hero.jpg"),
         alt: "NMDC Energy specialist inspecting equipment offshore",
       },
       image: {
-        src: "/images/energy/overview-platforms.jpg",
+        src: withEnergyBasePath("/images/energy/overview-platforms.jpg"),
         alt: "Offshore energy platforms in blue water",
       },
       intro: [
@@ -71,11 +71,11 @@ export const nmdcEnergyContent = {
       eyebrow: "NMDC Energy",
       title: "At a Glance",
       background: {
-        src: "/images/energy/overview-hero.jpg",
+        src: withEnergyBasePath("/images/energy/overview-hero.jpg"),
         alt: "NMDC Energy specialist inspecting equipment offshore",
       },
       image: {
-        src: "/images/energy/overview-platforms.jpg",
+        src: withEnergyBasePath("/images/energy/overview-platforms.jpg"),
         alt: "Offshore NMDC Energy platforms in turquoise water",
       },
       body: [
@@ -118,7 +118,7 @@ export const nmdcEnergyContent = {
     },
     video: {
       image: {
-        src: "/images/energy/overview-video.jpg",
+        src: withEnergyBasePath("/images/energy/overview-video.jpg"),
         alt: "NMDC Energy vessel at sea",
       },
       playLabel: "Play NMDC Energy overview video",
@@ -126,7 +126,7 @@ export const nmdcEnergyContent = {
     technology: {
       title: "Technology and Digital Transformation",
       image: {
-        src: "/images/energy/overview-technology.jpg",
+        src: withEnergyBasePath("/images/energy/overview-technology.jpg"),
         alt: "NMDC Energy offshore module on a barge",
       },
       cards: [
@@ -159,7 +159,7 @@ export const nmdcEnergyContent = {
         accent: "Energy Yards",
       },
       background: {
-        src: "/images/energy/yards-hero.jpg",
+        src: withEnergyBasePath("/images/energy/yards-hero.jpg"),
         alt: "NMDC Energy construction vessel with crane at sea",
       },
     },
@@ -167,7 +167,7 @@ export const nmdcEnergyContent = {
       title: "Key Highlights",
       activeYard: "ICAD-4 Yard",
       aerialImage: {
-        src: "/images/energy/yards-aerial.jpg",
+        src: withEnergyBasePath("/images/energy/yards-aerial.jpg"),
         alt: "Aerial view of NMDC Energy yard facilities",
       },
       slideCount: "(1/4)",
@@ -234,7 +234,7 @@ export const nmdcEnergyContent = {
       ],
       record: {
         logo: {
-          src: "/images/energy/guinness-world-record.png",
+          src: withEnergyBasePath("/images/energy/guinness-world-record.png"),
           alt: "Guinness World Records",
         },
         title: "Guinness World Record",
@@ -242,7 +242,7 @@ export const nmdcEnergyContent = {
       },
       video: {
         image: {
-          src: "/images/energy/yards-video.jpg",
+          src: withEnergyBasePath("/images/energy/yards-video.jpg"),
           alt: "Offshore NMDC Energy platforms and vessels",
         },
         playLabel: "Play NMDC Energy yards video",
@@ -294,7 +294,7 @@ export const nmdcEnergyContent = {
   },
   footer: {
     background: {
-      src: "/images/energy/overview-footer-bg.jpg",
+      src: withEnergyBasePath("/images/energy/overview-footer-bg.jpg"),
       alt: "",
     },
     businesses: [
@@ -327,7 +327,7 @@ export const nmdcEnergyContent = {
   home: {
     hero: {
       background: {
-        src: "/images/energy/home-hero.jpg",
+        src: withEnergyBasePath("/images/energy/home-hero.jpg"),
         alt: "Offshore energy platforms in turquoise water",
       },
       headline: {
@@ -345,7 +345,7 @@ export const nmdcEnergyContent = {
       {
         title: "NMDC Group",
         href: groupAppUrl,
-        image: "/images/energy/card-group.jpg",
+        image: withEnergyBasePath("/images/energy/card-group.jpg"),
         logo: {
           src: withEnergyBasePath("/images/energy/logo-group.svg"),
           alt: "NMDC Group",
@@ -354,25 +354,25 @@ export const nmdcEnergyContent = {
       {
         title: "NMDC Dredging\n& Marine",
         href: dredgingMarineAppUrl,
-        image: "/images/energy/card-dredging.jpg",
+        image: withEnergyBasePath("/images/energy/card-dredging.jpg"),
         logo: {
-          src: "/images/energy/logo-dm.png",
+          src: withEnergyBasePath("/images/energy/logo-dm.png"),
           alt: "NMDC Dredging & Marine",
         },
       },
       {
         title: "NMDC Infra",
         href: infraAppUrl,
-        image: "/images/energy/card-infra.jpg",
+        image: withEnergyBasePath("/images/energy/card-infra.jpg"),
         logo: {
-          src: "/images/energy/logo-infra.png",
+          src: withEnergyBasePath("/images/energy/logo-infra.png"),
           alt: "NMDC Infra",
         },
       },
       {
         title: "NMDC LTS",
         href: ltsAppUrl,
-        image: "/images/energy/card-lts.jpg",
+        image: withEnergyBasePath("/images/energy/card-lts.jpg"),
         logo: {
           src: withEnergyBasePath("/images/energy/logo-lts.svg"),
           alt: "NMDC LTS",
@@ -381,7 +381,7 @@ export const nmdcEnergyContent = {
       {
         title: "NMDC Product Highlight",
         href: "/products",
-        image: "/images/energy/card-product.jpg",
+        image: withEnergyBasePath("/images/energy/card-product.jpg"),
       },
     ],
   },

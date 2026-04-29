@@ -18,7 +18,7 @@ const withInfraBasePath = (assetPath: string) =>
 export const nmdcInfraContent = {
   brand: {
     name: "NMDC Infra",
-    logo: "/images/infra/logo-infra.webp",
+    logo: withInfraBasePath("/images/infra/logo-infra.webp"),
     logoAlt: "NMDC Infra",
   },
   metadata: {
@@ -44,7 +44,7 @@ export const nmdcInfraContent = {
   home: {
     hero: {
       background: {
-        src: "/images/infra/home-hero.jpg",
+        src: withInfraBasePath("/images/infra/home-hero.jpg"),
         alt: "NMDC Infra construction site",
       },
       headline: {
@@ -62,7 +62,7 @@ export const nmdcInfraContent = {
       {
         title: "NMDC Group",
         href: groupAppUrl,
-        image: "/images/infra/card-platform.jpg",
+        image: withInfraBasePath("/images/infra/card-platform.jpg"),
         logo: {
           src: withInfraBasePath("/images/infra/logo-group.svg"),
           alt: "NMDC Group",
@@ -71,25 +71,25 @@ export const nmdcInfraContent = {
       {
         title: "NMDC Dredging\n& Marine",
         href: dredgingMarineAppUrl,
-        image: "/images/infra/card-dredging.jpg",
+        image: withInfraBasePath("/images/infra/card-dredging.jpg"),
         logo: {
-          src: "/images/infra/logo-dm.webp",
+          src: withInfraBasePath("/images/infra/logo-dm.webp"),
           alt: "NMDC Dredging & Marine",
         },
       },
       {
         title: "NMDC Energy",
         href: energyAppUrl,
-        image: "/images/infra/card-energy.jpg",
+        image: withInfraBasePath("/images/infra/card-energy.jpg"),
         logo: {
-          src: "/images/infra/logo-energy.webp",
+          src: withInfraBasePath("/images/infra/logo-energy.webp"),
           alt: "NMDC Energy",
         },
       },
       {
         title: "NMDC LTS",
         href: ltsAppUrl,
-        image: "/images/infra/card-lts.jpg",
+        image: withInfraBasePath("/images/infra/card-lts.jpg"),
         logo: {
           src: withInfraBasePath("/images/infra/logo-lts.svg"),
           alt: "NMDC LTS",
@@ -98,7 +98,7 @@ export const nmdcInfraContent = {
       {
         title: "NMDC Product Highlight",
         href: "/products",
-        image: "/images/infra/card-product.jpg",
+        image: withInfraBasePath("/images/infra/card-product.jpg"),
       },
     ],
   },
@@ -118,7 +118,7 @@ export const nmdcInfraContent = {
       readMoreLabel: "Read more...",
       readMoreHref: "/overview/at-a-glance",
       image: {
-        src: "/images/infra/overview-hero-panel.jpg",
+        src: withInfraBasePath("/images/infra/overview-hero-panel.jpg"),
         alt: "NMDC Infra HSE Day team photograph",
       },
     },
@@ -132,7 +132,7 @@ export const nmdcInfraContent = {
         "This integrated approach ensures efficient execution, cost optimization, and consistently high-quality outcomes. The company is supported by two state-of-the-art production plants, complemented by an in-house 3D printing facility that enhances precision, innovation, and flexibility in delivery.",
       ],
       image: {
-        src: "/images/infra/overview-hero-panel.jpg",
+        src: withInfraBasePath("/images/infra/overview-hero-panel.jpg"),
         alt: "NMDC Infra HSE Day team photograph",
       },
     },
@@ -144,7 +144,7 @@ export const nmdcInfraContent = {
           title: "Infrastructure Construction",
           body: "We deliver major infrastructure projects - including rail and road systems - that enhance connectivity and drive economic growth.",
           image: {
-            src: "/images/infra/capability-infrastructure.jpg",
+            src: withInfraBasePath("/images/infra/capability-infrastructure.jpg"),
             alt: "Infrastructure construction worksite",
           },
         },
@@ -153,7 +153,7 @@ export const nmdcInfraContent = {
           title: "Energy and Utilities Construction",
           body: "We provide reliable, sustainable utility solutions across power, oil and gas, sewage, telecommunications, and water networks.",
           image: {
-            src: "/images/infra/capability-energy-utilities.jpg",
+            src: withInfraBasePath("/images/infra/capability-energy-utilities.jpg"),
             alt: "Energy and utilities construction workers",
           },
         },
@@ -162,7 +162,7 @@ export const nmdcInfraContent = {
           title: "Industrial Construction",
           body: "We build advanced industrial facilities from chemical and pharmaceutical plants to manufacturing, processing, and waste treatment units, supporting diverse industries.",
           image: {
-            src: "/images/infra/capability-industrial.jpg",
+            src: withInfraBasePath("/images/infra/capability-industrial.jpg"),
             alt: "Industrial control monitors",
           },
         },
@@ -171,7 +171,7 @@ export const nmdcInfraContent = {
           title: "Institutional Construction",
           body: "We construct educational, healthcare, research, religious, and other institutional facilities that serve communities and support development.",
           image: {
-            src: "/images/infra/capability-institutional.jpg",
+            src: withInfraBasePath("/images/infra/capability-institutional.jpg"),
             alt: "Institutional buildings",
           },
         },
@@ -180,7 +180,7 @@ export const nmdcInfraContent = {
           title: "Commercial Construction",
           body: "We develop leisure and hospitality venues, office complexes, retail spaces, and recreational facilities that create vibrant business and lifestyle environments.",
           image: {
-            src: "/images/infra/capability-commercial.jpg",
+            src: withInfraBasePath("/images/infra/capability-commercial.jpg"),
             alt: "Commercial development rendering",
           },
         },
@@ -189,7 +189,7 @@ export const nmdcInfraContent = {
           title: "Residential Construction",
           body: "We develop leisure and hospitality venues, office complexes, retail spaces, and recreational facilities that create vibrant business and lifestyle environments.",
           image: {
-            src: "/images/infra/capability-residential.jpg",
+            src: withInfraBasePath("/images/infra/capability-residential.jpg"),
             alt: "Residential construction piling work",
           },
         },
@@ -197,7 +197,7 @@ export const nmdcInfraContent = {
     },
     video: {
       image: {
-        src: "/images/infra/overview-video.jpg",
+        src: withInfraBasePath("/images/infra/overview-video.jpg"),
         alt: "NMDC Infra HSE Day speaker",
       },
       playLabel: "Play NMDC Infra overview video",
@@ -210,7 +210,7 @@ export const nmdcInfraContent = {
           title: "NMDCCC",
           body: "We construct educational, healthcare, research, religious, and other institutional facilities that serve communities and support development.",
           image: {
-            src: "/images/infra/vertical-nmdccc.jpg",
+            src: withInfraBasePath("/images/infra/vertical-nmdccc.jpg"),
             alt: "NMDC construction yard",
           },
           icon: "construction",
@@ -219,7 +219,7 @@ export const nmdcInfraContent = {
           title: "LANTANIA NMDC WATER",
           body: "Lantania NMDC Water is NMDC Infra's dedicated water and wastewater EPC platform, formed following the acquisition of a 51% controlling stake in Spain-based Lantania Aguas.",
           image: {
-            src: "/images/infra/vertical-water.jpg",
+            src: withInfraBasePath("/images/infra/vertical-water.jpg"),
             alt: "Water infrastructure plant",
           },
           icon: "water",
@@ -228,7 +228,7 @@ export const nmdcInfraContent = {
           title: "EMARAT EUROPE",
           body: "Emarat Europe and NMDC Infra are at the forefront of innovation, pioneering precast construction and 3D printing solutions.",
           image: {
-            src: "/images/infra/vertical-emarat-europe.jpg",
+            src: withInfraBasePath("/images/infra/vertical-emarat-europe.jpg"),
             alt: "Precast concrete yard",
           },
           icon: "precast",
@@ -248,7 +248,7 @@ export const nmdcInfraContent = {
     },
     stats: {
       background: {
-        src: "/images/infra/overview-dark-lines.jpg",
+        src: withInfraBasePath("/images/infra/overview-dark-lines.jpg"),
         alt: "Dark technical line pattern",
       },
       items: [
@@ -264,7 +264,7 @@ export const nmdcInfraContent = {
       titleLeading: "Our",
       titleAccent: "Products",
       background: {
-        src: "/images/infra/products-hero.jpg",
+        src: withInfraBasePath("/images/infra/products-hero.jpg"),
         alt: "NMDC Infra precast concrete yard",
       },
     },
@@ -273,7 +273,7 @@ export const nmdcInfraContent = {
         title: ["3D Printing Of", "Artificial Reefs"],
         href: "/products/3d-printing-artificial-reefs",
         image: {
-          src: "/images/infra/product-3d-artificial-reefs.png",
+          src: withInfraBasePath("/images/infra/product-3d-artificial-reefs.png"),
           alt: "3D printed artificial reef structure underwater",
           objectPosition: "50% 50%",
         },
@@ -282,7 +282,7 @@ export const nmdcInfraContent = {
         title: ["Ebawe", "Anlagentechnik"],
         href: "/products/ebawe-anlagentechnik",
         image: {
-          src: "/images/infra/product-ebawe-anlagentechnik.png",
+          src: withInfraBasePath("/images/infra/product-ebawe-anlagentechnik.png"),
           alt: "Ebawe Anlagentechnik precast concrete production yard",
           objectPosition: "50% 50%",
         },
@@ -299,16 +299,16 @@ export const nmdcInfraContent = {
       readMoreLabel: "Read more...",
       readMoreHref: "#benefits",
       heroImage: {
-        src: "/images/infra/product-3d-artificial-reefs.png",
+        src: withInfraBasePath("/images/infra/product-3d-artificial-reefs.png"),
         alt: "3D printed artificial reef structure underwater",
       },
       detailImage: {
-        src: "/images/infra/product-3d-reefs-detail.jpg",
+        src: withInfraBasePath("/images/infra/product-3d-reefs-detail.jpg"),
         alt: "NMDC Infra team inspecting 3D printed reef structures",
       },
       video: {
         image: {
-          src: "/images/infra/product-3d-reefs-video.jpg",
+          src: withInfraBasePath("/images/infra/product-3d-reefs-video.jpg"),
           alt: "Robotic 3D printing equipment producing reef forms",
         },
         playLabel: "Play 3D printing of artificial reefs video",
@@ -350,16 +350,16 @@ export const nmdcInfraContent = {
         "The company uses 45 pallets from Ebawe Anlagen Technik, with the complete operation of the system. The multi-step process ensures each wall adheres to the highest quality standards.",
       ],
       heroImage: {
-        src: "/images/infra/product-ebawe-detail.jpg",
+        src: withInfraBasePath("/images/infra/product-ebawe-detail.jpg"),
         alt: "Ebawe Anlagentechnik precast panel yard",
       },
       galleryImage: {
-        src: "/images/infra/product-ebawe-gallery.jpg",
+        src: withInfraBasePath("/images/infra/product-ebawe-gallery.jpg"),
         alt: "Ebawe carousel production line in a precast yard",
       },
       video: {
         image: {
-          src: "/images/infra/product-ebawe-video.jpg",
+          src: withInfraBasePath("/images/infra/product-ebawe-video.jpg"),
           alt: "Ebawe precast component lifting operation",
         },
         playLabel: "Play Ebawe Anlagentechnik video",

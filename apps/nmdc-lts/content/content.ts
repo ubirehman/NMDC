@@ -45,7 +45,7 @@ export const nmdcLtsContent = {
   home: {
     hero: {
       background: {
-        src: "/images/lts/home-hero.jpg",
+        src: withLtsBasePath("/images/lts/home-hero.jpg"),
         alt: "Marine vessel towing a platform structure at sea",
       },
       headline: {
@@ -72,7 +72,7 @@ export const nmdcLtsContent = {
       {
         title: "NMDC Group",
         href: groupAppUrl,
-        image: "/images/lts/card-platform.jpg",
+        image: withLtsBasePath("/images/lts/card-platform.jpg"),
         logo: {
           src: withLtsBasePath("/images/lts/logo-group.svg"),
           alt: "NMDC Group",
@@ -81,34 +81,34 @@ export const nmdcLtsContent = {
       {
         title: "NMDC Dredging\n& Marine",
         href: dredgingMarineAppUrl,
-        image: "/images/lts/card-dredging.jpg",
+        image: withLtsBasePath("/images/lts/card-dredging.jpg"),
         logo: {
-          src: "/images/lts/logo-dm.webp",
+          src: withLtsBasePath("/images/lts/logo-dm.webp"),
           alt: "NMDC Dredging & Marine",
         },
       },
       {
         title: "NMDC Energy",
         href: energyAppUrl,
-        image: "/images/lts/card-energy.jpg",
+        image: withLtsBasePath("/images/lts/card-energy.jpg"),
         logo: {
-          src: "/images/lts/logo-energy.webp",
+          src: withLtsBasePath("/images/lts/logo-energy.webp"),
           alt: "NMDC Energy",
         },
       },
       {
         title: "NMDC Infra",
         href: infraAppUrl,
-        image: "/images/lts/card-infra.jpg",
+        image: withLtsBasePath("/images/lts/card-infra.jpg"),
         logo: {
-          src: "/images/lts/logo-infra.webp",
+          src: withLtsBasePath("/images/lts/logo-infra.webp"),
           alt: "NMDC Infra",
         },
       },
       {
         title: "NMDC Product Highlight",
         href: "#product-highlight",
-        image: "/images/lts/card-product.jpg",
+        image: withLtsBasePath("/images/lts/card-product.jpg"),
       },
     ],
   },
@@ -117,14 +117,14 @@ export const nmdcLtsContent = {
     backHref: "/",
     hero: {
       background: {
-        src: "/images/lts/at-glance-hero.jpg",
+        src: withLtsBasePath("/images/lts/at-glance-hero.jpg"),
         alt: "LTS vessels at sunset",
       },
       eyebrow: "NMDC LTS",
       title: "At a Glance",
       readMoreLabel: "Read more....",
       image: {
-        src: "/images/lts/at-glance-vessel.jpg",
+        src: withLtsBasePath("/images/lts/at-glance-vessel.jpg"),
         alt: "AL ALIA support vessel at sea",
       },
       paragraphs: [
@@ -138,7 +138,7 @@ export const nmdcLtsContent = {
         {
           title: "Vessel Chartering",
           image: {
-            src: "/images/lts/capability-vessel-chartering.jpg",
+            src: withLtsBasePath("/images/lts/capability-vessel-chartering.jpg"),
             alt: "Offshore support vessel and barge",
           },
           description:
@@ -147,7 +147,7 @@ export const nmdcLtsContent = {
         {
           title: "Towing Services",
           image: {
-            src: "/images/lts/capability-towing-services.jpg",
+            src: withLtsBasePath("/images/lts/capability-towing-services.jpg"),
             alt: "Tug vessels coordinating towing services",
           },
           description:
@@ -156,7 +156,7 @@ export const nmdcLtsContent = {
         {
           title: "Integrated Logistics",
           image: {
-            src: "/images/lts/capability-integrated-logistics.jpg",
+            src: withLtsBasePath("/images/lts/capability-integrated-logistics.jpg"),
             alt: "Support vessel and workboat at sea",
           },
           description:
@@ -165,7 +165,7 @@ export const nmdcLtsContent = {
         {
           title: "Technical Services",
           image: {
-            src: "/images/lts/capability-technical-services.jpg",
+            src: withLtsBasePath("/images/lts/capability-technical-services.jpg"),
             alt: "Technical service crew on vessel deck",
           },
           description:
@@ -177,7 +177,7 @@ export const nmdcLtsContent = {
   marineVessels: {
     hero: {
       background: {
-        src: "/images/lts/marine-vessels-hero.png",
+        src: withLtsBasePath("/images/lts/marine-vessels-hero.png"),
         alt: "Marine vessel and tugboat working offshore at sunrise",
       },
       title: {
@@ -190,7 +190,7 @@ export const nmdcLtsContent = {
         title: "Multicat M-21",
         theme: "dark",
         image: {
-          src: "/images/lts/marine-vessel-multicat.png",
+          src: withLtsBasePath("/images/lts/marine-vessel-multicat.png"),
           alt: "Multicat M-21 vessel illustration",
         },
         description:
@@ -212,7 +212,7 @@ export const nmdcLtsContent = {
         title: "Pushy Cat - P14 & Pushy Cat - P15",
         theme: "light",
         image: {
-          src: "/images/lts/marine-vessel-pushy-cat.png",
+          src: withLtsBasePath("/images/lts/marine-vessel-pushy-cat.png"),
           alt: "Pushy Cat workboat illustration",
         },
         description:
@@ -233,7 +233,7 @@ export const nmdcLtsContent = {
         title: "Tug Boat - T9",
         theme: "dark",
         image: {
-          src: "/images/lts/marine-vessel-tug-boat.png",
+          src: withLtsBasePath("/images/lts/marine-vessel-tug-boat.png"),
           alt: "Tug Boat T9 vessel illustration",
         },
         description:
@@ -257,11 +257,11 @@ export const nmdcLtsContent = {
   whipstockSystem: {
     hero: {
       desktopBackground: {
-        src: "/images/lts/whipstock-hero-desktop.png",
+        src: withLtsBasePath("/images/lts/whipstock-hero-desktop.png"),
         alt: "Tug vessel towing a barge at sea",
       },
       mobileBackground: {
-        src: "/images/lts/whipstock-hero-mobile.png",
+        src: withLtsBasePath("/images/lts/whipstock-hero-mobile.png"),
         alt: "Marine vessel working offshore",
       },
       title: {
@@ -301,7 +301,7 @@ export const nmdcLtsContent = {
       },
     ],
     diagram: {
-      src: "/images/lts/whipstock-system-diagram.png",
+      src: withLtsBasePath("/images/lts/whipstock-system-diagram.png"),
       alt: "Whipstock system technical diagram",
     },
     specificationsLabel: "View Specifications",
@@ -309,7 +309,7 @@ export const nmdcLtsContent = {
   },
   footer: {
     background: {
-      src: "/images/lts/footer-lines.jpg",
+      src: withLtsBasePath("/images/lts/footer-lines.jpg"),
       alt: "Dark blue contour line background",
     },
     desktopLogo: {
@@ -317,7 +317,7 @@ export const nmdcLtsContent = {
       alt: "NMDC Group",
     },
     mobileLogo: {
-      src: "/images/lts/logo-dm.webp",
+      src: withLtsBasePath("/images/lts/logo-dm.webp"),
       alt: "NMDC Dredging & Marine",
     },
     businesses: [

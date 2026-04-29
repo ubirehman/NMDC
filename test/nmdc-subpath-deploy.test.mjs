@@ -51,6 +51,18 @@ test("standalone apps are built with subpath-aware Next.js asset paths", () => {
   }
 });
 
+test("subpath apps serve local public images directly instead of through the Next image optimizer", () => {
+  for (const app of subpathApps) {
+    const nextConfig = readFileSync(app.config, "utf8");
+
+    assert.match(
+      nextConfig,
+      /images:\s*\{\s*unoptimized:\s*true,\s*\}/s,
+      `${app.name} must not emit /_next/image URLs for basePath public images`,
+    );
+  }
+});
+
 test("Nginx subpath proxy config preserves prefixes for Next.js basePath apps without redirect loops", () => {
   const nginxPath = "deploy/nginx/nmdcgroups.conf";
   assert.equal(existsSync(nginxPath), true, `${nginxPath} should exist`);
@@ -92,6 +104,11 @@ test("subpath apps prefix raw public SVG and document assets", () => {
   for (const file of rawAssetContentFiles) {
     const content = readFileSync(file, "utf8");
 
+    assert.doesNotMatch(
+      content,
+      /:\s*"\/images\//,
+      `${file} should route all public image assets through the app basePath helper`,
+    );
     assert.doesNotMatch(
       content,
       /:\s*"\/images\/[^"]+\.svg"/,

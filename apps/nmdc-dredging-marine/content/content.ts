@@ -7,7 +7,7 @@ const withDredgingMarineBasePath = (assetPath: string) =>
 export const nmdcDredgingMarineContent = {
   brand: {
     name: "NMDC Dredging & Marine",
-    logo: "/images/logo-dm.webp",
+    logo: withDredgingMarineBasePath("/images/logo-dm.webp"),
     mobileLogo: withDredgingMarineBasePath("/images/nmdc-group-logo.svg"),
     logoAlt: "NMDC Dredging & Marine"
   },
@@ -36,7 +36,7 @@ export const nmdcDredgingMarineContent = {
   home: {
     hero: {
       background: {
-        src: "/images/dm/home-dredger-ghasha.jpg",
+        src: withDredgingMarineBasePath("/images/dm/home-dredger-ghasha.jpg"),
         alt: "Dredging vessel operating at sea"
       },
       headline: {
@@ -55,27 +55,27 @@ export const nmdcDredgingMarineContent = {
       {
         title: "Overview",
         href: "/overview",
-        image: "/images/dm/overview-vessel.jpg"
+        image: withDredgingMarineBasePath("/images/dm/overview-vessel.jpg")
       },
       {
         title: "Marine Vessels",
         href: "/marine-vessels",
-        image: "/images/dm/vessel-al-mirfa.jpg"
+        image: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.jpg")
       },
       {
         title: "Capabilities",
         href: "/overview#capabilities",
-        image: "/images/dm/hydraulic-model-2.jpg"
+        image: withDredgingMarineBasePath("/images/dm/hydraulic-model-2.jpg")
       },
       {
         title: "Hydraulic\nPhysical Model",
         href: "/hydraulic-physical-model",
-        image: "/images/dm/hydraulic-model-1.jpg"
+        image: withDredgingMarineBasePath("/images/dm/hydraulic-model-1.jpg")
       },
       {
         title: "Caisson Method",
         href: "/caisson-method",
-        image: "/images/dm/caisson-installation.jpg"
+        image: withDredgingMarineBasePath("/images/dm/caisson-installation.jpg")
       }
     ]
   },
@@ -87,7 +87,7 @@ export const nmdcDredgingMarineContent = {
       "NMDC Dredging & Marine combines global expertise with cutting-edge technology to deliver dredging, reclamation and construction services of exceptional quality. Working across the energy, tourism and urban development sectors, we shape the marine environments around us. The company's expertise spans a wide range of services, including dredging, reclamation, geotechnical works, and marine logistics. Its Marine Civil Works division executes complex projects such as jetties, marinas, breakwaters, and man-made islands, ensuring superior craftsmanship and structural integrity. Advanced ground improvement techniques like vibro compaction and stone column installation enhance soil stability, while hydrographic and geophysical surveys guide projects from concept to completion."
     ],
     image: {
-      src: "/images/dm/vessel-al-mirfa.webp",
+      src: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.webp"),
       alt: "NMDC dredging vessel"
     },
     capabilities: {
@@ -98,31 +98,31 @@ export const nmdcDredgingMarineContent = {
           title: "Dredging & Reclamation",
           copy:
             "NMDC Dredging & Marine has risen to become the Middle East's leading provider of dredging and reclamation services. Our highly professional dredging operation harnesses innovative equipment and technology to deliver turnkey solutions for ports, harbors, artificial islands, beaches, land reclamation, intake and outfall dredging.",
-          image: "/images/dm/overview-vessel.jpg"
+          image: withDredgingMarineBasePath("/images/dm/overview-vessel.jpg")
         },
         {
           title: "Survey",
           copy:
             "As key players in our field, we know the importance of regular and reliable surveying. We conduct surveys before, during and after each project, led by a dedicated, highly experienced team.",
-          image: "/images/dm/hydraulic-model-1.jpg"
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-model-1.jpg")
         },
         {
           title: "Marine Construction",
           copy:
             "Our marine construction capabilities include breakwaters, revetments, groyne and related rock works, concrete armor protection, marina and pontoon construction, and sheet and tubular steel piling works. We also erect gravity quay walls, retaining and diaphragm walls, boat ramps, and slipways.",
-          image: "/images/dm/caisson-installation.jpg"
+          image: withDredgingMarineBasePath("/images/dm/caisson-installation.jpg")
         },
         {
           title: "Marine Logistics",
           copy:
             "We offer a wide range of marine logistics services, such as project logistics for transferring cargo, materials, and equipment from source to destination, along with offshore support services using a diverse fleet of vessels and barges.",
-          image: "/images/dm/vessel-sarb.jpg"
+          image: withDredgingMarineBasePath("/images/dm/vessel-sarb.jpg")
         },
         {
           title: "Geotechnical Works",
           copy:
             "We specialize in comprehensive ground improvement and geotechnical solutions, guiding projects from initial concept to final execution. We consistently surpass performance criteria, providing significant cost savings.",
-          image: "/images/dm/hydraulic-model-2.jpg",
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-model-2.jpg"),
           bullets: [
             "Vibro and Surface Compaction",
             "Vibro Replacement (Stone Columns)",
@@ -136,8 +136,8 @@ export const nmdcDredgingMarineContent = {
   marineVessels: {
     hero: {
       activeHref: "/marine-vessels",
-      image: "/images/dm/vessel-jannah.jpg",
-      mobileImage: "/images/dm/vessel-al-yassat.jpg",
+      image: withDredgingMarineBasePath("/images/dm/vessel-jannah.jpg"),
+      mobileImage: withDredgingMarineBasePath("/images/dm/vessel-al-yassat.jpg"),
       eyebrow: "NMDC Dredging and Marine",
       title: "Marine Vessels",
       copy: "Heavy Duty CSD | Date of Manufacturing 2001"
@@ -161,7 +161,7 @@ export const nmdcDredgingMarineContent = {
         slug: "al-yassat",
         name: "Al Yassat",
         type: "Heavy Duty CSDs",
-        image: "/images/dm/vessel-al-yassat.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-al-yassat.jpg"),
         specs: [
           ["Dredging Depth", "36.0 m"],
           ["Breadth", "28 m"],
@@ -169,8 +169,8 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "138 m"]
         ],
         detail: {
-          image: "/images/dm/vessel-al-yassat-detail.jpg",
-          heroImage: "/images/dm/vessel-al-yassat-detail.jpg",
+          image: withDredgingMarineBasePath("/images/dm/vessel-al-yassat-detail.jpg"),
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-al-yassat-detail.jpg"),
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing -",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-yassat.pdf"),
           classification: [
@@ -213,7 +213,7 @@ export const nmdcDredgingMarineContent = {
         slug: "al-sadr",
         name: "Al Sadr",
         type: "Heavy Duty CSDs",
-        image: "/images/dm/vessel-al-sadr.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-al-sadr.jpg"),
         specs: [
           ["Dredging Depth", "27.0 m"],
           ["Breadth", "20.30 m"],
@@ -221,8 +221,8 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "6.00 m"]
         ],
         detail: {
-          image: "/images/dm/vessel-al-sadr-detail.jpg",
-          heroImage: "/images/dm/vessel-al-sadr-detail.jpg",
+          image: withDredgingMarineBasePath("/images/dm/vessel-al-sadr-detail.jpg"),
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-al-sadr-detail.jpg"),
           heroMeta: "Heavy Duty CSD | Date of Manufacturing 1999",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-sadr.pdf"),
           classification: [
@@ -276,7 +276,7 @@ export const nmdcDredgingMarineContent = {
         slug: "al-mirfa",
         name: "Al Mirfa",
         type: "Heavy Duty CSDs",
-        image: "/images/dm/vessel-al-mirfa.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.jpg"),
         specs: [
           ["Dredging Depth", "20.0 m"],
           ["Breadth", "19.60 m"],
@@ -284,7 +284,7 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "4.90 m"]
         ],
         detail: {
-          heroImage: "/images/dm/vessel-al-yassat.jpg",
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-al-yassat.jpg"),
           heroMeta: "Heavy Duty CSD | Date of Manufacturing 2001",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/al-mirfa.pdf"),
           classification: [
@@ -324,7 +324,7 @@ export const nmdcDredgingMarineContent = {
         name: "Jananah",
         type: "Beavers",
         formalName: "Jannah",
-        image: "/images/dm/vessel-jannah.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-jannah.jpg"),
         specs: [
           ["Dredging Depth", "14.0 m"],
           ["Breadth", "8.55 m"],
@@ -332,8 +332,8 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "2.75 m"]
         ],
         detail: {
-          image: "/images/dm/vessel-jananah-detail.jpg",
-          heroImage: "/images/dm/vessel-jananah-detail.jpg",
+          image: withDredgingMarineBasePath("/images/dm/vessel-jananah-detail.jpg"),
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-jananah-detail.jpg"),
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2004",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/jananah.pdf"),
           classification: [
@@ -378,7 +378,7 @@ export const nmdcDredgingMarineContent = {
         slug: "sarb",
         name: "Sarb",
         type: "Backhoe Dredgers",
-        image: "/images/dm/vessel-sarb.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-sarb.jpg"),
         specs: [
           ["Dredging Depth", "25 m"],
           ["Breadth", "18 m"],
@@ -386,8 +386,8 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "4.5 m"]
         ],
         detail: {
-          image: "/images/dm/vessel-sarb-detail.jpg",
-          heroImage: "/images/dm/vessel-sarb-detail.jpg",
+          image: withDredgingMarineBasePath("/images/dm/vessel-sarb-detail.jpg"),
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-sarb-detail.jpg"),
           heroKicker: "Backhoe Dredger",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2020",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/sarb.pdf"),
@@ -444,7 +444,7 @@ export const nmdcDredgingMarineContent = {
         name: "Ghasha",
         type: "Hopper Dredger",
         formalName: "GHASHA",
-        image: "/images/dm/vessel-ghasha.jpg",
+        image: withDredgingMarineBasePath("/images/dm/vessel-ghasha.jpg"),
         specs: [
           ["Dredging Depth", "45 m"],
           ["Breadth", "25 m"],
@@ -452,8 +452,8 @@ export const nmdcDredgingMarineContent = {
           ["Depth", "7.6 m"]
         ],
         detail: {
-          image: "/images/dm/vessel-ghasha-detail.jpg",
-          heroImage: "/images/dm/vessel-ghasha-detail.jpg",
+          image: withDredgingMarineBasePath("/images/dm/vessel-ghasha-detail.jpg"),
+          heroImage: withDredgingMarineBasePath("/images/dm/vessel-ghasha-detail.jpg"),
           heroKicker: "Trailing Suction Hopper Dredger",
           heroMeta: "Cutter Suction Dredger, Non-Propulsion | Date of Manufacturing - 2020",
           specificationFile: withDredgingMarineBasePath("/documents/marine-vessels/ghasha.pdf"),
@@ -546,7 +546,7 @@ export const nmdcDredgingMarineContent = {
   hydraulicPhysicalModel: {
     hero: {
       activeHref: "/hydraulic-physical-model",
-      image: "/images/dm/hydraulic-center-hero.jpg",
+      image: withDredgingMarineBasePath("/images/dm/hydraulic-center-hero.jpg"),
       title: {
         neutral: "NMDC Dredging & marine",
         accent: "Costal & hydrodynamic center"
@@ -554,7 +554,7 @@ export const nmdcDredgingMarineContent = {
     },
     overview: {
       image: {
-        src: "/images/dm/hydraulic-center-overview.jpg",
+        src: withDredgingMarineBasePath("/images/dm/hydraulic-center-overview.jpg"),
         alt: "Coastal and hydrodynamic center physical model"
       },
       paragraphs: [
@@ -586,12 +586,12 @@ export const nmdcDredgingMarineContent = {
     media: [
       {
         type: "360",
-        image: "/images/dm/hydraulic-center-360.jpg",
+        image: withDredgingMarineBasePath("/images/dm/hydraulic-center-360.jpg"),
         alt: "Hydraulic physical model testing facility corridor"
       },
       {
         type: "video",
-        image: "/images/dm/hydraulic-center-video.jpg",
+        image: withDredgingMarineBasePath("/images/dm/hydraulic-center-video.jpg"),
         alt: "NMDC Dredging and Marine engineers reviewing hydraulic model testing"
       }
     ],
@@ -633,17 +633,17 @@ export const nmdcDredgingMarineContent = {
       items: [
         {
           title: "2D Flume Physical Modeling Test - Rubble mound Breakwater",
-          image: "/images/dm/hydraulic-test-rubble-breakwater.jpg",
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-test-rubble-breakwater.jpg"),
           alt: "Rubble mound breakwater physical model test"
         },
         {
           title: "2D Flume Physical Modeling Test - Coastal Protection",
-          image: "/images/dm/hydraulic-test-coastal-protection.jpg",
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-test-coastal-protection.jpg"),
           alt: "Coastal protection physical model test"
         },
         {
           title: "3D Basin Physical Modeling - Marina Rubble mound Breakwater",
-          image: "/images/dm/hydraulic-test-marina-breakwater.jpg",
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-test-marina-breakwater.jpg"),
           alt: "Marina rubble mound breakwater basin model"
         }
       ]
@@ -652,7 +652,7 @@ export const nmdcDredgingMarineContent = {
   caissonMethod: {
     hero: {
       activeHref: "/caisson-method",
-      image: "/images/dm/caisson-method-hero.jpg",
+      image: withDredgingMarineBasePath("/images/dm/caisson-method-hero.jpg"),
       alt: "Dredging vessel operating during caisson works"
     },
     overview: {
@@ -686,7 +686,7 @@ export const nmdcDredgingMarineContent = {
         }
       ],
       video: {
-        image: "/images/dm/caisson-method-video.jpg",
+        image: withDredgingMarineBasePath("/images/dm/caisson-method-video.jpg"),
         alt: "Caisson method video still"
       }
     },
@@ -705,7 +705,7 @@ export const nmdcDredgingMarineContent = {
       ]
     },
     carousel: {
-      image: "/images/dm/caisson-method-carousel.jpg",
+      image: withDredgingMarineBasePath("/images/dm/caisson-method-carousel.jpg"),
       alt: "Caisson construction platform at sea"
     }
   },
