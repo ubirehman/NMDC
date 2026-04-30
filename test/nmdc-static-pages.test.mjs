@@ -302,6 +302,8 @@ test("shared NMDC footer exposes the designed email columns", () => {
   assert.match(footer, /http:\/\/localhost:3123/);
   assert.match(footer, /href=\{link\.href\}/);
   assert.match(footer, /key=\{link\.label\}/);
+  assert.match(footer, /nmdcGroupOverviewHref/);
+  assert.match(footer, /link\.label === "Home"/);
   assert.match(footer, /mailto:\$\{email\.value\}/);
   assert.match(footer, /socialLinks/);
   assert.match(footer, /© Copyright, All rights reserved by NMDC Group\./);

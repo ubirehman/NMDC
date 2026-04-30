@@ -428,6 +428,7 @@ function InfraStatCard({
 
 function InfraFooter() {
   const footer = content.footer;
+  const footerNavigationLinks = footer.navigationLinks;
   const mobileFooterLinks = footer.mobileNavigationLinks;
 
   return (
@@ -453,12 +454,17 @@ function InfraFooter() {
             />
             <ul className="mt-10 grid gap-4 text-[15px] font-semibold leading-5 text-white md:mt-[58px]">
               {footer.businesses.map((business) => (
-                <li key={business.label} className="flex items-center gap-3">
-                  <span
-                    className={`size-3 rounded-full ${business.dotColor}`}
-                    aria-hidden="true"
-                  />
-                  {business.label}
+                <li key={business.label}>
+                  <Link
+                    href={business.href}
+                    className="flex items-center gap-3 transition-colors hover:text-infra-yellow"
+                  >
+                    <span
+                      className={`size-3 rounded-full ${business.dotColor}`}
+                      aria-hidden="true"
+                    />
+                    {business.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -492,7 +498,7 @@ function InfraFooter() {
           className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
           <ul className="hidden gap-4 text-[15px] leading-5 text-white md:grid">
-            {content.nav.links.map((link) => (
+            {footerNavigationLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-infra-yellow">
                   {link.label}

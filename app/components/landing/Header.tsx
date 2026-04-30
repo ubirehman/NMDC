@@ -62,7 +62,7 @@ export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
                 key={link.label}
                 href={link.href}
                 aria-current={link.active ? "page" : undefined}
-                className={`text-[16px] font-bold leading-6 transition-colors ${
+                className={`shrink-0 whitespace-nowrap text-[16px] font-bold leading-6 transition-colors ${
                   link.active
                     ? "text-brand-sky text-primary-sky-blue"
                     : "text-white hover:text-brand-sky hover:text-primary-sky-blue"

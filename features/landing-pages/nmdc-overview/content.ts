@@ -1,5 +1,17 @@
 import type { NavLink } from "../../../app/components/landing/types";
 
+const dredgingMarineAppUrl =
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121";
+
+const energyAppUrl =
+  process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
+
+const infraAppUrl =
+  process.env.NEXT_PUBLIC_INFRA_APP_URL ?? "http://localhost:3122";
+
+const ltsAppUrl =
+  process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
+
 export const nmdcOverviewBrand = {
   name: "NMDC Group",
   logo: "/images/landing/nmdc-group-logo.svg",
@@ -87,10 +99,11 @@ export const footerColumns = [
   {
     title: "Business",
     links: [
-      { label: "Dredging & Marine", href: "#dredging" },
-      { label: "Energy", href: "#energy" },
-      { label: "Infra", href: "#infra" },
-      { label: "LTS", href: "#lts" },
+      { label: "Dredging & Marine", href: dredgingMarineAppUrl },
+      { label: "Energy", href: energyAppUrl },
+      { label: "Engineering", href: "/nmdc-overview" },
+      { label: "Infra", href: infraAppUrl },
+      { label: "LTS", href: ltsAppUrl },
     ],
   },
 ];

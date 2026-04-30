@@ -8,7 +8,7 @@ type BrandCardProps = {
 };
 
 export function BrandCard({ brand }: BrandCardProps) {
-  const isDredgingMarine = brand.id === "dm";
+  const isDredgingMarine = brand.id === "dms";
   const imagePositionClassName =
     {
       dm: "object-[42%_50%]",

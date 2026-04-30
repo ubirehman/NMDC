@@ -31,12 +31,17 @@ export function Footer() {
           />
           <ul className="mt-10 grid gap-4 text-[15px] font-semibold leading-5 text-white md:mt-[58px]">
             {footer.businesses.map((business) => (
-              <li key={business.label} className="flex items-center gap-3">
-                <span
-                  className={`size-3 rounded-full ${business.dotColor}`}
-                  aria-hidden="true"
-                />
-                {business.label}
+              <li key={business.label}>
+                <Link
+                  href={business.href}
+                  className="flex items-center gap-3 transition-colors hover:text-dm-cyan"
+                >
+                  <span
+                    className={`size-3 rounded-full ${business.dotColor}`}
+                    aria-hidden="true"
+                  />
+                  {business.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -70,7 +75,7 @@ export function Footer() {
           className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
           <ul className="grid gap-4 text-[15px] leading-5 text-white">
-            {content.nav.links.map((link) => (
+            {footer.navigationLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-dm-cyan">
                   {link.label}

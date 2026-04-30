@@ -10,10 +10,16 @@ const infraAppUrl =
 const energyAppUrl =
   process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
 
+const ltsAppUrl =
+  process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
+
 const ltsBasePath = process.env.NEXT_PUBLIC_LTS_BASE_PATH ?? "";
 
 const withLtsBasePath = (assetPath: string) =>
   ltsBasePath ? `${ltsBasePath}${assetPath}` : assetPath;
+
+const withGroupAppPath = (path: string) =>
+  `${groupAppUrl.replace(/\/$/, "")}${path}`;
 
 export const nmdcLtsContent = {
   brand: {
@@ -321,11 +327,15 @@ export const nmdcLtsContent = {
       alt: "NMDC Dredging & Marine",
     },
     businesses: [
-      { label: "NMDC Dredging & Marine", color: "#009fe3" },
-      { label: "NMDC Energy", color: "#10c66b" },
-      { label: "NMDC Engineering", color: "#ff7926" },
-      { label: "NMDC Infra", color: "#ffc414" },
-      { label: "NMDC LTS", color: "#ddc19c" },
+      { label: "NMDC Dredging & Marine", href: dredgingMarineAppUrl, color: "#009fe3" },
+      { label: "NMDC Energy", href: energyAppUrl, color: "#10c66b" },
+      {
+        label: "NMDC Engineering",
+        href: withGroupAppPath("/nmdc-overview"),
+        color: "#ff7926",
+      },
+      { label: "NMDC Infra", href: infraAppUrl, color: "#ffc414" },
+      { label: "NMDC LTS", href: ltsAppUrl, color: "#ddc19c" },
     ],
     connectLabel: "Let’s connect",
     socialLinks: [
@@ -341,18 +351,18 @@ export const nmdcLtsContent = {
       },
     ],
     desktopNav: [
-      { label: "Home", href: "/" },
-      { label: "NMDC Overview", href: "#nmdc-overview" },
-      { label: "People & Culture", href: "#people-culture" },
-      { label: "Technology & Ai", href: "#technology-ai" },
-      { label: "Safeen Subsea", href: "#safeen-subsea" },
+      { label: "Home", href: groupAppUrl },
+      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
+      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
+      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
+      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     mobileNav: [
-      { label: "Home", href: "/" },
-      { label: "Overview", href: "#overview" },
-      { label: "Marine Vessels", href: "#marine-vessels" },
-      { label: "Hydraulic Physical Model", href: "#hydraulic-physical-model" },
-      { label: "Caisson Method", href: "#caisson-method" },
+      { label: "Home", href: groupAppUrl },
+      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
+      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
+      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
+      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     emailTitle: "Email",
     contacts: [

@@ -10,10 +10,16 @@ const infraAppUrl =
 const ltsAppUrl =
   process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
 
+const energyAppUrl =
+  process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
+
 const energyBasePath = process.env.NEXT_PUBLIC_ENERGY_BASE_PATH ?? "";
 
 const withEnergyBasePath = (assetPath: string) =>
   energyBasePath ? `${energyBasePath}${assetPath}` : assetPath;
+
+const withGroupAppPath = (path: string) =>
+  `${groupAppUrl.replace(/\/$/, "")}${path}`;
 
 export const nmdcEnergyContent = {
   brand: {
@@ -592,11 +598,19 @@ export const nmdcEnergyContent = {
       alt: "",
     },
     businesses: [
-      { label: "NMDC Dredging & Marine", dotColor: "bg-[#18a7e0]" },
-      { label: "NMDC Energy", dotColor: "bg-energy-green" },
-      { label: "NMDC Engineering", dotColor: "bg-[#ff8730]" },
-      { label: "NMDC Infra", dotColor: "bg-[#ffce0b]" },
-      { label: "NMDC LTS", dotColor: "bg-[#dfc7a5]" },
+      {
+        label: "NMDC Dredging & Marine",
+        href: dredgingMarineAppUrl,
+        dotColor: "bg-[#18a7e0]",
+      },
+      { label: "NMDC Energy", href: energyAppUrl, dotColor: "bg-energy-green" },
+      {
+        label: "NMDC Engineering",
+        href: withGroupAppPath("/nmdc-overview"),
+        dotColor: "bg-[#ff8730]",
+      },
+      { label: "NMDC Infra", href: infraAppUrl, dotColor: "bg-[#ffce0b]" },
+      { label: "NMDC LTS", href: ltsAppUrl, dotColor: "bg-[#dfc7a5]" },
     ],
     connect: {
       label: "Let's connect",
@@ -615,12 +629,19 @@ export const nmdcEnergyContent = {
       },
     ],
     navigationLabel: "Footer navigation",
+    navigationLinks: [
+      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
+      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
+      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
+      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
+    ],
     mobileNavigationLinks: [
-      { label: "Home", href: "/" },
-      { label: "NMDC Overview", href: "/overview" },
-      { label: "People & Culture", href: "#" },
-      { label: "Technology & Ai", href: "#" },
-      { label: "Safeen Subsea", href: "#" },
+      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
+      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
+      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
+      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     emailTitle: "Email",
     emails: [

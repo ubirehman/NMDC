@@ -23,5 +23,10 @@ test("standalone project desktop headers center nav tabs like the NMDC Group hea
       /md:flex md:items-center md:justify-center/,
       `${name} desktop nav should align nav links around the center point`,
     );
+    assert.match(
+      source,
+      /shrink-0 whitespace-nowrap/,
+      `${name} desktop nav links should stay on one line at tablet desktop widths`,
+    );
   }
 });

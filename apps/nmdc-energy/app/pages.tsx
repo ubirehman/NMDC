@@ -1462,7 +1462,8 @@ function EnergyTechnologySection() {
 
 function EnergyFooter() {
   const footer = content.footer;
-  const mobileFooterLinks = footer.mobileNavigationLinks ?? content.nav.links;
+  const footerNavigationLinks = footer.navigationLinks;
+  const mobileFooterLinks = footer.mobileNavigationLinks ?? footerNavigationLinks;
 
   return (
     <footer className="relative isolate overflow-hidden bg-energy-deep-navy px-5 py-10 text-white md:px-10 md:py-[64px]">
@@ -1489,12 +1490,17 @@ function EnergyFooter() {
             />
             <ul className="mt-10 grid gap-5 text-[21px] font-bold leading-7 text-white md:mt-[58px] md:gap-4 md:text-[15px] md:leading-5">
               {footer.businesses.map((business) => (
-                <li key={business.label} className="flex items-center gap-4 md:gap-3">
-                  <span
-                    className={`size-3 shrink-0 rounded-full ${business.dotColor}`}
-                    aria-hidden="true"
-                  />
-                  {business.label}
+                <li key={business.label}>
+                  <Link
+                    href={business.href}
+                    className="flex items-center gap-4 transition-colors hover:text-energy-green md:gap-3"
+                  >
+                    <span
+                      className={`size-3 shrink-0 rounded-full ${business.dotColor}`}
+                      aria-hidden="true"
+                    />
+                    {business.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -1529,7 +1535,7 @@ function EnergyFooter() {
           className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
           <ul className="hidden gap-6 text-[22px] font-normal leading-7 text-white md:grid md:gap-4 md:text-[15px] md:leading-5">
-            {content.nav.links.map((link) => (
+            {footerNavigationLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-energy-green">
                   {link.label}

@@ -144,7 +144,9 @@ test("NMDC LTS at a glance follows the supplied desktop and mobile PDF design", 
   assert.match(content, /Let’s connect/);
   assert.match(content, /NMDC Dredging & Marine/);
   assert.match(content, /NMDC Overview/);
-  assert.match(content, /Hydraulic Physical Model/);
+  assert.match(content, /People & Culture/);
+  assert.match(content, /Technology & Ai/);
+  assert.match(content, /Safeen Subsea/);
   assert.match(content, /footer-lines\.jpg/);
   assert.match(content, /logo-group\.svg/);
   assert.match(content, /logo-dm\.webp/);

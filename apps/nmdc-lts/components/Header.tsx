@@ -62,7 +62,7 @@ export function Header({ links }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 aria-current={link.active ? "page" : undefined}
-                className={`text-[17px] font-bold leading-6 transition-colors ${
+                className={`shrink-0 whitespace-nowrap text-[17px] font-bold leading-6 transition-colors ${
                   link.active ? "text-lts-tan" : "text-white hover:text-lts-tan"
                 }`}
               >

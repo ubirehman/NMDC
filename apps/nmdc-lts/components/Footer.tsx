@@ -6,16 +6,18 @@ function BusinessList() {
   return (
     <ul className="space-y-[27px] md:space-y-[26px]">
       {content.footer.businesses.map((business) => (
-        <li
-          key={business.label}
-          className="flex items-center gap-[17px] text-[20px] font-bold leading-6 text-white md:text-[16px] md:leading-5"
-        >
-          <span
-            className="size-[12px] rounded-full md:size-[13px]"
-            style={{ backgroundColor: business.color }}
-            aria-hidden="true"
-          />
-          {business.label}
+        <li key={business.label}>
+          <Link
+            href={business.href}
+            className="flex items-center gap-[17px] text-[20px] font-bold leading-6 text-white transition-colors hover:text-lts-tan md:text-[16px] md:leading-5"
+          >
+            <span
+              className="size-[12px] rounded-full md:size-[13px]"
+              style={{ backgroundColor: business.color }}
+              aria-hidden="true"
+            />
+            {business.label}
+          </Link>
         </li>
       ))}
     </ul>
