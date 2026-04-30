@@ -187,6 +187,10 @@ test("D&M hydraulic physical model page follows the Coastal and Hydrodynamic PDF
   assert.match(page, /HydraulicInfoCard/);
   assert.match(page, /HydraulicCapabilityCard/);
   assert.match(page, /HydraulicMediaFrame/);
+  assert.match(page, /my\.matterport\.com\/show\/\?m=rMCdYNJoynP/);
+  assert.match(page, /title="NMDC D&M Coastal and Hydrodynamic Center 3D tour"/);
+  assert.match(page, /allow="fullscreen; xr-spatial-tracking"/);
+  assert.doesNotMatch(page, />\s*sada\s*</);
   assert.match(page, /hydraulic\.media/);
   assert.match(page, /hydraulic\.overview\.infoCards/);
   assert.match(page, /hydraulic\.testingFacilities\.items/);

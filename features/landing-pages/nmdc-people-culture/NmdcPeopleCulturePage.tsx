@@ -121,7 +121,7 @@ export function NmdcPeopleCulturePage() {
                     </div>
                     {index === maharaSections.length - 1 ? (
                       <Link
-                        href="/nmdc-group/people-and-culture/mahara-fresh-graduate-development-program"
+                        href="/people-and-culture/mahara-fresh-graduate-development-program"
                         className="mt-2 inline-flex text-[15px] font-bold leading-none text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[18px]"
                       >
                         Read more...
@@ -257,7 +257,7 @@ function MobileMaharaCard() {
         {maharaSections[0].paragraphs[0]}
       </p>
       <Link
-        href="/nmdc-group/people-and-culture/mahara-fresh-graduate-development-program"
+        href="/people-and-culture/mahara-fresh-graduate-development-program"
         className="mt-8 inline-flex text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
       >
         Read more...

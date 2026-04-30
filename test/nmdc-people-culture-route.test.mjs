@@ -2,8 +2,11 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
-const peopleRoutePath = "app/nmdc-group/people-and-culture/page.tsx";
+const peopleRoutePath = "app/people-and-culture/page.tsx";
+const oldPeopleRoutePath = "app/nmdc-group/people-and-culture/page.tsx";
 const maharaRoutePath =
+  "app/people-and-culture/mahara-fresh-graduate-development-program/page.tsx";
+const oldMaharaRoutePath =
   "app/nmdc-group/people-and-culture/mahara-fresh-graduate-development-program/page.tsx";
 const peoplePagePath =
   "features/landing-pages/nmdc-people-culture/NmdcPeopleCulturePage.tsx";
@@ -14,7 +17,10 @@ const indexPath = "features/landing-pages/nmdc-people-culture/index.ts";
 const metadataPath = "features/landing-pages/nmdc-people-culture/metadata.ts";
 
 test("People & Culture read-more opens the Mahara detail page", () => {
+  assert.equal(existsSync(peopleRoutePath), true);
+  assert.equal(existsSync(oldPeopleRoutePath), false);
   assert.equal(existsSync(maharaRoutePath), true);
+  assert.equal(existsSync(oldMaharaRoutePath), false);
   assert.equal(existsSync(maharaPagePath), true);
 
   const peoplePage = readFileSync(peoplePagePath, "utf8");
@@ -26,11 +32,11 @@ test("People & Culture read-more opens the Mahara detail page", () => {
 
   assert.match(
     peoplePage,
-    /href="\/nmdc-group\/people-and-culture\/mahara-fresh-graduate-development-program"/,
+    /href="\/people-and-culture\/mahara-fresh-graduate-development-program"/,
   );
   assert.match(peoplePage, /Read more\.\.\./);
   assert.match(detailRoute, /NmdcMaharaFreshGraduatePage/);
-  assert.match(detailPage, /href="\/nmdc-group\/people-and-culture"/);
+  assert.match(detailPage, /href="\/people-and-culture"/);
   assert.match(detailPage, /Back/);
   assert.match(detailPage, /people-hero-boardroom\.jpg/);
   assert.match(content, /people-mahara-women\.jpg/);

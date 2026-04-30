@@ -585,11 +585,6 @@ export const nmdcDredgingMarineContent = {
     },
     media: [
       {
-        type: "360",
-        image: withDredgingMarineBasePath("/images/dm/hydraulic-center-360.jpg"),
-        alt: "Hydraulic physical model testing facility corridor"
-      },
-      {
         type: "video",
         image: withDredgingMarineBasePath("/images/dm/hydraulic-center-video.jpg"),
         alt: "NMDC Dredging and Marine engineers reviewing hydraulic model testing"

@@ -51,7 +51,7 @@ export function NmdcMaharaFreshGraduatePage() {
       <section className="bg-[#f5fcff] px-5 pb-16 pt-12 md:px-10 md:pb-[135px] md:pt-[104px]">
         <div className="mx-auto w-full max-w-[1240px]">
           <Link
-            href="/nmdc-group/people-and-culture"
+            href="/people-and-culture"
             className="inline-flex items-center gap-3 text-[18px] font-bold leading-6 text-[#24364e] transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[18px]"
           >
             <ArrowLeft className="size-6" />

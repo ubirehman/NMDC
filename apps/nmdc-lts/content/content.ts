@@ -107,7 +107,7 @@ export const nmdcLtsContent = {
       },
       {
         title: "NMDC Product Highlight",
-        href: "#product-highlight",
+        href: `${groupAppUrl}/nmdc-group/products`,
         image: withLtsBasePath("/images/lts/card-product.jpg"),
       },
     ],

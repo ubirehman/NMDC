@@ -21,10 +21,10 @@ export const nmdcGroupLandingContent: LandingContent = {
   nav: {
     links: [
       { label: "Home", href: "/", active: true },
-      { label: "NMDC Overview", href: "/nmdc-group/nmdc-overview" },
-      { label: "People & Culture", href: "/nmdc-group/people-and-culture" },
-      { label: "Technology", href: "/nmdc-group/technology" },
-      { label: "Safeen Subsea", href: "/nmdc-group/safeen-subsea" },
+      { label: "NMDC Overview", href: "/nmdc-overview" },
+      { label: "People & Culture", href: "/people-and-culture" },
+      { label: "Technology", href: "/technology" },
+      { label: "Safeen Subsea", href: "/safeen-subsea" },
     ],
   },
   hero: {
@@ -100,7 +100,7 @@ export const nmdcGroupLandingContent: LandingContent = {
     {
       id: "product",
       name: "NMDC Product Highlight",
-      href: "#product-highlight",
+      href: "/nmdc-group/products",
       image: {
         src: "/images/landing/card-product.webp",
         alt: "NMDC product highlight",

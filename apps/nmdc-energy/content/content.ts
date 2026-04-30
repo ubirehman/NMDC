@@ -672,7 +672,7 @@ export const nmdcEnergyContent = {
       },
       {
         title: "NMDC Product Highlight",
-        href: "/products",
+        href: `${groupAppUrl}/nmdc-group/products`,
         image: withEnergyBasePath("/images/energy/card-product.jpg"),
       },
     ],

@@ -1,7 +1,7 @@
 import { getNmdcNavLinks, nmdcBrand } from "../../../app/components/landing/nmdcShared";
 
 export const nmdcTechnologyBrand = nmdcBrand;
-export const nmdcTechnologyNavLinks = getNmdcNavLinks("/nmdc-group/technology");
+export const nmdcTechnologyNavLinks = getNmdcNavLinks("/technology");
 
 export const technologyHero = {
   title: "Technology & Ai",

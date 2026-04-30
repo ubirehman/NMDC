@@ -2,14 +2,17 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 
-const routePath = "app/nmdc-group/nmdc-overview/page.tsx";
-const atAGlanceRoutePath = "app/nmdc-group/nmdc-overview/at-a-glance/page.tsx";
+const routePath = "app/nmdc-overview/page.tsx";
+const oldRoutePath = "app/nmdc-group/nmdc-overview/page.tsx";
+const atAGlanceRoutePath = "app/nmdc-overview/at-a-glance/page.tsx";
+const oldAtAGlanceRoutePath = "app/nmdc-group/nmdc-overview/at-a-glance/page.tsx";
 const pagePath = "features/landing-pages/nmdc-overview/NmdcOverviewPage.tsx";
 const atAGlancePagePath = "features/landing-pages/nmdc-overview/NmdcAtAGlancePage.tsx";
 const contentPath = "features/landing-pages/nmdc-overview/content.ts";
 
-test("NMDC overview route exists under nmdc-group", () => {
+test("NMDC overview route exists at the root path", () => {
   assert.equal(existsSync(routePath), true);
+  assert.equal(existsSync(oldRoutePath), false);
   assert.match(readFileSync(routePath, "utf8"), /NmdcOverviewPage/);
 });
 
@@ -22,10 +25,11 @@ test("NMDC overview read-more opens the At a Glance detail page", () => {
   const detailPage = readFileSync(atAGlancePagePath, "utf8");
   const content = readFileSync(contentPath, "utf8");
 
-  assert.match(overviewPage, /href="\/nmdc-group\/nmdc-overview\/at-a-glance"/);
+  assert.equal(existsSync(oldAtAGlanceRoutePath), false);
+  assert.match(overviewPage, /href="\/nmdc-overview\/at-a-glance"/);
   assert.match(overviewPage, /Read more\.\.\./);
   assert.match(detailRoute, /NmdcAtAGlancePage/);
-  assert.match(detailPage, /href="\/nmdc-group\/nmdc-overview"/);
+  assert.match(detailPage, /href="\/nmdc-overview"/);
   assert.match(detailPage, /Back/);
   assert.match(content, /At a Glance/);
   assert.match(content, /A leading global EPC and dredging contractor/);

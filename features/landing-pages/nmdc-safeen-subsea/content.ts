@@ -2,7 +2,7 @@ import { getNmdcNavLinks, nmdcBrand } from "../../../app/components/landing/nmdc
 
 export const nmdcSafeenSubseaBrand = nmdcBrand;
 export const nmdcSafeenSubseaNavLinks = getNmdcNavLinks(
-  "/nmdc-group/safeen-subsea",
+  "/safeen-subsea",
 );
 
 export const safeenHero = {

@@ -877,6 +877,18 @@ export function HydraulicPhysicalModelPage() {
 
       <section className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-[96px]">
         <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
+          <div className="grid min-w-0 pb-10">
+            <div className="relative h-[280px] min-w-0 overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_28px_70px_rgba(0,0,0,0.32)] md:h-[650px] md:rounded-[20px]">
+              <iframe
+                src="https://my.matterport.com/show/?m=rMCdYNJoynP"
+                title="NMDC D&M Coastal and Hydrodynamic Center 3D tour"
+                allow="fullscreen; xr-spatial-tracking"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full border-0"
+              />
+            </div>
+          </div>
+
           <div className="grid min-w-0 gap-[42px] md:gap-[72px]">
             {hydraulic.media.map((item) => (
               <HydraulicMediaFrame key={item.image} item={item} />

@@ -72,6 +72,10 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(content, /Visit Us/);
   assert.match(content, /href: "\/key-highlights"/);
   assert.match(content, /NMDC Product Highlight/);
+  assert.match(
+    content,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/nmdc-group\/products`/s,
+  );
   assert.match(content, /NEXT_PUBLIC_NMDC_GROUP_APP_URL/);
   assert.match(content, /NEXT_PUBLIC_DREDGING_MARINE_APP_URL/);
   assert.match(content, /NEXT_PUBLIC_INFRA_APP_URL/);
@@ -80,7 +84,8 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(css, /--color-lts-tan:\s*#ddc19c;/);
   assert.match(page, /NmdcLtsHomePage/);
   assert.match(page, /LtsHomeCardRail/);
-  assert.match(page, /h-\[776px\] md:h-\[786px\]/);
+  assert.match(page, /min-h-\[max\(786px,100svh\)\]/);
+  assert.doesNotMatch(page, /<section className="relative isolate h-\[776px\] md:h-\[786px\]/);
   assert.match(page, /pt-\[136px\] md:absolute md:left-0 md:top-\[244px\]/);
   assert.match(page, /top-\[447px\] z-10 px-5 md:absolute md:bottom-\[82px\]/);
   assert.match(page, /group inline-flex items-center gap-\[3px\]/);

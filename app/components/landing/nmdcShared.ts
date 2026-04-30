@@ -8,10 +8,10 @@ export const nmdcBrand = {
 
 export const nmdcPageLinks = [
   { label: "Home", href: "/" },
-  { label: "NMDC Overview", href: "/nmdc-group/nmdc-overview" },
-  { label: "People & Culture", href: "/nmdc-group/people-and-culture" },
-  { label: "Technology", href: "/nmdc-group/technology" },
-  { label: "Safeen Subsea", href: "/nmdc-group/safeen-subsea" },
+  { label: "NMDC Overview", href: "/nmdc-overview" },
+  { label: "People & Culture", href: "/people-and-culture" },
+  { label: "Technology", href: "/technology" },
+  { label: "Safeen Subsea", href: "/safeen-subsea" },
 ];
 
 export function getNmdcNavLinks(activeHref: string): NavLink[] {

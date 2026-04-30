@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import sharp from "sharp";
 
 const header = readFileSync("app/components/landing/Header.tsx", "utf8");
 const brandCard = readFileSync("app/components/landing/BrandCard.tsx", "utf8");
@@ -59,6 +60,8 @@ test("header keeps Figma glass color fallback while using palette utilities", ()
 
 test("desktop header navigation uses the PDF-sized link typography", () => {
   assert.match(header, /text-\[16px\] font-bold leading-6/);
+  assert.match(header, /md:absolute md:left-1\/2 md:-translate-x-1\/2/);
+  assert.match(header, /md:flex md:items-center md:justify-center md:gap-6/);
 });
 
 test("mobile navigation is a left sliding drawer, not a dropdown", () => {
@@ -82,4 +85,21 @@ test("brand card logos are cropped into a larger label frame", () => {
   assert.match(brandCard, /h-10 w-\[118px\]/);
   assert.match(brandCard, /object-cover/);
   assert.doesNotMatch(brandCard, /max-h-7/);
+});
+
+test("NMDC Group homepage images use the latest PDF-extracted assets", async () => {
+  const expectedAssets = [
+    ["public/images/landing/hero-bg.webp", 4096, 2897],
+    ["public/images/landing/card-dm.webp", 4096, 2730],
+    ["public/images/landing/card-energy.webp", 4096, 2594],
+    ["public/images/landing/card-infra.webp", 4096, 2303],
+    ["public/images/landing/card-lts.webp", 4096, 4096],
+    ["public/images/landing/card-product.webp", 4096, 2731],
+  ];
+
+  for (const [asset, width, height] of expectedAssets) {
+    const metadata = await sharp(asset).metadata();
+    assert.equal(metadata.width, width, asset);
+    assert.equal(metadata.height, height, asset);
+  }
 });

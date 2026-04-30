@@ -2,7 +2,7 @@ import { getNmdcNavLinks, nmdcBrand } from "../../../app/components/landing/nmdc
 
 export const nmdcPeopleCultureBrand = nmdcBrand;
 export const nmdcPeopleCultureNavLinks = getNmdcNavLinks(
-  "/nmdc-group/people-and-culture",
+  "/people-and-culture",
 );
 
 export const emiratizationStats = [

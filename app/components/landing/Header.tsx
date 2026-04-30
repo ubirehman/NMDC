@@ -55,7 +55,7 @@ export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
 
           <nav
             aria-label="Primary"
-            className="hidden md:flex md:items-center md:gap-6"
+            className="hidden md:absolute md:left-1/2 md:-translate-x-1/2 md:flex md:items-center md:justify-center md:gap-6"
           >
             {links.map((link) => (
               <Link

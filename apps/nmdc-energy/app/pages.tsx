@@ -75,11 +75,11 @@ export function NmdcEnergyHomePage() {
 
   return (
     <main className="min-h-screen bg-energy-navy">
-      <section className="relative isolate h-[786px] overflow-hidden bg-energy-navy px-5 text-white md:px-10">
+      <section className="relative isolate min-h-[max(786px,100svh)] overflow-hidden bg-energy-navy px-5 text-white md:px-10">
         <EnergyBackground />
         <Header links={getEnergyNavLinks("/")} />
 
-        <div className="relative z-10 mx-auto h-full w-full max-w-[1240px]">
+        <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
           <div className="pt-[140px] md:absolute md:left-0 md:top-[188px] md:w-[670px] md:pt-0">
             <HomeHeadline />
 

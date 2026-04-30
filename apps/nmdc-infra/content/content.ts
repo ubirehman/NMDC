@@ -97,7 +97,7 @@ export const nmdcInfraContent = {
       },
       {
         title: "NMDC Product Highlight",
-        href: "/products",
+        href: `${groupAppUrl}/nmdc-group/products`,
         image: withInfraBasePath("/images/infra/card-product.jpg"),
       },
     ],

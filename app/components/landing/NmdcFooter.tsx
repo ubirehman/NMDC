@@ -9,10 +9,29 @@ import {
 
 type NmdcFooterProps = {
   variant?: "default" | "compact";
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    className?: string;
+  };
+  pageLinks?: Array<{
+    label: string;
+    href: string;
+  }>;
 };
 
-export function NmdcFooter({ variant = "default" }: NmdcFooterProps) {
+export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterProps) {
   const isCompact = variant === "compact";
+  const footerLogo = logo ?? {
+    src: nmdcBrand.logo,
+    alt: nmdcBrand.logoAlt,
+    width: 146,
+    height: 46,
+    className: "h-[54px] w-auto md:h-12",
+  };
+  const footerLinks = pageLinks ?? nmdcPageLinks;
 
   return (
     <footer
@@ -36,11 +55,11 @@ export function NmdcFooter({ variant = "default" }: NmdcFooterProps) {
       >
         <div>
           <Image
-            src={nmdcBrand.logo}
-            alt={nmdcBrand.logoAlt}
-            width={146}
-            height={46}
-            className="h-[54px] w-auto md:h-12"
+            src={footerLogo.src}
+            alt={footerLogo.alt}
+            width={footerLogo.width}
+            height={footerLogo.height}
+            className={footerLogo.className}
           />
           <ul className="mt-8 grid gap-5 text-[16px] font-semibold leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
             {nmdcBusinessLinks.map((link, index) => (
@@ -80,7 +99,7 @@ export function NmdcFooter({ variant = "default" }: NmdcFooterProps) {
           className="border-y border-white/12 py-8 md:border-y-0 md:py-0"
         >
           <ul className="grid gap-5 text-[16px] leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
-            {nmdcPageLinks.map((link) => (
+            {footerLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

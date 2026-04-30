@@ -25,16 +25,18 @@ export function BrandCard({ brand }: BrandCardProps) {
       lts: "h-[34px] w-[116px]",
     }[brand.id] ?? "h-10 w-[118px]";
   const logoImageClassName = brand.id === "lts" ? "object-contain" : "object-cover";
+  const cardThemeClassName = isDredgingMarine
+    ? "border-white hover:border-primary-sky-blue hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:border-primary-sky-blue active:shadow-[0_0_20px_0_rgba(41,183,227,0.58)] focus-visible:border-primary-sky-blue focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)]"
+    : "border-white drop-shadow-md hover:drop-shadow-white focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]";
+  const labelThemeClassName = isDredgingMarine
+    ? "group-hover:bg-primary-sky-blue group-focus-visible:bg-primary-sky-blue group-active:bg-primary-blue"
+    : "";
 
   return (
     <Link
       href={brand.href}
       aria-label={brand.name}
-      className={`group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${
-        isDredgingMarine
-          ? "border-white hover:border-primary-sky-blue hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] focus-visible:border-primary-sky-blue focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:border-primary-sky-blue active:shadow-[0_0_20px_0_rgba(41,183,227,0.82)]"
-          : "border-white drop-shadow-md hover:drop-shadow-white focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]"
-      }`}
+      className={`group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${cardThemeClassName}`}
     >
       <Image
         src={brand.image.src}
@@ -44,25 +46,8 @@ export function BrandCard({ brand }: BrandCardProps) {
         className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02] ${imagePositionClassName}`}
       />
 
-      {isDredgingMarine ? (
-        <div
-          className="absolute inset-0 bg-primary-sky-blue/0 transition-colors duration-200 group-hover:bg-primary-sky-blue/12 group-focus-visible:bg-primary-sky-blue/12 group-active:bg-primary-sky-blue/20"
-          aria-hidden="true"
-        />
-      ) : null}
-
-      {isDredgingMarine ? (
-        <span className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full border border-white/24 bg-[#05263b]/78 text-white opacity-0 shadow-[0_10px_24px_rgba(0,0,0,0.25)] backdrop-blur-[12px] transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100">
-          <ArrowRight className="size-4" />
-        </span>
-      ) : null}
-
       <div
-        className={`absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg px-2 backdrop-blur-[26.5px] transition-colors duration-200 ${
-          isDredgingMarine
-            ? "bg-glass-deep-navy-72 group-hover:bg-primary-sky-blue group-focus-visible:bg-primary-sky-blue group-active:bg-primary-blue"
-            : "bg-glass-deep-navy-72"
-        }`}
+        className={`absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px] transition-colors duration-200 ${labelThemeClassName}`}
       >
         {brand.logo ? (
           <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>

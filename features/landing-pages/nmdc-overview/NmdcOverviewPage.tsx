@@ -67,7 +67,7 @@ export function NmdcOverviewPage() {
                 growth and innovation with extensive industry expertise and
                 world-class assets.{" "}
                 <Link
-                  href="/nmdc-group/nmdc-overview/at-a-glance"
+                  href="/nmdc-overview/at-a-glance"
                   className="font-bold text-brand-sky transition-colors hover:text-primary-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
                 >
                   Read more...

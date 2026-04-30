@@ -35,7 +35,7 @@ export function NmdcAtAGlancePage() {
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-14 pt-[118px] md:pb-[56px] md:pt-[139px]">
           <Link
-            href="/nmdc-group/nmdc-overview"
+            href="/nmdc-overview"
             className="inline-flex items-center gap-3 text-[24px] font-bold leading-8 text-white transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[18px] md:leading-6"
           >
             <ArrowLeft className="size-8 md:size-6" />

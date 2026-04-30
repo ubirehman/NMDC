@@ -5,7 +5,7 @@ import test from "node:test";
 const pages = [
   {
     name: "people and culture",
-    route: "app/nmdc-group/people-and-culture/page.tsx",
+    route: "app/people-and-culture/page.tsx",
     feature: "features/landing-pages/nmdc-people-culture/NmdcPeopleCulturePage.tsx",
     content: "features/landing-pages/nmdc-people-culture/content.ts",
     component: "NmdcPeopleCulturePage",
@@ -18,7 +18,7 @@ const pages = [
   },
   {
     name: "technology",
-    route: "app/nmdc-group/technology/page.tsx",
+    route: "app/technology/page.tsx",
     feature: "features/landing-pages/nmdc-technology/NmdcTechnologyPage.tsx",
     content: "features/landing-pages/nmdc-technology/content.ts",
     component: "NmdcTechnologyPage",
@@ -31,7 +31,7 @@ const pages = [
   },
   {
     name: "safeen subsea",
-    route: "app/nmdc-group/safeen-subsea/page.tsx",
+    route: "app/safeen-subsea/page.tsx",
     feature: "features/landing-pages/nmdc-safeen-subsea/NmdcSafeenSubseaPage.tsx",
     content: "features/landing-pages/nmdc-safeen-subsea/content.ts",
     component: "NmdcSafeenSubseaPage",
@@ -99,8 +99,8 @@ test("inner NMDC pages follow the PDF section order", () => {
   assert.match(people, /px-\[15px\] py-5 md:hidden/);
   assert.match(people, /index === 0 \? "h-\[540px\]" : "h-\[320px\]"/);
   assert.match(people, /pb-\[87px\] pt-12 md:hidden/);
-  assert.match(people, /lg:grid-cols-\[minmax\(0,618px\)_minmax\(0,606px\)\]/);
-  assert.match(people, /lg:gap-4/);
+  assert.match(people, /md:grid-cols-\[minmax\(0,1fr\)_minmax\(0,1fr\)\]/);
+  assert.match(people, /md:gap-4/);
   assert.match(people, /md:min-h-\[1159px\]/);
   assert.match(people, /md:min-h-\[177px\]/);
   assert.match(people, /md:text-\[48px\]/);
@@ -142,7 +142,7 @@ test("NMDC Technology follows the supplied desktop PDF layout", () => {
   assert.match(technology, /md:h-\[487px\]/);
   assert.match(technologyDesign, /Technology &(?:amp; )?Ai/);
   assert.match(technologyDesign, /NMDC AI Hub - Empowering a Smarter, Safer and More/);
-  assert.match(technology, /lg:grid-cols-\[minmax\(0,609px\)_minmax\(0,609px\)\]/);
+  assert.match(technology, /md:grid-cols-2 md:gap-6/);
   assert.match(technologyDesign, /Digital Integration Across NMDC/);
   assert.match(technologyDesign, /bg-\[#062c45\].*Digital Integration Across NMDC/s);
   assert.match(technologyDesign, /Applications in Our AI Hub/);
@@ -227,14 +227,15 @@ test("landing navigation targets every implemented NMDC group page", () => {
   const groupContent = readFileSync("features/landing-pages/nmdc-group/content.ts", "utf8");
   const overviewContent = readFileSync("features/landing-pages/nmdc-overview/content.ts", "utf8");
   for (const href of [
-    "/nmdc-group/nmdc-overview",
-    "/nmdc-group/people-and-culture",
-    "/nmdc-group/technology",
-    "/nmdc-group/safeen-subsea",
+    "/nmdc-overview",
+    "/people-and-culture",
+    "/technology",
+    "/safeen-subsea",
   ]) {
     assert.match(groupContent, new RegExp(href));
     assert.match(overviewContent, new RegExp(href));
   }
+  assert.doesNotMatch(`${groupContent}\n${overviewContent}`, /\/nmdc-group\//);
 });
 
 test("shared NMDC footer exposes the designed email columns", () => {

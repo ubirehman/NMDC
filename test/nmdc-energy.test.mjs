@@ -71,11 +71,16 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(content, /Challenges/);
   assert.match(content, /energy sector.s evolving needs/);
   assert.match(content, /Visit Us/);
+  assert.match(
+    content,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/nmdc-group\/products`/s,
+  );
   assert.match(css, /--energy-green:\s*#00b765;/);
   assert.match(css, /--color-energy-green:\s*#00b765;/);
   assert.match(page, /NmdcEnergyHomePage/);
   assert.match(page, /EnergyHomeCardRail/);
-  assert.match(page, /h-\[786px\]/);
+  assert.match(page, /min-h-\[max\(786px,100svh\)\]/);
+  assert.doesNotMatch(page, /<section className="relative isolate h-\[786px\]/);
   assert.match(page, /md:text-\[48px\]/);
   assert.match(page, /text-energy-green/);
   assert.match(page, /bg-energy-green/);
