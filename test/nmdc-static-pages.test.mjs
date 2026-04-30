@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const pages = [
@@ -223,6 +223,49 @@ test("NMDC Safeen Subsea follows the supplied mobile PDF layout", () => {
   assert.match(safeen, /h-\[316px\].*md:h-\[480px\]/s);
 });
 
+test("NMDC Safeen Subsea bottom video streams from the public folder", () => {
+  const safeen = readFileSync(
+    "features/landing-pages/nmdc-safeen-subsea/NmdcSafeenSubseaPage.tsx",
+    "utf8",
+  );
+  const carouselPath =
+    "features/landing-pages/nmdc-safeen-subsea/SafeenVideoCarousel.tsx";
+  const carousel = existsSync(carouselPath)
+    ? readFileSync(carouselPath, "utf8")
+    : "";
+  const content = readFileSync(
+    "features/landing-pages/nmdc-safeen-subsea/content.ts",
+    "utf8",
+  );
+  const videoPaths = [
+    "public/videos/safeen-subsea-green.mp4",
+    "public/videos/safeen-subsea-rov.mp4",
+  ];
+
+  for (const videoPath of videoPaths) {
+    assert.equal(existsSync(videoPath), true, `${videoPath} should exist in public/videos`);
+    assert.ok(statSync(videoPath).size > 1_000_000, `${videoPath} should be the copied MP4 asset`);
+  }
+  assert.match(content, /src:\s*"\/videos\/safeen-subsea-green\.mp4"/);
+  assert.match(content, /src:\s*"\/videos\/safeen-subsea-rov\.mp4"/);
+  assert.match(content, /poster:\s*"\/images\/landing\/safeen-vessel\.jpg"/);
+  assert.match(content, /safeenVideos/);
+  assert.match(safeen, /SafeenVideoCarousel/);
+  assert.match(safeen, /videos=\{safeenVideos\}/);
+  assert.match(carousel, /"use client"/);
+  assert.match(carousel, /useState/);
+  assert.match(carousel, /translateX\(-\$\{activeIndex \* 100\}%\)/);
+  assert.match(carousel, /onClick=\{showPreviousVideo\}/);
+  assert.match(carousel, /onClick=\{showNextVideo\}/);
+  assert.match(carousel, /aria-label="Previous video"/);
+  assert.match(carousel, /aria-label="Next video"/);
+  assert.match(carousel, /<video/);
+  assert.match(carousel, /controls/);
+  assert.match(carousel, /preload="metadata"/);
+  assert.match(carousel, /src=\{video\.src\}/);
+  assert.doesNotMatch(`${content}\n${safeen}\n${carousel}`, /\/api\/video\//);
+});
+
 test("landing navigation targets every implemented NMDC group page", () => {
   const groupContent = readFileSync("features/landing-pages/nmdc-group/content.ts", "utf8");
   const overviewContent = readFileSync("features/landing-pages/nmdc-overview/content.ts", "utf8");
@@ -249,6 +292,17 @@ test("shared NMDC footer exposes the designed email columns", () => {
   assert.match(footer, /Commercial inquiries/);
   assert.match(footer, /Vendors registration/);
   assert.match(footer, /businessDotColors/);
+  assert.match(footer, /NEXT_PUBLIC_DREDGING_MARINE_APP_URL/);
+  assert.match(footer, /NEXT_PUBLIC_ENERGY_APP_URL/);
+  assert.match(footer, /NEXT_PUBLIC_INFRA_APP_URL/);
+  assert.match(footer, /NEXT_PUBLIC_LTS_APP_URL/);
+  assert.match(footer, /http:\/\/localhost:3121/);
+  assert.match(footer, /http:\/\/localhost:3124/);
+  assert.match(footer, /http:\/\/localhost:3122/);
+  assert.match(footer, /http:\/\/localhost:3123/);
+  assert.match(footer, /href=\{link\.href\}/);
+  assert.match(footer, /key=\{link\.label\}/);
+  assert.match(footer, /mailto:\$\{email\.value\}/);
   assert.match(footer, /socialLinks/);
   assert.match(footer, /© Copyright, All rights reserved by NMDC Group\./);
 });

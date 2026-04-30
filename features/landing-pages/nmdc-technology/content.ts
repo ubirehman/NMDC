@@ -84,5 +84,5 @@ export const technologyMedia = [
 
 export const technologyVideo = {
   poster: "/images/landing/technology-video.jpg",
-  sources: [{ src: "/videos/nmdc-group-overview.mp4", type: "video/mp4" }],
+  sources: [{ src: "/videos/safeen-subsea-rov.mp4", type: "video/mp4" }],
 };

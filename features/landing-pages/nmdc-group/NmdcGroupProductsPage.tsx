@@ -57,9 +57,11 @@ export function NmdcGroupProductsPage() {
         <div className="mx-auto w-full max-w-[1240px]">
           <div className="hidden md:grid md:grid-cols-3 md:gap-x-5 md:gap-y-5">
             {content.desktopProducts.map((product) => (
-              <article
+              <Link
                 key={product.title}
-                className="h-[274px] rounded-[13px] bg-[#092d42] p-6 shadow-[0_18px_42px_rgba(0,0,0,0.16)]"
+                href={product.href}
+                aria-label={`Open ${product.title}`}
+                className="group h-[274px] rounded-[13px] bg-[#092d42] p-6 shadow-[0_18px_42px_rgba(0,0,0,0.16)] transition duration-300 hover:-translate-y-1 hover:bg-[#0d3852] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
               >
                 <div className="relative h-[188px] overflow-hidden rounded-[10px]">
                   <Image
@@ -67,13 +69,13 @@ export function NmdcGroupProductsPage() {
                     alt={product.alt}
                     fill
                     sizes="352px"
-                    className="object-cover"
+                    className="object-cover transition duration-300 group-hover:scale-105"
                   />
                 </div>
-                <h2 className="mt-[19px] text-[18px] font-bold leading-6 text-white">
+                <h2 className="mt-[19px] text-[18px] font-bold leading-6 text-white transition-colors group-hover:text-primary-sky-blue">
                   {product.title}
                 </h2>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -92,12 +94,13 @@ export function NmdcGroupProductsPage() {
 
                 <div className="grid gap-[18px]">
                   {section.cards.map((card) => (
-                    <article
+                    <Link
                       key={card.title}
-                      className="min-w-0 overflow-hidden rounded-[12px] bg-[#00304a] px-4 py-[18px] text-center shadow-[0_20px_42px_rgba(0,0,0,0.18)]"
+                      href={card.href}
+                      className="group min-w-0 overflow-hidden rounded-[12px] bg-[#00304a] px-4 py-[18px] text-center shadow-[0_20px_42px_rgba(0,0,0,0.18)] transition duration-300 active:scale-[0.99]"
                     >
                       <h2
-                        className={`mx-auto max-w-[288px] break-words text-[17px] font-bold leading-[26px] ${card.accentClassName}`}
+                        className={`mx-auto max-w-[288px] break-words text-[17px] font-bold leading-[26px] transition-opacity group-active:opacity-80 ${card.accentClassName}`}
                       >
                         {card.title}
                       </h2>
@@ -125,7 +128,7 @@ export function NmdcGroupProductsPage() {
                           {card.description}
                         </p>
                       ) : null}
-                    </article>
+                    </Link>
                   ))}
                 </div>
               </section>

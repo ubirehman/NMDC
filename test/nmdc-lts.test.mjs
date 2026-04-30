@@ -74,7 +74,7 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(content, /NMDC Product Highlight/);
   assert.match(
     content,
-    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/nmdc-group\/products`/s,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
   );
   assert.match(content, /NEXT_PUBLIC_NMDC_GROUP_APP_URL/);
   assert.match(content, /NEXT_PUBLIC_DREDGING_MARINE_APP_URL/);

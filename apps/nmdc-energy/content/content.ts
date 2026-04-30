@@ -117,11 +117,20 @@ export const nmdcEnergyContent = {
       ],
     },
     video: {
-      image: {
-        src: withEnergyBasePath("/images/energy/overview-video.jpg"),
-        alt: "NMDC Energy vessel at sea",
-      },
-      playLabel: "Play NMDC Energy overview video",
+      videos: [
+        {
+          title: "NMDC Energy overview",
+          src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+          type: "video/mp4",
+          playLabel: "Play NMDC Energy overview video",
+        },
+        {
+          title: "NMDC Energy ROV operations",
+          src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
+          type: "video/mp4",
+          playLabel: "Play NMDC Energy ROV operations video",
+        },
+      ],
     },
     technology: {
       title: "Technology and Digital Transformation",
@@ -672,7 +681,7 @@ export const nmdcEnergyContent = {
       },
       {
         title: "NMDC Product Highlight",
-        href: `${groupAppUrl}/nmdc-group/products`,
+        href: `${groupAppUrl}/products`,
         image: withEnergyBasePath("/images/energy/card-product.jpg"),
       },
     ],

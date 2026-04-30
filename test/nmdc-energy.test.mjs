@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const energyFiles = [
@@ -13,6 +13,7 @@ const energyFiles = [
   "apps/nmdc-energy/app/globals.css",
   "apps/nmdc-energy/components/Header.tsx",
   "apps/nmdc-energy/components/EnergyHomeCardRail.tsx",
+  "apps/nmdc-energy/components/EnergyOverviewVideoPlayer.tsx",
   "apps/nmdc-energy/components/icons.tsx",
   "apps/nmdc-energy/content/content.ts",
   "apps/nmdc-energy/next.config.ts",
@@ -73,7 +74,7 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(content, /Visit Us/);
   assert.match(
     content,
-    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/nmdc-group\/products`/s,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
   );
   assert.match(css, /--energy-green:\s*#00b765;/);
   assert.match(css, /--color-energy-green:\s*#00b765;/);
@@ -153,6 +154,65 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(page, /md:grid-cols-3/);
   assert.match(page, /md:grid-cols-\[390px_minmax\(0,1fr\)\]/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Energy overview video arrows use the Energy themed outline controls", () => {
+  const player = readFileSync(
+    "apps/nmdc-energy/components/EnergyOverviewVideoPlayer.tsx",
+    "utf8",
+  );
+
+  assert.match(player, /aria-label="Previous video"[\s\S]*size-\[48px\][\s\S]*text-\[#8ca0b5\]/);
+  assert.match(player, /aria-label="Next video"[\s\S]*size-\[48px\][\s\S]*text-energy-green/);
+  assert.match(player, /<ArrowLeft className="size-6" \/>/);
+  assert.match(player, /<ArrowRight className="size-6" \/>/);
+  assert.doesNotMatch(player, /size-16/);
+  assert.doesNotMatch(player, /hover:bg-energy-green/);
+});
+
+test("NMDC Energy overview streams local videos with native Safeen-style controls", () => {
+  const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const player = readFileSync(
+    "apps/nmdc-energy/components/EnergyOverviewVideoPlayer.tsx",
+    "utf8",
+  );
+
+  for (const asset of [
+    "apps/nmdc-energy/public/videos/energy-overview-green.mp4",
+    "apps/nmdc-energy/public/videos/energy-overview-rov.mp4",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+    assert.ok(statSync(asset).size > 1_000_000, `${asset} should be a copied video asset`);
+  }
+
+  assert.match(content, /videos:\s*\[/);
+  assert.match(content, /energy-overview-green\.mp4/);
+  assert.match(content, /energy-overview-rov\.mp4/);
+  assert.match(content, /type:\s*"video\/mp4"/);
+  assert.doesNotMatch(content, /poster:\s*\{/);
+  assert.doesNotMatch(content, /videos:\s*\[[\s\S]*overview-video\.jpg/);
+  assert.match(page, /EnergyOverviewVideoPlayer/);
+  assert.match(page, /videos=\{video\.videos\}/);
+  assert.match(player, /"use client";/);
+  assert.match(player, /useRef<Array<HTMLVideoElement \| null>>/);
+  assert.match(player, /useState/);
+  assert.match(player, /translateX\(-\$\{activeIndex \* 100\}%\)/);
+  assert.match(player, /<video/);
+  assert.match(player, /\scontrols\s/);
+  assert.doesNotMatch(player, /controls=\{isPlaying\}/);
+  assert.match(player, /playsInline/);
+  assert.match(player, /preload="metadata"/);
+  assert.doesNotMatch(player, /poster=/);
+  assert.match(player, /src=\{video\.src\}/);
+  assert.doesNotMatch(player, /playVideo/);
+  assert.doesNotMatch(player, /setIsPlaying/);
+  assert.doesNotMatch(player, /onPlay/);
+  assert.doesNotMatch(player, /border-l-energy-green/);
+  assert.doesNotMatch(player, /absolute inset-0 grid place-items-center/);
+  assert.match(player, /onClick=\{showPreviousVideo\}/);
+  assert.match(player, /onClick=\{showNextVideo\}/);
+  assert.match(player, /aria-label=\{video\.playLabel\}/);
 });
 
 test("NMDC Energy overview read-more opens the At a Glance detail page", () => {

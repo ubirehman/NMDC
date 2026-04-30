@@ -17,66 +17,79 @@ export const nmdcGroupProductsContent = {
   desktopProducts: [
     {
       title: "Marine vessels",
+      href: "/products/marine-vessels",
       image: `${productsImageBase}/marine-vessels.webp`,
       alt: "NMDC marine vessel",
     },
     {
       title: "Mussafah Yard",
+      href: "/products/mussafah-yard",
       image: `${productsImageBase}/mussafah-yard.webp`,
       alt: "Mussafah Yard offshore module",
     },
     {
       title: "Coastal and Hydrodynamic Center",
+      href: "/products/coastal-hydrodynamic-center",
       image: `${productsImageBase}/coastal-hydrodynamic-center.webp`,
       alt: "Coastal and hydrodynamic testing basin",
     },
     {
       title: "Hail and Ghasha - GOP",
+      href: "/products/hail-ghasha-gop",
       image: `${productsImageBase}/hail-ghasha-gop.webp`,
       alt: "Hail and Ghasha GOP marine vessel",
     },
     {
       title: "Hail and Ghasha - PAU",
+      href: "/products/hail-ghasha-pau",
       image: `${productsImageBase}/hail-ghasha-pau.webp`,
       alt: "Hail and Ghasha PAU placeholder panel",
     },
     {
       title: "3D Printed Artificial Reefs",
+      href: "/products/3d-printed-artificial-reefs",
       image: `${productsImageBase}/3d-printed-artificial-reefs.webp`,
       alt: "3D printed artificial reef structure underwater",
     },
     {
       title: "Multicad - 21",
+      href: "/products/multicat-21",
       image: `${productsImageBase}/multicad-21.webp`,
       alt: "Multicad product placeholder panel",
     },
     {
       title: "Valve",
+      href: "/products/valve",
       image: `${productsImageBase}/valve.webp`,
       alt: "Valve product placeholder panel",
     },
     {
       title: "Pipe Coating Materials",
+      href: "/products/pipe-coating-materials",
       image: `${productsImageBase}/pipe-coating-materials.webp`,
       alt: "Pipe coating materials placeholder panel",
     },
     {
       title: "Whipstock System",
+      href: "/products/whipstock-system",
       image: `${productsImageBase}/whipstock-system.webp`,
       alt: "Whipstock system product render",
     },
     {
       title: "ESP Pump",
+      href: "/products/esp-pump",
       image: `${productsImageBase}/esp-pump.webp`,
       alt: "ESP pump product placeholder panel",
     },
     {
       title: "Safeen Green",
+      href: "/products/safeen-green",
       image: `${productsImageBase}/safeen-green.webp`,
       alt: "Safeen Green vessel",
     },
     {
       title: "Safeen NAV",
+      href: "/products/safeen-nav",
       image: `${productsImageBase}/safeen-nav.webp`,
       alt: "Safeen NAV positioning product",
     },
@@ -89,6 +102,7 @@ export const nmdcGroupProductsContent = {
       cards: [
         {
           title: "Marine Vessels and Its Capabilities",
+          href: "/products/marine-vessels",
           accentClassName: "text-primary-sky-blue",
           images: [
             {
@@ -101,6 +115,7 @@ export const nmdcGroupProductsContent = {
         },
         {
           title: "Coastal & Hydrodynamic Center",
+          href: "/products/coastal-hydrodynamic-center",
           accentClassName: "text-primary-sky-blue",
           images: [
             {
@@ -113,6 +128,7 @@ export const nmdcGroupProductsContent = {
         },
         {
           title: "Caissons Application",
+          href: "/products/caissons-application",
           accentClassName: "text-primary-sky-blue",
           images: [
             {
@@ -132,6 +148,7 @@ export const nmdcGroupProductsContent = {
       cards: [
         {
           title: "Mussafah Yard and Its Products",
+          href: "/products/mussafah-yard",
           accentClassName: "text-[#00bd66]",
           images: [
             {
@@ -149,6 +166,7 @@ export const nmdcGroupProductsContent = {
         {
           title:
             "Hail & Ghasha Development Project Offshore Facilities Ghasha Offshore Processing Plant ( GOP )",
+          href: "/products/hail-ghasha-gop",
           accentClassName: "text-[#00bd66]",
           images: [
             {
@@ -160,6 +178,7 @@ export const nmdcGroupProductsContent = {
         {
           title:
             "Hail & Ghasha Development Project Offshore Facilities Process Assembled Unit GH5121-PAU-01 Oil Stabilization",
+          href: "/products/hail-ghasha-pau",
           accentClassName: "text-[#00bd66]",
           images: [
             {
@@ -167,6 +186,19 @@ export const nmdcGroupProductsContent = {
               alt: "Hail and Ghasha PAU oil stabilization model",
             },
           ],
+        },
+        {
+          title: "ESP Pump",
+          href: "/products/esp-pump",
+          accentClassName: "text-[#00bd66]",
+          images: [
+            {
+              src: `${productsImageBase}/esp-pump.webp`,
+              alt: "ESP pump product display",
+            },
+          ],
+          description:
+            "The Emirates' first sovereign artificial-lift capability, designed, manufactured, tested and dispatched from Abu Dhabi.",
         },
       ],
     },
@@ -177,6 +209,7 @@ export const nmdcGroupProductsContent = {
       cards: [
         {
           title: "3D Printed Artificial Reefs",
+          href: "/products/3d-printed-artificial-reefs",
           accentClassName: "text-[#ffcf00]",
           images: [
             {
@@ -189,6 +222,7 @@ export const nmdcGroupProductsContent = {
         },
         {
           title: "Multicat 21 (M21) Vessel",
+          href: "/products/multicat-21",
           accentClassName: "text-[#ddc19c]",
           images: [
             {
@@ -200,7 +234,21 @@ export const nmdcGroupProductsContent = {
             "Muticat-21 is a versatile, high-capacity marine vessel designed for heavy-duty operations, combining strength, speed, and efficiency. Built for demanding tasks, it handles cargo, lifting, and marine support with unmatched reliability.",
         },
         {
+          title: "Safeen Green",
+          href: "/products/safeen-green",
+          accentClassName: "text-primary-sky-blue",
+          images: [
+            {
+              src: `${productsImageBase}/safeen-green.webp`,
+              alt: "Safeen Green unmanned vessel",
+            },
+          ],
+          description:
+            "Remotely operated unmanned vessel that collects high-quality geophysical and hydrographic data with reduced environmental impact.",
+        },
+        {
           title: "Safeen NAV",
+          href: "/products/safeen-nav",
           accentClassName: "text-primary-sky-blue",
           images: [
             {
@@ -220,6 +268,7 @@ export const nmdcGroupProductsContent = {
       cards: [
         {
           title: "Whipstock System",
+          href: "/products/whipstock-system",
           accentClassName: "text-primary-sky-blue",
           images: [
             {

@@ -53,10 +53,9 @@ export const overviewVideo = {
   eyebrow: "NMDC GROUP IN MOTION",
   title: "Engineering progress across marine and EPC operations.",
   copy: "Watch how NMDC Group combines marine assets, engineering expertise, and integrated delivery teams to execute complex projects across strategic markets.",
-  poster: "/images/landing/overview-video-vessel.jpg",
   sources: [
     {
-      src: "/videos/nmdc-group-overview.mp4",
+      src: "/videos/safeen-subsea-rov.mp4",
       type: "video/mp4",
     },
   ],

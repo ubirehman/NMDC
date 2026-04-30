@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
+import { EnergyOverviewVideoPlayer } from "../components/EnergyOverviewVideoPlayer";
 import { Header } from "../components/Header";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
 import { getEnergyNavLinks, nmdcEnergyContent as content } from "../content/content";
@@ -1364,44 +1365,7 @@ function EnergyOverviewVideo() {
   return (
     <section className="bg-white px-5 pt-[66px] text-energy-ink md:px-10 md:pt-[72px]">
       <div className="mx-auto w-full max-w-[1240px] border-t border-[#65727d] pt-[59px]">
-        <div className="relative h-[571px] overflow-hidden rounded-[18px] md:h-[609px] md:rounded-[22px]">
-          <Image
-            src={video.image.src}
-            alt={video.image.alt}
-            fill
-            loading="eager"
-            sizes="(min-width: 768px) 1240px, 100vw"
-            className="object-cover object-[52%_50%]"
-          />
-          <div
-            className="absolute inset-0 bg-[rgba(6,43,68,0.54)]"
-            aria-hidden="true"
-          />
-          <button
-            type="button"
-            aria-label={video.playLabel}
-            className="absolute left-1/2 top-1/2 grid size-[112px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/30 text-energy-green shadow-[0_16px_42px_rgba(0,0,0,0.28)] backdrop-blur-sm transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-energy-green md:size-[126px]"
-          >
-            <span className="ml-2 block h-0 w-0 border-y-[19px] border-l-[29px] border-y-transparent border-l-energy-green md:border-y-[22px] md:border-l-[34px]" />
-          </button>
-        </div>
-
-        <div className="mt-9 flex justify-center gap-6 md:mt-8">
-          <button
-            type="button"
-            aria-label="Previous video"
-            className="grid size-16 place-items-center rounded-full border border-[#c5d0dc] text-[#8ca0b5] transition-colors hover:border-energy-green hover:text-energy-green"
-          >
-            <ArrowLeft className="size-8" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next video"
-            className="grid size-16 place-items-center rounded-full border border-[#d9e2ea] text-energy-green transition-colors hover:border-energy-green hover:bg-energy-green hover:text-white"
-          >
-            <ArrowRight className="size-8" />
-          </button>
-        </div>
+        <EnergyOverviewVideoPlayer videos={video.videos} />
       </div>
     </section>
   );

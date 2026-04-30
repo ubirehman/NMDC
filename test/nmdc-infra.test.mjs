@@ -72,7 +72,7 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(content, /NMDC Product Highlight/);
   assert.match(
     content,
-    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/nmdc-group\/products`/s,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
   );
   assert.match(content, /href: "\/overview"/);
   assert.match(css, /--infra-yellow:\s*#ffcf00;/);

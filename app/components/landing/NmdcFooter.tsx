@@ -63,12 +63,17 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
           />
           <ul className="mt-8 grid gap-5 text-[16px] font-semibold leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
             {nmdcBusinessLinks.map((link, index) => (
-              <li key={link} className="flex items-center gap-3">
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-3 transition-colors hover:text-primary-sky-blue"
+                >
                 <span
                   className={`size-3 rounded-full ${businessDotColors[index]}`}
                   aria-hidden="true"
                 />
-                {link}
+                {link.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -120,7 +125,14 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
             {nmdcEmailLinks.map((email) => (
               <div key={email.label}>
                 <dt className="font-medium text-white">{email.label}</dt>
-                <dd className="mt-1 text-primary-sky-blue">{email.value}</dd>
+                <dd className="mt-1">
+                  <Link
+                    href={`mailto:${email.value}`}
+                    className="text-primary-sky-blue transition-colors hover:text-white"
+                  >
+                    {email.value}
+                  </Link>
+                </dd>
               </div>
             ))}
           </dl>

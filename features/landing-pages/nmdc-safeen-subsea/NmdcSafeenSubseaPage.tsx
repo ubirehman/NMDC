@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "../../../app/components/landing/Header";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-} from "../../../app/components/landing/icons";
+import { ArrowUpRight } from "../../../app/components/landing/icons";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
+import { SafeenVideoCarousel } from "./SafeenVideoCarousel";
 import {
   nmdcSafeenSubseaBrand,
   nmdcSafeenSubseaNavLinks,
@@ -15,7 +12,7 @@ import {
   safeenHero,
   safeenOverview,
   safeenProducts,
-  safeenVideo,
+  safeenVideos,
 } from "./content";
 
 type SafeenProduct = (typeof safeenProducts)[number];
@@ -147,45 +144,10 @@ export function NmdcSafeenSubseaPage() {
           </div>
 
           <div className="mt-10 md:mt-16">
-            <div className="relative overflow-hidden rounded-[20px] bg-primary-navy-blue">
-              <Image
-                src={safeenVideo.image}
-                alt={safeenVideo.alt}
-                width={1240}
-                height={480}
-                sizes="(min-width: 768px) 1240px, calc(100vw - 40px)"
-                className="h-[316px] w-full object-cover md:h-[480px]"
-              />
-              <button
-                type="button"
-                aria-label={safeenVideo.playLabel}
-                className="absolute inset-0 flex items-center justify-center bg-black/42 transition-colors hover:bg-black/32 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
-              >
-                <span className="flex size-20 items-center justify-center rounded-full bg-[rgba(7,48,59,0.54)] backdrop-blur-[8px] md:size-[88px]">
-                  <span
-                    aria-hidden="true"
-                    className="ml-1 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-primary-sky-blue"
-                  />
-                </span>
-              </button>
-            </div>
-
-            <div className="mt-7 flex justify-center gap-6">
-              <button
-                type="button"
-                aria-label="Previous product"
-                className="flex size-[48px] items-center justify-center rounded-full border border-content-200 text-primary-blue transition-colors hover:border-primary-sky-blue hover:text-primary-navy-blue"
-              >
-                <ArrowLeft className="size-6" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next product"
-                className="flex size-[48px] items-center justify-center rounded-full bg-primary-sky-blue text-primary-blue transition-colors hover:bg-primary-blue hover:text-white"
-              >
-                <ArrowRight className="size-6" />
-              </button>
-            </div>
+            <SafeenVideoCarousel
+              videos={safeenVideos}
+              videoClassName="h-[316px] w-full object-cover md:h-[480px]"
+            />
           </div>
         </div>
       </section>

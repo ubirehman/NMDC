@@ -93,14 +93,14 @@ export const nmdcGroupLandingContent: LandingContent = {
         alt: "NMDC LTS vessel",
       },
       logo: {
-        src: "/images/landing/logo-lts.svg",
+        src: "/images/landing/logo-lts.png",
         alt: "NMDC LTS",
       },
     },
     {
       id: "product",
       name: "NMDC Product Highlight",
-      href: "/nmdc-group/products",
+      href: "/products",
       image: {
         src: "/images/landing/card-product.webp",
         alt: "NMDC product highlight",

@@ -72,8 +72,21 @@ export const safeenProducts = [
   },
 ];
 
-export const safeenVideo = {
-  image: "/images/landing/safeen-vessel.jpg",
-  alt: "SAFEEN Surveyor vessel",
-  playLabel: "Play SAFEEN vessel video",
-};
+export const safeenVideos = [
+  {
+    title: "SAFEEN Green",
+    src: "/videos/safeen-subsea-green.mp4",
+    poster: "/images/landing/safeen-vessel.jpg",
+    alt: "SAFEEN Green vessel video",
+    playLabel: "Play SAFEEN Green video",
+  },
+  {
+    title: "ROV Operations",
+    src: "/videos/safeen-subsea-rov.mp4",
+    poster: "/images/landing/safeen-vessel.jpg",
+    alt: "ROV operations video",
+    playLabel: "Play ROV operations video",
+  },
+] as const;
+
+export const safeenVideo = safeenVideos[0];

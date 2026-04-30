@@ -1,5 +1,22 @@
 import type { NavLink } from "./types";
 
+const nmdcGroupAppUrl = process.env.NEXT_PUBLIC_NMDC_GROUP_APP_URL ?? "";
+
+const dredgingMarineAppUrl =
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121";
+
+const infraAppUrl =
+  process.env.NEXT_PUBLIC_INFRA_APP_URL ?? "http://localhost:3122";
+
+const ltsAppUrl =
+  process.env.NEXT_PUBLIC_LTS_APP_URL ?? "http://localhost:3123";
+
+const energyAppUrl =
+  process.env.NEXT_PUBLIC_ENERGY_APP_URL ?? "http://localhost:3124";
+
+const withNmdcGroupPath = (path: string) =>
+  nmdcGroupAppUrl ? `${nmdcGroupAppUrl.replace(/\/$/, "")}${path}` : path;
+
 export const nmdcBrand = {
   name: "NMDC Group",
   logo: "/images/landing/nmdc-group-logo.svg",
@@ -22,11 +39,11 @@ export function getNmdcNavLinks(activeHref: string): NavLink[] {
 }
 
 export const nmdcBusinessLinks = [
-  "NMDC Dredging & Marine",
-  "NMDC Energy",
-  "NMDC Engineering",
-  "NMDC Infra",
-  "NMDC LTS",
+  { label: "NMDC Dredging & Marine", href: dredgingMarineAppUrl },
+  { label: "NMDC Energy", href: energyAppUrl },
+  { label: "NMDC Engineering", href: withNmdcGroupPath("/nmdc-overview") },
+  { label: "NMDC Infra", href: infraAppUrl },
+  { label: "NMDC LTS", href: ltsAppUrl },
 ];
 
 export const nmdcEmailLinks = [

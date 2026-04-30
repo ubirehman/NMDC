@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const routePath = "app/nmdc-overview/page.tsx";
@@ -50,7 +50,7 @@ test("NMDC overview page matches the at-a-glance design sections", () => {
   assert.match(page, /<NmdcFooter/);
   assert.match(page, /overview-hero-sea\.jpg/);
   assert.match(page, /overview-map\.webp/);
-  assert.match(readFileSync(contentPath, "utf8"), /overview-video-vessel\.jpg/);
+  assert.match(readFileSync(contentPath, "utf8"), /safeen-subsea-rov\.mp4/);
   assert.match(page, /bg-white px-5 py-12 md:px-10 md:pb-\[125px\] md:pt-\[45px\]/);
   assert.match(page, /md:grid-cols-\[510px_694px\]/);
   assert.match(page, /md:h-\[829px\]/);
@@ -135,17 +135,29 @@ test("NMDC overview content has the five group business cards and four key figur
 
 test("NMDC overview video is self-hosted", () => {
   assert.equal(existsSync(contentPath), true);
+  assert.equal(
+    existsSync("public/videos/safeen-subsea-rov.mp4"),
+    true,
+    "public/videos/safeen-subsea-rov.mp4 should exist",
+  );
+  assert.ok(
+    statSync("public/videos/safeen-subsea-rov.mp4").size > 1_000_000,
+    "NMDC overview video should be a real copied video asset",
+  );
   const player = readFileSync(
     "features/landing-pages/nmdc-overview/OverviewVideoPlayer.tsx",
     "utf8",
   );
   const page = readFileSync(pagePath, "utf8");
   const content = readFileSync(contentPath, "utf8");
-  assert.match(content, /\/videos\/nmdc-group-overview\.mp4/);
-  assert.match(content, /\/images\/landing\/overview-video-vessel\.jpg/);
+  assert.match(content, /\/videos\/safeen-subsea-rov\.mp4/);
+  assert.doesNotMatch(content, /poster:\s*|overview-video-vessel\.jpg/);
   assert.match(player, /<video/);
   assert.match(player, /<source/);
+  assert.match(player, /\scontrols\s/);
+  assert.match(player, /preload="metadata"/);
+  assert.doesNotMatch(page, /poster=\{overviewVideo\.poster\}/);
+  assert.doesNotMatch(player, /playVideo|controls=\{isPlaying\}|border-l-primary-sky-blue/);
   assert.match(player, /max-w-\[1240px\]/);
-  assert.match(player, /aria-label="Play NMDC Group overview video"/);
   assert.doesNotMatch(page, /iframe|youtube\.com|vimeo\.com/i);
 });
