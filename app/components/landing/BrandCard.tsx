@@ -22,9 +22,11 @@ export function BrandCard({ brand }: BrandCardProps) {
       dm: "h-10 w-[118px]",
       energy: "h-10 w-[118px]",
       infra: "h-10 w-[118px]",
-      lts: "h-[34px] w-[116px]",
+      lts: "h-[34px] w-[124px]",
     }[brand.id] ?? "h-10 w-[118px]";
   const logoImageClassName = brand.id === "lts" ? "object-contain" : "object-cover";
+  const logoFrameOverflowClassName =
+    brand.id === "lts" ? "overflow-visible" : "overflow-hidden";
   const cardThemeClassName = isDredgingMarine
     ? "border-white hover:border-primary-sky-blue hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:border-primary-sky-blue active:shadow-[0_0_20px_0_rgba(41,183,227,0.58)] focus-visible:border-primary-sky-blue focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)]"
     : "border-white drop-shadow-md hover:drop-shadow-white focus-visible:outline-white focus-visible:shadow-[0_0_28px_0_rgba(255,255,255,0.86)]";
@@ -50,7 +52,7 @@ export function BrandCard({ brand }: BrandCardProps) {
         className={`absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px] transition-colors duration-200 ${labelThemeClassName}`}
       >
         {brand.logo ? (
-          <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>
+          <span className={`relative block shrink-0 ${logoFrameOverflowClassName} ${logoFrameClassName}`}>
             <Image
               src={brand.logo.src}
               alt={brand.logo.alt}

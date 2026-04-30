@@ -80,7 +80,7 @@ export const nmdcGroupLandingContent: LandingContent = {
         alt: "NMDC Infra construction site",
       },
       logo: {
-        src: "/images/landing/logo-infra.webp",
+        src: "/images/landing/logo-infra-new.png",
         alt: "NMDC Infra",
       },
     },

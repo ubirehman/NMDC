@@ -80,8 +80,11 @@ test("NMDC overview desktop order and geometry match the PDF design", () => {
   assert.match(page, /rounded-\[16px\] bg-\[rgba\(49,61,67,0\.88\)\]/);
   assert.match(page, /md:min-h-\[153px\] md:p-4/);
   assert.match(page, /md:mt-6 md:text-\[15px\] md:leading-5/);
+  assert.match(page, /h-10 w-\[124px\]/);
   assert.match(page, /h-8 w-\[104px\]/);
-  assert.match(page, /h-8 w-\[82px\]/);
+  assert.match(page, /h-8 w-\[88px\]/);
+  assert.match(page, /logo-engineering.*logo-lts/s);
+  assert.match(page, /object-contain/);
   assert.match(page, /md:h-\[829px\]/);
   assert.match(page, /md:pt-\[110px\]/);
   assert.match(player, /max-w-\[1240px\]/);
@@ -122,10 +125,11 @@ test("NMDC overview content has the five group business cards and four key figur
   assert.match(content, /logo-engineering\.svg/);
   assert.match(content, /NMDC Engineering/);
   assert.match(content, /Coastal and marine engineering consultancy/);
-  assert.match(content, /logo-infra\.webp/);
+  assert.match(content, /logo-infra\.png/);
   assert.match(content, /Construction technology and precast solutions/);
-  assert.match(content, /logo-lts\.svg/);
+  assert.match(content, /logo-lts-card\.svg/);
   assert.match(content, /Logistic and technical services operator/);
+  assert.doesNotMatch(cardsContent, /logo-infra\.webp|logo-lts\.png/);
   assert.doesNotMatch(cardsContent, /nmdc-group-logo\.svg/);
   assert.match(content, /74%/);
   assert.match(content, /25k/);

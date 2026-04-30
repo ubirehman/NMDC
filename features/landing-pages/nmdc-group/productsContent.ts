@@ -203,7 +203,7 @@ export const nmdcGroupProductsContent = {
       ],
     },
     {
-      logo: "/images/landing/logo-infra.webp",
+      logo: "/images/landing/logo-infra.png",
       logoAlt: "NMDC Infra",
       logoClassName: "h-[44px] w-auto",
       cards: [

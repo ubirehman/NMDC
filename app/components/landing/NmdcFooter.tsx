@@ -89,6 +89,8 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
                 <Link
                   key={link.label}
                   href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label={link.label}
                   className="flex size-8 items-center justify-center rounded-full bg-white text-[12px] font-bold text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white"
                 >
@@ -155,8 +157,14 @@ const businessDotColors = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", shortLabel: "f", href: "#" },
-  { label: "Instagram", shortLabel: "ig", href: "#" },
-  { label: "Twitter", shortLabel: "t", href: "#" },
-  { label: "LinkedIn", shortLabel: "in", href: "#" },
+  {
+    label: "LinkedIn",
+    shortLabel: "in",
+    href: "https://www.linkedin.com/company/nmdc-group/",
+  },
+  {
+    label: "Instagram",
+    shortLabel: "ig",
+    href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA",
+  },
 ];

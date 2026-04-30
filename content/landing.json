@@ -49,14 +49,14 @@
       "name": "NMDC Infra",
       "href": "#infra",
       "image": { "src": "/images/landing/card-infra.webp", "alt": "NMDC Infra construction site" },
-      "logo": { "src": "/images/landing/logo-infra.webp", "alt": "NMDC Infra" }
+      "logo": { "src": "/images/landing/logo-infra.png", "alt": "NMDC Infra" }
     },
     {
       "id": "lts",
       "name": "NMDC LTS",
       "href": "#lts",
       "image": { "src": "/images/landing/card-lts.webp", "alt": "NMDC LTS vessel" },
-      "logo": { "src": "/images/landing/logo-lts.svg", "alt": "NMDC LTS" }
+      "logo": { "src": "/images/landing/logo-lts-card.svg", "alt": "NMDC LTS" }
     },
     {
       "id": "product",

@@ -191,15 +191,23 @@ const keyFigureIcons = [
 ];
 
 function getOverviewLogoFrameClassName(logo: string) {
-  if (logo.includes("logo-engineering")) {
-    return "h-8 w-[82px]";
+  if (logo.includes("logo-dm") || logo.includes("logo-energy")) {
+    return "h-10 w-[124px]";
   }
 
-  return logo.includes("logo-lts") ? "h-8 w-[76px]" : "h-8 w-[104px]";
+  if (logo.includes("logo-engineering")) {
+    return "h-8 w-[88px]";
+  }
+
+  return "h-8 w-[104px]";
 }
 
 function getOverviewLogoFitClassName(logo: string) {
-  return logo.endsWith(".svg") ? "object-contain" : "object-cover";
+  if (logo.includes("logo-engineering") || logo.includes("logo-lts")) {
+    return "object-contain";
+  }
+
+  return "object-cover";
 }
 
 function IcvScoreIcon(props: SVGProps<SVGSVGElement>) {

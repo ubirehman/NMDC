@@ -62,6 +62,7 @@ test("desktop header navigation uses the PDF-sized link typography", () => {
   assert.match(header, /text-\[16px\] font-bold leading-6/);
   assert.match(header, /md:absolute md:left-1\/2 md:-translate-x-1\/2/);
   assert.match(header, /md:flex md:items-center md:justify-center md:gap-6/);
+  assert.match(header, /shrink-0 whitespace-nowrap/);
 });
 
 test("mobile navigation is a left sliding drawer, not a dropdown", () => {
@@ -83,6 +84,8 @@ test("NMDC Group landing matches the 1440x786 PDF artboard geometry", () => {
 test("brand card logos are cropped into a larger label frame", () => {
   assert.match(brandCard, /logoFrameClassName/);
   assert.match(brandCard, /h-10 w-\[118px\]/);
+  assert.match(brandCard, /lts: "h-\[34px\] w-\[124px\]"/);
+  assert.match(brandCard, /brand\.id === "lts" \? "overflow-visible" : "overflow-hidden"/);
   assert.match(brandCard, /object-cover/);
   assert.doesNotMatch(brandCard, /max-h-7/);
 });

@@ -52,7 +52,7 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
     "apps/nmdc-energy/public/images/energy/logo-group.svg",
     "apps/nmdc-energy/public/images/energy/logo-dm.png",
     "apps/nmdc-energy/public/images/energy/logo-infra.png",
-    "apps/nmdc-energy/public/images/energy/logo-lts.svg",
+    "apps/nmdc-energy/public/images/energy/logo-lts-card.svg",
     "apps/nmdc-energy/public/images/energy/card-group.jpg",
     "apps/nmdc-energy/public/images/energy/card-dredging.jpg",
     "apps/nmdc-energy/public/images/energy/card-infra.jpg",
@@ -96,12 +96,13 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(cards, /hover:drop-shadow-white/);
   assert.match(cards, /focus-visible:outline-white/);
   assert.match(cards, /focus-visible:shadow-\[0_0_28px_0_rgba\(255,255,255,0\.86\)\]/);
-  assert.match(cards, /relative block shrink-0 overflow-hidden/);
+  assert.match(cards, /logoFrameOverflowClassName/);
   assert.match(cards, /group: "h-\[32px\] w-\[102px\]"/);
   assert.match(cards, /dm: "h-\[30px\] w-\[94px\]"/);
   assert.match(cards, /infra: "h-\[30px\] w-\[96px\]"/);
-  assert.match(cards, /lts: "h-\[27px\] w-\[92px\]"/);
-  assert.match(cards, /sizes="102px"/);
+  assert.match(cards, /lts: "h-\[34px\] w-\[124px\]"/);
+  assert.match(cards, /cardId === "lts" \? "overflow-visible" : "overflow-hidden"/);
+  assert.match(cards, /sizes=\{cardId === "lts" \? "124px" : "102px"\}/);
   assert.match(cards, /group-hover:scale-\[1\.03\]/);
   assert.doesNotMatch(cards, /group-hover:bg-energy-green/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);

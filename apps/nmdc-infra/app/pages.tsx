@@ -475,6 +475,8 @@ function InfraFooter() {
                 <Link
                   key={link.label}
                   href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label={link.label}
                   className="grid size-8 place-items-center rounded-full bg-infra-yellow text-[12px] font-bold leading-none text-infra-ink transition-colors hover:bg-white md:size-9"
                 >

@@ -603,10 +603,16 @@ export const nmdcEnergyContent = {
       href: "#contact",
     },
     socialLinks: [
-      { label: "Facebook", href: "#", marker: "f" },
-      { label: "Instagram", href: "#", marker: "ig" },
-      { label: "X", href: "#", marker: "x" },
-      { label: "LinkedIn", href: "#", marker: "in" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/nmdc-group/",
+        marker: "in",
+      },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA",
+        marker: "ig",
+      },
     ],
     navigationLabel: "Footer navigation",
     mobileNavigationLinks: [
@@ -675,7 +681,7 @@ export const nmdcEnergyContent = {
         href: ltsAppUrl,
         image: withEnergyBasePath("/images/energy/card-lts.jpg"),
         logo: {
-          src: withEnergyBasePath("/images/energy/logo-lts.svg"),
+          src: withEnergyBasePath("/images/energy/logo-lts-card.svg"),
           alt: "NMDC LTS",
         },
       },

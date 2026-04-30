@@ -49,7 +49,7 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
 
   for (const asset of [
     "apps/nmdc-infra/public/images/infra/home-hero.jpg",
-    "apps/nmdc-infra/public/images/infra/logo-infra.webp",
+    "apps/nmdc-infra/public/images/infra/logo-infra.png",
     "apps/nmdc-infra/public/images/infra/card-platform.jpg",
     "apps/nmdc-infra/public/images/infra/card-dredging.jpg",
     "apps/nmdc-infra/public/images/infra/card-energy.jpg",
@@ -70,6 +70,7 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(content, /Emarat Europe/);
   assert.match(content, /Visit Us/);
   assert.match(content, /NMDC Product Highlight/);
+  assert.match(content, /logo-lts-card\.svg/);
   assert.match(
     content,
     /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
@@ -95,6 +96,8 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(cards, /logoFrameClassName/);
   assert.match(cards, /dm:\s*"h-\[28px\] w-\[122px\]"/);
   assert.match(cards, /energy:\s*"h-\[28px\] w-\[122px\]"/);
+  assert.match(cards, /lts:\s*"h-\[34px\] w-\[124px\]"/);
+  assert.match(cards, /cardId === "lts" \? "overflow-visible" : "overflow-hidden"/);
   assert.match(cards, /cardId === "dm" \|\| cardId === "energy"/);
   assert.match(cards, /fill/);
   assert.match(cards, /hover:border-infra-yellow/);

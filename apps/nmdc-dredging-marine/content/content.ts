@@ -717,10 +717,16 @@ export const nmdcDredgingMarineContent = {
       href: "#contact"
     },
     socialLinks: [
-      { label: "Facebook", marker: "f", href: "#" },
-      { label: "Instagram", marker: "◎", href: "#" },
-      { label: "X", marker: "x", href: "#" },
-      { label: "LinkedIn", marker: "in", href: "#" }
+      {
+        label: "LinkedIn",
+        marker: "in",
+        href: "https://www.linkedin.com/company/nmdc-group/"
+      },
+      {
+        label: "Instagram",
+        marker: "ig",
+        href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA"
+      }
     ],
     navigationLabel: "Footer navigation",
     emailTitle: "Email",

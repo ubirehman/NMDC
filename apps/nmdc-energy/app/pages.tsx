@@ -1512,6 +1512,8 @@ function EnergyFooter() {
                 <Link
                   key={link.label}
                   href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
                   aria-label={link.label}
                   className="grid size-9 place-items-center rounded-full bg-[#effff6] text-[12px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white"
                 >

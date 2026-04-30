@@ -29,6 +29,8 @@ function SocialLinks() {
         <Link
           key={social.label}
           href={social.href}
+          target="_blank"
+          rel="noreferrer"
           aria-label={social.label}
           className="flex size-[48px] items-center justify-center rounded-full bg-[#d8edff] text-[18px] font-bold lowercase leading-none text-[#0072bc] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lts-tan md:size-[34px] md:text-[14px]"
         >

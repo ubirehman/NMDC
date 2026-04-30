@@ -18,7 +18,7 @@ const withInfraBasePath = (assetPath: string) =>
 export const nmdcInfraContent = {
   brand: {
     name: "NMDC Infra",
-    logo: withInfraBasePath("/images/infra/logo-infra.webp"),
+    logo: withInfraBasePath("/images/infra/logo-infra-new.png"),
     logoAlt: "NMDC Infra",
   },
   metadata: {
@@ -91,7 +91,7 @@ export const nmdcInfraContent = {
         href: ltsAppUrl,
         image: withInfraBasePath("/images/infra/card-lts.jpg"),
         logo: {
-          src: withInfraBasePath("/images/infra/logo-lts.svg"),
+          src: withInfraBasePath("/images/infra/logo-lts-card.svg"),
           alt: "NMDC LTS",
         },
       },
@@ -379,10 +379,16 @@ export const nmdcInfraContent = {
       href: "#contact",
     },
     socialLinks: [
-      { label: "Facebook", marker: "f", href: "#" },
-      { label: "Instagram", marker: "◎", href: "#" },
-      { label: "X", marker: "x", href: "#" },
-      { label: "LinkedIn", marker: "in", href: "#" },
+      {
+        label: "LinkedIn",
+        marker: "in",
+        href: "https://www.linkedin.com/company/nmdc-group/",
+      },
+      {
+        label: "Instagram",
+        marker: "ig",
+        href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA",
+      },
     ],
     navigationLabel: "Footer navigation",
     mobileNavigationLinks: [

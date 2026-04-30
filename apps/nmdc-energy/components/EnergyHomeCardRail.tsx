@@ -86,8 +86,10 @@ export function EnergyHomeCardRail({ cards }: EnergyHomeCardRailProps) {
               group: "h-[32px] w-[102px]",
               dm: "h-[30px] w-[94px]",
               infra: "h-[30px] w-[96px]",
-              lts: "h-[27px] w-[92px]",
+              lts: "h-[34px] w-[124px]",
             }[cardId] ?? "h-[30px] w-[96px]";
+          const logoFrameOverflowClassName =
+            cardId === "lts" ? "overflow-visible" : "overflow-hidden";
 
           return (
             <Link
@@ -106,12 +108,12 @@ export function EnergyHomeCardRail({ cards }: EnergyHomeCardRailProps) {
 
               <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[rgba(7,31,43,0.84)] px-2 backdrop-blur-[26.5px] transition-colors duration-200">
                 {card.logo ? (
-                  <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>
+                  <span className={`relative block shrink-0 ${logoFrameOverflowClassName} ${logoFrameClassName}`}>
                     <Image
                       src={card.logo.src}
                       alt={card.logo.alt}
                       fill
-                      sizes="102px"
+                      sizes={cardId === "lts" ? "124px" : "102px"}
                       className="object-contain transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100"
                     />
                   </span>

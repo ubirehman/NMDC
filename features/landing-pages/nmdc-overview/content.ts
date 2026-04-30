@@ -31,12 +31,12 @@ export const overviewCards = [
     copy: "Coastal and marine engineering consultancy, including marine, civil, hydraulics, geotechnical, and environmental engineering",
   },
   {
-    logo: "/images/landing/logo-infra.webp",
+    logo: "/images/landing/logo-infra-new.png",
     alt: "NMDC Infra",
     copy: "Construction technology and precast solutions",
   },
   {
-    logo: "/images/landing/logo-lts.svg",
+    logo: "/images/landing/logo-lts-card.svg",
     alt: "NMDC LTS",
     copy: "Logistic and technical services operator, including marine dredging technical expertise & equipment",
   },
@@ -95,4 +95,13 @@ export const footerColumns = [
   },
 ];
 
-export const footerSocialLinks = ["LinkedIn", "X", "YouTube"];
+export const footerSocialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/nmdc-group/",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA",
+  },
+];

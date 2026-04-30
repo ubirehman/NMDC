@@ -78,8 +78,10 @@ export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
               group: "h-[27px] w-[86px]",
               dm: "h-[28px] w-[122px]",
               energy: "h-[28px] w-[122px]",
-              lts: "h-[27px] w-[86px]",
+              lts: "h-[34px] w-[124px]",
             }[cardId] ?? "h-[28px] w-[96px]";
+          const logoFrameOverflowClassName =
+            cardId === "lts" ? "overflow-visible" : "overflow-hidden";
           const logoFitClassName =
             cardId === "dm" || cardId === "energy" ? "object-cover" : "object-contain";
 
@@ -105,12 +107,12 @@ export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
 
               <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[rgba(7,28,40,0.82)] px-2 backdrop-blur-[26.5px] transition-colors duration-200 group-hover:bg-infra-yellow group-focus-visible:bg-infra-yellow group-active:bg-infra-yellow">
                 {card.logo ? (
-                  <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>
+                  <span className={`relative block shrink-0 ${logoFrameOverflowClassName} ${logoFrameClassName}`}>
                     <Image
                       src={card.logo.src}
                       alt={card.logo.alt}
                       fill
-                      sizes="122px"
+                      sizes={cardId === "lts" ? "124px" : "122px"}
                       className={`${logoFitClassName} transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100`}
                     />
                   </span>

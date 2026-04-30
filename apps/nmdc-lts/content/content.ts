@@ -101,7 +101,7 @@ export const nmdcLtsContent = {
         href: infraAppUrl,
         image: withLtsBasePath("/images/lts/card-infra.jpg"),
         logo: {
-          src: withLtsBasePath("/images/lts/logo-infra.webp"),
+          src: withLtsBasePath("/images/lts/logo-infra.png"),
           alt: "NMDC Infra",
         },
       },
@@ -329,10 +329,16 @@ export const nmdcLtsContent = {
     ],
     connectLabel: "Let’s connect",
     socialLinks: [
-      { label: "Facebook", href: "#facebook", shortLabel: "f" },
-      { label: "Instagram", href: "#instagram", shortLabel: "ig" },
-      { label: "Twitter", href: "#twitter", shortLabel: "t" },
-      { label: "LinkedIn", href: "#linkedin", shortLabel: "in" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/nmdc-group/",
+        shortLabel: "in",
+      },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/nmdc_group?igsh=MWlqOXUxOGlza3h3ZA",
+        shortLabel: "ig",
+      },
     ],
     desktopNav: [
       { label: "Home", href: "/" },

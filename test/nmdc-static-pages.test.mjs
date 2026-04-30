@@ -278,7 +278,7 @@ test("landing navigation targets every implemented NMDC group page", () => {
     assert.match(groupContent, new RegExp(href));
     assert.match(overviewContent, new RegExp(href));
   }
-  assert.doesNotMatch(`${groupContent}\n${overviewContent}`, /\/nmdc-group\//);
+  assert.doesNotMatch(`${groupContent}\n${overviewContent}`, /href:\s*"\/nmdc-group\//);
 });
 
 test("shared NMDC footer exposes the designed email columns", () => {
