@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { DmVideoPlayer } from "../components/DmVideoPlayer";
 import { DmHomeCardRail } from "../components/DmHomeCardRail";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -224,23 +225,11 @@ function MediaPanel({
       }`}
     >
       <div className="relative">
-        <Image
-          src={image}
-          alt={title}
-          width={1240}
-          height={560}
-          className="h-[250px] w-full object-cover md:h-[430px]"
+        <DmVideoPlayer
+          src={content.videoSources[0].src}
+          ariaLabel={`Play ${title}`}
+          className="h-[250px] w-full bg-dm-navy object-cover md:h-[430px]"
         />
-        <button
-          type="button"
-          aria-label={`Play ${title}`}
-          className="absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/92 text-dm-blue shadow-[0_12px_34px_rgba(0,0,0,0.22)] transition-colors hover:bg-dm-cyan hover:text-white"
-        >
-          <span
-            className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-current"
-            aria-hidden="true"
-          />
-        </button>
       </div>
       <figcaption
         className={`px-4 py-3 text-sm font-bold uppercase leading-5 ${
@@ -745,42 +734,35 @@ function HydraulicMediaFrame({ item }: { item: HydraulicMediaData }) {
 
   return (
     <figure className="relative overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)]">
-      <Image
-        src={item.image}
-        alt={item.alt}
-        width={1240}
-        height={isVideo ? 520 : 390}
-        className={`w-full object-cover ${
-          isVideo
-            ? "h-[245px] object-[50%_43%] md:h-[430px]"
-            : "h-[188px] object-center md:h-[390px]"
-        }`}
-      />
-      <div
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.05)_0%,rgba(3,15,26,0.24)_100%)]"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        {isVideo ? (
-          <button
-            type="button"
-            aria-label="Play hydraulic physical model video"
-            className="flex size-14 items-center justify-center rounded-full bg-white/94 text-dm-blue shadow-[0_16px_34px_rgba(0,0,0,0.26)] transition-colors hover:bg-dm-cyan hover:text-white md:size-[78px]"
-          >
-            <span
-              className="ml-1 block h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-current md:border-y-[12px] md:border-l-[20px]"
-              aria-hidden="true"
-            />
-          </button>
-        ) : (
+      {isVideo ? (
+        <DmVideoPlayer
+          src={item.src}
+          ariaLabel={`Play ${item.alt}`}
+          className="h-[245px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[430px]"
+        />
+      ) : (
+        <>
+          <Image
+            src={item.image}
+            alt={item.alt}
+            width={1240}
+            height={390}
+            className="h-[188px] w-full object-cover object-center md:h-[390px]"
+          />
           <div
-            className="flex size-[72px] items-center justify-center rounded-full border-[3px] border-white bg-dm-deep-navy/42 text-[19px] font-bold leading-none text-white backdrop-blur-sm md:size-[96px] md:text-[26px]"
-            aria-label="360 view"
-          >
-            360
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.05)_0%,rgba(3,15,26,0.24)_100%)]"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="flex size-[72px] items-center justify-center rounded-full border-[3px] border-white bg-dm-deep-navy/42 text-[19px] font-bold leading-none text-white backdrop-blur-sm md:size-[96px] md:text-[26px]"
+              aria-label="360 view"
+            >
+              360
+            </div>
           </div>
-        )}
-      </div>
+        </>
+      )}
     </figure>
   );
 }
@@ -1054,26 +1036,12 @@ export function CaissonMethodPage() {
             ))}
           </div>
 
-          <figure className="relative mx-1 mt-10 overflow-hidden rounded-[20px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)] md:mx-0 md:mt-[42px] md:rounded-[14px]">
-            <Image
-              src={caisson.process.video.image}
-              alt={caisson.process.video.alt}
-              width={1240}
-              height={560}
-              sizes="(min-width: 768px) 1240px, 312px"
-              className="h-[260px] w-full object-cover object-[50%_43%] md:h-[560px]"
+          <figure className="mx-1 mt-10 overflow-hidden rounded-[20px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)] md:mx-0 md:mt-[42px] md:rounded-[14px]">
+            <DmVideoPlayer
+              src={caisson.process.video.src}
+              ariaLabel="Play Caisson Method video"
+              className="h-[260px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
             />
-            <div className="absolute inset-0 bg-black/32" aria-hidden="true" />
-            <button
-              type="button"
-              aria-label="Play Caisson Method video"
-              className="absolute left-1/2 top-1/2 flex size-[70px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dm-deep-navy/70 text-dm-cyan shadow-[0_16px_34px_rgba(0,0,0,0.26)] transition-colors hover:bg-dm-cyan hover:text-white md:size-[78px]"
-            >
-              <span
-                className="ml-1 block h-0 w-0 border-y-[9px] border-l-[15px] border-y-transparent border-l-current md:border-y-[12px] md:border-l-[20px]"
-                aria-hidden="true"
-              />
-            </button>
           </figure>
 
           <CaissonAdvantagesPanel

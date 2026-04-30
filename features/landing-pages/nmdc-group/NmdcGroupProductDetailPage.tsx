@@ -17,6 +17,10 @@ export function NmdcGroupProductDetailPage({
 }: {
   detail: NmdcGroupProductDetail;
 }) {
+  if (detail.slug === "marine-vessels") {
+    return <MarineVesselsDetailLayout detail={detail} />;
+  }
+
   if (detail.slug === "mussafah-yard") {
     return <MussafahYardDetailLayout detail={detail} />;
   }
@@ -79,6 +83,111 @@ export function NmdcGroupProductDetailPage({
 
       <NmdcFooter variant="compact" pageLinks={nmdcGroupProductFooterLinks} />
     </main>
+  );
+}
+
+function MarineVesselsDetailLayout({
+  detail,
+}: {
+  detail: Extract<NmdcGroupProductDetail, { slug: "marine-vessels" }>;
+}) {
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-[#082c40] text-white">
+      <section className="relative isolate overflow-hidden bg-[#082c40] px-5 pb-12 pt-[104px] md:min-h-[1728px] md:px-10 md:pb-[112px] md:pt-[64px]">
+        <div
+          className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,#082c40_0%,#082c40_64%,#051f33_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute right-[-150px] top-[230px] -z-10 h-[520px] w-[520px] rotate-[-34deg] bg-white/8 md:right-[-96px] md:top-[209px] md:h-[726px] md:w-[676px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-x-[-12%] bottom-[-7px] -z-10 h-[420px] bg-[repeating-linear-gradient(180deg,rgba(25,174,232,0.13)_0px,rgba(25,174,232,0.13)_1px,transparent_1px,transparent_8px)] opacity-50"
+          aria-hidden="true"
+        />
+
+        <div className="md:hidden">
+          <Header
+            brandName={nmdcGroupLandingContent.brand.name}
+            logo={nmdcGroupLandingContent.brand.logo}
+            logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+            links={nmdcGroupLandingContent.nav.links}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-[1240px]">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-3 text-[14px] font-bold leading-5 text-white transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[15px] md:leading-6"
+          >
+            <ArrowLeft className="size-5" />
+            Back
+          </Link>
+
+          <h1 className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]">
+            <span className={detail.accentClassName}>{detail.brandName}</span>
+            <span className="text-white">|</span>
+            <span className="min-w-0 break-words text-white">{detail.title}</span>
+          </h1>
+
+          <article className="mt-8 rounded-[8px] bg-[#22475b]/92 px-5 py-5 shadow-[0_24px_64px_rgba(0,0,0,0.14)] md:mt-[32px] md:min-h-[102px] md:rounded-[18px] md:px-6 md:py-6">
+            <div className="grid gap-4 text-[13px] font-medium leading-[21px] text-white md:text-[13px] md:leading-[20px]">
+              {detail.summary.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+
+          <div className="mt-8 grid gap-7 md:mt-[45px] md:grid-cols-3 md:gap-x-[27px] md:gap-y-[43px]">
+            {detail.vesselCards.map((vessel) => (
+              <MarineVesselCard key={vessel.name} vessel={vessel} />
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center md:mt-[100px]">
+            <ProductQrCode />
+          </div>
+        </div>
+      </section>
+
+      <NmdcFooter variant="compact" pageLinks={nmdcGroupProductFooterLinks} />
+    </main>
+  );
+}
+
+type MarineVesselCardData = Extract<
+  NmdcGroupProductDetail,
+  { slug: "marine-vessels" }
+>["vesselCards"][number];
+
+function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
+  return (
+    <article className="relative h-[360px] overflow-hidden rounded-[10px] bg-[#12394d] shadow-[0_22px_48px_rgba(0,0,0,0.18)] md:h-[421px]">
+      <Image
+        src={vessel.image}
+        alt={vessel.alt}
+        fill
+        sizes="(min-width: 768px) 386px, 100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-x-0 bottom-0 min-h-[132px] rounded-t-[16px] bg-[#22475b]/92 px-4 pb-4 pt-4 md:min-h-[154px] md:px-4 md:pb-4 md:pt-5">
+        <h2 className="text-center text-[14px] font-bold leading-5 text-primary-sky-blue md:text-[15px]">
+          {vessel.name}
+        </h2>
+        <p className="text-center text-[10px] font-medium leading-4 text-white md:text-[11px]">
+          {vessel.type}
+        </p>
+        <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[10px] font-medium leading-4 text-white md:text-[11px]">
+          {vessel.specs.map((spec) => (
+            <div key={spec.label} className="flex justify-between gap-2">
+              <dt className="text-white/86">{spec.label}:</dt>
+              <dd className="text-right text-white">{spec.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </article>
   );
 }
 
@@ -256,6 +365,11 @@ const mussafahFooterLinks = [
 ];
 
 function ProductSection({ section }: { section: ProductDetailSection }) {
+  const stats =
+    "stats" in section && Array.isArray(section.stats)
+      ? section.stats
+      : null;
+
   return (
     <section>
       {section.title ? (
@@ -286,9 +400,9 @@ function ProductSection({ section }: { section: ProductDetailSection }) {
         </ul>
       ) : null}
 
-      {"stats" in section && section.stats ? (
+      {stats ? (
         <div className="mt-3 grid gap-3 md:grid-cols-3">
-          {section.stats.map((stat) => (
+          {stats.map((stat) => (
             <div
               key={stat.label}
               className="rounded-[7px] bg-[#07304a] px-3 py-3 shadow-[0_14px_32px_rgba(0,0,0,0.12)]"

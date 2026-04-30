@@ -644,40 +644,12 @@ function EnergyYardKeyHighlights() {
         </article>
 
         <div className="mt-10 md:mt-16">
-          <div className="relative h-[336px] overflow-hidden rounded-[12px] md:h-[620px] md:rounded-[16px]">
-            <Image
-              src={keyHighlights.video.image.src}
-              alt={keyHighlights.video.image.alt}
-              fill
-              loading="eager"
-              sizes="(min-width: 768px) 1240px, 100vw"
-              className="object-cover object-[44%_50%]"
-            />
-            <button
-              type="button"
-              aria-label={keyHighlights.video.playLabel}
-              className="absolute left-1/2 top-1/2 grid size-[78px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/35 text-energy-green shadow-[0_16px_42px_rgba(0,0,0,0.28)] backdrop-blur-sm md:size-[94px]"
-            >
-              <span className="ml-1 block h-0 w-0 border-y-[14px] border-l-[22px] border-y-transparent border-l-energy-green md:border-y-[17px] md:border-l-[27px]" />
-            </button>
-          </div>
-
-          <div className="mt-7 flex justify-center gap-6">
-            <button
-              type="button"
-              aria-label="Previous video"
-              className="grid size-11 place-items-center rounded-full border border-[#d5e3ea] text-[#9aacb8] md:size-12"
-            >
-              <ArrowLeft className="size-5" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next video"
-              className="grid size-11 place-items-center rounded-full border border-[#d5e3ea] text-energy-green md:size-12"
-            >
-              <ArrowRight className="size-5" />
-            </button>
-          </div>
+          <EnergyOverviewVideoPlayer
+            videos={keyHighlights.video.videos}
+            frameClassName="rounded-[12px] bg-energy-deep-navy md:rounded-[16px]"
+            videoClassName="h-[336px] w-full bg-energy-deep-navy object-cover object-[44%_50%] md:h-[620px]"
+            controlsClassName="mt-7 flex justify-center gap-6"
+          />
         </div>
       </div>
     </section>
@@ -1013,6 +985,20 @@ function EnergyDetailArrowControls() {
 function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
   const hasMobileImage = "mobileImage" in detail.media && detail.media.mobileImage;
 
+  if ("videos" in detail.media && detail.media.videos) {
+    return (
+      <section className="mt-8 md:mt-[72px]">
+        <EnergyOverviewVideoPlayer
+          videos={detail.media.videos}
+          frameClassName="rounded-[12px] bg-energy-deep-navy md:rounded-[16px]"
+          videoClassName="h-[320px] w-full bg-energy-deep-navy object-cover object-[50%_50%] md:h-[620px]"
+          controlsClassName="mt-7 flex justify-center gap-6"
+          label={detail.media.label}
+        />
+      </section>
+    );
+  }
+
   return (
     <section className="mt-8 md:mt-[72px]">
       <div className="relative h-[320px] overflow-hidden rounded-[12px] md:h-[620px] md:rounded-[16px]">
@@ -1039,15 +1025,6 @@ function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
         <div className="absolute left-4 top-4 rounded-[8px] bg-energy-green px-7 py-4 text-[20px] font-bold leading-6 text-white md:left-6 md:top-6 md:min-w-[214px] md:text-center md:text-[24px] md:leading-8">
           {detail.media.label}
         </div>
-        {"playLabel" in detail.media && detail.media.playLabel ? (
-          <button
-            type="button"
-            aria-label={detail.media.playLabel}
-            className="absolute left-1/2 top-1/2 hidden size-[84px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-energy-green shadow-[0_16px_42px_rgba(0,0,0,0.28)] backdrop-blur-sm md:grid"
-          >
-            <span className="ml-1 block h-0 w-0 border-y-[15px] border-l-[24px] border-y-transparent border-l-energy-green" />
-          </button>
-        ) : null}
       </div>
       <EnergyDetailArrowControls />
     </section>

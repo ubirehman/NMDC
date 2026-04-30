@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "../../../app/components/landing/icons";
 import { Header } from "../../../app/components/landing/Header";
+import { LandingVideoCarousel } from "../../../app/components/landing/LandingVideoCarousel";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
 import {
   emiratizationContent,
@@ -14,6 +15,17 @@ import {
   peopleCultureGallery,
   peopleCultureMobileGallery,
 } from "./content";
+
+const peopleCultureVideos = [
+  {
+    src: "/videos/safeen-subsea-green.mp4",
+    playLabel: "Play SAFEEN Green video",
+  },
+  {
+    src: "/videos/safeen-subsea-rov.mp4",
+    playLabel: "Play ROV operations video",
+  },
+];
 
 export function NmdcPeopleCulturePage() {
   return (
@@ -273,28 +285,23 @@ function MobileMediaGallery() {
         {peopleCultureMobileGallery.map((image, index) => (
           <article key={image.src}>
             <div className="relative overflow-hidden rounded-[12px] bg-primary-navy-blue">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={646}
-                height={index === 0 ? 1080 : 510}
-                className={`w-full object-cover ${
-                  index === 0 ? "h-[540px]" : "h-[320px]"
-                }`}
-              />
-              {index === 0 ? null : (
-                <button
-                  type="button"
-                  aria-label={`Play ${image.alt}`}
-                  className="absolute inset-0 flex items-center justify-center bg-black/32"
-                >
-                  <span className="flex size-[70px] items-center justify-center rounded-full bg-white/60 shadow-[0_16px_28px_rgba(0,0,0,0.26)] backdrop-blur-[10px]">
-                    <span
-                      aria-hidden="true"
-                      className="ml-1 h-0 w-0 border-y-[11px] border-l-[17px] border-y-transparent border-l-primary-sky-blue"
-                    />
-                  </span>
-                </button>
+              {index === 0 ? (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={646}
+                  height={1080}
+                  className="h-[540px] w-full object-cover"
+                />
+              ) : (
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  src={peopleCultureVideos[(index - 1) % peopleCultureVideos.length].src}
+                  aria-label={peopleCultureVideos[(index - 1) % peopleCultureVideos.length].playLabel}
+                  className="h-[320px] w-full bg-primary-navy-blue object-cover"
+                />
               )}
             </div>
             {index === 0 ? (
@@ -448,6 +455,17 @@ function MediaPanel({
   };
   showPlay: boolean;
 }) {
+  if (showPlay) {
+    return (
+      <article>
+        <LandingVideoCarousel
+          videos={peopleCultureVideos}
+          videoClassName="h-[230px] w-full bg-primary-navy-blue object-cover md:h-[610px]"
+        />
+      </article>
+    );
+  }
+
   return (
     <article>
       <div className="relative overflow-hidden rounded-[6px] bg-primary-navy-blue md:rounded-[20px]">
@@ -458,20 +476,6 @@ function MediaPanel({
           height={520}
           className="h-[230px] w-full object-cover md:h-[610px]"
         />
-        {showPlay ? (
-          <button
-            type="button"
-            aria-label={`Play ${image.alt}`}
-            className="absolute inset-0 flex items-center justify-center bg-black/35 transition-colors hover:bg-black/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
-          >
-            <span className="flex size-11 items-center justify-center rounded-full bg-[rgba(7,48,59,0.62)] backdrop-blur-[8px] md:size-[112px] md:bg-black/40">
-              <span
-                aria-hidden="true"
-                className="ml-0.5 h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-primary-sky-blue md:ml-1 md:border-y-[18px] md:border-l-[28px]"
-              />
-            </span>
-          </button>
-        ) : null}
       </div>
       <div className="mt-4 flex justify-center gap-2 md:mt-10 md:gap-6">
         <button

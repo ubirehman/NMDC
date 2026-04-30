@@ -97,7 +97,10 @@ test("inner NMDC pages follow the PDF section order", () => {
   assert.match(people, /md:hidden\" mobile/);
   assert.match(people, /mobile\s+\?\s+"h-\[177px\]/);
   assert.match(people, /px-\[15px\] py-5 md:hidden/);
-  assert.match(people, /index === 0 \? "h-\[540px\]" : "h-\[320px\]"/);
+  assert.match(people, /peopleCultureVideos/);
+  assert.match(people, /LandingVideoCarousel/);
+  assert.match(people, /h-\[540px\] w-full object-cover/);
+  assert.match(people, /h-\[320px\] w-full bg-primary-navy-blue object-cover/);
   assert.match(people, /pb-\[87px\] pt-12 md:hidden/);
   assert.match(people, /md:grid-cols-\[minmax\(0,1fr\)_minmax\(0,1fr\)\]/);
   assert.match(people, /md:gap-4/);
@@ -301,7 +304,7 @@ test("shared NMDC footer exposes the designed email columns", () => {
   assert.match(footer, /http:\/\/localhost:3122/);
   assert.match(footer, /http:\/\/localhost:3123/);
   assert.match(footer, /href=\{link\.href\}/);
-  assert.match(footer, /key=\{link\.label\}/);
+  assert.match(footer, /key=\{`\$\{link\.label\}-\$\{link\.href\}`\}/);
   assert.match(footer, /nmdcGroupOverviewHref/);
   assert.match(footer, /link\.label === "Home"/);
   assert.match(footer, /mailto:\$\{email\.value\}/);

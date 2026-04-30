@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "../components/Header";
 import { InfraHomeCardRail } from "../components/InfraHomeCardRail";
+import { InfraVideoCarousel } from "../components/InfraVideoCarousel";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
 import { getInfraNavLinks, nmdcInfraContent as content } from "../content/content";
 
@@ -307,42 +308,10 @@ function InfraOverviewVideo() {
 
   return (
     <div className="mt-[54px] md:mt-[72px]">
-      <div className="relative h-[407px] overflow-hidden rounded-[12px] shadow-[0_24px_60px_rgba(0,0,0,0.22)] md:h-[609px] md:rounded-[22px]">
-        <Image
-          src={video.image.src}
-          alt={video.image.alt}
-          fill
-          sizes="(min-width: 768px) 1240px, 100vw"
-          className="object-cover object-[44%_50%]"
-        />
-        <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,16,24,0.05)_0%,rgba(3,16,24,0.28)_100%)]"
-          aria-hidden="true"
-        />
-        <button
-          type="button"
-          aria-label={video.playLabel}
-          className="absolute left-1/2 top-1/2 grid size-[82px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-infra-yellow/80 text-infra-ink shadow-[0_20px_40px_rgba(0,0,0,0.30)] transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-[96px] md:border-0 md:bg-infra-yellow"
-        >
-          <span className="ml-1 h-0 w-0 border-y-[13px] border-l-[21px] border-y-transparent border-l-current md:border-y-[16px] md:border-l-[27px]" />
-        </button>
-      </div>
-      <div className="mt-7 flex justify-center gap-4">
-        <button
-          type="button"
-          aria-label="Previous overview image"
-          className="grid size-11 place-items-center rounded-full border border-infra-yellow text-infra-yellow transition-colors hover:bg-infra-yellow hover:text-infra-ink"
-        >
-          <ArrowLeft className="size-5" />
-        </button>
-        <button
-          type="button"
-          aria-label="Next overview image"
-          className="grid size-11 place-items-center rounded-full border border-infra-yellow text-infra-yellow transition-colors hover:bg-infra-yellow hover:text-infra-ink"
-        >
-          <ArrowRight className="size-5" />
-        </button>
-      </div>
+      <InfraVideoCarousel
+        videos={video.videos}
+        videoClassName="h-[407px] w-full bg-infra-deep-navy object-cover object-[44%_50%] md:h-[609px]"
+      />
     </div>
   );
 }
@@ -607,6 +576,12 @@ type InfraProductDetailContent = {
   video?: {
     image: InfraProductImage;
     playLabel: string;
+    videos: readonly {
+      title: string;
+      src: string;
+      type: string;
+      playLabel: string;
+    }[];
   };
   features?: readonly InfraProductFeature[];
 };
@@ -682,23 +657,15 @@ function InfraProductVideo({
     <div
       data-product-detail-video
       data-detail-video
-      className={`relative ${heightClassName} overflow-hidden rounded-[8px] md:rounded-[18px]`}
+      className="relative"
     >
-      <Image
-        src={video.image.src}
-        alt={video.image.alt}
-        fill
-        sizes="(min-width: 768px) 1240px, 320px"
-        className="object-cover object-center"
+      <InfraVideoCarousel
+        videos={video.videos}
+        frameClassName="rounded-[8px] md:rounded-[18px]"
+        videoClassName={`${heightClassName} w-full bg-infra-deep-navy object-cover object-center`}
+        controlsClassName="mt-[28px] flex justify-center gap-[21px] md:mt-[72px] md:gap-6"
+        buttonClassName="grid size-[51px] place-items-center rounded-full border border-infra-yellow text-infra-yellow transition-colors hover:bg-infra-yellow hover:text-infra-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-infra-yellow md:size-[64px]"
       />
-      <div className="absolute inset-0 bg-[rgba(7,28,40,0.42)]" aria-hidden="true" />
-      <button
-        type="button"
-        aria-label={video.playLabel}
-        className="absolute left-1/2 top-1/2 grid size-[77px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-infra-yellow bg-white/40 text-infra-yellow backdrop-blur-[6px] transition-transform hover:scale-105 md:size-[96px]"
-      >
-        <span className="ml-1 h-0 w-0 border-y-[13px] border-l-[21px] border-y-transparent border-l-current md:border-y-[16px] md:border-l-[27px]" />
-      </button>
     </div>
   );
 }
@@ -741,7 +708,6 @@ function InfraProductMediaSection({
                 detail.galleryImage ? "h-[319px] md:h-[478px]" : undefined
               }
             />
-            <InfraDetailArrowControls light />
           </div>
         ) : null}
       </div>

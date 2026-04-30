@@ -40,8 +40,8 @@ export const nmdcGroupLandingContent: LandingContent = {
     subhead:
       "NMDC Group is an integrated EPC and marine services company operating across MENA, South Asia, & beyond, delivering innovative solutions",
     cta: {
-      desktop: { label: "Visit Us", href: "#contact" },
-      mobile: { label: "Contact us", href: "#contact" },
+      desktop: { label: "Visit Us", href: "https://nmdc-group.com/en/" },
+      mobile: { label: "Contact us", href: "https://nmdc-group.com/en/" },
     },
   },
   brands: [

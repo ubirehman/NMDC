@@ -3,6 +3,7 @@ const productsImageBase = "/images/landing/products";
 export const nmdcGroupProductDetails = [
   {
     slug: "marine-vessels",
+    layout: "marine-vessels",
     fullTitle: "NMDC Dredging and Marine | Marine Vessels",
     brandName: "NMDC Dredging and Marine",
     title: "Marine Vessels",
@@ -15,27 +16,83 @@ export const nmdcGroupProductDetails = [
       },
     ],
     summary: [
-      "Supported by a modern and extensive fleet of dredgers, support vessels and marine equipment, NMDC has the capabilities to operate anywhere in the world and overcome challenging site conditions.",
-      "From heavy duty CSDs to Watermaster dredgers, the fleet supports complex marine projects across the UAE and worldwide.",
+      "Supported by a modern and extensive fleet of dredgers, support vessels and marine equipment, we have the capabilities to operate anywhere in the world and overcome even the most challenging site conditions. From heavy duty CSDs to Watermaster dredgers, we work with a variety of industry leading vessels to deliver exciting, complex projects in the UAE and worldwide.",
     ],
-    sections: [
+    vesselCards: [
       {
-        title: "Heavy Duty CSDs",
-        stats: [
-          { label: "Al Yassat", value: "Dredging depth 36.0 m, length overall 138 m, breadth 28 m." },
-          { label: "Al Sadr", value: "Dredging depth 27.0 m, length overall 117.50 m, breadth 20.30 m." },
-          { label: "Al Mirfa", value: "Dredging depth 20.0 m, length overall 97.10 m, breadth 19.60 m." },
+        name: "Al Yassat",
+        type: "Heavy Duty CSDs",
+        image: `${productsImageBase}/marine-vessel-al-yassat.jpg`,
+        alt: "Al Yassat heavy duty cutter suction dredger",
+        specs: [
+          { label: "Dredging Depth", value: "36.0 m" },
+          { label: "Breadth", value: "28 m" },
+          { label: "Length Overall", value: "138 m" },
+          { label: "Depth", value: "13.8 m" },
         ],
       },
       {
-        title: "Support Vessels",
-        stats: [
-          { label: "Jananah", value: "Beaver dredger with dredging depth of 14.0 m." },
-          { label: "Sarb", value: "Backhoe dredger with dredging depth of 25 m." },
-          { label: "Ghasha", value: "Hopper dredger with dredging depth of 45 m." },
+        name: "Al Sadr",
+        type: "Heavy Duty CSDs",
+        image: `${productsImageBase}/marine-vessel-al-sadr.jpg`,
+        alt: "Al Sadr heavy duty cutter suction dredger",
+        specs: [
+          { label: "Dredging Depth", value: "27.0 m" },
+          { label: "Breadth", value: "20.30 m" },
+          { label: "Length Overall", value: "117.50 m" },
+          { label: "Depth", value: "6.00 m" },
+        ],
+      },
+      {
+        name: "Al Mirfa",
+        type: "Heavy Duty CSDs",
+        image: `${productsImageBase}/marine-vessel-al-mirfa.jpg`,
+        alt: "Al Mirfa heavy duty cutter suction dredger",
+        specs: [
+          { label: "Dredging Depth", value: "20.0 m" },
+          { label: "Breadth", value: "19.60 m" },
+          { label: "Length Overall", value: "97.10 m" },
+          { label: "Depth", value: "4.90 m" },
+        ],
+      },
+      {
+        name: "Jananah",
+        type: "Beavers",
+        image: `${productsImageBase}/marine-vessel-jananah.jpg`,
+        alt: "Jananah beaver dredger",
+        specs: [
+          { label: "Dredging Depth", value: "14.0 m" },
+          { label: "Breadth", value: "8.55 m" },
+          { label: "Length Overall", value: "47.50 m" },
+          { label: "Depth", value: "2.75 m" },
+        ],
+      },
+      {
+        name: "Sarb",
+        type: "Backhoe Dredgers",
+        image: `${productsImageBase}/marine-vessel-sarb.jpg`,
+        alt: "Sarb backhoe dredger",
+        specs: [
+          { label: "Dredging Depth", value: "25 m" },
+          { label: "Breadth", value: "18 m" },
+          { label: "Length Overall", value: "60 m" },
+          { label: "Depth", value: "4.5 m" },
+        ],
+      },
+      {
+        name: "Ghasha",
+        type: "Hopper Dredger",
+        image: `${productsImageBase}/marine-vessel-ghasha.jpg`,
+        alt: "Ghasha hopper dredger",
+        specs: [
+          { label: "Dredging Depth", value: "45 m" },
+          { label: "Breadth", value: "25 m" },
+          { label: "Length Overall", value: "123 m" },
+          { label: "Depth", value: "7.6 m" },
         ],
       },
     ],
+    sections: [],
   },
   {
     slug: "mussafah-yard",
@@ -93,7 +150,7 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC Dredging and Marine",
     title: "Coastal & Hydrodynamic Center",
     accentClassName: "text-primary-sky-blue",
-    cta: { label: "Play virtual tour", href: "#" },
+    cta: { label: "Play virtual tour", href: "/videos/safeen-subsea-green.mp4" },
     media: [
       {
         src: `${productsImageBase}/coastal-hydrodynamic-center.webp`,
@@ -208,7 +265,7 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC Infra",
     title: "3d Printed Artificial Reefs",
     accentClassName: "text-[#ffcf00]",
-    cta: { label: "Play virtual tour", href: "#" },
+    cta: { label: "Play virtual tour", href: "/videos/safeen-subsea-green.mp4" },
     media: [
       {
         src: `${productsImageBase}/3d-printed-artificial-reefs.webp`,

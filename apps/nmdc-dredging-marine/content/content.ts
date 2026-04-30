@@ -22,6 +22,11 @@ const withDredgingMarineBasePath = (assetPath: string) =>
 const withGroupAppPath = (path: string) =>
   `${groupAppUrl.replace(/\/$/, "")}${path}`;
 
+const nmdcDredgingMarineVideoSources = [
+  withDredgingMarineBasePath("/videos/safeen-subsea-green.mp4"),
+  withDredgingMarineBasePath("/videos/safeen-subsea-rov.mp4")
+];
+
 export const nmdcDredgingMarineContent = {
   brand: {
     name: "NMDC Dredging & Marine",
@@ -51,6 +56,18 @@ export const nmdcDredgingMarineContent = {
       { label: "Caisson Method", href: "/caisson-method" }
     ]
   },
+  videoSources: [
+    {
+      src: nmdcDredgingMarineVideoSources[0],
+      type: "video/mp4",
+      playLabel: "Play NMDC Dredging and Marine video"
+    },
+    {
+      src: nmdcDredgingMarineVideoSources[1],
+      type: "video/mp4",
+      playLabel: "Play NMDC Dredging and Marine ROV operations video"
+    }
+  ],
   home: {
     hero: {
       background: {
@@ -66,7 +83,7 @@ export const nmdcDredgingMarineContent = {
         "NMDC Dredging & Marine delivers complex marine infrastructure, dredging, reclamation, and coastal development projects with a modern fleet and proven engineering capability.",
       cta: {
         label: "Visit Us",
-        href: "/overview"
+        href: "https://www.nmdc-dredgingmarine.com/en/"
       }
     },
     cards: [
@@ -604,6 +621,7 @@ export const nmdcDredgingMarineContent = {
     media: [
       {
         type: "video",
+        src: nmdcDredgingMarineVideoSources[0],
         image: withDredgingMarineBasePath("/images/dm/hydraulic-center-video.jpg"),
         alt: "NMDC Dredging and Marine engineers reviewing hydraulic model testing"
       }
@@ -699,6 +717,7 @@ export const nmdcDredgingMarineContent = {
         }
       ],
       video: {
+        src: nmdcDredgingMarineVideoSources[0],
         image: withDredgingMarineBasePath("/images/dm/caisson-method-video.jpg"),
         alt: "Caisson method video still"
       }
@@ -756,7 +775,7 @@ export const nmdcDredgingMarineContent = {
     ],
     navigationLabel: "Footer navigation",
     navigationLinks: [
-      { label: "Home", href: groupAppUrl },
+      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },

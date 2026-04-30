@@ -17,6 +17,8 @@ const energyAppUrl =
 const withNmdcGroupPath = (path: string) =>
   nmdcGroupAppUrl ? `${nmdcGroupAppUrl.replace(/\/$/, "")}${path}` : path;
 
+export const nmdcGroupOverviewHref = withNmdcGroupPath("/nmdc-overview");
+
 export const nmdcBrand = {
   name: "NMDC Group",
   logo: "/images/landing/nmdc-group-logo.svg",
@@ -41,7 +43,7 @@ export function getNmdcNavLinks(activeHref: string): NavLink[] {
 export const nmdcBusinessLinks = [
   { label: "NMDC Dredging & Marine", href: dredgingMarineAppUrl },
   { label: "NMDC Energy", href: energyAppUrl },
-  { label: "NMDC Engineering", href: withNmdcGroupPath("/nmdc-overview") },
+  { label: "NMDC Engineering", href: nmdcGroupOverviewHref },
   { label: "NMDC Infra", href: infraAppUrl },
   { label: "NMDC LTS", href: ltsAppUrl },
 ];

@@ -261,6 +261,20 @@ export const nmdcEnergyContent = {
           alt: "Offshore NMDC Energy platforms and vessels",
         },
         playLabel: "Play NMDC Energy yards video",
+        videos: [
+          {
+            title: "NMDC Energy yards",
+            src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+            type: "video/mp4",
+            playLabel: "Play NMDC Energy yards video",
+          },
+          {
+            title: "NMDC Energy yard operations",
+            src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
+            type: "video/mp4",
+            playLabel: "Play NMDC Energy yard operations video",
+          },
+        ],
       },
     },
     achievements: {
@@ -573,6 +587,20 @@ export const nmdcEnergyContent = {
             objectPosition: "50% 50%",
           },
           playLabel: "Play pipe coating yard video",
+          videos: [
+            {
+              title: "Pipe coating yard",
+              src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+              type: "video/mp4",
+              playLabel: "Play pipe coating yard video",
+            },
+            {
+              title: "Pipe coating yard operations",
+              src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
+              type: "video/mp4",
+              playLabel: "Play pipe coating yard operations video",
+            },
+          ],
         },
         table: {
           title: "PRODUCTION CAPACITY FOR EACH 3 LPO PLANT",
@@ -666,7 +694,7 @@ export const nmdcEnergyContent = {
         "NMDC Energy specializes in harnessing the power of innovation to address the energy sector’s evolving needs.",
       cta: {
         label: "Visit Us",
-        href: "/overview",
+        href: "https://www.nmdc-energy.com/en/",
       },
     },
     cards: [

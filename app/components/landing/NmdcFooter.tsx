@@ -4,6 +4,7 @@ import {
   nmdcBrand,
   nmdcBusinessLinks,
   nmdcEmailLinks,
+  nmdcGroupOverviewHref,
   nmdcPageLinks,
 } from "./nmdcShared";
 
@@ -31,7 +32,9 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
     height: 46,
     className: "h-[54px] w-auto md:h-12",
   };
-  const footerLinks = pageLinks ?? nmdcPageLinks;
+  const footerLinks = (pageLinks ?? nmdcPageLinks).map((link) =>
+    link.label === "Home" ? { ...link, href: nmdcGroupOverviewHref } : link,
+  );
 
   return (
     <footer
@@ -107,7 +110,7 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
         >
           <ul className="grid gap-5 text-[16px] leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
             {footerLinks.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link
                   href={link.href}
                   className="transition-colors hover:text-primary-sky-blue"

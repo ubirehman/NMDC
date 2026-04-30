@@ -71,7 +71,7 @@ export const nmdcLtsContent = {
         "Integrated vessel chartering, logistics and technical services backed by a world-class fleet",
       cta: {
         label: "Visit Us",
-        href: "/key-highlights",
+        href: "https://www.nmdc-infra.com/en/",
       },
     },
     cards: [
@@ -351,14 +351,14 @@ export const nmdcLtsContent = {
       },
     ],
     desktopNav: [
-      { label: "Home", href: groupAppUrl },
+      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },
       { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     mobileNav: [
-      { label: "Home", href: groupAppUrl },
+      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },

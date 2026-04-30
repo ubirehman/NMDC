@@ -175,3 +175,48 @@ test("Mussafah Yard product detail follows the supplied desktop Figma layout", (
   assert.match(detailPage, /logo-energy\.webp/);
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
 });
+
+test("Marine Vessels product detail follows the supplied desktop vessel card grid design", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+
+  assert.match(detailContent, /slug:\s*"marine-vessels"[\s\S]*layout:\s*"marine-vessels"/);
+  assert.match(detailContent, /vesselCards:\s*\[/);
+
+  for (const vessel of [
+    "Al Yassat",
+    "Al Sadr",
+    "Al Mirfa",
+    "Jananah",
+    "Sarb",
+    "Ghasha",
+  ]) {
+    assert.match(detailContent, new RegExp(`name:\\s*"${vessel}"`));
+  }
+
+  for (const asset of [
+    "public/images/landing/products/marine-vessel-al-yassat.jpg",
+    "public/images/landing/products/marine-vessel-al-sadr.jpg",
+    "public/images/landing/products/marine-vessel-al-mirfa.jpg",
+    "public/images/landing/products/marine-vessel-jananah.jpg",
+    "public/images/landing/products/marine-vessel-sarb.jpg",
+    "public/images/landing/products/marine-vessel-ghasha.jpg",
+  ]) {
+    assert.ok(existsSync(asset), `${asset} should exist`);
+  }
+
+  assert.match(detailPage, /detail\.slug === "marine-vessels"/);
+  assert.match(detailPage, /MarineVesselsDetailLayout/);
+  assert.match(detailPage, /MarineVesselCard/);
+  assert.match(detailPage, /md:min-h-\[1728px\]/);
+  assert.match(detailPage, /md:grid-cols-3/);
+  assert.match(detailPage, /md:h-\[421px\]/);
+  assert.match(detailPage, /bg-\[#22475b\]\/92/);
+  assert.match(detailPage, /detail\.vesselCards\.map/);
+  assert.match(detailPage, /vessel\.specs\.map/);
+  assert.match(detailPage, /ProductQrCode/);
+  assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
+});

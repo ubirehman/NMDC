@@ -61,7 +61,7 @@ export const nmdcInfraContent = {
         "NMDC Infra has been a leader in general construction services since 2018, and prominent in the field of precast concrete production since 2006 under the name Emarat Europe.",
       cta: {
         label: "Visit Us",
-        href: "/overview",
+        href: "https://www.nmdc-infra.com/en/",
       },
     },
     cards: [
@@ -207,6 +207,20 @@ export const nmdcInfraContent = {
         alt: "NMDC Infra HSE Day speaker",
       },
       playLabel: "Play NMDC Infra overview video",
+      videos: [
+        {
+          title: "NMDC Infra overview",
+          src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+          type: "video/mp4",
+          playLabel: "Play NMDC Infra overview video",
+        },
+        {
+          title: "NMDC Infra operations",
+          src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
+          type: "video/mp4",
+          playLabel: "Play NMDC Infra operations video",
+        },
+      ],
     },
     verticals: {
       title: "OUR VERTICALS",
@@ -318,6 +332,20 @@ export const nmdcInfraContent = {
           alt: "Robotic 3D printing equipment producing reef forms",
         },
         playLabel: "Play 3D printing of artificial reefs video",
+        videos: [
+          {
+            title: "3D printed artificial reefs",
+            src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+            type: "video/mp4",
+            playLabel: "Play 3D printing of artificial reefs video",
+          },
+          {
+            title: "3D printed artificial reefs operations",
+            src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
+            type: "video/mp4",
+            playLabel: "Play 3D printing of artificial reefs operations video",
+          },
+        ],
       },
       features: [
         {
@@ -369,6 +397,20 @@ export const nmdcInfraContent = {
           alt: "Ebawe precast component lifting operation",
         },
         playLabel: "Play Ebawe Anlagentechnik video",
+        videos: [
+          {
+            title: "Ebawe Anlagentechnik",
+            src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+            type: "video/mp4",
+            playLabel: "Play Ebawe Anlagentechnik video",
+          },
+          {
+            title: "Ebawe Anlagentechnik operations",
+            src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
+            type: "video/mp4",
+            playLabel: "Play Ebawe Anlagentechnik operations video",
+          },
+        ],
       },
     },
   },
