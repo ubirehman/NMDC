@@ -76,7 +76,10 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(css, /--color-infra-yellow:\s*#ffcf00;/);
   assert.match(page, /NmdcInfraHomePage/);
   assert.match(page, /InfraHomeCardRail/);
-  assert.match(page, /h-\[786px\]/);
+  assert.match(page, /<Header links=\{getInfraNavLinks\("\/"\)\} \/>/);
+  assert.doesNotMatch(page, /<Header links=\{getInfraNavLinks\("\/overview"\)\} \/>/);
+  assert.match(page, /min-h-\[max\(786px,100svh\)\]/);
+  assert.doesNotMatch(page, /relative isolate h-\[786px\]/);
   assert.match(page, /group inline-flex items-center gap-\[3px\]/);
   assert.match(page, /h-\[49px\] w-\[174px\] items-center justify-center rounded-full bg-white/);
   assert.match(page, /size-\[49px\] items-center justify-center rounded-full bg-infra-yellow/);
@@ -85,6 +88,12 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(page, /bg-infra-yellow/);
   assert.match(page, /md:absolute md:bottom-\[74px\] md:right-0/);
   assert.match(cards, /h-\[200px\] w-\[150px\]/);
+  assert.match(cards, /function getCardId/);
+  assert.match(cards, /logoFrameClassName/);
+  assert.match(cards, /dm:\s*"h-\[28px\] w-\[122px\]"/);
+  assert.match(cards, /energy:\s*"h-\[28px\] w-\[122px\]"/);
+  assert.match(cards, /cardId === "dm" \|\| cardId === "energy"/);
+  assert.match(cards, /fill/);
   assert.match(cards, /hover:border-infra-yellow/);
   assert.match(cards, /group-hover:bg-infra-yellow/);
 });

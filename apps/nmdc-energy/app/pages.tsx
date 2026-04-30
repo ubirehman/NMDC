@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
 import { Header } from "../components/Header";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
@@ -735,7 +736,7 @@ function EnergyYardCapabilities() {
   const capabilities = content.yardHighlights.capabilities;
 
   return (
-    <section className="bg-white text-white">
+    <section data-yard-capabilities className="bg-white text-white">
       <div className="px-5 md:px-10">
         <div className="mx-auto w-full max-w-[1240px] py-8 md:py-[72px]">
           <EnergyYardSectionTitle title={capabilities.title} />
@@ -743,11 +744,15 @@ function EnergyYardCapabilities() {
       </div>
 
       <div className="bg-[#062b43] px-5 py-8 md:px-10 md:py-[80px]">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-5 md:grid-cols-2 md:gap-6">
+        <div
+          data-yard-capability-grid
+          className="mx-auto grid w-full max-w-[1240px] gap-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6"
+        >
           {capabilities.items.map((item) => (
             <article
               key={item.body}
-              className="grid min-h-[122px] grid-cols-[86px_minmax(0,1fr)] items-center rounded-[8px] bg-[#113a58] px-5 py-5 md:min-h-[150px] md:grid-cols-[170px_minmax(0,1fr)] md:px-8"
+              data-yard-capability-card
+              className="grid min-h-[122px] grid-cols-[86px_minmax(0,1fr)] items-center rounded-[8px] bg-[#113a58] px-5 py-5 md:min-h-[150px] md:grid-cols-[184px_minmax(0,1fr)] md:px-8"
             >
               <div className="grid h-full place-items-center border-r border-white/22 pr-5 text-energy-green md:pr-9">
                 <EnergyYardIcon icon={item.icon} className="size-[56px] md:size-[74px]" />
@@ -767,6 +772,514 @@ function EnergyYardCapabilities() {
         </div>
       </div>
     </section>
+  );
+}
+
+function EnergyProductCard({
+  product,
+}: {
+  product: (typeof content.products.items)[number];
+}) {
+  return (
+    <Link
+      href={product.href}
+      aria-label={product.title}
+      className="group relative block h-[580px] min-w-0 overflow-hidden rounded-[34px] border-[4px] border-white bg-energy-navy shadow-[0_26px_44px_rgba(6,40,33,0.30)] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[0_34px_64px_rgba(6,40,33,0.36)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-energy-green md:h-[500px] md:rounded-[42px]"
+    >
+      <Image
+        src={product.image.src}
+        alt={product.image.alt}
+        fill
+        sizes="(min-width: 768px) 390px, 320px"
+        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        style={{ objectPosition: product.image.objectPosition }}
+      />
+      <span
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,32,42,0.02)_0%,rgba(4,32,42,0.10)_42%,rgba(4,32,42,0.94)_100%)]"
+        aria-hidden="true"
+      />
+      <h3 className="absolute bottom-[42px] left-[38px] right-7 text-[42px] font-bold leading-[48px] tracking-[0] text-energy-green md:bottom-[42px] md:left-[30px] md:text-[40px] md:leading-[48px]">
+        {product.title}
+      </h3>
+    </Link>
+  );
+}
+
+type EnergyProductDetail = (typeof content.products.details)[number];
+
+function EnergyProductHero() {
+  const hero = content.products.hero;
+
+  return (
+    <section className="relative isolate h-[450px] overflow-hidden bg-energy-deep-navy px-5 text-white md:h-[485px] md:px-10">
+      <Image
+        src={hero.background.src}
+        alt={hero.background.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[50%_50%]"
+      />
+      <div
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,24,20,0.66)_0%,rgba(2,24,20,0.58)_48%,rgba(2,24,20,0.74)_100%)]"
+        aria-hidden="true"
+      />
+      <Header links={getEnergyNavLinks(content.products.activeHref)} />
+
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[44px] md:pb-[73px]">
+        <h1 className="text-[48px] font-bold leading-[58px] tracking-[0] text-white md:text-[48px] md:uppercase md:leading-[58px]">
+          <span>{hero.titleLeading}</span>{" "}
+          <span className="text-energy-green">{hero.titleAccent}</span>
+        </h1>
+      </div>
+    </section>
+  );
+}
+
+function EnergyDetailCard({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <article className={`rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8 ${className}`}>
+      {children}
+    </article>
+  );
+}
+
+function EnergyProductIntroCard({ detail }: { detail: EnergyProductDetail }) {
+  const intro = detail.intro;
+
+  return (
+    <EnergyDetailCard className="min-h-[180px] md:min-h-[176px]">
+      {"title" in intro && intro.title ? (
+        <h2 className="text-[18px] font-bold uppercase leading-6 text-energy-green md:text-[24px] md:leading-8">
+          {intro.title}
+        </h2>
+      ) : null}
+      {"paragraphs" in intro && intro.paragraphs ? (
+        <div className={`${"title" in intro && intro.title ? "mt-5" : ""} grid gap-5 text-[15px] leading-[23px] md:text-[16px] md:leading-[24px]`}>
+          {intro.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      ) : null}
+      {"bullets" in intro && intro.bullets ? (
+        <ul className={`${"title" in intro && intro.title ? "mt-5" : ""} grid gap-4 text-[14px] leading-[22px] md:text-[15px] md:leading-[23px]`}>
+          {intro.bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-3">
+              <span className="mt-2 size-2 shrink-0 rounded-full bg-energy-green" />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </EnergyDetailCard>
+  );
+}
+
+function EnergyProductBarChart({
+  chart,
+}: {
+  chart: NonNullable<EnergyProductDetail["chart"]>;
+}) {
+  const maxValue = Math.max(...chart.values.map((item) => item.value), 1);
+
+  return (
+    <EnergyDetailCard className="min-h-[180px] md:min-h-[176px]">
+      <p className="max-w-[190px] text-[14px] font-bold leading-5 text-energy-green md:text-[15px]">
+        {chart.title}
+      </p>
+      <div className="mt-5 grid h-[116px] grid-cols-3 items-end gap-7 border-b border-energy-green/80 px-4 md:mt-0 md:h-[120px] md:px-8">
+        {chart.values.map((item) => (
+          <div key={item.year} className="grid justify-items-center gap-3">
+            <span className="text-[32px] font-bold leading-none text-white md:text-[36px]">
+              {item.value}
+            </span>
+            <span
+              className="block w-[72px] bg-[linear-gradient(180deg,rgba(0,183,101,0.72)_0%,rgba(0,183,101,0.18)_100%)]"
+              style={{ height: `${Math.max(10, (item.value / maxValue) * 86)}px` }}
+              aria-hidden="true"
+            />
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 grid grid-cols-3 px-4 text-center text-[24px] font-bold leading-8 text-energy-green md:px-8">
+        {chart.values.map((item) => (
+          <span key={item.year}>{item.year}</span>
+        ))}
+      </div>
+    </EnergyDetailCard>
+  );
+}
+
+function EnergyProductIcon({ icon }: { icon?: string }) {
+  const mappedIcon =
+    icon === "duration" ? "worker" : icon === "weight" ? "expand" : icon === "pipe" ? "grid" : "steel";
+
+  return (
+    <span className="grid size-[72px] shrink-0 place-items-center rounded-[8px] bg-white/7 text-energy-green">
+      <EnergyYardIcon icon={mappedIcon} className="size-10" />
+    </span>
+  );
+}
+
+function EnergyProductHighlights({ detail }: { detail: EnergyProductDetail }) {
+  if (!("highlights" in detail) || !detail.highlights) {
+    return null;
+  }
+
+  return (
+    <EnergyDetailCard className="min-h-[180px] md:min-h-[176px]">
+      {"highlightsTitle" in detail && detail.highlightsTitle ? (
+        <h2 className="text-[17px] font-bold leading-6 text-energy-green">
+          {detail.highlightsTitle}
+        </h2>
+      ) : null}
+      <div className="mt-5 grid gap-5 md:grid-cols-3">
+        {detail.highlights.map((item) => (
+          <div key={`${item.title}-${item.value}`} className="flex items-center gap-5">
+            <EnergyProductIcon icon={item.icon} />
+            <div>
+              <p className="text-[12px] font-bold leading-4 text-white">{item.title}</p>
+              <p className="mt-1 text-[24px] font-bold leading-7 text-energy-green">
+                {item.value}
+              </p>
+              <p className="mt-1 text-[11px] font-bold leading-4 text-white">{item.unit}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </EnergyDetailCard>
+  );
+}
+
+function EnergyPipeCoatingOverview({ detail }: { detail: EnergyProductDetail }) {
+  if (detail.slug !== "pipe-coating") {
+    return null;
+  }
+
+  return (
+    <div className="grid gap-5 md:grid-cols-[380px_260px_minmax(0,1fr)]">
+      <EnergyProductIntroCard detail={detail} />
+      {"capabilities" in detail && detail.capabilities ? (
+        <EnergyDetailCard>
+          <h2 className="text-[17px] font-bold leading-6 text-energy-green">
+            Capabilities :
+          </h2>
+          <ul className="mt-5 grid gap-4 text-[14px] leading-[22px]">
+            {detail.capabilities.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-2 size-2 shrink-0 rounded-full bg-energy-green" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </EnergyDetailCard>
+      ) : null}
+      <EnergyProductHighlights detail={detail} />
+    </div>
+  );
+}
+
+function EnergyDetailArrowControls() {
+  return (
+    <div className="mt-6 flex items-center justify-center gap-6 md:mt-8">
+      <button
+        type="button"
+        aria-label="Previous product image"
+        className="grid size-12 place-items-center rounded-full border border-[#c5d0dc] text-[#8ca0b5] transition-colors hover:border-energy-green hover:text-energy-green"
+      >
+        <ArrowLeft className="size-6" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next product image"
+        className="grid size-12 place-items-center rounded-full border border-[#d9e2ea] text-energy-green transition-colors hover:border-energy-green hover:bg-energy-green hover:text-white"
+      >
+        <ArrowRight className="size-6" />
+      </button>
+      <span className="h-[6px] w-[180px] rounded-full bg-[#d8d8d8] md:w-[504px]">
+        <span className="block h-full w-[37%] rounded-full bg-energy-green" />
+      </span>
+    </div>
+  );
+}
+
+function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
+  const hasMobileImage = "mobileImage" in detail.media && detail.media.mobileImage;
+
+  return (
+    <section className="mt-8 md:mt-[72px]">
+      <div className="relative h-[320px] overflow-hidden rounded-[12px] md:h-[620px] md:rounded-[16px]">
+        <Image
+          src={hasMobileImage ? detail.media.mobileImage.src : detail.media.image.src}
+          alt={hasMobileImage ? detail.media.mobileImage.alt : detail.media.image.alt}
+          fill
+          sizes="100vw"
+          className={`object-cover md:hidden`}
+          style={{
+            objectPosition: hasMobileImage
+              ? detail.media.mobileImage.objectPosition
+              : detail.media.image.objectPosition,
+          }}
+        />
+        <Image
+          src={detail.media.image.src}
+          alt={detail.media.image.alt}
+          fill
+          sizes="(min-width: 768px) 1240px, 100vw"
+          className="hidden object-cover md:block"
+          style={{ objectPosition: detail.media.image.objectPosition }}
+        />
+        <div className="absolute left-4 top-4 rounded-[8px] bg-energy-green px-7 py-4 text-[20px] font-bold leading-6 text-white md:left-6 md:top-6 md:min-w-[214px] md:text-center md:text-[24px] md:leading-8">
+          {detail.media.label}
+        </div>
+        {"playLabel" in detail.media && detail.media.playLabel ? (
+          <button
+            type="button"
+            aria-label={detail.media.playLabel}
+            className="absolute left-1/2 top-1/2 hidden size-[84px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-energy-green shadow-[0_16px_42px_rgba(0,0,0,0.28)] backdrop-blur-sm md:grid"
+          >
+            <span className="ml-1 block h-0 w-0 border-y-[15px] border-l-[24px] border-y-transparent border-l-energy-green" />
+          </button>
+        ) : null}
+      </div>
+      <EnergyDetailArrowControls />
+    </section>
+  );
+}
+
+function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) {
+  if (detail.slug !== "topside" || !("offshore" in detail) || !detail.offshore) {
+    return null;
+  }
+
+  return (
+    <section className="mt-10 md:mt-[72px]">
+      <div className="flex items-center gap-7">
+        <h2 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[24px]">
+          {detail.typesTitle}
+        </h2>
+        <span className="hidden h-px flex-1 bg-[#a8b4bd] md:block" aria-hidden="true" />
+      </div>
+
+      <div className="mt-8 grid gap-8">
+        <article className="rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8">
+          <h3 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[26px]">
+            {detail.offshore.title}
+          </h3>
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {detail.offshore.items.map((item) => (
+              <div
+                key={item.title}
+                className="grid min-h-[132px] grid-cols-[84px_minmax(0,1fr)] items-center rounded-[8px] bg-[#113a58] p-5"
+              >
+                <div className="grid h-full place-items-center border-r border-white/24 pr-4 text-energy-green">
+                  <EnergyYardIcon icon="steel" className="size-11" />
+                </div>
+                <div className="pl-5">
+                  <p className="text-[12px] font-bold leading-4 text-white">{item.title}</p>
+                  <p className="mt-2 text-[26px] font-bold leading-8 text-energy-green">
+                    {item.value}
+                  </p>
+                  <p className="text-[12px] font-bold leading-4 text-white">{item.unit}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {"onshore" in detail && detail.onshore ? (
+          <article className="rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8">
+            <h3 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[26px]">
+              {detail.onshore.title}
+            </h3>
+            <div className="mt-7 grid gap-4">
+              <div className="grid min-h-[124px] items-center rounded-[8px] bg-[#113a58] p-5 md:grid-cols-[260px_1fr_210px]">
+                <div className="hidden place-items-center text-energy-green md:grid">
+                  <EnergyYardIcon icon="steel" className="size-14" />
+                </div>
+                <div className="md:border-l md:border-white/28 md:pl-10">
+                  <p className="text-[14px] font-bold leading-5 text-white">
+                    {detail.onshore.module.title}
+                  </p>
+                  <p className="mt-1 text-[28px] font-bold leading-8 text-energy-green">
+                    {detail.onshore.module.value}
+                  </p>
+                  <p className="text-[12px] font-bold leading-4 text-white">
+                    {detail.onshore.module.unit}
+                  </p>
+                </div>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {detail.onshore.specs.map((spec) => (
+                  <div
+                    key={spec.title}
+                    className="grid min-h-[156px] place-items-center rounded-[8px] border-[3px] border-energy-green bg-[#113a58] p-6 text-center"
+                  >
+                    <div>
+                      <p className="text-[13px] font-bold leading-5 text-white">{spec.title}</p>
+                      <p className="mt-4 text-[25px] font-bold leading-8 text-energy-green">
+                        {spec.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function EnergyPipeCoatingCapacityTable({ detail }: { detail: EnergyProductDetail }) {
+  if (detail.slug !== "pipe-coating" || !("table" in detail) || !detail.table) {
+    return null;
+  }
+
+  return (
+    <section className="mt-12 border-t border-[#a8b4bd] pt-12 md:mt-[72px] md:pt-[74px]">
+      <div className="flex items-center gap-7">
+        <h2 className="text-[20px] font-bold uppercase leading-7 text-energy-green md:text-[24px]">
+          {detail.table.title}
+        </h2>
+        <span className="hidden h-px flex-1 bg-[#a8b4bd] md:block" aria-hidden="true" />
+      </div>
+      <div className="mt-8 overflow-hidden rounded-[14px] bg-[#062b43] text-white md:rounded-[16px]">
+        <div className="grid grid-cols-4 bg-energy-green text-center text-[11px] leading-4 md:text-[14px] md:leading-5">
+          {detail.table.columns.map((column) => (
+            <div key={column} className="px-3 py-4">
+              {column}
+            </div>
+          ))}
+        </div>
+        {detail.table.rows.map((row) => (
+          <div
+            key={row.join("-")}
+            className="grid grid-cols-4 border-t border-white/10 text-center text-[11px] leading-4 md:text-[14px] md:leading-5"
+          >
+            {row.map((cell) => (
+              <div key={cell} className="px-3 py-5">
+                {cell}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EnergyProductDetailPage({ detail }: { detail: EnergyProductDetail }) {
+  const isPipeCoating = detail.slug === "pipe-coating";
+
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-white">
+      <EnergyProductHero />
+      <section className="bg-white px-5 pb-[72px] pt-8 text-energy-ink md:px-10 md:pb-[110px] md:pt-[62px]">
+        <div className="mx-auto w-full max-w-[1240px]">
+          <Link
+            href={content.products.activeHref}
+            className="inline-flex items-center gap-3 text-[15px] font-bold leading-6 text-energy-ink transition-colors hover:text-energy-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-energy-green"
+          >
+            <ArrowLeft className="size-5 text-energy-green" />
+            Back
+          </Link>
+          <h2 className="mt-9 text-[24px] font-bold uppercase leading-[30px] tracking-[0] text-energy-green md:mt-[58px] md:text-[40px] md:leading-[48px]">
+            {detail.title}
+          </h2>
+
+          {isPipeCoating ? (
+            <div className="mt-8">
+              <EnergyPipeCoatingOverview detail={detail} />
+            </div>
+          ) : (
+            <div className="mt-8 grid gap-5 md:grid-cols-[minmax(0,560px)_minmax(0,640px)]">
+              <EnergyProductIntroCard detail={detail} />
+              {"chart" in detail && detail.chart ? (
+                <EnergyProductBarChart chart={detail.chart} />
+              ) : (
+                <EnergyProductHighlights detail={detail} />
+              )}
+            </div>
+          )}
+
+          <div className="mt-8 h-px bg-[#a8b4bd] md:mt-[72px]" aria-hidden="true" />
+          <EnergyProductMedia detail={detail} />
+          <EnergyTopsideTypesSection detail={detail} />
+          <EnergyPipeCoatingCapacityTable detail={detail} />
+        </div>
+      </section>
+      <EnergyFooter />
+    </main>
+  );
+}
+
+export function NmdcEnergyProductDetailPage({
+  detail,
+}: {
+  detail: EnergyProductDetail;
+}) {
+  return <EnergyProductDetailPage detail={detail} />;
+}
+
+export function NmdcEnergyProductsPage() {
+  const products = content.products;
+  const hero = products.hero;
+
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-white">
+      <section className="relative isolate h-[450px] overflow-hidden bg-energy-deep-navy px-5 text-white md:h-[485px] md:px-10">
+        <Image
+          src={hero.background.src}
+          alt={hero.background.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[50%_50%]"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,24,20,0.66)_0%,rgba(2,24,20,0.58)_48%,rgba(2,24,20,0.74)_100%)]"
+          aria-hidden="true"
+        />
+        <Header links={getEnergyNavLinks(products.activeHref)} />
+
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[44px] md:pb-[73px]">
+          <h1 className="text-[48px] font-bold leading-[58px] tracking-[0] text-white md:text-[48px] md:uppercase md:leading-[58px]">
+            <span>{hero.titleLeading}</span>{" "}
+            <span className="text-energy-green">{hero.titleAccent}</span>
+          </h1>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 pb-[76px] pt-[31px] text-energy-ink md:px-10 md:pb-[110px] md:pt-[76px]">
+        <div className="mx-auto w-full max-w-[1240px]">
+          <div className="flex items-start justify-between gap-8">
+            <h2 className="text-[30px] font-bold uppercase leading-[38px] tracking-[0] text-energy-green md:text-[31px] md:leading-[38px]">
+              {products.title}
+            </h2>
+            <span
+              className="mt-[21px] hidden h-px w-[420px] bg-[#a8b4bd] md:block"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="mt-[42px] grid gap-[36px] md:mt-[70px] md:grid-cols-3 md:gap-x-[34px] md:gap-y-[76px]">
+            {products.items.map((product) => (
+              <EnergyProductCard key={product.title} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <EnergyFooter />
+    </main>
   );
 }
 
@@ -985,6 +1498,7 @@ function EnergyTechnologySection() {
 
 function EnergyFooter() {
   const footer = content.footer;
+  const mobileFooterLinks = footer.mobileNavigationLinks ?? content.nav.links;
 
   return (
     <footer className="relative isolate overflow-hidden bg-energy-deep-navy px-5 py-10 text-white md:px-10 md:py-[64px]">
@@ -1048,9 +1562,18 @@ function EnergyFooter() {
           aria-label={footer.navigationLabel}
           className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
-          <ul className="grid gap-6 text-[22px] font-normal leading-7 text-white md:gap-4 md:text-[15px] md:leading-5">
+          <ul className="hidden gap-6 text-[22px] font-normal leading-7 text-white md:grid md:gap-4 md:text-[15px] md:leading-5">
             {content.nav.links.map((link) => (
               <li key={link.href}>
+                <Link href={link.href} className="transition-colors hover:text-energy-green">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <ul className="grid gap-6 text-[22px] font-normal leading-7 text-white md:hidden">
+            {mobileFooterLinks.map((link) => (
+              <li key={link.label}>
                 <Link href={link.href} className="transition-colors hover:text-energy-green">
                   {link.label}
                 </Link>

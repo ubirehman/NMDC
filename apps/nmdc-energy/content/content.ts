@@ -292,6 +292,291 @@ export const nmdcEnergyContent = {
       ],
     },
   },
+  products: {
+    activeHref: "/products",
+    title: "Our Products",
+    hero: {
+      titleLeading: "Our",
+      titleAccent: "Products",
+      background: {
+        src: withEnergyBasePath("/images/energy/products-hero.jpg"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+    },
+    items: [
+      {
+        title: "Topside",
+        href: "/products/topside",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-topside.jpg"),
+          alt: "NMDC Energy topside module at a waterfront yard",
+          objectPosition: "47% 50%",
+        },
+      },
+      {
+        title: "Jackets",
+        href: "/products/jackets",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-jackets.jpg"),
+          alt: "Steel jacket structure under construction",
+          objectPosition: "50% 50%",
+        },
+      },
+      {
+        title: "Bridges And Boat Landings",
+        href: "/products/bridges-and-boat-landings",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-bridges-boat-landings.jpg"),
+          alt: "Bridge and boat landing structure being lifted by cranes",
+          objectPosition: "50% 50%",
+        },
+      },
+      {
+        title: "Pressure Vessels",
+        href: "/products/pressure-vessels",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-pressure-vessels.jpg"),
+          alt: "Pressure vessel being handled at an industrial yard",
+          objectPosition: "48% 50%",
+        },
+      },
+      {
+        title: "Process Skids",
+        href: "/products/process-skids",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-process-skids.jpg"),
+          alt: "Process skid equipment mounted above a pressure vessel",
+          objectPosition: "50% 50%",
+        },
+      },
+      {
+        title: "Pipe Coating",
+        href: "/products/pipe-coating",
+        image: {
+          src: withEnergyBasePath("/images/energy/product-pipe-coating.jpg"),
+          alt: "Coated pipe sections stacked in an industrial yard",
+          objectPosition: "50% 50%",
+        },
+      },
+    ],
+    details: [
+      {
+        slug: "topside",
+        title: "TOPSIDE",
+        intro: {
+          paragraphs: [
+            "Topsides in oil and gas construction refer to the above-ground or above-water facilities installed on a platform, structure, or foundation, both offshore and onshore.",
+            "They accommodate critical operational systems such as process equipment, power generation, control rooms, utilities, safety systems, and accommodation, enabling safe and efficient production and processing activities.",
+          ],
+        },
+        chart: {
+          title: "Total Manufactured Topside From 2003",
+          values: [
+            { year: "2023", value: 3 },
+            { year: "2024", value: 11 },
+            { year: "2025", value: 36 },
+          ],
+        },
+        media: {
+          label: "Riser Platform",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-topside-detail.jpg"),
+            alt: "NMDC Energy riser platform topside module",
+            objectPosition: "50% 50%",
+          },
+        },
+        typesTitle: "TYPES OF TOPSIDES",
+        offshore: {
+          title: "OFFSHORE STRUCTURES",
+          items: [
+            { title: "Oil or Gas Production Platform / Wellhead Tower", value: "2000 MT", unit: "(metric tons)" },
+            { title: "Water Injection Platform", value: "1000 MT", unit: "(metric tons)" },
+            { title: "Power Distribution Platform", value: "3500 MT", unit: "(metric tons)" },
+            { title: "Gas Treatment Platform", value: "2500 MT", unit: "(metric tons)" },
+            { title: "Riser Platform / Tie-In Platform", value: "3500 MT", unit: "(metric tons)" },
+            { title: "Accommodation Platform", value: "32000 MT", unit: "(metric tons)" },
+          ],
+        },
+        onshore: {
+          title: "ONSHORE STRUCTURES",
+          module: {
+            title: "Pre-assembled Module (Substations/ Process Modules)",
+            value: "500 MT",
+            unit: "per each module (metric tons)",
+          },
+          specs: [
+            { title: "Approximate Topside Weight", value: "Vary from 300 MT up to 32,000 MT" },
+            { title: "Approximate Topside size", value: "Up to 68 m x 75 m" },
+            { title: "Fabrication Duration", value: "1 year to 5 Years" },
+          ],
+        },
+      },
+      {
+        slug: "jackets",
+        title: "JACKETS",
+        intro: {
+          title: "FIXED TYPE JACKETS",
+          bullets: [
+            "Jackets are used as foundations to install different types of topside",
+            "Jacket's height depend on the water depth up to 90 meters",
+            "Number of jacket legs vary from three (3) legs up to eight (8) legs based on the topside and the water depth",
+            "Approximately weighs from 500 MT up to 4500 MT (metric tons)",
+          ],
+        },
+        chart: {
+          title: "Total Manufactured Topside From 2003",
+          values: [
+            { year: "2023", value: 23 },
+            { year: "2024", value: 10 },
+            { year: "2025", value: 9 },
+          ],
+        },
+        media: {
+          label: "Eight Legged Jacket",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-jackets-detail.jpg"),
+            alt: "Eight legged jacket structure on a transport platform",
+            objectPosition: "50% 50%",
+          },
+        },
+      },
+      {
+        slug: "bridges-and-boat-landings",
+        title: "BRIDGES AND BOAT LANDINGS",
+        intro: {
+          bullets: [
+            "Bridges are used to connect between different topsides at sea",
+            "Boat landing is required to facilitate the access to topsides from barges/boats",
+            "Approximately weighs from 250 MT to 500 MT (metric tons)",
+          ],
+        },
+        chart: {
+          title: "Total Manufactured Topside From 2003",
+          values: [
+            { year: "2023", value: 0 },
+            { year: "2024", value: 2 },
+            { year: "2025", value: 6 },
+          ],
+        },
+        media: {
+          label: "Bridges",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-bridges-detail.jpg"),
+            alt: "Fabricated bridge structure in an NMDC Energy yard",
+            objectPosition: "50% 50%",
+          },
+        },
+      },
+      {
+        slug: "pressure-vessels",
+        title: "PRESSURE VESSELS",
+        intro: {
+          paragraphs: [
+            "Pressure vessels in oil & gas platforms are closed containers designed to safely hold fluids or gases at pressures significantly different from ambient conditions during processing, separation, storage, or transportation.",
+          ],
+        },
+        highlightsTitle: "Key Highlights",
+        highlights: [
+          { title: "Fabricated Around", value: "1200", unit: "Pieces", icon: "pressure" },
+          { title: "Weighs up to", value: "300", unit: "Metric ton per piece", icon: "weight" },
+          { title: "Fabrication duration", value: "3 to 12", unit: "Months", icon: "duration" },
+        ],
+        media: {
+          label: "Storage Tank",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-pressure-vessels-detail.jpg"),
+            alt: "Storage tank pressure vessel in a fabrication workshop",
+            objectPosition: "50% 50%",
+          },
+        },
+      },
+      {
+        slug: "process-skids",
+        title: "PROCESS SKIDS",
+        intro: {
+          paragraphs: [
+            "Process skids in oil & gas platforms are modular, pre-assembled units that integrate piping, equipment, instrumentation, and controls to perform specific processing functions onsite.",
+          ],
+        },
+        highlightsTitle: "Key Highlight",
+        highlights: [
+          { title: "Fabrication Duration", value: "6 to 12", unit: "Months", icon: "duration" },
+        ],
+        media: {
+          label: "Glycol Storage Unit",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-process-skids-detail.jpg"),
+            alt: "Glycol storage unit process skid in a workshop",
+            objectPosition: "50% 50%",
+          },
+        },
+      },
+      {
+        slug: "pipe-coating",
+        title: "PIPE COATING",
+        intro: {
+          title: "ICAD IV - Pipe Coating Yard",
+          paragraphs: [
+            "The yard is specialized in 1LFBE, 2LFBE (Single & Dual Layer Fusion Bonded Epoxy), 3-Layer Polyolefin (3LPC): 3-Layer Polyethylene/Polypropylene, Internal Liquid Epoxy/ Flow coating & Concrete Weight Coating on line pipes.",
+          ],
+        },
+        capabilities: [
+          "FBE/ 3LPO Coating of 3\"- 64\" OD Pipes",
+          "CWC coating of 4\" - 48\" OD Pipes",
+          "Internal Painting of 16\" - 64\" OD Pipes",
+        ],
+        highlights: [
+          {
+            title: "15,000 KM",
+            value: "Pipeline coating completed",
+            unit: "(~1.230 Million pipes coated, since inception, equivalent to 1/3 the circumference of the Earth)",
+            icon: "pipe",
+          },
+          {
+            title: "2025",
+            value: "1,005 km of pipe coating completed",
+            unit: "82,400 pipes.",
+            icon: "coating",
+          },
+          {
+            title: "58,626 pieces",
+            value: "Loaded out 28,114 pipes concrete weight coated to Offshore and 30,512 pipes 2-Layer FBE & 3LPE/PP coated to Onshore",
+            unit: "(Totaling 58,626 pipes).",
+            icon: "stack",
+          },
+        ],
+        media: {
+          label: "Double Jointed CWC Pipes",
+          image: {
+            src: withEnergyBasePath("/images/energy/product-pipe-coating-video.jpg"),
+            alt: "Aerial view of NMDC Energy ICAD 4 pipe coating yard",
+            objectPosition: "50% 50%",
+          },
+          mobileImage: {
+            src: withEnergyBasePath("/images/energy/product-pipe-coating-mobile.jpg"),
+            alt: "Double jointed CWC pipes being transported by truck",
+            objectPosition: "50% 50%",
+          },
+          playLabel: "Play pipe coating yard video",
+        },
+        table: {
+          title: "PRODUCTION CAPACITY FOR EACH 3 LPO PLANT",
+          columns: [
+            "Outer Diameter (inches)",
+            "Fusion Bonded Epoxy (FBE) (1)",
+            "3 Layer (2)",
+            "Concrete Coating on Top of (1) and (2)",
+          ],
+          rows: [
+            ["4.5\"", "4.87 m / min", "4.87 m / min", "2.2 m / min"],
+            ["12.75\"", "4.57 m / min", "4.57 m / min", "2.2 m / min"],
+            ["20\"", "2.65 m / min", "2.65 m / min", "1.73 m / min"],
+            ["48\"", "1.07 m / min", "1.07 m / min", "1.13 m / min"],
+          ],
+        },
+      },
+    ],
+  },
   footer: {
     background: {
       src: withEnergyBasePath("/images/energy/overview-footer-bg.jpg"),
@@ -315,6 +600,13 @@ export const nmdcEnergyContent = {
       { label: "LinkedIn", href: "#", marker: "in" },
     ],
     navigationLabel: "Footer navigation",
+    mobileNavigationLinks: [
+      { label: "Home", href: "/" },
+      { label: "NMDC Overview", href: "/overview" },
+      { label: "People & Culture", href: "#" },
+      { label: "Technology & Ai", href: "#" },
+      { label: "Safeen Subsea", href: "#" },
+    ],
     emailTitle: "Email",
     emails: [
       { label: "General inquiries", value: "NMDC@nmdc-group.com" },

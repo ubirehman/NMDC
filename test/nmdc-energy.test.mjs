@@ -7,6 +7,7 @@ const energyFiles = [
   "apps/nmdc-energy/app/overview/page.tsx",
   "apps/nmdc-energy/app/overview/at-a-glance/page.tsx",
   "apps/nmdc-energy/app/yard-highlights/page.tsx",
+  "apps/nmdc-energy/app/products/page.tsx",
   "apps/nmdc-energy/app/pages.tsx",
   "apps/nmdc-energy/app/layout.tsx",
   "apps/nmdc-energy/app/globals.css",
@@ -228,8 +229,113 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(page, /md:h-\[486px\]/);
   assert.match(page, /md:grid-cols-\[minmax\(0,760px\)_436px\]/);
   assert.match(page, /md:grid-cols-2/);
+  assert.match(page, /data-yard-capabilities/);
+  assert.match(page, /data-yard-capability-grid/);
+  assert.match(page, /data-yard-capability-card/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,1fr\)_minmax\(0,1fr\)\]/);
+  assert.match(page, /md:grid-cols-\[184px_minmax\(0,1fr\)\]/);
+  assert.doesNotMatch(page, /data-yard-capabilities[^>]+md:hidden/);
   assert.match(page, /EnergyFooter/);
   assert.doesNotMatch(page, /rounded-sm border border-energy-green/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Energy products follows the supplied desktop and mobile PDF design", () => {
+  const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const route = readFileSync("apps/nmdc-energy/app/products/page.tsx", "utf8");
+
+  for (const asset of [
+    "apps/nmdc-energy/public/images/energy/products-hero.jpg",
+    "apps/nmdc-energy/public/images/energy/product-topside.jpg",
+    "apps/nmdc-energy/public/images/energy/product-jackets.jpg",
+    "apps/nmdc-energy/public/images/energy/product-bridges-boat-landings.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels.jpg",
+    "apps/nmdc-energy/public/images/energy/product-process-skids.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pipe-coating.jpg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(route, /NmdcEnergyProductsPage/);
+  assert.match(content, /products:\s*\{/);
+  assert.match(content, /activeHref: "\/products"/);
+  assert.match(content, /titleLeading: "Our"/);
+  assert.match(content, /titleAccent: "Products"/);
+  assert.match(content, /href: "\/products\/topside"/);
+  assert.match(content, /href: "\/products\/jackets"/);
+  assert.match(content, /href: "\/products\/bridges-and-boat-landings"/);
+  assert.match(content, /href: "\/products\/pressure-vessels"/);
+  assert.match(content, /href: "\/products\/process-skids"/);
+  assert.match(content, /href: "\/products\/pipe-coating"/);
+  assert.match(content, /Topside/);
+  assert.match(content, /Jackets/);
+  assert.match(content, /Bridges And Boat Landings/);
+  assert.match(content, /Pressure Vessels/);
+  assert.match(content, /Process Skids/);
+  assert.match(content, /Pipe Coating/);
+  assert.match(page, /function EnergyProductCard/);
+  assert.match(page, /href=\{product\.href\}/);
+  assert.match(page, /function NmdcEnergyProductsPage/);
+  assert.match(page, /getEnergyNavLinks\(products\.activeHref\)/);
+  assert.match(page, /md:h-\[485px\]/);
+  assert.match(page, /md:grid-cols-3/);
+  assert.match(page, /max-w-\[1240px\]/);
+  assert.match(page, /rounded-\[34px\].*md:rounded-\[42px\]/s);
+  assert.match(page, /shadow-\[0_26px_44px_rgba\(6,40,33,0\.30\)\]/);
+  assert.match(page, /EnergyFooter/);
+  assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Energy product cards open their respective PDF-designed detail pages", () => {
+  const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const route = readFileSync("apps/nmdc-energy/app/products/[slug]/page.tsx", "utf8");
+
+  for (const asset of [
+    "apps/nmdc-energy/public/images/energy/product-topside-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-jackets-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-bridges-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-process-skids-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pipe-coating-video.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pipe-coating-mobile.jpg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(route, /generateStaticParams/);
+  assert.match(route, /NmdcEnergyProductDetailPage/);
+  assert.match(route, /notFound/);
+  assert.match(content, /details:\s*\[/);
+  for (const slug of [
+    "topside",
+    "jackets",
+    "bridges-and-boat-landings",
+    "pressure-vessels",
+    "process-skids",
+    "pipe-coating",
+  ]) {
+    assert.match(content, new RegExp(`slug: "${slug}"`));
+  }
+  assert.match(content, /Riser Platform/);
+  assert.match(content, /Eight Legged Jacket/);
+  assert.match(content, /Bridges"/);
+  assert.match(content, /Storage Tank/);
+  assert.match(content, /Glycol Storage Unit/);
+  assert.match(content, /Double Jointed CWC Pipes/);
+  assert.match(content, /PRODUCTION CAPACITY FOR EACH 3 LPO PLANT/);
+  assert.match(content, /TYPES OF TOPSIDES/);
+  assert.match(page, /function EnergyProductHero/);
+  assert.match(page, /function EnergyProductDetailPage/);
+  assert.match(page, /function NmdcEnergyProductDetailPage/);
+  assert.match(page, /function EnergyProductBarChart/);
+  assert.match(page, /function EnergyProductMedia/);
+  assert.match(page, /function EnergyTopsideTypesSection/);
+  assert.match(page, /function EnergyPipeCoatingCapacityTable/);
+  assert.match(page, /md:grid-cols-\[minmax\(0,560px\)_minmax\(0,640px\)\]/);
+  assert.match(page, /md:grid-cols-3/);
+  assert.match(page, /EnergyFooter/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 

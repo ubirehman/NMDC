@@ -72,11 +72,11 @@ export function NmdcInfraHomePage() {
 
   return (
     <main className="min-h-screen bg-infra-navy">
-      <section className="relative isolate h-[786px] overflow-hidden bg-infra-navy px-5 text-white md:px-10">
+      <section className="relative isolate min-h-[max(786px,100svh)] overflow-hidden bg-infra-navy px-5 text-white md:px-10">
         <InfraBackground priority />
-        <Header links={getInfraNavLinks("/overview")} />
+        <Header links={getInfraNavLinks("/")} />
 
-        <div className="relative z-10 mx-auto h-full w-full max-w-[1240px]">
+        <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
           <div className="pt-[113px] md:absolute md:left-0 md:top-[197px] md:w-[630px] md:pt-0">
             <HomeHeadline />
 

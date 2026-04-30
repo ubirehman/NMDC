@@ -21,6 +21,16 @@ type InfraHomeCardRailProps = {
 
 const SCROLL_STEP = 168;
 
+function getCardId(card: HomeCard) {
+  const title = card.title.toLowerCase();
+
+  if (title.includes("dredging")) return "dm";
+  if (title.includes("energy")) return "energy";
+  if (title.includes("lts")) return "lts";
+  if (title.includes("product")) return "product";
+  return "group";
+}
+
 export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -58,10 +68,20 @@ export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
         className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0"
       >
         {cards.map((card) => {
+          const cardId = getCardId(card);
           const label =
             card.title === "NMDC Product Highlight"
               ? "NMDC Product\nHighlight"
               : card.title;
+          const logoFrameClassName =
+            {
+              group: "h-[27px] w-[86px]",
+              dm: "h-[28px] w-[122px]",
+              energy: "h-[28px] w-[122px]",
+              lts: "h-[27px] w-[86px]",
+            }[cardId] ?? "h-[28px] w-[96px]";
+          const logoFitClassName =
+            cardId === "dm" || cardId === "energy" ? "object-cover" : "object-contain";
 
           return (
             <Link
@@ -85,13 +105,15 @@ export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
 
               <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[rgba(7,28,40,0.82)] px-2 backdrop-blur-[26.5px] transition-colors duration-200 group-hover:bg-infra-yellow group-focus-visible:bg-infra-yellow group-active:bg-infra-yellow">
                 {card.logo ? (
-                  <Image
-                    src={card.logo.src}
-                    alt={card.logo.alt}
-                    width={96}
-                    height={36}
-                    className="max-h-[28px] w-[96px] object-contain transition-opacity duration-200 group-hover:opacity-90"
-                  />
+                  <span className={`relative block shrink-0 overflow-hidden ${logoFrameClassName}`}>
+                    <Image
+                      src={card.logo.src}
+                      alt={card.logo.alt}
+                      fill
+                      sizes="122px"
+                      className={`${logoFitClassName} transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100`}
+                    />
+                  </span>
                 ) : (
                   <span className="flex w-full items-center justify-between gap-2 pl-1">
                     <span className="whitespace-pre-line text-left text-xs font-medium leading-[1.25] text-white transition-colors duration-200 group-hover:text-infra-ink group-focus-visible:text-infra-ink group-active:text-infra-ink">
