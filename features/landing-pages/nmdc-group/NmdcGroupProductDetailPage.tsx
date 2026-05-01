@@ -121,7 +121,7 @@ function StandardProductDetailLayout({
             <ProductMediaPanel media={detail.media} />
           </div>
 
-          <div className="mt-12 flex justify-center md:mt-[70px]">
+          <div className="mt-12 flex justify-center md:mt-[100px]">
             <ProductQrImage />
           </div>
         </div>
@@ -173,7 +173,7 @@ function HailGhashaDetailLayout({
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center md:mt-[70px]">
+          <div className="mt-12 flex justify-center md:mt-[100px]">
             <ProductQrImage />
           </div>
         </div>
@@ -306,8 +306,9 @@ type MarineVesselCardData = Extract<
 >["vesselCards"][number];
 
 function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
+  const pdfSlug = vessel.name.toLowerCase().replace(/\s+/g, "-");
   return (
-    <article className="relative h-[360px] overflow-hidden rounded-[10px] bg-[#12394d] shadow-[0_22px_48px_rgba(0,0,0,0.18)] md:h-[421px]">
+    <div className="group relative h-[360px] overflow-hidden rounded-[10px] bg-[#12394d] shadow-[0_22px_48px_rgba(0,0,0,0.18)] md:h-[421px]">
       <Image
         src={vessel.image}
         alt={vessel.alt}
@@ -315,23 +316,52 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
         sizes="(min-width: 768px) 386px, 100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-x-0 bottom-0 min-h-[132px] rounded-t-[16px] bg-[#22475b]/92 px-4 pb-4 pt-4 md:min-h-[154px] md:px-4 md:pb-4 md:pt-5">
-        <h2 className="text-center text-[14px] font-bold leading-5 text-primary-sky-blue md:text-[15px]">
-          {vessel.name}
-        </h2>
-        <p className="text-center text-[10px] font-medium leading-4 text-white md:text-[11px]">
-          {vessel.type}
-        </p>
-        <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-[10px] font-medium leading-4 text-white md:text-[11px]">
-          {vessel.specs.map((spec) => (
-            <div key={spec.label} className="flex justify-between gap-2">
-              <dt className="text-white/86">{spec.label}:</dt>
-              <dd className="text-right text-white">{spec.value}</dd>
-            </div>
-          ))}
-        </dl>
+      <div className="absolute inset-x-0 bottom-0 translate-y-14 rounded-t-[16px] bg-[#22475b]/92 backdrop-blur-[10px] transition-transform duration-300 ease-out group-hover:translate-y-0">
+        <div className="px-4 pb-0 pt-4">
+          <h2 className="text-center text-[14px] font-bold leading-5 text-primary-sky-blue md:text-[15px]">
+            {vessel.name}
+          </h2>
+          <p className="text-center text-[10px] font-medium leading-4 text-white md:text-[11px]">
+            {vessel.type}
+          </p>
+          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 pb-4 text-[10px] font-medium leading-4 text-white md:text-[11px]">
+            {vessel.specs.map((spec: { label: string; value: string }) => (
+              <div key={spec.label} className="flex justify-between gap-2">
+                <dt className="text-white/86">{spec.label}:</dt>
+                <dd className="text-right text-white">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <a
+          href={`/pdfs/${pdfSlug}.pdf`}
+          download
+          className="flex items-center justify-center gap-3 rounded-t-xl bg-[#0a1e2e]/80 py-4 transition-colors hover:bg-[#0a1e2e]"
+        >
+          <EyeIcon className="size-5 shrink-0 text-primary-sky-blue" />
+          <span className="text-[15px] font-semibold text-primary-sky-blue">
+            View specification
+          </span>
+        </a>
       </div>
-    </article>
+    </div>
+  );
+}
+
+function EyeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M2 12s3.636-7 10-7 10 7 10 7-3.636 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
   );
 }
 

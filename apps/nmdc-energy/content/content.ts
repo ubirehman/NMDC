@@ -590,16 +590,10 @@ export const nmdcEnergyContent = {
           videos: [
             {
               title: "Pipe coating yard",
-              src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+              src: withEnergyBasePath("/videos/pipe_coating.mp4"),
               type: "video/mp4",
               playLabel: "Play pipe coating yard video",
-            },
-            {
-              title: "Pipe coating yard operations",
-              src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
-              type: "video/mp4",
-              playLabel: "Play pipe coating yard operations video",
-            },
+            }
           ],
         },
         table: {

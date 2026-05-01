@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "../../../app/components/landing/icons";
 import { Header } from "../../../app/components/landing/Header";
 import { LandingVideoCarousel } from "../../../app/components/landing/LandingVideoCarousel";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
+import { PeopleCultureGalleryCarousel } from "./PeopleCultureGalleryCarousel";
 import {
   emiratizationContent,
   emiratizationStats,
@@ -151,9 +151,9 @@ export function NmdcPeopleCulturePage() {
       <MobileMediaGallery />
 
       <section className="hidden bg-[#062c45] px-5 py-12 md:block md:px-10 md:pb-0 md:pt-[258px]">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:gap-[95px]">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8">
           {peopleCultureGallery.slice(0, 2).map((image, index) => (
-            <MediaPanel key={image.src} image={image} showPlay={index === 1} />
+            <MediaPanel key={image.src} showPlay={index === 1} />
           ))}
         </div>
       </section>
@@ -281,54 +281,28 @@ function MobileMediaGallery() {
   return (
     <section className="bg-[#062c45] px-5 pb-[87px] pt-12 md:hidden">
       <div className="grid gap-8">
-        {peopleCultureMobileGallery.map((image, index) => (
-          <article key={image.src}>
+        <PeopleCultureGalleryCarousel
+          images={peopleCultureMobileGallery}
+          frameClassName="rounded-[12px] bg-primary-navy-blue"
+          imageClassName="h-[540px] w-full object-cover"
+          controlsClassName="mt-8 flex justify-center gap-8"
+          previousButtonClassName="flex size-11 items-center justify-center rounded-full border border-white/70 text-white/72"
+          nextButtonClassName="flex size-11 items-center justify-center rounded-full bg-white text-primary-sky-blue"
+          iconClassName="size-5"
+          showDots
+        />
+        {peopleCultureVideos.map((video) => (
+          <article key={video.src}>
             <div className="relative overflow-hidden rounded-[12px] bg-primary-navy-blue">
-              {index === 0 ? (
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={646}
-                  height={1080}
-                  className="h-[540px] w-full object-cover"
-                />
-              ) : (
-                <video
-                  controls
-                  playsInline
-                  preload="metadata"
-                  src={peopleCultureVideos[(index - 1) % peopleCultureVideos.length].src}
-                  aria-label={peopleCultureVideos[(index - 1) % peopleCultureVideos.length].playLabel}
-                  className="h-[320px] w-full bg-primary-navy-blue object-cover"
-                />
-              )}
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                src={video.src}
+                aria-label={video.playLabel}
+                className="h-[320px] w-full bg-primary-navy-blue object-cover"
+              />
             </div>
-            {index === 0 ? (
-              <div className="mt-8">
-                <div className="flex justify-center gap-8">
-                  <button
-                    type="button"
-                    aria-label="Previous item"
-                    className="flex size-11 items-center justify-center rounded-full border border-white/70 text-white/72"
-                  >
-                    <ArrowLeft className="size-5" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Next item"
-                    className="flex size-11 items-center justify-center rounded-full bg-white text-primary-sky-blue"
-                  >
-                    <ArrowRight className="size-5" />
-                  </button>
-                </div>
-                <div className="mt-8 flex justify-center gap-1.5">
-                  <span className="h-3 w-10 rounded-full bg-primary-sky-blue" />
-                  <span className="size-3 rounded-full bg-white/82" />
-                  <span className="size-3 rounded-full bg-white/82" />
-                  <span className="size-3 rounded-full bg-white/82" />
-                </div>
-              </div>
-            ) : null}
           </article>
         ))}
       </div>
@@ -444,16 +418,7 @@ function TrackIcon({
   );
 }
 
-function MediaPanel({
-  image,
-  showPlay,
-}: {
-  image: {
-    src: string;
-    alt: string;
-  };
-  showPlay: boolean;
-}) {
+function MediaPanel({ showPlay }: { showPlay: boolean }) {
   if (showPlay) {
     return (
       <article>
@@ -466,32 +431,9 @@ function MediaPanel({
   }
 
   return (
-    <article>
-      <div className="relative overflow-hidden rounded-[6px] bg-primary-navy-blue md:rounded-[20px]">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={1040}
-          height={520}
-          className="h-[230px] w-full object-cover md:h-[610px]"
-        />
-      </div>
-      <div className="mt-4 flex justify-center gap-2 md:my-5 md:gap-6">
-        <button
-          type="button"
-          aria-label="Previous item"
-          className="flex size-8 items-center justify-center rounded-full border border-white/18 text-white/72 transition-colors hover:border-white hover:text-white md:size-16 md:border-white/80"
-        >
-          <ArrowLeft className="size-4 md:size-8" />
-        </button>
-        <button
-          type="button"
-          aria-label="Next item"
-          className="flex size-8 items-center justify-center rounded-full bg-white text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white md:size-16"
-        >
-          <ArrowRight className="size-4 md:size-8" />
-        </button>
-      </div>
-    </article>
+    <PeopleCultureGalleryCarousel
+      images={peopleCultureGallery}
+      imageClassName="h-[230px] w-full object-cover md:h-[610px]"
+    />
   );
 }

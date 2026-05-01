@@ -151,19 +151,27 @@ export const maharaFreshGraduateDetail = {
 
 export const peopleCultureGallery = [
   {
-    src: "/images/landing/people-audience.jpg",
+    src: "/images/landing/AVI04001.jpg",
     alt: "NMDC leadership event audience",
   },
   {
-    src: "/images/landing/people-business.jpg",
+    src: "/images/landing/Group_Newsroom.jpg",
     alt: "NMDC employees in discussion",
   },
   {
-    src: "/images/landing/people-graduates.jpg",
+    src: "/images/landing/alliance.jpg",
     alt: "NMDC graduate program group",
   },
   {
-    src: "/images/landing/people-workshop.jpg",
+    src: "/images/landing/IMG_7995.jpg",
+    alt: "NMDC project workshop",
+  },
+  {
+    src: "/images/landing/LMH_1_4.jpg",
+    alt: "NMDC project workshop",
+  },
+  {
+    src: "/images/landing/LMH1_75.jpg",
     alt: "NMDC project workshop",
   },
 ];

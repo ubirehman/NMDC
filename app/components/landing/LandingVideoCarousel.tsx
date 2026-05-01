@@ -23,7 +23,7 @@ export function LandingVideoCarousel({
   videoClassName,
   controlsClassName = "mt-4 flex justify-center gap-2 md:my-5 md:gap-6",
   previousButtonClassName = "flex size-8 items-center justify-center rounded-full border border-white/18 text-white/72 transition-colors hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-16 md:border-white/80",
-  nextButtonClassName = "flex size-8 items-center justify-center rounded-full bg-white text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-16",
+  nextButtonClassName = "flex size-8 items-center justify-center rounded-full border border-white/18 text-white/72 transition-colors hover:border-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-16 md:border-white/80",
 }: LandingVideoCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);

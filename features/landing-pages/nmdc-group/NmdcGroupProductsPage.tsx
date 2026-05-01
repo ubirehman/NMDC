@@ -31,7 +31,7 @@ export function NmdcGroupProductsPage() {
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] flex-col justify-end px-5 pb-[34px] md:px-10 md:pb-[86px]">
           <Link
             href="/"
-            className="absolute left-10 top-[64px] hidden items-center gap-3 text-[20px] font-bold leading-7 transition-colors hover:text-primary-sky-blue md:flex"
+            className="absolute pt-20 left-10 top-[64px] hidden items-center gap-3 text-[20px] font-bold leading-7 transition-colors hover:text-primary-sky-blue md:flex"
           >
             <ArrowLeft className="size-7" />
             Back

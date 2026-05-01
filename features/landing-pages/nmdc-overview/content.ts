@@ -67,7 +67,7 @@ export const overviewVideo = {
   copy: "Watch how NMDC Group combines marine assets, engineering expertise, and integrated delivery teams to execute complex projects across strategic markets.",
   sources: [
     {
-      src: "/videos/safeen-subsea-rov.mp4",
+      src: "/videos/nmdc-overview.mp4",
       type: "video/mp4",
     },
   ],

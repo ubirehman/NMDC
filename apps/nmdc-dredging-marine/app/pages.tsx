@@ -181,7 +181,7 @@ function MarineVesselCard({ vessel }: VesselCardProps) {
         sizes="(min-width: 768px) 398px, calc(100vw - 40px)"
         className={getVesselCardImageClass(vessel.slug)}
       />
-      <div className="absolute inset-x-0 bottom-0 translate-y-full rounded-t-[18px] bg-[linear-gradient(101deg,rgba(4,38,55,0.98)_0%,rgba(8,72,78,0.90)_100%)] backdrop-blur-[10px] transition-transform duration-300 ease-out group-hover:translate-y-0">
+      <div className="absolute inset-x-0 bottom-0 translate-y-14 rounded-t-[18px] bg-[linear-gradient(101deg,rgba(4,38,55,0.98)_0%,rgba(8,72,78,0.90)_100%)] backdrop-blur-[10px] transition-transform duration-300 ease-out group-hover:translate-y-0">
         <div className="px-5 pb-0 pt-5 text-white">
           <h2 className="text-[18px] font-bold leading-[22px] text-dm-cyan">
             {vessel.name}
