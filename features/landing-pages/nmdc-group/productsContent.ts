@@ -42,7 +42,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "Hail and Ghasha - PAU",
       href: "/products/hail-ghasha-pau",
-      image: `${productsImageBase}/hail-ghasha-pau.webp`,
+      image: `${productsImageBase}/hail_and_gasha_pau.jpg`,
       alt: "Hail and Ghasha PAU placeholder panel",
     },
     {
@@ -54,13 +54,13 @@ export const nmdcGroupProductsContent = {
     {
       title: "Multicad - 21",
       href: "/products/multicat-21",
-      image: `${productsImageBase}/multicad-21.webp`,
+      image: `${productsImageBase}/new-multicad-21.jpg`,
       alt: "Multicad product placeholder panel",
     },
     {
       title: "Valve",
       href: "/products/valve",
-      image: `${productsImageBase}/valve.webp`,
+      image: `${productsImageBase}/valve-new.jpg`,
       alt: "Valve product placeholder panel",
     },
     {
@@ -78,7 +78,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "ESP Pump",
       href: "/products/esp-pump",
-      image: `${productsImageBase}/esp-pump.webp`,
+      image: `${productsImageBase}/esp-pump.jpg`,
       alt: "ESP pump product placeholder panel",
     },
     {
