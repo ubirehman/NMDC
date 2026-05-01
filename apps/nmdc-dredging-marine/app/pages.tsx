@@ -5,6 +5,7 @@ import { DmVideoPlayer } from "../components/DmVideoPlayer";
 import { DmHomeCardRail } from "../components/DmHomeCardRail";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { HydraulicFacilityImageCarousel } from "../components/HydraulicFacilityImageCarousel";
 import {
   ArrowLeft,
   ArrowRight,
@@ -933,14 +934,20 @@ export function HydraulicPhysicalModelPage() {
                 <h3 className="break-words text-[20px] font-bold uppercase leading-7 text-dm-blue md:text-[24px] md:leading-8">
                   {facility.title}
                 </h3>
-                <Image
-                  src={facility.image}
-                  alt={facility.alt}
-                  width={1240}
-                  height={650}
-                  className="mt-5 h-[232px] w-full rounded-[14px] object-cover object-center md:mt-6 md:h-[560px]"
-                />
-                <CarouselControls />
+                {"images" in facility ? (
+                  <HydraulicFacilityImageCarousel images={facility.images} />
+                ) : (
+                  <>
+                    <Image
+                      src={facility.image}
+                      alt={facility.alt}
+                      width={1240}
+                      height={650}
+                      className="mt-5 h-[232px] w-full rounded-[14px] object-cover object-center md:mt-6 md:h-[560px]"
+                    />
+                    <CarouselControls />
+                  </>
+                )}
               </figure>
             ))}
           </div>

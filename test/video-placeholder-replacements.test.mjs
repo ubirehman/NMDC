@@ -4,8 +4,9 @@ import test from "node:test";
 
 test("remaining video placeholders use local playable videos", () => {
   for (const asset of [
-    "apps/nmdc-infra/public/videos/safeen-subsea-green.mp4",
-    "apps/nmdc-infra/public/videos/safeen-subsea-rov.mp4",
+    "apps/nmdc-infra/public/videos/nmdc_infra.mp4",
+    "apps/nmdc-infra/public/videos/nmdc_infra_new.mp4",
+    "apps/nmdc-infra/public/videos/nmdc-overview.mp4",
     "apps/nmdc-dredging-marine/public/videos/safeen-subsea-green.mp4",
     "apps/nmdc-dredging-marine/public/videos/safeen-subsea-rov.mp4",
   ]) {
@@ -20,8 +21,9 @@ test("remaining video placeholders use local playable videos", () => {
   assert.match(infraContent, /overview:[\s\S]*video:[\s\S]*videos:\s*\[/);
   assert.match(infraContent, /products:[\s\S]*detail:[\s\S]*video:[\s\S]*videos:\s*\[/);
   assert.match(infraContent, /ebaweDetail:[\s\S]*video:[\s\S]*videos:\s*\[/);
-  assert.match(infraContent, /withInfraBasePath\("\/videos\/safeen-subsea-green\.mp4"\)/);
-  assert.match(infraContent, /withInfraBasePath\("\/videos\/safeen-subsea-rov\.mp4"\)/);
+  assert.match(infraContent, /withInfraBasePath\("\/videos\/nmdc_infra\.mp4"\)/);
+  assert.match(infraContent, /withInfraBasePath\("\/videos\/nmdc_infra_new\.mp4"\)/);
+  assert.match(infraContent, /withInfraBasePath\("\/videos\/nmdc-overview\.mp4"\)/);
   assert.match(infraPage, /InfraVideoCarousel/);
   assert.match(infraPage, /videos=\{video\.videos\}/);
   assert.match(infraCarousel, /"use client";/);

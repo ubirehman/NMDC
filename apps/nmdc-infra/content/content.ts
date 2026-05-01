@@ -210,16 +210,10 @@ export const nmdcInfraContent = {
       videos: [
         {
           title: "NMDC Infra overview",
-          src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+          src: withInfraBasePath("/videos/nmdc_infra.mp4"),
           type: "video/mp4",
           playLabel: "Play NMDC Infra overview video",
-        },
-        {
-          title: "NMDC Infra operations",
-          src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
-          type: "video/mp4",
-          playLabel: "Play NMDC Infra operations video",
-        },
+        }
       ],
     },
     verticals: {
@@ -323,9 +317,51 @@ export const nmdcInfraContent = {
         alt: "3D printed artificial reef structure underwater",
       },
       detailImage: {
-        src: withInfraBasePath("/images/infra/product-3d-reefs-detail.jpg"),
+        src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
         alt: "NMDC Infra team inspecting 3D printed reef structures",
       },
+      detailImages: [
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
+          alt: "NMDC Infra 3D printed artificial reef structure inspection",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-02.jpg"),
+          alt: "3D printed artificial reef units inside the NMDC Infra facility",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-03.jpg"),
+          alt: "Artificial reef concrete forms produced by 3D printing",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-04.jpg"),
+          alt: "NMDC Infra artificial reef fabrication area",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-05.jpg"),
+          alt: "Detailed view of a 3D printed artificial reef structure",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-06.jpg"),
+          alt: "3D printed reef module positioned in the production area",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-07.jpg"),
+          alt: "Artificial reef modules arranged for inspection",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-08.jpg"),
+          alt: "Close view of 3D printed concrete reef texture",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-09.jpg"),
+          alt: "NMDC Infra 3D printing artificial reef production detail",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-10.jpg"),
+          alt: "3D printed artificial reef structure ready for deployment",
+        },
+      ],
       video: {
         image: {
           src: withInfraBasePath("/images/infra/product-3d-reefs-video.jpg"),
@@ -335,16 +371,10 @@ export const nmdcInfraContent = {
         videos: [
           {
             title: "3D printed artificial reefs",
-            src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+            src: withInfraBasePath("/videos/nmdc_infra_new.mp4"),
             type: "video/mp4",
             playLabel: "Play 3D printing of artificial reefs video",
-          },
-          {
-            title: "3D printed artificial reefs operations",
-            src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
-            type: "video/mp4",
-            playLabel: "Play 3D printing of artificial reefs operations video",
-          },
+          }
         ],
       },
       features: [
@@ -384,32 +414,56 @@ export const nmdcInfraContent = {
         "The company uses 45 pallets from Ebawe Anlagen Technik, with the complete operation of the system. The multi-step process ensures each wall adheres to the highest quality standards.",
       ],
       heroImage: {
-        src: withInfraBasePath("/images/infra/product-ebawe-detail.jpg"),
-        alt: "Ebawe Anlagentechnik precast panel yard",
+        src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+        alt: "NMDC Infra precast excellence at scale",
       },
       galleryImage: {
-        src: withInfraBasePath("/images/infra/product-ebawe-gallery.jpg"),
-        alt: "Ebawe carousel production line in a precast yard",
+        src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
+        alt: "NMDC Infra precast concrete quay walls",
       },
+      galleryImages: [
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
+          alt: "NMDC Infra precast concrete quay walls",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-durable-infrastructure.png"),
+          alt: "NMDC Infra durable precast infrastructure",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-built-on-safety.png"),
+          alt: "NMDC Infra precast operations built on safety",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-construction-leadership.jpg"),
+          alt: "NMDC Infra construction leadership team at site",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-construction-hse.jpg"),
+          alt: "NMDC Infra construction HSE activity",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-abu-al-abyad-project.jpg"),
+          alt: "NMDC Infra Abu Al Abyad project",
+        },
+        {
+          src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+          alt: "NMDC Infra precast excellence at scale",
+        },
+      ],
       video: {
         image: {
-          src: withInfraBasePath("/images/infra/product-ebawe-video.jpg"),
-          alt: "Ebawe precast component lifting operation",
+          src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+          alt: "NMDC Infra precast operations built on safety",
         },
         playLabel: "Play Ebawe Anlagentechnik video",
         videos: [
           {
             title: "Ebawe Anlagentechnik",
-            src: withInfraBasePath("/videos/safeen-subsea-green.mp4"),
+            src: withInfraBasePath("/videos/nmdc-overview.mp4"),
             type: "video/mp4",
             playLabel: "Play Ebawe Anlagentechnik video",
-          },
-          {
-            title: "Ebawe Anlagentechnik operations",
-            src: withInfraBasePath("/videos/safeen-subsea-rov.mp4"),
-            type: "video/mp4",
-            playLabel: "Play Ebawe Anlagentechnik operations video",
-          },
+          }
         ],
       },
     },

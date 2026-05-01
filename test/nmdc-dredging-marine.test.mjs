@@ -253,6 +253,60 @@ test("D&M hydraulic physical model page follows the Coastal and Hydrodynamic PDF
   assert.match(page, /hydraulic\.testingFacilities\.items/);
 });
 
+test("D&M hydraulic testing facilities with image sets use interactive galleries", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+  const carouselPath =
+    "apps/nmdc-dredging-marine/components/HydraulicFacilityImageCarousel.tsx";
+
+  assert.equal(existsSync(carouselPath), true, `${carouselPath} should exist`);
+
+  const carousel = readFileSync(carouselPath, "utf8");
+  const expectedMarinaAssets = [
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-25.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-24.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-23.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-22.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-21.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-marina-breakwater-20.jpg",
+  ];
+  const expectedRubbleAssets = [
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-rubble-breakwater-01.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-rubble-breakwater-02.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-rubble-breakwater-03.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-rubble-breakwater-04.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/hydraulic-rubble-breakwater-05.jpg",
+  ];
+
+  for (const asset of [...expectedMarinaAssets, ...expectedRubbleAssets]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
+  assert.match(content, /2D Flume Physical Modeling Test - Rubble mound Breakwater[\s\S]*images:\s*\[/);
+  assert.match(content, /hydraulic-rubble-breakwater-01\.jpg/);
+  assert.match(content, /hydraulic-rubble-breakwater-05\.jpg/);
+  assert.match(content, /3D Basin Physical Modeling - Marina Rubble mound Breakwater[\s\S]*images:\s*\[/);
+  assert.match(content, /hydraulic-marina-breakwater-25\.jpg/);
+  assert.match(content, /hydraulic-marina-breakwater-20\.jpg/);
+  assert.match(page, /HydraulicFacilityImageCarousel/);
+  assert.match(page, /facility\.images/);
+  assert.match(carousel, /"use client";/);
+  assert.match(carousel, /useState/);
+  assert.match(carousel, /activeIndex/);
+  assert.match(carousel, /showPreviousImage/);
+  assert.match(carousel, /showNextImage/);
+  assert.match(carousel, /onClick=\{showPreviousImage\}/);
+  assert.match(carousel, /onClick=\{showNextImage\}/);
+  assert.match(carousel, /\(index - 1 \+ images\.length\) % images\.length/);
+  assert.match(carousel, /\(index \+ 1\) % images\.length/);
+});
+
 test("D&M caisson method page follows the Caisson Method PDF", () => {
   const content = readFileSync(
     "apps/nmdc-dredging-marine/content/content.ts",

@@ -680,8 +680,30 @@ export const nmdcDredgingMarineContent = {
       items: [
         {
           title: "2D Flume Physical Modeling Test - Rubble mound Breakwater",
-          image: withDredgingMarineBasePath("/images/dm/hydraulic-test-rubble-breakwater.jpg"),
-          alt: "Rubble mound breakwater physical model test"
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-01.jpg"),
+          alt: "Rubble mound breakwater physical model test",
+          images: [
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-01.jpg"),
+              alt: "2D flume rubble mound breakwater physical model test setup"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-02.jpg"),
+              alt: "Rubble mound breakwater model in the hydraulic flume"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-03.jpg"),
+              alt: "Wave flume testing for rubble mound breakwater stability"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-04.jpg"),
+              alt: "Detailed 2D flume view of rubble mound breakwater model"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-rubble-breakwater-05.jpg"),
+              alt: "Hydraulic flume monitoring for rubble mound breakwater testing"
+            }
+          ]
         },
         {
           title: "2D Flume Physical Modeling Test - Coastal Protection",
@@ -690,8 +712,34 @@ export const nmdcDredgingMarineContent = {
         },
         {
           title: "3D Basin Physical Modeling - Marina Rubble mound Breakwater",
-          image: withDredgingMarineBasePath("/images/dm/hydraulic-test-marina-breakwater.jpg"),
-          alt: "Marina rubble mound breakwater basin model"
+          image: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-25.jpg"),
+          alt: "Marina rubble mound breakwater basin model",
+          images: [
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-25.jpg"),
+              alt: "Marina rubble mound breakwater physical model in the 3D basin"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-24.jpg"),
+              alt: "Wave testing setup for marina rubble mound breakwater model"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-23.jpg"),
+              alt: "Detailed view of the marina breakwater physical model basin"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-22.jpg"),
+              alt: "Rubble mound breakwater model during hydraulic basin testing"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-21.jpg"),
+              alt: "Marina basin physical model with coastal structures"
+            },
+            {
+              src: withDredgingMarineBasePath("/images/dm/hydraulic-marina-breakwater-20.jpg"),
+              alt: "3D basin physical modeling view for marina breakwater testing"
+            }
+          ]
         }
       ]
     }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "../components/Header";
+import { InfraDetailImageCarousel } from "../components/InfraDetailImageCarousel";
 import { InfraHomeCardRail } from "../components/InfraHomeCardRail";
 import { InfraVideoCarousel } from "../components/InfraVideoCarousel";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
@@ -576,7 +577,9 @@ type InfraProductDetailContent = {
   readMoreHref?: string;
   heroImage: InfraProductImage;
   detailImage?: InfraProductImage;
+  detailImages?: readonly InfraProductImage[];
   galleryImage?: InfraProductImage;
+  galleryImages?: readonly InfraProductImage[];
   video?: {
     image: InfraProductImage;
     playLabel: string;
@@ -679,14 +682,24 @@ function InfraProductMediaSection({
 }: {
   detail: InfraProductDetailContent;
 }) {
-  if (!detail.galleryImage && !detail.video) {
+  if (!detail.galleryImage && !detail.galleryImages && !detail.video) {
     return null;
   }
 
   return (
     <section className="bg-infra-deep-navy px-5 py-[46px] md:px-10 md:py-[104px]">
       <div className="mx-auto w-full max-w-[1240px]">
-        {detail.galleryImage ? (
+        {detail.galleryImages ? (
+          <InfraDetailImageCarousel
+            images={detail.galleryImages}
+            frameClassName="relative h-[246px] overflow-hidden rounded-[18px] md:h-[625px] md:rounded-[24px]"
+            imageClassName="object-cover object-[50%_58%]"
+            controlsClassName="mt-[28px] flex justify-center gap-[21px] md:mt-[72px] md:gap-6"
+            previousButtonClassName="grid size-[51px] place-items-center rounded-full border border-white text-white/75 transition-colors hover:bg-white hover:text-infra-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-[64px]"
+            nextButtonClassName="grid size-[51px] place-items-center rounded-full bg-white text-infra-yellow transition-colors hover:bg-infra-yellow hover:text-infra-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-[64px]"
+            dataAttribute="gallery"
+          />
+        ) : detail.galleryImage ? (
           <>
             <div
               data-product-detail-gallery
@@ -705,11 +718,13 @@ function InfraProductMediaSection({
         ) : null}
 
         {detail.video ? (
-          <div className={detail.galleryImage ? "mt-[62px] md:mt-[72px]" : ""}>
+          <div className={detail.galleryImage || detail.galleryImages ? "mt-[62px] md:mt-[72px]" : ""}>
             <InfraProductVideo
               video={detail.video}
               heightClassName={
-                detail.galleryImage ? "h-[319px] md:h-[478px]" : undefined
+                detail.galleryImage || detail.galleryImages
+                  ? "h-[319px] md:h-[478px]"
+                  : undefined
               }
             />
           </div>
@@ -1094,7 +1109,9 @@ function NmdcInfraProductDetailPage({
 
           <div data-product-detail-rule className={ruleClassName} aria-hidden="true" />
 
-          {detail.detailImage ? (
+          {detail.detailImages ? (
+            <InfraDetailImageCarousel images={detail.detailImages} />
+          ) : detail.detailImage ? (
             <>
               <div data-detail-image className="relative mt-[26px] h-[321px] overflow-hidden rounded-[14px] md:mt-[78px] md:h-[625px] md:rounded-[24px]">
                 <Image
