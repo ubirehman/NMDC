@@ -167,10 +167,13 @@ type VesselCardProps = {
 
 function MarineVesselCard({ vessel }: VesselCardProps) {
   return (
-    <Link
-      href={`/marine-vessels/${vessel.slug}`}
-      className="group relative block h-[420px] overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_18px_45px_-30px_rgba(4,28,42,0.65)] md:aspect-[398/421] md:h-auto md:min-h-[360px]"
-    >
+    <div className="group relative block h-[420px] overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_18px_45px_-30px_rgba(4,28,42,0.65)] md:aspect-[398/421] md:h-auto md:min-h-[360px]">
+      {/* Full-card navigation link sits behind everything */}
+      <Link
+        href={`/marine-vessels/${vessel.slug}`}
+        className="absolute inset-0 z-0"
+        aria-label={vessel.name}
+      />
       <Image
         src={vessel.image}
         alt={vessel.name}
@@ -178,34 +181,56 @@ function MarineVesselCard({ vessel }: VesselCardProps) {
         sizes="(min-width: 768px) 398px, calc(100vw - 40px)"
         className={getVesselCardImageClass(vessel.slug)}
       />
-      <div
-        className="absolute inset-x-0 bottom-0 flex h-[129px] flex-col justify-start rounded-t-[18px] bg-[linear-gradient(101deg,rgba(4,38,55,0.98)_0%,rgba(8,72,78,0.86)_100%)] px-4 pb-4 pt-[17px] text-white backdrop-blur-[10px] md:h-[134px]"
-        aria-hidden="true"
-      />
-      <div className="absolute inset-x-0 bottom-0 h-[129px] px-4 pb-4 pt-[16px] text-white md:h-[134px]">
-        <div className="text-center">
-          <h2 className="text-[16px] font-bold leading-[20px] text-dm-cyan">
+      <div className="absolute inset-x-0 bottom-0 translate-y-full rounded-t-[18px] bg-[linear-gradient(101deg,rgba(4,38,55,0.98)_0%,rgba(8,72,78,0.90)_100%)] backdrop-blur-[10px] transition-transform duration-300 ease-out group-hover:translate-y-0">
+        <div className="px-5 pb-0 pt-5 text-white">
+          <h2 className="text-[18px] font-bold leading-[22px] text-dm-cyan">
             {vessel.name}
           </h2>
-          <p className="mt-[2px] text-[14px] leading-[18px] text-white">
+          <p className="mt-1 text-[14px] leading-[18px] text-white/80">
             {vessel.type}
           </p>
+          <hr className="mt-4 border-white/20" />
+          <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 pb-5 text-[13px] leading-[18px] text-white">
+            {vessel.specs.map(([label, value], index: number) => (
+              <div
+                key={label}
+                className={`whitespace-nowrap ${index % 2 === 0 ? "text-left" : "text-right"}`}
+              >
+                <dt className="inline font-normal">{label}: </dt>
+                <dd className="inline font-normal">{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <dl className="mt-[17px] grid grid-cols-[minmax(0,1fr)_auto] gap-x-2 gap-y-[12px] text-[14px] leading-[18px] text-white md:grid-cols-2 md:gap-x-6">
-          {vessel.specs.map(([label, value], index) => (
-            <div
-              key={label}
-              className={`whitespace-nowrap ${
-                index % 2 === 0 ? "text-left" : "text-right"
-              }`}
-            >
-              <dt className="inline font-normal">{label}: </dt>
-              <dd className="inline font-normal">{value}</dd>
-            </div>
-          ))}
-        </dl>
+        <a
+          href={`/pdfs/${vessel.slug}.pdf`}
+          download
+          className="relative z-10 flex items-center justify-center gap-3 rounded-t-[14px] bg-[#0a1e2e]/80 py-4 transition-colors hover:bg-[#0a1e2e]"
+        >
+          <EyeIcon className="size-[22px] shrink-0 text-dm-cyan" />
+          <span className="text-[16px] font-semibold text-dm-cyan">
+            View specification
+          </span>
+        </a>
       </div>
-    </Link>
+    </div>
+  );
+}
+
+function EyeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M2 12s3.636-7 10-7 10 7 10 7-3.636 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
   );
 }
 

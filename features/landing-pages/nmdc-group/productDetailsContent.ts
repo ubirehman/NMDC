@@ -1,5 +1,45 @@
 const productsImageBase = "/images/landing/products";
 
+const hailGhashaPanels = [
+  {
+    title: "Ghasha Offshore Processing Plant ( GOP ) Project",
+    paragraphs: [
+      "The Hail & Ghasha Development (HGD) Project will develop the untapped oil and gas reserves from the highly sour Hail and Ghasha fields. Production is targeted to start by Q4 2027 with sustainable production of 1 BSCFD of Raw Gas, and max production of 82.5 MSBPD of Oil, 76.3 MSBPD of Condensate.",
+    ],
+    sections: [
+      {
+        title: "Project Overview:",
+        bullets: [
+          "The Hail and Ghasha fields are situated offshore Abu Dhabi about 140 km away from Abu Dhabi mainland in water depths varying from 0 to 15 meters.",
+          "The Hail and Ghasha Project Offshore Package (EPC 01) comprises four Offshore Drilling Centers (DCs), Subsea Pipelines, Umbilicals, Power Cable Connections, Seawater Intake Structure, Bridges, Risers, Flare Structure, facilities at Ghasha Offshore Processing Plant (GOP).",
+          "The HGD Project will be executed in a single phase approach. It will start production from three Drilling Centres (Reehah, Jzool & Seebah) in Ghasha Field to GOP and from Gaff Island in Hail Field to OPP.",
+          "Remaining Drilling Centres, gas injection, and other associated facilities will be developed in future to sustain production from Hail & Ghasha fields.",
+        ],
+      },
+      {
+        title: "Purpose and Objective of the Project:",
+        bullets: [
+          "Project objectives are the engineering, procurement, fabrication, construction, pre-commissioning, commissioning and start-up of the Offshore Package facilities.",
+          "The plant design is based on a modularization approach with definition of 29 Pre-assembled Units (PAU), 81 Pre-assembled Racks (PAR) and 13 Pre-assembled Buildings (PAB), along with other minor modules such as MOV skids and pre-assembled rack frames (PAF), pre-assembled stairs (PAS).",
+        ],
+      },
+      {
+        title: "Intended Use and Operational Significance:",
+        bullets: [
+          "The HGD Offshore Package facilities are intended for the oil and gas production, of strategic importance to the Emirate of Abu Dhabi.",
+          "The plant and selected materials are designed to comply with the highly sour raw gas feedstock whose expected composition is characterized by a hydrogen sulphate concentration in excess of 30%, which represents one of the major challenges of the Project.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Process Assembled Unit (PAU)",
+    subtitle: "GH5121-PAU-01 Oil Stabilization Project",
+    paragraphs: [],
+    sections: [],
+  },
+] as const;
+
 export const nmdcGroupProductDetails = [
   {
     slug: "marine-vessels",
@@ -171,10 +211,12 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "hail-ghasha-gop",
+    layout: "hail-ghasha",
     fullTitle: "NMDC Energy | Hail and Ghasha Development Project",
     brandName: "NMDC Energy",
     title: "Hail and Ghasha Development Project",
     accentClassName: "text-[#00bd66]",
+    hailPanels: hailGhashaPanels,
     media: [
       {
         src: `${productsImageBase}/hail-ghasha-gop-model.webp`,
@@ -212,10 +254,12 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "hail-ghasha-pau",
+    layout: "hail-ghasha",
     fullTitle: "NMDC Energy | Hail and Ghasha Development Project",
     brandName: "NMDC Energy",
     title: "Process Assembled Unit GH5121-PAU-01 Oil Stabilization",
     accentClassName: "text-[#00bd66]",
+    hailPanels: hailGhashaPanels,
     media: [
       {
         src: `${productsImageBase}/hail-ghasha-pau-model.webp`,
@@ -256,32 +300,19 @@ export const nmdcGroupProductDetails = [
     title: "3d Printed Artificial Reefs",
     accentClassName: "text-[#ffcf00]",
     cta: { label: "Play virtual tour", href: "/videos/safeen-subsea-green.mp4" },
+    panelHeightClassName: "md:min-h-[731px]",
+    sectionMinHeightClassName: "md:min-h-[1341px]",
     media: [
       {
-        src: `${productsImageBase}/3d-printed-artificial-reefs.webp`,
-        alt: "3D printed artificial reef underwater",
-        fit: "cover",
-      },
-      {
-        src: `${productsImageBase}/reefs-mobile.webp`,
-        alt: "3D printed reef components",
+        src: `${productsImageBase}/3d-printed-artificial-reefs-collage.png`,
+        alt: "3D printed artificial reef and production collage",
         fit: "cover",
       },
     ],
     summary: [
-      "NMDC Infra is pioneering digital manufacturing through its in-house 3D-printing facility, enabling production of innovative concrete forms.",
-      "One key highlight is the development of 3D-printed coral reefs engineered to replicate natural reef structures and support marine ecosystem restoration.",
+      "NMDC Infra is also pioneering digital manufacturing through its in-house 3D-printing facility, enabling production of innovative concrete forms. One key highlight is the development of 3D-printed coral reefs, engineered to replicate natural reef structures and support marine ecosystem restoration. The 3D printing machine at Emarat Europe factory enhances rapid prototyping and precision manufacturing with advanced additive technology",
     ],
-    sections: [
-      {
-        title: "Digital Manufacturing",
-        bullets: [
-          "Rapid prototyping for advanced concrete forms.",
-          "Precision manufacturing through additive technology.",
-          "Support for marine habitat and ecosystem restoration.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "multicat-21",
@@ -289,26 +320,30 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC LTS",
     title: "Multicad 21",
     accentClassName: "text-[#ddc19c]",
+    panelHeightClassName: "md:min-h-[607px]",
+    sectionMinHeightClassName: "md:min-h-[1341px]",
     media: [
       {
-        src: `${productsImageBase}/multicat-21-mobile.webp`,
+        src: `${productsImageBase}/multicat-21-detail.png`,
         alt: "Multicat 21 vessel render",
-        fit: "contain",
+        fit: "cover",
       },
     ],
     summary: [
-      "Multicat 21 is a versatile, high-capacity marine vessel designed for heavy-duty operations, combining strength, speed and efficiency.",
-      "Built for demanding tasks, it handles cargo, lifting and marine support with reliable performance.",
+      "Multicat 21 is a versatile, high-capacity marine vessel designed for heavy-duty operations, combining strength, speed, and efficiency. Built for demanding tasks, it handles cargo, lifting, and marine support with unmatched reliability.",
     ],
     sections: [
       {
         title: "Built with Expertise",
+        titleClassName: "text-white/92",
+        paragraphs: ["Constructed by NMDC LTS -Workshops"],
         bullets: [
-          "Constructed by NMDC LTS workshops.",
-          "Bureau Veritas certified for safety and operational reliability.",
-          "682 HP total power, reaching speeds up to 14 knots.",
-          "Equipped with cranes rated 22.4T at 4m and 9T at 9.4m.",
-          "Optimized for transport, lifting and multipurpose marine operations.",
+          "Classification: Bureau Veritas certified for safety and operational reliability",
+          "Power & Performance: 682 HP total, reaching speeds up to 14 knots",
+          "Cranes & Lifting: Equipped with cranes-22.4T at 4m and 9T at 9.4m -ideal for cargo handling and offshore operations",
+          "Material Sourcing: All materials purchased from the local market, supporting reliability",
+          "Equipment: High-quality imported systems from overseas manufacturers for trusted performance",
+          "Versatile Design: Optimized for transport, lifting, and multipurpose marine operations",
         ],
       },
     ],
@@ -371,29 +406,23 @@ export const nmdcGroupProductDetails = [
     fullTitle: "EMDAD | Whipstock",
     brandName: "EMDAD",
     title: "Whipstock",
-    accentClassName: "text-primary-sky-blue",
+    accentClassName: "text-[#ddc19c]",
+    panelHeightClassName: "md:min-h-[581px]",
+    sectionMinHeightClassName: "md:min-h-[1188px]",
     media: [
       {
-        src: `${productsImageBase}/whipstock-system.webp`,
+        src: `${productsImageBase}/whipstock-detail.png`,
         alt: "Whipstock system tools",
         fit: "contain",
+        className: "object-contain p-0",
+        wrapperBackgroundColor: "#00232f",
       },
     ],
     summary: [
-      "Emdad has a long-standing track record in delivering technical expertise and innovative solutions across the UAE and MENA region.",
-      "Under NMDC ownership, Emdad is positioned as a cornerstone of NMDC's oil and gas business.",
+      "Emdad, founded in 1979, has a long-standing track record in delivering technical expertise and innovative solutions across the UAE and MENA region. Under NMDC's ownership, Emdad is positioned as a cornerstone of NMDC's oil and gas business, leveraging combined capabilities to improve service excellence, expand regional reach, and create greater value for clients. The integration also aligns with NMDC's strategy to diversify its energy portfolio and drive sustainable growth.",
+      "Specializing in whipstock services for the oil and gas industry. They offer a range of products and solutions, including high-pressure hoses, rotating machinery, and various drilling tools. Their whipstock system is designed for efficient casing exit solutions and is equipped with hydraulic packers and mechanical anchors to support the whipstock concave in highly deviated holes. Emdad has a strong reputation for providing innovative and integrated services, ensuring reliability and efficiency in oil and gas operations.",
     ],
-    sections: [
-      {
-        title: "Whipstock Services",
-        bullets: [
-          "Specialized deflection tools used in drilling operations to initiate sidetracks from existing wellbores.",
-          "Designed for efficient casing exit solutions.",
-          "Equipped with hydraulic packers and mechanical anchors to support the whipstock concave in highly deviated holes.",
-          "Supports reliable and efficient oil and gas operations.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "esp-pump",
@@ -401,34 +430,47 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC Energy",
     title: "ESP Pump",
     accentClassName: "text-[#00bd66]",
+    introTitle: "The Emirates' first sovereign artificial-lift capability.",
+    panelHeightClassName: "md:min-h-[774px]",
+    sectionMinHeightClassName: "md:min-h-[1384px]",
     media: [
       {
-        src: `${productsImageBase}/esp-pump.webp`,
+        src: `${productsImageBase}/esp-pump-detail.png`,
         alt: "ESP pump product display",
         fit: "contain",
+        className: "object-contain p-0",
       },
     ],
     summary: [
-      "The Emirates' first sovereign artificial-lift capability closes a critical technology gap for ageing producer wells.",
-      "A wholly UAE-engineered electrical submersible pump can be designed, manufactured, tested and dispatched from Abu Dhabi.",
+      "The Emirates has built sovereign capability in aluminum, in steel, in advanced electronics, and in space. Artificial lift - the technology that energizes every ageing producer well - has remained imported.",
+      "This consortium closes that gap. A wholly UAE-engineered electrical submersible pump, designed in Abu Dhabi, manufactured in Abu Dhabi, tested in Abu Dhabi, dispatched from Abu Dhabi to every well that needs it.",
     ],
     sections: [
       {
         title: "The Capability",
-        bullets: [
-          "Wholly UAE-engineered electrical submersible pump system.",
-          "Standard and harsh well configurations covered.",
-          "Permanent-magnet motor option for the energy transition.",
-          "Full lifecycle in country, from reservoir-driven sizing through DIFA refurbishment.",
+        paragraphs: [
+          "Wholly UAE-engineered electrical submersible pump system. Standard and harsh well configurations covered. Designed for run-life consistency and supply security. Permanent-magnet motor option for the energy transition. Full lifecycle in country - from reservoir-driven sizing through DIFA refurbishment.",
         ],
       },
       {
         title: "Four Pillars of National Capability",
-        bullets: [
-          "In Country Value: UAE-domiciled supply chain for design, fabrication, assembly, test and field service.",
-          "Industrial Resilience: continuity of supply for national production wells.",
-          "Sovereign Supply: ESP capability owned by Emirati institutions.",
-          "Export Readiness: engineered to UAE standards and configured for regional wells.",
+        pillars: [
+          {
+            label: "1. In Country Value",
+            body: "Wholly UAE-domiciled supply chain - design, fabrication, assembly, test, field service.",
+          },
+          {
+            label: "2. Industrial Resilience",
+            body: "Continuity of supply for the wells that fund the nation. No exposure to external disruption.",
+          },
+          {
+            label: "3. Sovereign Supply",
+            body: "An ESP capability owned by Emirati institutions, governed under Abu Dhabi law.",
+          },
+          {
+            label: "4. Export Readiness",
+            body: "Engineered to UAE standards from the first weld; configured to lift wells regionally and beyond.",
+          },
         ],
       },
     ],
@@ -439,6 +481,8 @@ export const nmdcGroupProductDetails = [
     brandName: "Safeen Subsea",
     title: "Safeen Green",
     accentClassName: "text-primary-sky-blue",
+    panelHeightClassName: "md:min-h-[328px]",
+    sectionMinHeightClassName: "md:min-h-[936px]",
     media: [
       {
         src: `${productsImageBase}/safeen-green.webp`,
@@ -447,20 +491,9 @@ export const nmdcGroupProductDetails = [
       },
     ],
     summary: [
-      "SAFEEN Green is a remotely operated unmanned vessel launched by SAFEEN Subsea, part of AD Ports Group.",
-      "It can operate up to 200 nautical miles offshore, collecting high-quality geophysical and hydrographic data with minimal environmental impact.",
+      "SAFEEN Green is a state-of-the-art remotely operated unmanned vessel (USV) launched by SAFEEN Subsea, part of AD Ports Group. It can operate up to 200 nautical miles offshore, collecting high-quality geophysical and hydrographic data with minimal environmental impact. Operating on 100% renewable electric power or biofuel, SAFEEN Green has only 10% of the emissions of a conventional vessel, significantly reducing its carbon footprint. The vessel is controlled from an onshore Remote Operation Centre (ROC) and features advanced navigation and safety technologies, enhancing safety and efficiency while eliminating risks to personnel.",
     ],
-    sections: [
-      {
-        title: "Low-Impact Operations",
-        bullets: [
-          "Operates on 100% renewable electric power or biofuel.",
-          "Produces only 10% of the emissions of a conventional vessel.",
-          "Controlled from an onshore Remote Operation Centre.",
-          "Advanced navigation and safety technologies reduce personnel risk.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "safeen-nav",
@@ -468,6 +501,8 @@ export const nmdcGroupProductDetails = [
     brandName: "Safeen Subsea",
     title: "Safeen NAV",
     accentClassName: "text-primary-sky-blue",
+    panelHeightClassName: "md:min-h-[370px]",
+    sectionMinHeightClassName: "md:min-h-[980px]",
     media: [
       {
         src: `${productsImageBase}/safeen-nav.webp`,
@@ -476,19 +511,9 @@ export const nmdcGroupProductDetails = [
       },
     ],
     summary: [
-      "SAFEEN Nav is a proprietary positioning system that has redefined accuracy in marine operations.",
-      "By replacing hired signals, the system enhances precision and reduces costs for offshore and subsea work.",
+      "Our proprietary SAFEEN Nav positioning system has redefined accuracy in marine operations. By replacing hired signals, we've enhanced precision and reduced costs - another step forward in innovation.",
     ],
-    sections: [
-      {
-        title: "Marine Positioning",
-        bullets: [
-          "Improves positioning accuracy in marine operations.",
-          "Reduces dependency on hired signals.",
-          "Supports more cost-efficient offshore and subsea delivery.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "caissons-application",

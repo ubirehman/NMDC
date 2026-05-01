@@ -12,11 +12,18 @@ type HeaderProps = {
   logo: string;
   logoAlt: string;
   links: NavLink[];
+  className?: string;
 };
 
 const mobileMenuId = "primary-mobile-menu";
 
-export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
+export function Header({
+  brandName,
+  logo,
+  logoAlt,
+  links,
+  className,
+}: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
@@ -25,7 +32,9 @@ export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
   }, []);
 
   const headerContent = (
-    <header className="fixed inset-x-0 top-6 z-[100] flex justify-center px-5 md:top-8 md:px-10">
+    <header
+      className={`fixed inset-x-0 top-6 z-[100] flex justify-center px-5 md:top-8 md:px-10 ${className ?? ""}`}
+    >
       <div className="relative w-full max-w-[1240px]">
         <div className="flex h-14 items-center justify-between rounded-full border-[1px] border-gray-50/20 bg-[rgba(6,24,38,0.60)] bg-glass-navy-60 px-4 backdrop-blur-[17.5px] md:h-[72px] md:px-[30px] md:py-0">
           <button

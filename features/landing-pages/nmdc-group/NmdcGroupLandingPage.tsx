@@ -20,7 +20,7 @@ export function NmdcGroupLandingPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[58%_center] md:object-center"
+          className="object-cover object-[58%_center] md:object-center -scale-x-100"
         />
         <div
           className="absolute inset-0 bg-black/50 bg-[linear-gradient(90deg,var(--color-overlay-side-start)_0%,var(--color-overlay-side-mid)_34%,var(--color-overlay-side-end)_100%)]"

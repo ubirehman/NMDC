@@ -12,6 +12,7 @@ const productsContentPath = "features/landing-pages/nmdc-group/productsContent.t
 const detailContentPath =
   "features/landing-pages/nmdc-group/productDetailsContent.ts";
 const landingContentPath = "features/landing-pages/nmdc-group/content.ts";
+const landingHeaderPath = "app/components/landing/Header.tsx";
 
 const productDetailSlugs = [
   "marine-vessels",
@@ -257,4 +258,56 @@ test("Coastal and Hydrodynamic Center product detail follows the supplied deskto
   assert.match(detailPage, /energyProductFooterLinks/);
   assert.match(detailPage, /logo-energy\.webp/);
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
+});
+
+test("NMDC Group product detail pages use the supplied product-detail desktop template", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+  assert.ok(existsSync(landingHeaderPath), "shared landing header should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+  const landingHeader = readFileSync(landingHeaderPath, "utf8");
+
+  assert.match(detailPage, /StandardProductDetailLayout/);
+  assert.match(detailPage, /HailGhashaDetailLayout/);
+  assert.match(detailPage, /md:grid-cols-\[641px_583px\]/);
+  assert.match(detailPage, /md:items-stretch/);
+  assert.match(detailPage, /md:text-\[36px\]/);
+  assert.match(detailPage, /ProductQrImage/);
+  assert.match(detailPage, /energyFooterLogo/);
+  assert.match(detailPage, /energyProductFooterLinks/);
+  assert.match(detailPage, /h-full/);
+  assert.match(detailPage, /introTitle/);
+  assert.match(detailPage, /sectionMinHeightClassName/);
+  assert.match(detailPage, /getSectionMinHeightClassName/);
+  assert.match(detailPage, /className="md:hidden"/);
+  assert.doesNotMatch(
+    detailPage,
+    /<div className="md:hidden">\s*<Header/,
+    "product detail desktop should not render the portal header",
+  );
+  assert.match(landingHeader, /className\?: string/);
+  assert.match(landingHeader, /\$\{className \?\? ""\}/);
+  assert.doesNotMatch(detailPage, /md:h-\[330px\]/);
+  assert.match(detailContent, /layout:\s*"hail-ghasha"/);
+  assert.match(detailContent, /hailGhashaPanels/);
+  assert.match(detailContent, /The Emirates' first sovereign artificial-lift capability\./);
+  assert.match(detailContent, /NMDC Infra is also pioneering digital manufacturing/);
+  assert.doesNotMatch(detailContent, /title:\s*"Digital Manufacturing"/);
+  assert.match(detailContent, /slug:\s*"3d-printed-artificial-reefs"[\s\S]*panelHeightClassName:\s*"md:min-h-\[731px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1341px\]"/);
+  assert.match(detailContent, /multicat-21-detail\.png/);
+  assert.match(detailContent, /slug:\s*"multicat-21"[\s\S]*panelHeightClassName:\s*"md:min-h-\[607px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1341px\]"/);
+  assert.match(detailContent, /titleClassName:\s*"text-white\/92"/);
+  assert.match(detailContent, /Constructed by NMDC LTS -Workshops/);
+  assert.match(detailContent, /whipstock-detail\.png/);
+  assert.match(detailContent, /slug:\s*"whipstock-system"[\s\S]*panelHeightClassName:\s*"md:min-h-\[581px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1188px\]"/);
+  assert.match(detailContent, /wrapperBackgroundColor:\s*"#00232f"/);
+  assert.match(detailContent, /brandName:\s*"EMDAD"[\s\S]*accentClassName:\s*"text-\[#ddc19c\]"/);
+  assert.match(detailContent, /Specializing in whipstock services for the oil and gas industry/);
+  assert.match(detailContent, /esp-pump-detail\.png/);
+  assert.match(detailContent, /slug:\s*"esp-pump"[\s\S]*panelHeightClassName:\s*"md:min-h-\[774px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1384px\]"/);
+  assert.match(detailContent, /3d-printed-artificial-reefs-collage\.png/);
+  assert.match(detailContent, /slug:\s*"safeen-green"[\s\S]*panelHeightClassName:\s*"md:min-h-\[328px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[936px\]"/);
+  assert.match(detailContent, /slug:\s*"safeen-nav"[\s\S]*panelHeightClassName:\s*"md:min-h-\[370px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[980px\]"/);
 });

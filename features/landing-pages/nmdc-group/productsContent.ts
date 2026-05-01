@@ -18,19 +18,19 @@ export const nmdcGroupProductsContent = {
     {
       title: "Marine vessels",
       href: "/products/marine-vessels",
-      image: `${productsImageBase}/marine-vessels.webp`,
+      image: `${productsImageBase}/marine-vessels.jpg`,
       alt: "NMDC marine vessel",
     },
     {
       title: "Mussafah Yard",
       href: "/products/mussafah-yard",
-      image: `${productsImageBase}/mussafah-yard.webp`,
+      image: `${productsImageBase}/mussafah-yard.jpg`,
       alt: "Mussafah Yard offshore module",
     },
     {
       title: "Coastal and Hydrodynamic Center",
       href: "/products/coastal-hydrodynamic-center",
-      image: `${productsImageBase}/coastal-hydrodynamic-center.webp`,
+      image: `${productsImageBase}/coastal-hydrodynamic-center.jpg`,
       alt: "Coastal and hydrodynamic testing basin",
     },
     {
@@ -48,7 +48,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "3D Printed Artificial Reefs",
       href: "/products/3d-printed-artificial-reefs",
-      image: `${productsImageBase}/3d-printed-artificial-reefs.webp`,
+      image: `${productsImageBase}/3d-printed-artificial-reefs.jpg`,
       alt: "3D printed artificial reef structure underwater",
     },
     {
@@ -66,7 +66,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "Pipe Coating Materials",
       href: "/products/pipe-coating-materials",
-      image: `${productsImageBase}/pipe-coating-materials.webp`,
+      image: `${productsImageBase}/pipe-coating-materials.jpg`,
       alt: "Pipe coating materials placeholder panel",
     },
     {
@@ -84,13 +84,13 @@ export const nmdcGroupProductsContent = {
     {
       title: "Safeen Green",
       href: "/products/safeen-green",
-      image: `${productsImageBase}/safeen-green.webp`,
+      image: `${productsImageBase}/safeen-green.jpg`,
       alt: "Safeen Green vessel",
     },
     {
       title: "Safeen NAV",
       href: "/products/safeen-nav",
-      image: `${productsImageBase}/safeen-nav.webp`,
+      image: `${productsImageBase}/safeen-nav.jpg`,
       alt: "Safeen NAV positioning product",
     },
   ],
