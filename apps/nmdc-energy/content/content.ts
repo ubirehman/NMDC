@@ -658,14 +658,14 @@ export const nmdcEnergyContent = {
     ],
     navigationLabel: "Footer navigation",
     navigationLinks: [
-      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "Home", href: withGroupAppPath("/") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },
       { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     mobileNavigationLinks: [
-      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "Home", href: withGroupAppPath("/") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },
@@ -719,7 +719,7 @@ export const nmdcEnergyContent = {
       {
         title: "NMDC Infra",
         href: infraAppUrl,
-        image: withEnergyBasePath("/images/energy/card-infra.jpg"),
+        image: withEnergyBasePath("/images/energy/card-infra.webp"),
         logo: {
           src: withEnergyBasePath("/images/energy/logo-infra.png"),
           alt: "NMDC Infra",

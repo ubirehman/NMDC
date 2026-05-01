@@ -20,7 +20,7 @@ export function Footer() {
         aria-hidden="true"
       />
       <div className="mx-auto grid min-h-[1120px] w-full max-w-[1240px] gap-10 rounded-[10px] bg-dm-navy px-5 py-10 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:min-h-[548px] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-12 md:py-[52px]">
-        <div className="flex flex-col justify-between">
+        <div className="md:pb-10 flex flex-col justify-between">
           <div>
           <Image
             src={content.brand.logo}
@@ -76,7 +76,7 @@ export function Footer() {
         >
           <ul className="grid gap-4 text-[15px] leading-5 text-white">
             {footer.navigationLinks.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link href={link.href} className="transition-colors hover:text-dm-cyan">
                   {link.label}
                 </Link>

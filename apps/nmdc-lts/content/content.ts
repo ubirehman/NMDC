@@ -105,9 +105,9 @@ export const nmdcLtsContent = {
       {
         title: "NMDC Infra",
         href: infraAppUrl,
-        image: withLtsBasePath("/images/lts/card-infra.jpg"),
+        image: withLtsBasePath("/images/lts/card-infra.webp"),
         logo: {
-          src: withLtsBasePath("/images/lts/logo-infra.png"),
+          src: withLtsBasePath("/images/lts/logo-infra.webp"),
           alt: "NMDC Infra",
         },
       },
@@ -351,14 +351,14 @@ export const nmdcLtsContent = {
       },
     ],
     desktopNav: [
-      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "Home", href: withGroupAppPath("/") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },
       { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
     ],
     mobileNav: [
-      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "Home", href: withGroupAppPath("/") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },

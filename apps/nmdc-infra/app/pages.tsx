@@ -401,8 +401,8 @@ function InfraFooter() {
   const mobileFooterLinks = footer.mobileNavigationLinks;
 
   return (
-    <footer className="relative isolate overflow-hidden bg-infra-deep-navy px-5 py-10 text-white md:px-10 md:py-[64px]">
-      <div className="absolute inset-0 -z-10 opacity-65" aria-hidden="true">
+    <footer className="relative isolate overflow-hidden bg-[#020b1d] px-5 py-10 text-white md:min-h-[658px] md:px-10 md:py-[64px]">
+      <div className="absolute inset-0 -z-10 opacity-90" aria-hidden="true">
         <Image
           src={content.overview.stats.background.src}
           alt=""
@@ -411,7 +411,11 @@ function InfraFooter() {
           className="object-cover"
         />
       </div>
-      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[16px] bg-infra-navy px-5 py-9 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-12 md:py-[52px]">
+      <div
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(2,11,29,0.30)_0%,rgba(2,11,29,0.08)_54%,rgba(0,127,137,0.50)_100%)]"
+        aria-hidden="true"
+      />
+      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-9 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:min-h-[525px] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-[48px] md:py-[56px]">
         <div className="flex flex-col justify-between">
           <div>
             <Image
@@ -421,7 +425,7 @@ function InfraFooter() {
               height={60}
               className="h-[58px] w-[148px] object-contain"
             />
-            <ul className="mt-10 grid gap-4 text-[15px] font-semibold leading-5 text-white md:mt-[58px]">
+            <ul className="mt-10 grid gap-5 text-[15px] font-semibold leading-5 text-white md:mt-[58px] md:gap-[28px] md:text-[16px] md:leading-6">
               {footer.businesses.map((business) => (
                 <li key={business.label}>
                   <Link
@@ -429,7 +433,7 @@ function InfraFooter() {
                     className="flex items-center gap-3 transition-colors hover:text-infra-yellow"
                   >
                     <span
-                      className={`size-3 rounded-full ${business.dotColor}`}
+                      className={`size-[11px] rounded-full ${business.dotColor}`}
                       aria-hidden="true"
                     />
                     {business.label}
@@ -464,11 +468,11 @@ function InfraFooter() {
 
         <nav
           aria-label={footer.navigationLabel}
-          className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
+          className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:border-white/16 md:px-[92px] md:py-[96px]"
         >
-          <ul className="hidden gap-4 text-[15px] leading-5 text-white md:grid">
+          <ul className="hidden gap-[24px] text-[16px] leading-6 text-white md:grid">
             {footerNavigationLinks.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link href={link.href} className="transition-colors hover:text-infra-yellow">
                   {link.label}
                 </Link>
@@ -486,21 +490,21 @@ function InfraFooter() {
           </ul>
         </nav>
 
-        <div id="contact" className="md:px-[88px] md:pt-[146px]">
-          <h2 className="text-base font-bold leading-6 text-white">
+        <div id="contact" className="md:px-[88px] md:py-[96px]">
+          <h2 className="text-base font-normal leading-6 text-white">
             {footer.emailTitle}
           </h2>
-          <dl className="mt-5 grid gap-5 text-sm leading-5">
+          <dl className="mt-5 grid gap-5 text-sm leading-5 md:mt-[28px] md:gap-[28px]">
             {footer.emails.map((email) => (
               <div key={email.label}>
-                <dt className="font-medium text-white">{email.label}</dt>
-                <dd className="mt-1 text-infra-yellow">{email.value}</dd>
+                <dt className="font-normal text-white">{email.label}</dt>
+                <dd className="mt-2 font-bold text-infra-yellow">{email.value}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <p className="text-center text-[12px] leading-5 text-white md:col-span-3 md:border-t md:border-white/14 md:pt-5">
+        <p className="text-center text-[12px] leading-5 text-white md:col-span-3 md:mt-[78px] md:border-t md:border-white/16 md:pt-[20px] md:text-[16px] md:leading-6">
           {footer.copyright}
         </p>
       </div>

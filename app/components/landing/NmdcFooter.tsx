@@ -4,7 +4,7 @@ import {
   nmdcBrand,
   nmdcBusinessLinks,
   nmdcEmailLinks,
-  nmdcGroupOverviewHref,
+  nmdcGroupHomeHref,
   nmdcPageLinks,
 } from "./nmdcShared";
 
@@ -33,7 +33,7 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
     className: "h-[54px] w-auto md:h-12",
   };
   const footerLinks = (pageLinks ?? nmdcPageLinks).map((link) =>
-    link.label === "Home" ? { ...link, href: nmdcGroupOverviewHref } : link,
+    link.label === "Home" ? { ...link, href: nmdcGroupHomeHref } : link,
   );
 
   return (

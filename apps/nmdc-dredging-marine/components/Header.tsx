@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { nmdcDredgingMarineContent as content } from "../content/content";
 import { CloseIcon, MenuIcon } from "./icons";
 
@@ -20,10 +21,15 @@ const mobileMenuId = "dm-mobile-menu";
 
 export function Header({ links }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const header = content.header;
 
-  return (
-    <header className="absolute inset-x-0 top-6 z-20 flex justify-center px-5 md:top-8 md:px-10">
+  useEffect(() => {
+    setPortalTarget(document.body);
+  }, []);
+
+  const headerContent = (
+    <header className="fixed inset-x-0 top-6 z-[100] flex justify-center px-5 md:top-8 md:px-10">
       <div className="relative w-full max-w-[1240px]">
         <div className="flex items-center justify-between rounded-full border border-white/20 bg-[rgba(6,24,38,0.62)] px-4 py-3 shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-[18px] md:h-[72px] md:px-[30px] md:py-0">
           <button
@@ -137,4 +143,6 @@ export function Header({ links }: HeaderProps) {
       </div>
     </header>
   );
+
+  return portalTarget ? createPortal(headerContent, portalTarget) : headerContent;
 }

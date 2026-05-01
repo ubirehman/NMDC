@@ -21,6 +21,21 @@ test("mobile header exposes an interactive navigation menu", () => {
   assert.match(header, /md:hidden[\s\S]*links\.map/);
 });
 
+test("NMDC Group header stays fixed while preserving the design top offsets", () => {
+  assert.match(
+    header,
+    /fixed inset-x-0 top-6 z-\[100\] flex justify-center px-5 md:top-8 md:px-10/,
+  );
+  assert.doesNotMatch(header, /<header className="absolute inset-x-0 top-6/);
+});
+
+test("NMDC Group header renders through the document body layer", () => {
+  assert.match(header, /createPortal/);
+  assert.match(header, /useEffect/);
+  assert.match(header, /document\.body/);
+  assert.match(header, /portalTarget \? createPortal\(headerContent, portalTarget\) : headerContent/);
+});
+
 test("brand cards use the white hover shadow from the design", () => {
   assert.match(brandCard, /transition-\[transform,box-shadow(?:,border-color)?\]/);
   assert.match(brandCard, /hover:(?:shadow-\[0_0_28px_0_rgba\(255,255,255,0\.86\)\]|drop-shadow-white)/);

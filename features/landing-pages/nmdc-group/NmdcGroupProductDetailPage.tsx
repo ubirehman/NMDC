@@ -21,12 +21,24 @@ export function NmdcGroupProductDetailPage({
     return <MarineVesselsDetailLayout detail={detail} />;
   }
 
+  if (detail.slug === "coastal-hydrodynamic-center") {
+    return <CoastalHydrodynamicDetailLayout detail={detail} />;
+  }
+
   if (detail.slug === "mussafah-yard") {
     return <MussafahYardDetailLayout detail={detail} />;
   }
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#062638] text-white">
+      <div className="md:hidden">
+        <Header
+          brandName={nmdcGroupLandingContent.brand.name}
+          logo={nmdcGroupLandingContent.brand.logo}
+          logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+          links={nmdcGroupLandingContent.nav.links}
+        />
+      </div>
       <section className="relative isolate overflow-hidden bg-[#082c40] px-5 pb-12 pt-[104px] md:min-h-[788px] md:px-10 md:pb-[72px] md:pt-[54px]">
         <div
           className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,#071e34_0%,#082c40_48%,#052235_100%)]"
@@ -40,15 +52,6 @@ export function NmdcGroupProductDetailPage({
           className="absolute inset-x-[-25%] bottom-[-110px] -z-10 h-[260px] rotate-[-5deg] bg-[repeating-linear-gradient(180deg,rgba(25,174,232,0.12)_0px,rgba(25,174,232,0.12)_1px,transparent_1px,transparent_8px)] opacity-60 md:bottom-[-52px]"
           aria-hidden="true"
         />
-
-        <div className="md:hidden">
-          <Header
-            brandName={nmdcGroupLandingContent.brand.name}
-            logo={nmdcGroupLandingContent.brand.logo}
-            logoAlt={nmdcGroupLandingContent.brand.logoAlt}
-            links={nmdcGroupLandingContent.nav.links}
-          />
-        </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px]">
           <Link
@@ -93,6 +96,14 @@ function MarineVesselsDetailLayout({
 }) {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#082c40] text-white">
+      <div className="md:hidden">
+        <Header
+          brandName={nmdcGroupLandingContent.brand.name}
+          logo={nmdcGroupLandingContent.brand.logo}
+          logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+          links={nmdcGroupLandingContent.nav.links}
+        />
+      </div>
       <section className="relative isolate overflow-hidden bg-[#082c40] px-5 pb-12 pt-[104px] md:min-h-[1728px] md:px-10 md:pb-[112px] md:pt-[64px]">
         <div
           className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,#082c40_0%,#082c40_64%,#051f33_100%)]"
@@ -106,15 +117,6 @@ function MarineVesselsDetailLayout({
           className="absolute inset-x-[-12%] bottom-[-7px] -z-10 h-[420px] bg-[repeating-linear-gradient(180deg,rgba(25,174,232,0.13)_0px,rgba(25,174,232,0.13)_1px,transparent_1px,transparent_8px)] opacity-50"
           aria-hidden="true"
         />
-
-        <div className="md:hidden">
-          <Header
-            brandName={nmdcGroupLandingContent.brand.name}
-            logo={nmdcGroupLandingContent.brand.logo}
-            logoAlt={nmdcGroupLandingContent.brand.logoAlt}
-            links={nmdcGroupLandingContent.nav.links}
-          />
-        </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px]">
           <Link
@@ -146,12 +148,16 @@ function MarineVesselsDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[100px]">
-            <ProductQrCode />
+            <ProductQrImage />
           </div>
         </div>
       </section>
 
-      <NmdcFooter variant="compact" pageLinks={nmdcGroupProductFooterLinks} />
+      <NmdcFooter
+        variant="compact"
+        logo={energyFooterLogo}
+        pageLinks={energyProductFooterLinks}
+      />
     </main>
   );
 }
@@ -191,6 +197,108 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
   );
 }
 
+function CoastalHydrodynamicDetailLayout({
+  detail,
+}: {
+  detail: Extract<
+    NmdcGroupProductDetail,
+    { slug: "coastal-hydrodynamic-center" }
+  >;
+}) {
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-[#082c40] text-white">
+      <div className="md:hidden">
+        <Header
+          brandName={nmdcGroupLandingContent.brand.name}
+          logo={nmdcGroupLandingContent.brand.logo}
+          logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+          links={nmdcGroupLandingContent.nav.links}
+        />
+      </div>
+      <section className="relative isolate overflow-hidden bg-[#082c40] px-5 pb-12 pt-[104px] md:min-h-[1458px] md:px-10 md:pb-[112px] md:pt-[64px]">
+        <div
+          className="absolute inset-0 -z-20 bg-[linear-gradient(180deg,#082c40_0%,#082c40_63%,#051f33_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute right-[-150px] top-[230px] -z-10 h-[520px] w-[520px] rotate-[-34deg] bg-white/8 md:right-[-96px] md:top-[209px] md:h-[726px] md:w-[676px]"
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10 mx-auto w-full max-w-[1240px]">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-3 text-[14px] font-bold leading-5 text-white transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[15px] md:leading-6"
+          >
+            <ArrowLeft className="size-5" />
+            Back
+          </Link>
+
+          <h1 className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]">
+            <span className={detail.accentClassName}>{detail.brandName}</span>
+            <span className="text-white">|</span>
+            <span className="min-w-0 break-words text-white">{detail.title}</span>
+          </h1>
+
+          <div className="mt-6 grid gap-5 md:mt-[39px] md:grid-cols-[641px_583px] md:gap-4">
+            <CoastalHydrodynamicTextCard detail={detail} />
+            <div className="relative h-[520px] overflow-hidden rounded-[20px] bg-[#12394d] md:h-[862px]">
+              <Image
+                src={detail.collageImage.src}
+                alt={detail.collageImage.alt}
+                fill
+                priority
+                sizes="(min-width: 768px) 583px, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+
+          <div className="mt-12 flex justify-center md:mt-[100px]">
+            <ProductQrImage />
+          </div>
+        </div>
+      </section>
+
+      <NmdcFooter
+        variant="compact"
+        logo={energyFooterLogo}
+        pageLinks={energyProductFooterLinks}
+      />
+    </main>
+  );
+}
+
+function CoastalHydrodynamicTextCard({
+  detail,
+}: {
+  detail: Extract<
+    NmdcGroupProductDetail,
+    { slug: "coastal-hydrodynamic-center" }
+  >;
+}) {
+  return (
+    <article className="flex flex-col rounded-[20px] bg-[#22475b]/92 px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:h-[862px] md:px-6 md:py-7">
+      <div className="grid gap-4 text-[13px] font-normal leading-[21px] text-white/92 md:text-[13px] md:leading-[21px]">
+        {detail.summary.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+
+      <Link
+        href={detail.cta.href}
+        className="group mt-7 inline-flex h-[48px] w-full items-center gap-3 rounded-[4px] bg-[#0a344d] px-5 text-[13px] font-normal leading-5 text-white transition-colors hover:bg-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:mt-auto md:h-[61px]"
+      >
+        <span
+          className="size-0 border-y-[10px] border-l-[16px] border-y-transparent border-l-primary-sky-blue transition-colors group-hover:border-l-white"
+          aria-hidden="true"
+        />
+        {detail.cta.label}
+      </Link>
+    </article>
+  );
+}
+
 function MussafahYardDetailLayout({
   detail,
 }: {
@@ -198,6 +306,14 @@ function MussafahYardDetailLayout({
 }) {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0d2638] text-white">
+      <div className="md:hidden">
+        <Header
+          brandName={nmdcGroupLandingContent.brand.name}
+          logo={nmdcGroupLandingContent.brand.logo}
+          logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+          links={nmdcGroupLandingContent.nav.links}
+        />
+      </div>
       <section className="relative isolate overflow-hidden bg-[#0d2638] px-5 pb-12 pt-[104px] md:min-h-[1390px] md:px-10 md:pb-[112px] md:pt-[64px]">
         <div
           className="absolute inset-0 -z-20 bg-[#0d2638]"
@@ -207,15 +323,6 @@ function MussafahYardDetailLayout({
           className="absolute right-[-150px] top-[180px] -z-10 h-[440px] w-[520px] rotate-[-34deg] bg-white/8 md:right-[-96px] md:top-[201px] md:h-[726px] md:w-[676px]"
           aria-hidden="true"
         />
-
-        <div className="md:hidden">
-          <Header
-            brandName={nmdcGroupLandingContent.brand.name}
-            logo={nmdcGroupLandingContent.brand.logo}
-            logoAlt={nmdcGroupLandingContent.brand.logoAlt}
-            links={nmdcGroupLandingContent.nav.links}
-          />
-        </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px]">
           <Link
@@ -245,27 +352,15 @@ function MussafahYardDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[84px]">
-            <Image
-              src="/images/landing/products/mussafah-yard-qr.webp"
-              alt="Mussafah Yard QR code"
-              width={154}
-              height={154}
-              className="size-[128px] bg-white md:size-[154px]"
-            />
+            <ProductQrImage />
           </div>
         </div>
       </section>
 
       <NmdcFooter
         variant="compact"
-        logo={{
-          src: "/images/landing/logo-energy.webp",
-          alt: "NMDC Energy",
-          width: 146,
-          height: 46,
-          className: "h-[54px] w-[146px] object-cover object-center md:h-[58px] md:w-[156px]",
-        }}
-        pageLinks={mussafahFooterLinks}
+        logo={energyFooterLogo}
+        pageLinks={energyProductFooterLinks}
       />
     </main>
   );
@@ -357,7 +452,15 @@ function ProductTextCard({ detail }: { detail: NmdcGroupProductDetail }) {
   );
 }
 
-const mussafahFooterLinks = [
+const energyFooterLogo = {
+  src: "/images/landing/logo-energy.webp",
+  alt: "NMDC Energy",
+  width: 146,
+  height: 46,
+  className: "h-[54px] w-[146px] object-cover object-center md:h-[58px] md:w-[156px]",
+};
+
+const energyProductFooterLinks = [
   { label: "Home", href: "/" },
   { label: "NMDC Energy Overview", href: "/products" },
   { label: "Yard Highlights", href: "/products" },
@@ -470,6 +573,18 @@ function ProductQrCode() {
         );
       })}
     </div>
+  );
+}
+
+function ProductQrImage() {
+  return (
+    <Image
+      src="/images/landing/products/mussafah-yard-qr.webp"
+      alt="Product QR code"
+      width={154}
+      height={154}
+      className="size-[128px] bg-white md:size-[154px]"
+    />
   );
 }
 

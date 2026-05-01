@@ -30,6 +30,12 @@ const peopleCultureVideos = [
 export function NmdcPeopleCulturePage() {
   return (
     <main className="overflow-x-hidden bg-white text-primary-navy-blue">
+      <Header
+        brandName={nmdcPeopleCultureBrand.name}
+        logo={nmdcPeopleCultureBrand.logo}
+        logoAlt={nmdcPeopleCultureBrand.logoAlt}
+        links={nmdcPeopleCultureNavLinks}
+      />
       <section className="relative isolate flex h-[318px] items-end overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
           src="/images/landing/people-hero-boardroom.jpg"
@@ -42,13 +48,6 @@ export function NmdcPeopleCulturePage() {
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.30)_0%,rgba(3,15,26,0.54)_64%,rgba(3,15,26,0.82)_100%)]"
           aria-hidden="true"
-        />
-
-        <Header
-          brandName={nmdcPeopleCultureBrand.name}
-          logo={nmdcPeopleCultureBrand.logo}
-          logoAlt={nmdcPeopleCultureBrand.logoAlt}
-          links={nmdcPeopleCultureNavLinks}
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-[84px] md:pb-[89px]">
@@ -66,7 +65,7 @@ export function NmdcPeopleCulturePage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 pb-11 pt-12 md:bg-[#f5fcff] md:px-10 md:pb-[135px] md:pt-[109px]">
+      <section className="bg-white px-5 py-10 md:bg-[#f5fcff] md:px-10 md:py-24">
         <div className="mx-auto w-full max-w-[1240px]">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-[62px]">
             <h2 className="shrink-0 text-[20px] font-bold uppercase leading-[1.35] text-[#06447a] md:text-[28px] md:leading-[1.12]">
@@ -116,8 +115,8 @@ export function NmdcPeopleCulturePage() {
 
             <MobileMaharaCard />
 
-            <section className="hidden overflow-hidden rounded-[20px] bg-[#dfe7f0] px-8 py-8 md:block md:h-[1159px] md:min-h-[1159px] md:px-[30px] md:py-[26px]">
-              <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[28px] md:leading-[36px]">
+            <section className="hidden overflow-hidden rounded-[20px] bg-[#dfe7f0] px-8 py-8 md:block md:h-[1163px] md:min-h-[1159px] md:px-[30px] md:py-[26px]">
+              <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[24px] md:leading-[36px]">
                 Mahara Fresh Graduate Development Program
               </h2>
               <div className="mt-6 grid gap-7">
@@ -477,7 +476,7 @@ function MediaPanel({
           className="h-[230px] w-full object-cover md:h-[610px]"
         />
       </div>
-      <div className="mt-4 flex justify-center gap-2 md:mt-10 md:gap-6">
+      <div className="mt-4 flex justify-center gap-2 md:my-5 md:gap-6">
         <button
           type="button"
           aria-label="Previous item"

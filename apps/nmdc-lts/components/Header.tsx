@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { nmdcLtsContent as content } from "../content/content";
 import { CloseIcon, MenuIcon } from "./icons";
 
@@ -20,10 +21,15 @@ const mobileMenuId = "lts-mobile-menu";
 
 export function Header({ links }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const header = content.header;
 
-  return (
-    <header className="absolute inset-x-0 top-[25px] z-30 flex justify-center px-5 md:top-8 md:px-10">
+  useEffect(() => {
+    setPortalTarget(document.body);
+  }, []);
+
+  const headerContent = (
+    <header className="fixed inset-x-0 top-[25px] z-[100] flex justify-center px-5 md:top-8 md:px-10">
       <div className="relative w-full max-w-[320px] md:max-w-[1240px]">
         <div className="flex h-[62px] items-center justify-between rounded-full border border-white/20 bg-[rgba(69,79,80,0.82)] px-4 shadow-[0_24px_70px_rgba(0,0,0,0.30)] backdrop-blur-[18px] md:h-[72px] md:bg-[rgba(22,38,43,0.86)] md:px-[30px]">
           <button
@@ -129,4 +135,6 @@ export function Header({ links }: HeaderProps) {
       </div>
     </header>
   );
+
+  return portalTarget ? createPortal(headerContent, portalTarget) : headerContent;
 }

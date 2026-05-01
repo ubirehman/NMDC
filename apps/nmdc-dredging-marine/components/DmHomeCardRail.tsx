@@ -9,6 +9,10 @@ type HomeCard = {
   title: string;
   href: string;
   image: string;
+  logo?: {
+    src: string;
+    alt: string;
+  };
 };
 
 type DmHomeCardRailProps = {
@@ -16,6 +20,16 @@ type DmHomeCardRailProps = {
 };
 
 const SCROLL_STEP = 168;
+
+function getCardId(card: HomeCard) {
+  const title = card.title.toLowerCase();
+
+  if (title.includes("energy")) return "energy";
+  if (title.includes("infra")) return "infra";
+  if (title.includes("lts")) return "lts";
+  if (title.includes("product")) return "product";
+  return "group";
+}
 
 export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -46,44 +60,83 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-6 md:items-end">
+    <div className="relative flex w-full flex-col items-center gap-6 md:static md:items-end">
       <div
         ref={scrollerRef}
         className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0"
       >
-        {cards.map((card) => (
-          <Link
-            key={card.title}
-            href={card.href}
-            aria-label={card.title}
-            className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white drop-shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary-sky-blue hover:drop-shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:translate-y-0 active:scale-[0.98] active:border-primary-sky-blue active:drop-shadow-[0_0_20px_0_rgba(41,183,227,0.82)] focus-visible:-translate-y-0.5 focus-visible:border-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)]"
-          >
-            <Image
-              src={card.image}
-              alt={card.title}
-              fill
-              sizes="150px"
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02]"
-            />
+        {cards.map((card) => {
+          const cardId = getCardId(card);
+          const label =
+            card.title === "NMDC Product Highlight"
+              ? "NMDC Product\nHighlight"
+              : card.title;
+          const imagePositionClassName =
+            {
+              group: "object-[52%_50%]",
+              energy: "object-[46%_50%]",
+              infra: "object-[48%_50%]",
+              lts: "object-[48%_45%]",
+              product: "object-[52%_50%]",
+            }[cardId] ?? "object-center";
+          const logoFrameClassName =
+            {
+              group: "h-[32px] w-[102px]",
+              energy: "h-[30px] w-[118px]",
+              infra: "h-[30px] w-[96px]",
+              lts: "h-[34px] w-[124px]",
+            }[cardId] ?? "h-[30px] w-[96px]";
+          const logoFrameOverflowClassName =
+            cardId === "lts" ? "overflow-visible" : "overflow-hidden";
+          const logoFitClassName =
+            cardId === "energy" ? "object-cover" : "object-contain";
 
-            <span
-              className="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-hover:bg-primary-sky-blue/12 group-focus-visible:bg-primary-sky-blue/12"
-              aria-hidden="true"
-            />
+          return (
+            <Link
+              key={card.title}
+              href={card.href}
+              aria-label={card.title}
+              className="group relative block h-[200px] w-[150px] shrink-0 snap-start overflow-hidden rounded-2xl border-[1.2px] border-white bg-white shadow-[0_12px_32px_-6px_rgba(5,20,31,0.76)] transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary-sky-blue hover:shadow-[0_0_34px_0_rgba(41,183,227,0.70)] active:translate-y-0 active:scale-[0.98] active:border-primary-sky-blue active:shadow-[0_0_20px_0_rgba(41,183,227,0.82)] focus-visible:-translate-y-0.5 focus-visible:border-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue focus-visible:shadow-[0_0_34px_0_rgba(41,183,227,0.70)]"
+            >
+              <Image
+                src={card.image}
+                alt={card.title}
+                fill
+                sizes="150px"
+                className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02] ${imagePositionClassName}`}
+              />
 
-            <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[#05263b]/78 bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px] transition-colors duration-200 group-hover:bg-primary-sky-blue group-focus-visible:bg-primary-sky-blue group-active:bg-primary-blue">
-              <span className="flex w-full items-center justify-between gap-2 pl-1">
-                <span className="whitespace-pre text-left text-xs font-medium leading-[1.5] text-white">
-                  {card.title}
-                </span>
-                <ArrowRight className="mr-1 size-5 shrink-0 text-white" />
-              </span>
-            </div>
-          </Link>
-        ))}
+              <span
+                className="pointer-events-none absolute inset-0 bg-transparent transition-colors duration-200 group-hover:bg-primary-sky-blue/12 group-focus-visible:bg-primary-sky-blue/12"
+                aria-hidden="true"
+              />
+
+              <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[#05263b]/78 bg-glass-deep-navy-72 px-2 backdrop-blur-[26.5px] transition-colors duration-200 group-hover:bg-primary-sky-blue group-focus-visible:bg-primary-sky-blue group-active:bg-primary-blue">
+                {card.logo ? (
+                  <span className={`relative block shrink-0 ${logoFrameOverflowClassName} ${logoFrameClassName}`}>
+                    <Image
+                      src={card.logo.src}
+                      alt={card.logo.alt}
+                      fill
+                      sizes={cardId === "lts" ? "124px" : "118px"}
+                      className={`${logoFitClassName} transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100`}
+                    />
+                  </span>
+                ) : (
+                  <span className="flex w-full items-center justify-between gap-2 pl-1">
+                    <span className="whitespace-pre-line text-left text-xs font-bold leading-[1.35] text-white">
+                      {label}
+                    </span>
+                    <ArrowRight className="mr-1 size-5 shrink-0 text-white" />
+                  </span>
+                )}
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
-      <div className="flex items-center gap-6 md:hidden">
+      <div className="absolute left-1/2 top-[224px] z-10 flex -translate-x-1/2 items-center gap-6 md:static md:hidden md:translate-x-0">
         <button
           type="button"
           aria-label="Previous D&M cards"
@@ -98,7 +151,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
           aria-label="Next D&M cards"
           onClick={() => scrollBy(SCROLL_STEP)}
           disabled={!canNext}
-          className="flex size-10 items-center justify-center rounded-full border border-white/50 bg-white text-dm-navy backdrop-blur-[10px] transition-opacity disabled:opacity-40"
+          className="flex size-10 items-center justify-center rounded-full bg-primary-sky-blue text-white backdrop-blur-[10px] transition-opacity disabled:opacity-40"
         >
           <ArrowRight className="size-4" />
         </button>

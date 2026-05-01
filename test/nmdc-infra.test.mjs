@@ -104,6 +104,41 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(cards, /group-hover:bg-infra-yellow/);
 });
 
+test("NMDC Infra footer follows the supplied desktop card design", () => {
+  const page = readFileSync("apps/nmdc-infra/app/pages.tsx", "utf8");
+  const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
+
+  assert.match(page, /function InfraFooter/);
+  assert.match(page, /bg-\[#020b1d\]/);
+  assert.match(page, /md:min-h-\[658px\]/);
+  assert.match(page, /content\.overview\.stats\.background\.src/);
+  assert.match(content, /overview-dark-lines\.jpg/);
+  assert.match(page, /max-w-\[1240px\][\s\S]*rounded-\[10px\][\s\S]*bg-\[#082d45\]/);
+  assert.match(page, /md:min-h-\[525px\]/);
+  assert.match(page, /md:grid-cols-\[365px_360px_minmax\(0,1fr\)\]/);
+  assert.match(page, /md:px-\[48px\] md:py-\[56px\]/);
+  assert.match(page, /md:mt-\[58px\]/);
+  assert.match(page, /md:gap-\[28px\]/);
+  assert.match(page, /size-\[11px\]/);
+  assert.match(page, /md:border-x/);
+  assert.match(page, /md:border-white\/16/);
+  assert.match(page, /md:px-\[92px\] md:py-\[96px\]/);
+  assert.match(page, /md:px-\[88px\] md:py-\[96px\]/);
+  assert.match(page, /md:mt-\[78px\]/);
+  assert.match(page, /md:border-t md:border-white\/16 md:pt-\[20px\]/);
+});
+
+test("NMDC Infra footer navigation uses Infra page links", () => {
+  const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
+
+  const expectedLinks = /\{\s*label:\s*"Home",\s*href:\s*withGroupAppPath\("\/"\)\s*\},\s*\{\s*label:\s*"NMDC Infra Overview",\s*href:\s*"\/overview"\s*\},\s*\{\s*label:\s*"Our Products",\s*href:\s*"\/products"\s*\},?/s;
+
+  assert.match(content, new RegExp(`navigationLinks:\\s*\\[\\s*${expectedLinks.source}\\s*\\]`, "s"));
+  assert.match(content, new RegExp(`mobileNavigationLinks:\\s*\\[\\s*${expectedLinks.source}\\s*\\]`, "s"));
+  assert.doesNotMatch(content, /navigationLinks:\s*\[[\s\S]*People & Culture[\s\S]*?\]/);
+  assert.doesNotMatch(content, /navigationLinks:\s*\[[\s\S]*Safeen Subsea[\s\S]*?\]/);
+});
+
 test("NMDC Infra overview follows the supplied desktop PDF structure", () => {
   const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
   const page = readFileSync("apps/nmdc-infra/app/pages.tsx", "utf8");

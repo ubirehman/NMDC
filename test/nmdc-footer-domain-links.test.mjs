@@ -114,8 +114,8 @@ test("standalone footer navigation uses NMDC Group domain routes", () => {
       const navigation = extractBlock(content, marker);
       assert.match(
         navigation,
-        /label:\s*"Home"[^}]*href:\s*withGroupAppPath\("\/nmdc-overview"\)/,
-        `${footer.name} ${marker} Home should open the NMDC overview page`,
+        /label:\s*"Home"[^}]*href:\s*withGroupAppPath\("\/"\)/,
+        `${footer.name} ${marker} Home should open the NMDC Group homepage`,
       );
     }
 
@@ -130,6 +130,18 @@ test("standalone footer navigation uses NMDC Group domain routes", () => {
     }
 
     assert.doesNotMatch(content, /href:\s*"#(?:people-culture|technology-ai|safeen-subsea|nmdc-overview|overview|marine-vessels|hydraulic-physical-model|caisson-method)?"/);
+  }
+});
+
+test("standalone footer navigation keys are stable when routes repeat", () => {
+  for (const footer of standaloneFooters) {
+    const component = readFileSync(footer.componentPath, "utf8");
+
+    assert.doesNotMatch(
+      component,
+      /key=\{link\.href\}/,
+      `${footer.name} footer should not key navigation items by href alone`,
+    );
   }
 });
 

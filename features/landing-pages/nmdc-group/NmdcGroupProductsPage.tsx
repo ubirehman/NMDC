@@ -9,6 +9,14 @@ import { nmdcGroupProductsContent as content } from "./productsContent";
 export function NmdcGroupProductsPage() {
   return (
     <main className="min-h-screen bg-[#001d2c] text-white">
+      <div className="md:hidden">
+        <Header
+          brandName={nmdcGroupLandingContent.brand.name}
+          logo={nmdcGroupLandingContent.brand.logo}
+          logoAlt={nmdcGroupLandingContent.brand.logoAlt}
+          links={nmdcGroupLandingContent.nav.links}
+        />
+      </div>
       <section className="relative isolate h-[295px] overflow-hidden md:h-[486px]">
         <Image
           src={content.hero.background.src}
@@ -19,15 +27,6 @@ export function NmdcGroupProductsPage() {
           className="object-cover object-[53%_50%]"
         />
         <div className="absolute inset-0 bg-black/58" aria-hidden="true" />
-
-        <div className="md:hidden">
-          <Header
-            brandName={nmdcGroupLandingContent.brand.name}
-            logo={nmdcGroupLandingContent.brand.logo}
-            logoAlt={nmdcGroupLandingContent.brand.logoAlt}
-            links={nmdcGroupLandingContent.nav.links}
-          />
-        </div>
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] flex-col justify-end px-5 pb-[34px] md:px-10 md:pb-[86px]">
           <Link

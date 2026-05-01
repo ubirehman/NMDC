@@ -21,6 +21,15 @@ const ltsFiles = [
   "apps/nmdc-lts/tsconfig.json",
 ];
 
+function extractHomeCardsBlock(source) {
+  const match = source.match(
+    /home:\s*{[\s\S]*?cards:\s*\[(?<cards>[\s\S]*?)\]\s*,\s*}\s*,\s*atAGlance:/,
+  );
+
+  assert.ok(match?.groups?.cards, "NMDC LTS home cards block should be present");
+  return match.groups.cards;
+}
+
 test("NMDC LTS is implemented as a separate Next.js project", () => {
   for (const file of ltsFiles) {
     assert.equal(existsSync(file), true, `${file} should exist`);
@@ -98,12 +107,47 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(page, /object-\[62%_50%\].*md:object-center/s);
   assert.match(cards, /h-\[200px\] w-\[150px\]/);
   assert.match(cards, /md:w-\[150px\]/);
+  assert.match(cards, /function getCardId/);
+  assert.match(cards, /imagePositionClassName/);
+  assert.match(cards, /logoFrameClassName/);
+  assert.match(cards, /group: "h-\[32px\] w-\[102px\]"/);
+  assert.match(cards, /dm: "h-\[30px\] w-\[118px\]"/);
+  assert.match(cards, /energy: "h-\[30px\] w-\[118px\]"/);
+  assert.match(cards, /infra: "h-\[30px\] w-\[96px\]"/);
+  assert.match(cards, /cardId === "lts" \? "overflow-visible" : "overflow-hidden"/);
+  assert.match(cards, /cardId === "dm" \|\| cardId === "energy"/);
+  assert.doesNotMatch(cards, /max-h-\[28px\] w-\[96px\]/);
   assert.match(cards, /hover:border-lts-tan/);
   assert.match(cards, /group-hover:bg-lts-tan/);
   assert.match(cards, /Previous NMDC LTS cards/);
   assert.match(header, /max-w-\[320px\] md:max-w-\[1240px\]/);
   assert.match(header, /md:h-\[72px\]/);
   assert.match(header, /text-lts-tan/);
+});
+
+test("NMDC LTS home cards follow the PDF brand order and routes", () => {
+  const content = readFileSync("apps/nmdc-lts/content/content.ts", "utf8");
+  const cards = extractHomeCardsBlock(content);
+  const expectedOrder = [
+    "NMDC Group",
+    "NMDC Dredging\\n& Marine",
+    "NMDC Energy",
+    "NMDC Infra",
+    "NMDC Product Highlight",
+  ];
+
+  let previousIndex = -1;
+  for (const title of expectedOrder) {
+    const index = cards.indexOf(`title: "${title}"`);
+    assert.ok(index > previousIndex, `${title} should appear in PDF card order`);
+    previousIndex = index;
+  }
+
+  assert.match(cards, /title:\s*"NMDC Group"[\s\S]*?href:\s*groupAppUrl[\s\S]*?card-platform\.jpg[\s\S]*?logo-group\.svg/);
+  assert.match(cards, /title:\s*"NMDC Dredging\\n& Marine"[\s\S]*?href:\s*dredgingMarineAppUrl[\s\S]*?card-dredging\.jpg[\s\S]*?logo-dm\.webp/);
+  assert.match(cards, /title:\s*"NMDC Energy"[\s\S]*?href:\s*energyAppUrl[\s\S]*?card-energy\.jpg[\s\S]*?logo-energy\.webp/);
+  assert.match(cards, /title:\s*"NMDC Infra"[\s\S]*?href:\s*infraAppUrl[\s\S]*?card-infra\.jpg[\s\S]*?logo-infra\.webp/);
+  assert.match(cards, /title:\s*"NMDC Product Highlight"[\s\S]*?href:\s*`\$\{groupAppUrl\}\/products`[\s\S]*?card-product\.jpg/);
 });
 
 test("NMDC LTS at a glance follows the supplied desktop and mobile PDF design", () => {

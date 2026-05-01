@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { CloseIcon, MenuIcon } from "./icons";
 import type { NavLink } from "./types";
 
@@ -17,9 +18,14 @@ const mobileMenuId = "primary-mobile-menu";
 
 export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
-  return (
-    <header className="absolute inset-x-0 top-6 z-20 flex justify-center px-5 md:top-8 md:px-10">
+  useEffect(() => {
+    setPortalTarget(document.body);
+  }, []);
+
+  const headerContent = (
+    <header className="fixed inset-x-0 top-6 z-[100] flex justify-center px-5 md:top-8 md:px-10">
       <div className="relative w-full max-w-[1240px]">
         <div className="flex h-14 items-center justify-between rounded-full border-[1px] border-gray-50/20 bg-[rgba(6,24,38,0.60)] bg-glass-navy-60 px-4 backdrop-blur-[17.5px] md:h-[72px] md:px-[30px] md:py-0">
           <button
@@ -133,4 +139,6 @@ export function Header({ brandName, logo, logoAlt, links }: HeaderProps) {
       </div>
     </header>
   );
+
+  return portalTarget ? createPortal(headerContent, portalTarget) : headerContent;
 }

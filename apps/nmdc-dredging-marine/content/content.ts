@@ -88,30 +88,46 @@ export const nmdcDredgingMarineContent = {
     },
     cards: [
       {
-        title: "Overview",
-        href: "/overview",
-        image: withDredgingMarineBasePath("/images/dm/overview-vessel.jpg")
+        title: "NMDC Group",
+        href: groupAppUrl,
+        image: withDredgingMarineBasePath("/images/dm/card-group.jpg"),
+        logo: {
+          src: withDredgingMarineBasePath("/images/dm/logo-group.svg"),
+          alt: "NMDC Group",
+        },
       },
       {
-        title: "Marine Vessels",
-        href: "/marine-vessels",
-        image: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.jpg")
+        title: "NMDC Energy",
+        href: energyAppUrl,
+        image: withDredgingMarineBasePath("/images/dm/card-energy.jpg"),
+        logo: {
+          src: withDredgingMarineBasePath("/images/dm/logo-energy.webp"),
+          alt: "NMDC Energy",
+        },
       },
       {
-        title: "Capabilities",
-        href: "/overview#capabilities",
-        image: withDredgingMarineBasePath("/images/dm/hydraulic-model-2.jpg")
+        title: "NMDC LTS",
+        href: ltsAppUrl,
+        image: withDredgingMarineBasePath("/images/dm/card-lts.jpg"),
+        logo: {
+          src: withDredgingMarineBasePath("/images/dm/logo-lts-card.svg"),
+          alt: "NMDC LTS",
+        },
       },
       {
-        title: "Hydraulic\nPhysical Model",
-        href: "/hydraulic-physical-model",
-        image: withDredgingMarineBasePath("/images/dm/hydraulic-model-1.jpg")
+        title: "NMDC Infra",
+        href: infraAppUrl,
+        image: withDredgingMarineBasePath("/images/dm/card-infra.jpg"),
+        logo: {
+          src: withDredgingMarineBasePath("/images/dm/logo-infra.png"),
+          alt: "NMDC Infra",
+        },
       },
       {
-        title: "Caisson Method",
-        href: "/caisson-method",
-        image: withDredgingMarineBasePath("/images/dm/caisson-installation.jpg")
-      }
+        title: "NMDC Product Highlight",
+        href: withGroupAppPath("/products"),
+        image: withDredgingMarineBasePath("/images/dm/card-product.jpg")
+      },
     ]
   },
   overview: {
@@ -775,7 +791,7 @@ export const nmdcDredgingMarineContent = {
     ],
     navigationLabel: "Footer navigation",
     navigationLinks: [
-      { label: "Home", href: withGroupAppPath("/nmdc-overview") },
+      { label: "Home", href: withGroupAppPath("/") },
       { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
       { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
       { label: "Technology & Ai", href: withGroupAppPath("/technology") },

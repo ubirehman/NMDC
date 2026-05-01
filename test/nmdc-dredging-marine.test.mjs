@@ -11,6 +11,15 @@ const dmRoutes = [
   "apps/nmdc-dredging-marine/app/caisson-method/page.tsx",
 ];
 
+function extractHomeCardsBlock(source) {
+  const match = source.match(
+    /home:\s*{[\s\S]*?cards:\s*\[(?<cards>[\s\S]*?)\]\s*}\s*,\s*overview:/,
+  );
+
+  assert.ok(match?.groups?.cards, "D&M home cards block should be present");
+  return match.groups.cards;
+}
+
 test("D&M pages are implemented as a separate Next.js project", () => {
   for (const route of dmRoutes) {
     assert.equal(existsSync(route), true, `${route} should exist`);
@@ -122,6 +131,15 @@ test("D&M home cards match the NMDC Group brand card shell", () => {
   );
 
   assert.match(dmCards, /h-\[200px\] w-\[150px\]/);
+  assert.match(dmCards, /function getCardId/);
+  assert.match(dmCards, /logo\?:/);
+  assert.match(dmCards, /card\.logo \?/);
+  assert.match(dmCards, /logoFrameClassName/);
+  assert.match(dmCards, /group: "h-\[32px\] w-\[102px\]"/);
+  assert.match(dmCards, /energy: "h-\[30px\] w-\[118px\]"/);
+  assert.match(dmCards, /infra: "h-\[30px\] w-\[96px\]"/);
+  assert.match(dmCards, /lts: "h-\[34px\] w-\[124px\]"/);
+  assert.match(dmCards, /cardId === "lts" \? "overflow-visible" : "overflow-hidden"/);
   assert.match(dmCards, /rounded-2xl border-\[1\.2px\] border-white bg-white/);
   assert.match(dmCards, /shadow-\[0_12px_32px_-6px_rgba\(5,20,31,0\.76\)\]/);
   assert.match(dmCards, /hover:border-primary-sky-blue/);
@@ -132,7 +150,7 @@ test("D&M home cards match the NMDC Group brand card shell", () => {
   assert.match(dmCards, /group-hover:bg-primary-sky-blue/);
   assert.match(dmCards, /group-active:bg-primary-blue/);
   assert.match(dmCards, /backdrop-blur-\[26\.5px\]/);
-  assert.match(dmCards, /whitespace-pre text-left text-xs font-medium leading-\[1\.5\] text-white/);
+  assert.match(dmCards, /whitespace-pre-line text-left text-xs font-bold leading-\[1\.35\] text-white/);
   assert.match(dmGlobals, /--color-primary-sky-blue:\s*#29b7e3;/);
   assert.match(dmGlobals, /--color-primary-blue:\s*#0072bc;/);
   assert.match(dmGlobals, /--color-glass-deep-navy-72:\s*#05263bb8;/);
@@ -140,10 +158,49 @@ test("D&M home cards match the NMDC Group brand card shell", () => {
   assert.match(dmGlobals, /overflow-x:\s*hidden;/);
 });
 
+test("D&M home cards use the PDF brand order and cross-site routes", () => {
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+  const cards = extractHomeCardsBlock(content);
+  const expectedOrder = [
+    "NMDC Group",
+    "NMDC Energy",
+    "NMDC LTS",
+    "NMDC Infra",
+    "NMDC Product Highlight",
+  ];
+
+  let previousIndex = -1;
+  for (const title of expectedOrder) {
+    const index = cards.indexOf(`title: "${title}"`);
+    assert.ok(index > previousIndex, `${title} should appear in PDF card order`);
+    previousIndex = index;
+  }
+
+  assert.match(cards, /title:\s*"NMDC Group"[\s\S]*?href:\s*groupAppUrl[\s\S]*?card-group\.jpg[\s\S]*?logo-group\.svg/);
+  assert.match(cards, /title:\s*"NMDC Energy"[\s\S]*?href:\s*energyAppUrl[\s\S]*?card-energy\.jpg[\s\S]*?logo-energy\.webp/);
+  assert.match(cards, /title:\s*"NMDC LTS"[\s\S]*?href:\s*ltsAppUrl[\s\S]*?card-lts\.jpg[\s\S]*?logo-lts-card\.svg/);
+  assert.match(cards, /title:\s*"NMDC Infra"[\s\S]*?href:\s*infraAppUrl[\s\S]*?card-infra\.jpg[\s\S]*?logo-infra\.png/);
+  assert.match(cards, /title:\s*"NMDC Product Highlight"[\s\S]*?href:\s*withGroupAppPath\("\/products"\)[\s\S]*?card-product\.jpg/);
+  assert.doesNotMatch(cards, /href:\s*"\/(?:overview|marine-vessels|hydraulic-physical-model|caisson-method)"/);
+  assert.doesNotMatch(cards, /Capabilities|Hydraulic\\nPhysical Model|Caisson Method/);
+});
+
 test("D&M extracted PDF assets are available", () => {
   for (const asset of [
     "apps/nmdc-dredging-marine/public/images/dm/home-hero.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/home-dredger-ghasha.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/card-group.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/card-energy.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/card-lts.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/card-infra.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/card-product.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/logo-group.svg",
+    "apps/nmdc-dredging-marine/public/images/dm/logo-energy.webp",
+    "apps/nmdc-dredging-marine/public/images/dm/logo-lts-card.svg",
+    "apps/nmdc-dredging-marine/public/images/dm/logo-infra.png",
     "apps/nmdc-dredging-marine/public/images/dm/overview-vessel.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/vessel-al-mirfa.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/hydraulic-hero.jpg",

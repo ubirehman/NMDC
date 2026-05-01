@@ -12,6 +12,12 @@ import {
 export function NmdcMaharaFreshGraduatePage() {
   return (
     <main className="overflow-x-hidden bg-[#f5fcff] text-primary-navy-blue">
+      <Header
+        brandName={nmdcPeopleCultureBrand.name}
+        logo={nmdcPeopleCultureBrand.logo}
+        logoAlt={nmdcPeopleCultureBrand.logoAlt}
+        links={nmdcPeopleCultureNavLinks}
+      />
       <section className="relative isolate flex h-[318px] items-end overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
           src="/images/landing/people-hero-boardroom.jpg"
@@ -24,13 +30,6 @@ export function NmdcMaharaFreshGraduatePage() {
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.30)_0%,rgba(3,15,26,0.54)_64%,rgba(3,15,26,0.82)_100%)]"
           aria-hidden="true"
-        />
-
-        <Header
-          brandName={nmdcPeopleCultureBrand.name}
-          logo={nmdcPeopleCultureBrand.logo}
-          logoAlt={nmdcPeopleCultureBrand.logoAlt}
-          links={nmdcPeopleCultureNavLinks}
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-[84px] md:pb-[89px]">

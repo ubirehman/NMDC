@@ -12,6 +12,12 @@ import {
 export function NmdcAtAGlancePage() {
   return (
     <main className="overflow-x-hidden bg-[#061832] text-white">
+      <Header
+        brandName={nmdcOverviewBrand.name}
+        logo={nmdcOverviewBrand.logo}
+        logoAlt={nmdcOverviewBrand.logoAlt}
+        links={nmdcOverviewNavLinks}
+      />
       <section className="relative isolate overflow-hidden bg-primary-navy-blue px-5 text-white md:min-h-[1065px] md:px-10">
         <Image
           src="/images/landing/overview-hero-sea.jpg"
@@ -24,13 +30,6 @@ export function NmdcAtAGlancePage() {
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.58)_0%,rgba(3,15,26,0.58)_38%,rgba(3,15,26,0.74)_78%,rgba(3,15,26,0.92)_100%)]"
           aria-hidden="true"
-        />
-
-        <Header
-          brandName={nmdcOverviewBrand.name}
-          logo={nmdcOverviewBrand.logo}
-          logoAlt={nmdcOverviewBrand.logoAlt}
-          links={nmdcOverviewNavLinks}
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-14 pt-[118px] md:pb-[56px] md:pt-[139px]">

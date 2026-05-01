@@ -89,7 +89,7 @@ export const footerColumns = [
   {
     title: "Company",
     links: [
-      { label: "Home", href: "/nmdc-overview" },
+      { label: "Home", href: "/" },
       { label: "NMDC Overview", href: "/nmdc-overview" },
       { label: "People & Culture", href: "/people-and-culture" },
       { label: "Technology & Ai", href: "/technology" },

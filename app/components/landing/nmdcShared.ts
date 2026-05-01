@@ -18,6 +18,7 @@ const withNmdcGroupPath = (path: string) =>
   nmdcGroupAppUrl ? `${nmdcGroupAppUrl.replace(/\/$/, "")}${path}` : path;
 
 export const nmdcGroupOverviewHref = withNmdcGroupPath("/nmdc-overview");
+export const nmdcGroupHomeHref = withNmdcGroupPath("/");
 
 export const nmdcBrand = {
   name: "NMDC Group",

@@ -146,6 +146,7 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "coastal-hydrodynamic-center",
+    layout: "coastal-hydrodynamic-center",
     fullTitle: "NMDC Dredging and Marine | Coastal & Hydrodynamic Center",
     brandName: "NMDC Dredging and Marine",
     title: "Coastal & Hydrodynamic Center",
@@ -157,27 +158,16 @@ export const nmdcGroupProductDetails = [
         alt: "Coastal and hydrodynamic testing basin",
         fit: "cover",
       },
-      {
-        src: `${productsImageBase}/coastal-center-mobile.webp`,
-        alt: "Hydrodynamic basin close-up",
-        fit: "cover",
-      },
     ],
+    collageImage: {
+      src: `${productsImageBase}/coastal-hydrodynamic-collage.png`,
+      alt: "Coastal and hydrodynamic center wave basin collage",
+      fit: "cover",
+    },
     summary: [
-      "The NMDC D&M Coastal and Hydrodynamic Center spans approximately 2800 sqm and allows engineers to simulate and validate the impact of hydrodynamic environmental actions on strategic infrastructure.",
-      "Using scaled physical models to replicate real-world environments, the facility tests and refines designs before construction.",
+      "The state-of-the-art NMDC D&M Coastal and Hydrodynamic Center, which spans approximately 2800 sqm, allows engineers to simulate and validate the impact of hydrodynamic environmental actions on strategic infrastructure, including ports, breakwaters, sea walls and offshore structures. Using scaled physical models to replicate real-world environments, it ensures that model behaviour reflects full-scale performance, including wave forces, pressures and structural response, enabling designs to be tested, refined and optimised before construction. The new facility features a 3D wave basin and 2D wave flume with advanced wave generation systems and controlled water environments, designed to test both fixed and floating structures across a wide range of conditions. It supports applications from early-stage research to validation of large-scale infrastructure, including wave transformation, overtopping, scour and harbor behavior under operational conditions.",
     ],
-    sections: [
-      {
-        title: "Capabilities",
-        bullets: [
-          "3D wave basin and 2D wave flume.",
-          "Advanced wave generation systems and controlled water environments.",
-          "Testing for fixed and floating structures across a wide range of conditions.",
-          "Applications include wave transformation, overtopping, scour and harbor behavior under operational conditions.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "hail-ghasha-gop",

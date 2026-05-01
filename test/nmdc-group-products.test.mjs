@@ -217,6 +217,44 @@ test("Marine Vessels product detail follows the supplied desktop vessel card gri
   assert.match(detailPage, /bg-\[#22475b\]\/92/);
   assert.match(detailPage, /detail\.vesselCards\.map/);
   assert.match(detailPage, /vessel\.specs\.map/);
-  assert.match(detailPage, /ProductQrCode/);
+  assert.match(detailPage, /ProductQrImage/);
+  assert.match(detailPage, /energyProductFooterLinks/);
+  assert.match(detailPage, /logo-energy\.webp/);
+  assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
+});
+
+test("Coastal and Hydrodynamic Center product detail follows the supplied desktop collage design", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+
+  assert.match(
+    detailContent,
+    /slug:\s*"coastal-hydrodynamic-center"[\s\S]*layout:\s*"coastal-hydrodynamic-center"/,
+  );
+  assert.match(detailContent, /collageImage:\s*\{/);
+  assert.match(detailContent, /coastal-hydrodynamic-center\.webp/);
+  assert.match(detailContent, /coastal-hydrodynamic-collage\.png/);
+  assert.match(detailContent, /"The state-of-the-art NMDC D&M Coastal and Hydrodynamic Center/);
+  assert.match(detailContent, /"Play virtual tour"/);
+
+  for (const asset of [
+    "public/images/landing/products/coastal-hydrodynamic-center.webp",
+    "public/images/landing/products/coastal-hydrodynamic-collage.png",
+  ]) {
+    assert.ok(existsSync(asset), `${asset} should exist`);
+  }
+
+  assert.match(detailPage, /detail\.slug === "coastal-hydrodynamic-center"/);
+  assert.match(detailPage, /CoastalHydrodynamicDetailLayout/);
+  assert.match(detailPage, /detail\.collageImage\.src/);
+  assert.match(detailPage, /md:min-h-\[1458px\]/);
+  assert.match(detailPage, /md:grid-cols-\[641px_583px\]/);
+  assert.match(detailPage, /md:h-\[862px\]/);
+  assert.match(detailPage, /ProductQrImage/);
+  assert.match(detailPage, /energyProductFooterLinks/);
+  assert.match(detailPage, /logo-energy\.webp/);
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
 });

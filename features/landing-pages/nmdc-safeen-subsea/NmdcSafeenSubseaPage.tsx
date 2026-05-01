@@ -57,6 +57,12 @@ function SafeenProductCard({ product }: { product: SafeenProduct }) {
 export function NmdcSafeenSubseaPage() {
   return (
     <main className="overflow-x-hidden bg-white text-primary-navy-blue">
+      <Header
+        brandName={nmdcSafeenSubseaBrand.name}
+        logo={nmdcSafeenSubseaBrand.logo}
+        logoAlt={nmdcSafeenSubseaBrand.logoAlt}
+        links={nmdcSafeenSubseaNavLinks}
+      />
       <section className="relative isolate h-[318px] overflow-hidden bg-primary-navy-blue px-5 text-white md:h-[487px] md:px-10">
         <Image
           src={safeenHero.image}
@@ -69,12 +75,6 @@ export function NmdcSafeenSubseaPage() {
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.24)_0%,rgba(3,15,26,0.52)_64%,rgba(3,15,26,0.78)_100%)]"
           aria-hidden="true"
-        />
-        <Header
-          brandName={nmdcSafeenSubseaBrand.name}
-          logo={nmdcSafeenSubseaBrand.logo}
-          logoAlt={nmdcSafeenSubseaBrand.logoAlt}
-          links={nmdcSafeenSubseaNavLinks}
         />
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end justify-center pb-[107px] md:justify-start md:pb-[128px]">

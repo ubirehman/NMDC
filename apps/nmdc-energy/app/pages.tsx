@@ -1513,7 +1513,7 @@ function EnergyFooter() {
         >
           <ul className="hidden gap-6 text-[22px] font-normal leading-7 text-white md:grid md:gap-4 md:text-[15px] md:leading-5">
             {footerNavigationLinks.map((link) => (
-              <li key={link.href}>
+              <li key={`${link.label}-${link.href}`}>
                 <Link href={link.href} className="transition-colors hover:text-energy-green">
                   {link.label}
                 </Link>

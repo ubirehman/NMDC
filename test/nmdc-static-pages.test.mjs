@@ -151,6 +151,8 @@ test("NMDC Technology follows the supplied desktop PDF layout", () => {
   assert.match(technologyDesign, /Applications in Our AI Hub/);
   assert.match(technologyDesign, /Know more-/);
   assert.match(technology, /technologyMedia/);
+  assert.match(technology, /grid content-start gap-8/);
+  assert.doesNotMatch(technology, /TechnologyMediaRail/);
   assert.match(technology, /OverviewVideoPlayer/);
   assert.match(technology, /NmdcFooter/);
 });
@@ -305,7 +307,7 @@ test("shared NMDC footer exposes the designed email columns", () => {
   assert.match(footer, /http:\/\/localhost:3123/);
   assert.match(footer, /href=\{link\.href\}/);
   assert.match(footer, /key=\{`\$\{link\.label\}-\$\{link\.href\}`\}/);
-  assert.match(footer, /nmdcGroupOverviewHref/);
+  assert.match(footer, /nmdcGroupHomeHref/);
   assert.match(footer, /link\.label === "Home"/);
   assert.match(footer, /mailto:\$\{email\.value\}/);
   assert.match(footer, /socialLinks/);

@@ -21,6 +21,17 @@ type LtsHomeCardRailProps = {
 
 const SCROLL_STEP = 168;
 
+function getCardId(card: HomeCard) {
+  const title = card.title.toLowerCase();
+
+  if (title.includes("dredging")) return "dm";
+  if (title.includes("energy")) return "energy";
+  if (title.includes("infra")) return "infra";
+  if (title.includes("lts")) return "lts";
+  if (title.includes("product")) return "product";
+  return "group";
+}
+
 export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -58,10 +69,32 @@ export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
         className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[832px] md:overflow-visible md:px-0 md:pb-0"
       >
         {cards.map((card) => {
+          const cardId = getCardId(card);
           const label =
             card.title === "NMDC Product Highlight"
               ? "NMDC Product\nHighlight"
               : card.title;
+          const imagePositionClassName =
+            {
+              group: "object-[52%_50%]",
+              dm: "object-[46%_50%]",
+              energy: "object-[46%_50%]",
+              infra: "object-[48%_50%]",
+              lts: "object-[48%_45%]",
+              product: "object-[52%_50%]",
+            }[cardId] ?? "object-center";
+          const logoFrameClassName =
+            {
+              group: "h-[32px] w-[102px]",
+              dm: "h-[30px] w-[118px]",
+              energy: "h-[30px] w-[118px]",
+              infra: "h-[30px] w-[96px]",
+              lts: "h-[34px] w-[124px]",
+            }[cardId] ?? "h-[30px] w-[96px]";
+          const logoFrameOverflowClassName =
+            cardId === "lts" ? "overflow-visible" : "overflow-hidden";
+          const logoFitClassName =
+            cardId === "dm" || cardId === "energy" ? "object-cover" : "object-contain";
 
           return (
             <Link
@@ -75,7 +108,7 @@ export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
                 alt={card.title.replace("\n", " ")}
                 fill
                 sizes="150px"
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02]"
+                className={`object-cover transition-transform duration-500 ease-out group-hover:scale-105 group-active:scale-[1.02] ${imagePositionClassName}`}
               />
 
               <span
@@ -85,13 +118,15 @@ export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
 
               <div className="absolute inset-x-0 bottom-0 flex h-12 items-center justify-center rounded-t-lg bg-[rgba(7,31,43,0.84)] px-2 backdrop-blur-[26.5px] transition-colors duration-200 group-hover:bg-lts-tan group-focus-visible:bg-lts-tan group-active:bg-lts-tan">
                 {card.logo ? (
-                  <Image
-                    src={card.logo.src}
-                    alt={card.logo.alt}
-                    width={96}
-                    height={36}
-                    className="max-h-[28px] w-[96px] object-contain transition-opacity duration-200 group-hover:opacity-90"
-                  />
+                  <span className={`relative block shrink-0 ${logoFrameOverflowClassName} ${logoFrameClassName}`}>
+                    <Image
+                      src={card.logo.src}
+                      alt={card.logo.alt}
+                      fill
+                      sizes={cardId === "lts" ? "124px" : "118px"}
+                      className={`${logoFitClassName} transition-transform duration-200 group-hover:scale-[1.03] group-active:scale-100`}
+                    />
+                  </span>
                 ) : (
                   <span className="flex w-full items-center justify-between gap-2 pl-1">
                     <span className="whitespace-pre-line text-left text-xs font-bold leading-[1.35] text-white transition-colors duration-200 group-hover:text-lts-ink group-focus-visible:text-lts-ink group-active:text-lts-ink">
