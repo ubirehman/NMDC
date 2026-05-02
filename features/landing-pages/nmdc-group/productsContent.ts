@@ -226,7 +226,7 @@ export const nmdcGroupProductsContent = {
           accentClassName: "text-[#ddc19c]",
           images: [
             {
-              src: `${productsImageBase}/multicat-21-mobile.webp`,
+              src: `${productsImageBase}/multicat-21-detail.png`,
               alt: "Multicat 21 vessel model dimensions",
             },
           ],

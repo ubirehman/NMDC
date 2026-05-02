@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
 import { EnergyOverviewVideoPlayer } from "../components/EnergyOverviewVideoPlayer";
 import { Header } from "../components/Header";
@@ -565,9 +565,6 @@ function EnergyYardKeyHighlights() {
                 sizes="(min-width: 768px) 760px, 100vw"
                 className="object-cover object-[52%_48%]"
               />
-              <div className="absolute left-0 top-0 hidden h-[84px] w-[256px] items-center justify-center rounded-br-[12px] bg-energy-green text-[24px] font-bold leading-7 text-white md:flex">
-                {keyHighlights.activeYard}
-              </div>
             </div>
 
             <EnergyYardArrowControls
@@ -579,11 +576,11 @@ function EnergyYardKeyHighlights() {
 
           <div className="grid gap-0 overflow-hidden rounded-[14px] bg-[#062b43] px-8 py-5 text-white md:col-start-2 md:row-span-2 md:row-start-1 md:rounded-[16px] md:px-10 md:py-8">
             {keyHighlights.yards.map((yard, index) => (
-              <article
+              <div
                 key={yard.name}
                 className={`py-7 ${index === 0 ? "pt-0" : "border-t border-white/15"} md:py-8`}
               >
-                <h3 className="text-center text-[17px] font-bold leading-6 md:text-[17px]">
+                <h3 className="text-center text-[22px] font-bold leading-6 md:text-[17px]">
                   {yard.name} <span aria-hidden="true">{yard.flag}</span>
                 </h3>
                 <ul className="mt-5 grid gap-3 rounded-[8px] bg-[#113a58] px-5 py-5 text-[12px] font-bold leading-5 md:text-[13px]">
@@ -597,7 +594,7 @@ function EnergyYardKeyHighlights() {
                     </li>
                   ))}
                 </ul>
-              </article>
+              </div>
             ))}
           </div>
 
@@ -660,41 +657,57 @@ function EnergyYardAchievements() {
   const achievements = content.yardHighlights.achievements;
 
   return (
-    <section className="bg-white text-white">
+    <section data-yard-achievements className="bg-white text-white">
       <div className="px-5 md:px-10">
         <div className="mx-auto w-full max-w-[1240px] border-t border-[#a7b4c0] py-8 md:py-[72px]">
           <EnergyYardSectionTitle title={achievements.title} />
         </div>
       </div>
 
-      <div className="bg-[#062b43] px-5 py-8 md:px-10 md:py-[42px]">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-7 md:grid-cols-[230px_270px_minmax(0,1fr)] md:items-center md:gap-10">
-          <div className="mx-auto grid size-[120px] place-items-center rounded-[8px] bg-white/8 text-energy-green md:size-[180px]">
-            <EnergyYardIcon icon="achievement" className="size-[82px] md:size-[120px]" />
+      <div className="bg-[#062b43] px-5 py-10 md:px-10 md:py-[42px]">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-7 md:min-h-[245px] md:grid-cols-[236px_1px_193px_1px_minmax(0,1fr)] md:items-center md:gap-8">
+          <div
+            data-yard-achievement-icon-card
+            className="mx-auto grid size-[150px] place-items-center rounded-[14px] bg-[#143a58] text-energy-green md:size-[192px]"
+          >
+            <EnergyYardIcon icon="achievement" className="size-[100px] md:size-[132px]" />
           </div>
 
-          <div className="grid grid-cols-2 divide-x divide-white/18 rounded-[10px] bg-white/0 text-center md:h-[154px] md:items-center">
-            {achievements.stats.map((stat) => (
-              <div key={stat.label} className="px-4">
-                <p className="text-[32px] font-bold leading-none md:text-[40px]">
-                  {stat.value}
-                </p>
-                <p className="mt-3 text-[12px] font-bold leading-5 md:text-[13px]">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <span className="hidden h-[205px] w-px bg-white/12 md:block" aria-hidden="true" />
+
+          <div
+            data-yard-achievement-summary-card
+            className="mx-auto grid w-full max-w-[220px] rounded-[14px] bg-[#143a58] px-5 py-6 text-center md:h-[205px] md:max-w-none md:content-center"
+          >
+            <h3 className="text-[14px] font-bold leading-5 text-white md:text-[15px]">
+              {achievements.summaryTitle}
+            </h3>
+            <span className="mx-auto my-5 h-px w-full bg-energy-green" aria-hidden="true" />
+            <div className="grid gap-5">
+              {achievements.stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-[34px] font-bold leading-none text-white">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-[12px] font-bold leading-5 text-white">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-[14px] font-bold leading-5 md:text-[15px]">
+          <span className="hidden h-[205px] w-px bg-white/12 md:block" aria-hidden="true" />
+
+          <div data-yard-achievement-copy className="md:pl-6">
+            <h3 className="text-[18px] font-bold leading-7 md:text-[22px] md:leading-8">
               {achievements.intro}
             </h3>
-            <ul className="mt-4 grid gap-4 text-[12px] font-bold leading-5 md:text-[13px]">
+            <ul className="mt-6 grid gap-5 text-[13px] font-bold leading-6 md:text-[15px]">
               {achievements.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-3">
-                  <span className="mt-2 size-2 shrink-0 rounded-full bg-energy-green" />
-                  {bullet}
+                <li key={bullet} className="flex gap-4">
+                  <span className="mt-2.5 size-2 shrink-0 rounded-full bg-energy-green" />
+                  <span>{bullet}</span>
                 </li>
               ))}
             </ul>
@@ -780,14 +793,35 @@ function EnergyProductCard({
 
 type EnergyProductDetail = (typeof content.products.details)[number];
 
-function EnergyProductHero() {
+function getEnergyProductSlugFromPath(productPath: string) {
+  return productPath.split("/").filter(Boolean).pop() ?? "";
+}
+
+function getEnergyProductHeroBackground(productPath: string) {
   const hero = content.products.hero;
+  const productSlug = getEnergyProductSlugFromPath(productPath);
+  const heroBackgroundsBySlug = {
+    jackets: hero.jacketBackground,
+    "bridges-and-boat-landings": hero.bridgesAndBoatLandingsBackground,
+    "pressure-vessels": hero.pressureVesselsBackground,
+    "process-skids": hero.pressureVesselsBackground,
+    "pipe-coating": hero.pipeCoatingBackground,
+  };
+  const selectedBackground =
+    heroBackgroundsBySlug[productSlug as keyof typeof heroBackgroundsBySlug];
+
+  return selectedBackground ?? hero.topSideBackground;
+}
+
+function EnergyProductHero({ productPath }: { productPath: string }) {
+  const hero = content.products.hero;
+  const background = getEnergyProductHeroBackground(productPath);
 
   return (
     <section className="relative isolate h-[450px] overflow-hidden bg-energy-deep-navy px-5 text-white md:h-[485px] md:px-10">
       <Image
-        src={hero.background.src}
-        alt={hero.background.alt}
+        src={background.src}
+        alt={background.alt}
         fill
         priority
         sizes="100vw"
@@ -812,12 +846,16 @@ function EnergyProductHero() {
 function EnergyDetailCard({
   children,
   className = "",
+  ...props
 }: {
   children: ReactNode;
   className?: string;
-}) {
+} & HTMLAttributes<HTMLElement>) {
   return (
-    <article className={`rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8 ${className}`}>
+    <article
+      {...props}
+      className={`rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8 ${className}`}
+    >
       {children}
     </article>
   );
@@ -936,44 +974,121 @@ function EnergyPipeCoatingOverview({ detail }: { detail: EnergyProductDetail }) 
   }
 
   return (
-    <div className="grid gap-5 md:grid-cols-[380px_260px_minmax(0,1fr)]">
+    <div
+      data-pipe-coating-overview
+      className="grid gap-3 md:grid-cols-[380px_minmax(0,1fr)] md:gap-5"
+    >
       <EnergyProductIntroCard detail={detail} />
-      {"capabilities" in detail && detail.capabilities ? (
-        <EnergyDetailCard>
-          <h2 className="text-[17px] font-bold leading-6 text-energy-green">
+      <EnergyPipeCoatingCapabilitiesCard detail={detail} />
+    </div>
+  );
+}
+
+function EnergyPipeCoatingCapabilitiesCard({
+  detail,
+}: {
+  detail: EnergyProductDetail;
+}) {
+  if (
+    detail.slug !== "pipe-coating" ||
+    !("capabilities" in detail) ||
+    !detail.capabilities
+  ) {
+    return null;
+  }
+
+  return (
+    <EnergyDetailCard
+      data-pipe-coating-capabilities-card
+      className="min-h-[180px] rounded-[22px] p-[18px] md:min-h-[176px] md:rounded-[16px] md:p-4"
+    >
+      <div className="grid gap-8 md:grid-cols-[190px_minmax(0,1fr)] md:items-stretch md:gap-5">
+        <div className="px-1 pt-1 md:px-0 md:pt-0">
+          <h2 className="text-[20px] font-bold leading-7 text-energy-green md:text-[15px] md:leading-5">
             Capabilities :
           </h2>
-          <ul className="mt-5 grid gap-4 text-[14px] leading-[22px]">
+          <ul className="mt-6 grid gap-5 text-[14px] leading-[22px] md:mt-4 md:gap-3 md:text-[12px] md:leading-4">
             {detail.capabilities.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="mt-2 size-2 shrink-0 rounded-full bg-energy-green" />
+                <span className="mt-2 size-2 shrink-0 rounded-full bg-energy-green md:mt-1.5 md:size-1.5" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-        </EnergyDetailCard>
-      ) : null}
-      <EnergyProductHighlights detail={detail} />
+        </div>
+
+        <EnergyPipeCoatingHighlightsList detail={detail} />
+      </div>
+    </EnergyDetailCard>
+  );
+}
+
+function EnergyPipeCoatingHighlightsList({
+  detail,
+}: {
+  detail: EnergyProductDetail;
+}) {
+  if (!("highlights" in detail) || !detail.highlights) {
+    return null;
+  }
+
+  return (
+    <div data-pipe-coating-highlights-list className="grid gap-[14px] md:gap-2">
+      {detail.highlights.map((item) => {
+        const iconImage = "image" in item ? item.image : null;
+
+        return (
+          <article
+            key={`${item.title}-${item.value}`}
+            className="grid min-h-[140px] grid-cols-[88px_minmax(0,1fr)] overflow-hidden rounded-[10px] bg-[#123a58] md:min-h-[48px] md:grid-cols-[72px_minmax(0,1fr)] md:rounded-[6px]"
+          >
+            <div className="grid place-items-center border-r border-white/15 px-4 md:px-3">
+              {iconImage ? (
+                <Image
+                  src={iconImage.src}
+                  alt={iconImage.alt}
+                  width={64}
+                  height={64}
+                  className="size-[58px] object-contain md:size-[38px]"
+                />
+              ) : (
+                <EnergyProductIcon icon={item.icon} />
+              )}
+            </div>
+            <div className="min-w-0 px-5 py-5 md:px-4 md:py-2.5">
+              <p className="text-[23px] font-bold leading-7 text-energy-green md:text-[13px] md:leading-4">
+                {item.title}
+              </p>
+              <p className="mt-3 text-[11px] font-bold leading-[18px] text-white md:mt-1 md:text-[9px] md:leading-3">
+                {item.value}
+              </p>
+              <p className="mt-1 text-[11px] font-bold leading-[18px] text-white md:text-[9px] md:leading-3">
+                {item.unit}
+              </p>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
 
 function EnergyDetailArrowControls() {
   return (
-    <div className="mt-6 flex items-center justify-center gap-6 md:mt-8">
+    <div className="mt-6 flex items-center justify-end mr-auto gap-6 md:mt-8">
       <button
         type="button"
         aria-label="Previous product image"
         className="grid size-12 place-items-center rounded-full border border-[#c5d0dc] text-[#8ca0b5] transition-colors hover:border-energy-green hover:text-energy-green"
       >
-        <ArrowLeft className="size-6" />
+        <ArrowLeft className="-translate-x-0.5 size-6" />
       </button>
       <button
         type="button"
         aria-label="Next product image"
         className="grid size-12 place-items-center rounded-full border border-[#d9e2ea] text-energy-green transition-colors hover:border-energy-green hover:bg-energy-green hover:text-white"
       >
-        <ArrowRight className="size-6" />
+        <ArrowRight className="translate-x-0.5 size-6" />
       </button>
       <span className="h-[6px] w-[180px] rounded-full bg-[#d8d8d8] md:w-[504px]">
         <span className="block h-full w-[37%] rounded-full bg-energy-green" />
@@ -1159,7 +1274,7 @@ function EnergyProductDetailPage({ detail }: { detail: EnergyProductDetail }) {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-      <EnergyProductHero />
+      <EnergyProductHero productPath={`/products/${detail.slug}`} />
       <section className="bg-white px-5 pb-[72px] pt-8 text-energy-ink md:px-10 md:pb-[110px] md:pt-[62px]">
         <div className="mx-auto w-full max-w-[1240px]">
           <Link
@@ -1386,7 +1501,14 @@ function EnergyTechnologySection() {
                 className="grid min-h-[143px] grid-cols-[116px_minmax(0,1fr)] items-center gap-7 rounded-[16px] bg-[#052b44] p-3 shadow-[0_18px_34px_rgba(0,0,0,0.22)] md:min-h-[122px] md:grid-cols-[90px_minmax(0,1fr)] md:gap-5 md:rounded-[12px]"
               >
                 <div className="grid size-[116px] place-items-center rounded-[8px] bg-white/14 text-energy-green md:size-[90px]">
-                  <EnergyLineIcon icon={card.icon} className="size-[72px] md:size-[58px]" />
+                  {/* <EnergyLineIcon icon={card.icon} className="size-[72px] md:size-[58px]" /> */}
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    sizes="58px"
+                    width={56}
+                    height={56}
+                  />
                 </div>
                 <div className="min-w-0">
                   <h3 className="min-w-0 text-[23px] font-bold leading-7 md:text-[24px]">

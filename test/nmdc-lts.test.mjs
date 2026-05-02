@@ -316,6 +316,8 @@ test("NMDC LTS whipstock system follows the supplied desktop, mobile, and iPad d
   assert.match(page, /md:w-\[1240px\]/);
   assert.match(carousel, /"use client";/);
   assert.match(carousel, /useState/);
+  assert.match(carousel, /specificationsHref\?: string \| null/);
+  assert.match(carousel, /specificationsHref && specificationsLabel/);
   assert.match(carousel, /showPreviousImage/);
   assert.match(carousel, /showNextImage/);
   assert.match(carousel, /onClick=\{showPreviousImage\}/);

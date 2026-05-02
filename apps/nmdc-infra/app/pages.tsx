@@ -278,20 +278,20 @@ function InfraCapabilityCard({
   return (
     <article className="min-h-[180px] rounded-[8px] bg-[#0a2534] p-[18px] text-white shadow-[0_16px_34px_rgba(0,0,0,0.18)] md:min-h-[250px] md:rounded-[18px] md:p-6">
       <div className="flex items-start justify-between gap-5">
-        <div className="relative size-[64px] overflow-hidden rounded-[4px] md:h-[68px] md:w-[102px] md:rounded-[8px]">
+        <div className="relative size-[64px] overflow-hidden rounded-[4px] md:h-[102px] md:w-[102px] md:rounded-[8px]">
           <Image
             src={card.image.src}
             alt={card.image.alt}
-            fill
             sizes="102px"
-            className="object-cover"
+            width={102}
+            height={102}
+            className="object-cover w-[102px] h-[102px]"
           />
         </div>
         <div className="text-right">
-          <span className="block text-[32px] font-bold leading-none text-white md:text-[56px] md:text-infra-yellow">
+          <span className="block text-[32px] font-bold leading-none text-white md:text-[56px]">
             {card.number}
           </span>
-          <span className="mt-2 block h-[3px] w-[56px] bg-infra-yellow md:mt-3 md:w-[76px]" aria-hidden="true" />
         </div>
       </div>
       <h3 className="mt-4 text-[15px] font-bold leading-[1.2] md:mt-6 md:text-[23px]">
@@ -343,7 +343,6 @@ function InfraVerticalCard({
         <p className="mt-6 text-[10px] font-medium leading-[1.45] text-white/82 md:mt-7 md:text-[16px] md:leading-[1.65]">
           {item.body}
         </p>
-        <span className="mt-auto block h-[5px] w-[86px] bg-infra-yellow" aria-hidden="true" />
       </div>
     </article>
   );
@@ -734,6 +733,164 @@ function InfraProductMediaSection({
   );
 }
 
+type InfraBarValue = {
+  year: string;
+  value: number;
+};
+
+function InfraBarChart({
+  values,
+  chartHeight = 120,
+}: {
+  values: readonly InfraBarValue[];
+  chartHeight?: number;
+}) {
+  const maxValue = Math.max(...values.map((v) => v.value), 1);
+
+  return (
+    <div>
+      <div
+        className="flex items-end gap-[6px] border-b border-white/16"
+        style={{ height: `${chartHeight}px` }}
+      >
+        {values.map((v) => {
+          const barH =
+            v.value > 0
+              ? Math.max(24, (v.value / maxValue) * (chartHeight - 4))
+              : 0;
+
+          return (
+            <div
+              key={v.year}
+              className="flex flex-1 items-end justify-center"
+              style={{ height: "100%" }}
+            >
+              {v.value > 0 ? (
+                <div
+                  className="flex w-full items-center justify-center rounded-t-[5px] bg-infra-yellow"
+                  style={{ height: `${barH}px` }}
+                >
+                  <span className="text-[11px] font-bold leading-none text-infra-ink md:text-[12px]">
+                    {v.value}
+                  </span>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-2 flex gap-[6px]">
+        {values.map((v) => (
+          <span
+            key={`${v.year}-lbl`}
+            className="flex-1 text-center text-[11px] leading-none text-white/50 md:text-[12px]"
+          >
+            {v.year}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function InfraFactoryHighlightCard({
+  item,
+}: {
+  item: (typeof content.overview.factoryHighlights.items)[number];
+}) {
+  return (
+    <article className="overflow-hidden rounded-[12px] bg-infra-navy p-5 shadow-[0_16px_34px_rgba(0,0,0,0.18)] md:rounded-[18px] md:p-6">
+      <h3 className="text-[17px] font-bold leading-6 text-infra-yellow md:text-[20px]">
+        {item.title}
+      </h3>
+      <p className="mt-2 text-[12px] leading-[1.5] text-white/70 md:text-[14px] md:leading-6">
+        {item.copy}
+      </p>
+      <div className="mt-4 grid grid-cols-[minmax(0,1fr)_100px] items-start gap-3 md:grid-cols-[minmax(0,1fr)_128px] md:gap-4">
+        <div className="min-w-0">
+          <p className="text-right text-[11px] font-bold text-white/50 md:text-[12px]">
+            {item.unit}
+          </p>
+          <div className="mt-2">
+            <InfraBarChart values={item.values} chartHeight={106} />
+          </div>
+        </div>
+        <div className="relative mt-6 h-[106px] overflow-hidden rounded-[8px] md:h-[128px]">
+          <Image
+            src={item.image.src}
+            alt={item.image.alt}
+            fill
+            sizes="128px"
+            className="object-cover"
+          />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function InfraFactoryHighlightsSection() {
+  const { factoryHighlights } = content.overview;
+
+  return (
+    <section className="bg-[#f5f8f7] px-5 pb-[58px] pt-[28px] md:px-10 md:pb-[68px] md:pt-[40px]">
+      <div className="mx-auto w-full max-w-[1240px]">
+        <InfraSectionHeading title={factoryHighlights.title} />
+        <div className="mt-8 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
+          {factoryHighlights.items.map((item) => (
+            <InfraFactoryHighlightCard key={item.title} item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InfraOperationalChart({
+  chart,
+}: {
+  chart: (typeof content.overview.operationalHighlights.charts)[number];
+}) {
+  return (
+    <article className="rounded-[12px] bg-infra-navy px-5 py-5 shadow-[0_16px_34px_rgba(0,0,0,0.18)] md:rounded-[18px] md:px-7 md:py-7">
+      <div className="flex items-baseline gap-2">
+        <h3 className="text-[16px] font-bold leading-5 text-white md:text-[20px]">
+          {chart.title}
+        </h3>
+        <span className="text-[12px] text-white/50">({chart.unit})</span>
+      </div>
+      <div className="mt-5">
+        <InfraBarChart values={chart.values} chartHeight={150} />
+      </div>
+    </article>
+  );
+}
+
+function InfraOperationalHighlightsSection() {
+  const { operationalHighlights } = content.overview;
+
+  return (
+    <section className="bg-[#f5f8f7] px-5 pb-[58px] md:px-10 md:pb-[68px]">
+      <div className="mx-auto w-full max-w-[1240px]">
+        <InfraSectionHeading title={operationalHighlights.title} />
+        <div className="mt-4 md:mt-6">
+          <p className="text-[15px] font-bold leading-6 text-infra-ink md:text-[18px]">
+            {operationalHighlights.subtitle}
+          </p>
+          <p className="mt-2 max-w-[760px] text-[13px] leading-5 text-infra-ink/70 md:text-[15px] md:leading-6">
+            {operationalHighlights.description}
+          </p>
+        </div>
+        <div className="mt-6 grid gap-4 md:mt-8 md:grid-cols-2 md:gap-6">
+          {operationalHighlights.charts.map((chart) => (
+            <InfraOperationalChart key={chart.title} chart={chart} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function NmdcInfraOverviewPage() {
   const overview = content.overview;
   const hero = overview.hero;
@@ -821,6 +978,9 @@ export function NmdcInfraOverviewPage() {
           <InfraOverviewVideo />
         </div>
       </section>
+
+      <InfraFactoryHighlightsSection />
+      <InfraOperationalHighlightsSection />
 
       <section className="bg-[#f5f8f7] px-5 pb-[76px] pt-[28px] md:px-10 md:pb-[96px] md:pt-[52px]">
         <div className="mx-auto w-full max-w-[1240px]">
@@ -925,38 +1085,10 @@ export function NmdcInfraAtAGlancePage() {
 
 export function NmdcInfraProductsPage() {
   const products = content.products;
-  const hero = products.hero;
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-      <section
-        data-products-hero
-        className="relative isolate h-[317px] overflow-hidden bg-infra-deep-navy px-5 text-white md:h-[485px] md:px-10"
-      >
-        <Image
-          src={hero.background.src}
-          alt={hero.background.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[50%_56%]"
-        />
-        <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,28,40,0.64)_0%,rgba(7,28,40,0.58)_46%,rgba(7,28,40,0.72)_100%)]"
-          aria-hidden="true"
-        />
-        <Header links={getInfraNavLinks(products.activeHref)} mobileSize="large" />
-
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[28px] md:pb-[58px]">
-          <h1 className="text-[40px] font-bold uppercase leading-[48px] text-white md:text-[48px] md:leading-[58px]">
-            <span className="block md:inline">{hero.titleLeading}</span>
-            <span className="hidden md:inline"> </span>
-            <span className="block text-infra-yellow md:inline">
-              {hero.titleAccent}
-            </span>
-          </h1>
-        </div>
-      </section>
+      <InfraProductHero productPath={products.activeHref} />
 
       <section className="bg-white px-5 pb-[34px] pt-[36px] text-infra-ink md:px-10 md:pb-[110px] md:pt-[76px]">
         <div className="mx-auto w-full max-w-[1240px]">
@@ -992,13 +1124,68 @@ export function NmdcInfraProductsPage() {
   );
 }
 
-function NmdcInfraProductDetailPage({
-  detail,
-}: {
-  detail: InfraProductDetailContent;
-}) {
+function getInfraProductSlugFromPath(productPath: string) {
+  return productPath.split("/").filter(Boolean).pop() ?? "";
+}
+
+function getInfraProductHeroBackground(productPath: string) {
+  const hero = content.products.hero;
+  const productSlug = getInfraProductSlugFromPath(productPath);
+  const heroBackgroundsBySlug = {
+    "3d-printing-artificial-reefs": hero.printing,
+  };
+  const selectedBackground =
+    heroBackgroundsBySlug[productSlug as keyof typeof heroBackgroundsBySlug];
+
+  return selectedBackground ?? hero.background;
+}
+
+function InfraProductHero({ productPath }: { productPath: string }) {
   const products = content.products;
   const hero = products.hero;
+  const background = getInfraProductHeroBackground(productPath);
+
+  return (
+    <section
+      data-products-hero
+      data-product-detail-hero
+      className="relative isolate h-[317px] overflow-hidden bg-infra-deep-navy px-5 text-white md:h-[485px] md:px-10"
+    >
+      <Image
+        src={background.src}
+        alt={background.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[50%_56%]"
+      />
+      <div
+        className="absolute inset-0"
+        aria-hidden="true"
+      />
+      <Header links={getInfraNavLinks(products.activeHref)} mobileSize="large" />
+
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[28px] md:pb-[58px]">
+        <h1 className="text-[40px] font-bold uppercase leading-[48px] text-white md:text-[48px] md:leading-[58px]">
+          <span className="block md:inline">{hero.titleLeading}</span>
+          <span className="hidden md:inline"> </span>
+          <span className="block text-infra-yellow md:inline">
+            {hero.titleAccent}
+          </span>
+        </h1>
+      </div>
+    </section>
+  );
+}
+
+function NmdcInfraProductDetailPage({
+  detail,
+  productPath,
+}: {
+  detail: InfraProductDetailContent;
+  productPath: string;
+}) {
+  const detailProductPath = productPath;
   const isWideImageIntro = detail.introLayout === "wideImage";
   const detailContainerClassName = isWideImageIntro
     ? "mx-auto w-full max-w-[1370px]"
@@ -1021,34 +1208,7 @@ function NmdcInfraProductDetailPage({
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-      <section
-        data-product-detail-hero
-        className="relative isolate h-[317px] overflow-hidden bg-infra-deep-navy px-5 text-white md:h-[485px] md:px-10"
-      >
-        <Image
-          src={hero.background.src}
-          alt={hero.background.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[50%_56%]"
-        />
-        <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,28,40,0.64)_0%,rgba(7,28,40,0.58)_46%,rgba(7,28,40,0.72)_100%)]"
-          aria-hidden="true"
-        />
-        <Header links={getInfraNavLinks(products.activeHref)} mobileSize="large" />
-
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[28px] md:pb-[58px]">
-          <h1 className="text-[40px] font-bold uppercase leading-[48px] text-white md:text-[48px] md:leading-[58px]">
-            <span className="block md:inline">{hero.titleLeading}</span>
-            <span className="hidden md:inline"> </span>
-            <span className="block text-infra-yellow md:inline">
-              {hero.titleAccent}
-            </span>
-          </h1>
-        </div>
-      </section>
+      <InfraProductHero productPath={detailProductPath} />
 
       <section className="bg-white px-5 pb-[75px] pt-[35px] text-infra-ink md:px-10 md:pb-[96px] md:pt-[64px]">
         <div className={detailContainerClassName}>
@@ -1151,12 +1311,18 @@ function NmdcInfraProductDetailPage({
 
 export function NmdcInfraArtificialReefsPage() {
   return (
-    <NmdcInfraProductDetailPage detail={content.products.detail} />
+    <NmdcInfraProductDetailPage
+      detail={content.products.detail}
+      productPath="/products/3d-printing-artificial-reefs"
+    />
   );
 }
 
 export function NmdcInfraEbawePage() {
   return (
-    <NmdcInfraProductDetailPage detail={content.products.ebaweDetail} />
+    <NmdcInfraProductDetailPage
+      detail={content.products.ebaweDetail}
+      productPath="/products/ebawe-anlagentechnik"
+    />
   );
 }

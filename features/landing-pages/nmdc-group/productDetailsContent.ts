@@ -2,7 +2,13 @@ const productsImageBase = "/images/landing/products";
 
 const hailGhashaPanels = [
   {
-    title: "Ghasha Offshore Processing Plant ( GOP ) Project",
+    title:
+      "Ghasha Offshore Processing Plant ( GOP ) Project and Process Assembled Unit (PAU) Oil Stabilization Project",
+    highlights: [
+      "One of the world’s largest offshore sour gas developments projects.",
+      "A key strategic project supporting the UAE’s gas self-sufficiency and energy security goals.",
+      "Incorporates advanced technologies for carbon capture and sulfur handling, aligning with national sustainability and decarbonization targets.",
+    ],
     paragraphs: [
       "The Hail & Ghasha Development (HGD) Project will develop the untapped oil and gas reserves from the highly sour Hail and Ghasha fields. Production is targeted to start by Q4 2027 with sustainable production of 1 BSCFD of Raw Gas, and max production of 82.5 MSBPD of Oil, 76.3 MSBPD of Condensate.",
     ],
@@ -11,32 +17,24 @@ const hailGhashaPanels = [
         title: "Project Overview:",
         bullets: [
           "The Hail and Ghasha fields are situated offshore Abu Dhabi about 140 km away from Abu Dhabi mainland in water depths varying from 0 to 15 meters.",
-          "The Hail and Ghasha Project Offshore Package (EPC 01) comprises four Offshore Drilling Centers (DCs), Subsea Pipelines, Umbilicals, Power Cable Connections, Seawater Intake Structure, Bridges, Risers, Flare Structure, facilities at Ghasha Offshore Processing Plant (GOP).",
-          "The HGD Project will be executed in a single phase approach. It will start production from three Drilling Centres (Reehah, Jzool & Seebah) in Ghasha Field to GOP and from Gaff Island in Hail Field to OPP.",
-          "Remaining Drilling Centres, gas injection, and other associated facilities will be developed in future to sustain production from Hail & Ghasha fields.",
+          "The Hail and Ghasha Project Offshore Package (EPC 01) comprises the following: four Offshore Drilling Centers (DCs), Subsea Pipelines, Umbilicals, Power Cable Connections, Seawater Intake",
+          "Structure, Bridges, Risers, Flare Structure, facilities at Ghasha Offshore Processing Plant (GOP)",
+          "The HGD Project will be executed in a single phase approach. It will start production from three Drilling Centres (Reeah, Jzool & Seebah) in Ghasha Field to GOP and from Gaff Island in Hail Field to OPP. Remaining Drilling Centres, gas injection, and other associated facilities will be developed in ‘future’ to sustain production from Hail & Ghasha fields.",
         ],
       },
       {
         title: "Purpose and Objective of the Project:",
-        bullets: [
-          "Project objectives are the engineering, procurement, fabrication, construction, pre-commissioning, commissioning and start-up of the Offshore Package facilities.",
-          "The plant design is based on a modularization approach with definition of 29 Pre-assembled Units (PAU), 81 Pre-assembled Racks (PAR) and 13 Pre-assembled Buildings (PAB), along with other minor modules such as MOV skids and pre-assembled rack frames (PAF), pre-assembled stairs (PAS).",
+        paragraphs: [
+          "Project objectives are the engineering, procurement, fabrication, construction, pre-commissioning, commissioning and start-up of the Offshore Package facilities. The plant design is based on a modularization approach with definition of 29 Pre-assembled Units (PAU), 81 Pre-assembled Racks (PAR) and 13 Pre-assembled Buildings (PAB), along with other minor modules such as: MOV skids and pre-assembled rack frames (PAF), pre-assembled stairs (PAS).",
         ],
       },
       {
         title: "Intended Use and Operational Significance:",
-        bullets: [
-          "The HGD Offshore Package facilities are intended for the oil and gas production, of strategic importance to the Emirate of Abu Dhabi.",
-          "The plant and selected materials are designed to comply with the highly sour raw gas feedstock whose expected composition is characterized by a hydrogen sulphate concentration in excess of 30%, which represents one of the major challenges of the Project.",
+        paragraphs: [
+          "The HGD Offshore Package facilities are intended for the oil and gas production, of strategic importance to the Emirate of Abu Dhabi. The plant and selected materials are designed to comply with the highly sour raw gas feedstock whose expected composition is characterized by a hydrogen sulphate concentration in excess of 30%, which represents one of the major challenges of the Project.",
         ],
       },
     ],
-  },
-  {
-    title: "Process Assembled Unit (PAU)",
-    subtitle: "GH5121-PAU-01 Oil Stabilization Project",
-    paragraphs: [],
-    sections: [],
   },
 ] as const;
 
@@ -257,7 +255,7 @@ export const nmdcGroupProductDetails = [
     layout: "hail-ghasha",
     fullTitle: "NMDC Energy | Hail and Ghasha Development Project",
     brandName: "NMDC Energy",
-    title: "Process Assembled Unit GH5121-PAU-01 Oil Stabilization",
+    title: "Hail and Ghasha Development Project",
     accentClassName: "text-[#00bd66]",
     hailPanels: hailGhashaPanels,
     media: [
@@ -304,7 +302,7 @@ export const nmdcGroupProductDetails = [
     sectionMinHeightClassName: "md:min-h-[1341px]",
     media: [
       {
-        src: `${productsImageBase}/3d-printed-artificial-reefs-collage.png`,
+        src: `${productsImageBase}/3d-printed-artificial-reefs-collage-.png`,
         alt: "3D printed artificial reef and production collage",
         fit: "cover",
       },
@@ -324,7 +322,7 @@ export const nmdcGroupProductDetails = [
     sectionMinHeightClassName: "md:min-h-[1341px]",
     media: [
       {
-        src: `${productsImageBase}/multicat-21-detail.png`,
+        src: `${productsImageBase}/multicat-21-detail-new.png`,
         alt: "Multicat 21 vessel render",
         fit: "cover",
       },

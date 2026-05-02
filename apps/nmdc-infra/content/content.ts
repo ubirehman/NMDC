@@ -124,7 +124,7 @@ export const nmdcInfraContent = {
       readMoreLabel: "Read more...",
       readMoreHref: "/overview/at-a-glance",
       image: {
-        src: withInfraBasePath("/images/infra/overview-hero-panel.jpg"),
+        src: withInfraBasePath("/images/infra/overview-hero-panel-hero.png"),
         alt: "NMDC Infra HSE Day team photograph",
       },
     },
@@ -138,7 +138,7 @@ export const nmdcInfraContent = {
         "This integrated approach ensures efficient execution, cost optimization, and consistently high-quality outcomes. The company is supported by two state-of-the-art production plants, complemented by an in-house 3D printing facility that enhances precision, innovation, and flexibility in delivery.",
       ],
       image: {
-        src: withInfraBasePath("/images/infra/overview-hero-panel.jpg"),
+        src: withInfraBasePath("/images/infra/overview-hero-panel-hero.png"),
         alt: "NMDC Infra HSE Day team photograph",
       },
     },
@@ -216,13 +216,127 @@ export const nmdcInfraContent = {
         }
       ],
     },
+    factoryHighlights: {
+      title: "FACTORY HIGHLIGHTS",
+      items: [
+        {
+          title: "Precast Wall Panels",
+          copy: "Rapid installation solutions for structural and architectural precast elements.",
+          image: {
+            src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+            alt: "Precast wall panels at scale",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2023", value: 72.2 },
+            { year: "2024", value: 67.7 },
+            { year: "2025", value: 58.7 },
+          ],
+        },
+        {
+          title: "Hollow Core Slabs",
+          copy: "Lightweight, prestressed slabs enabling faster floor construction.",
+          image: {
+            src: withInfraBasePath("/images/infra/product-ebawe-durable-infrastructure.png"),
+            alt: "Hollow core slab infrastructure",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2023", value: 19.7 },
+            { year: "2024", value: 14.8 },
+            { year: "2025", value: 13.2 },
+          ],
+        },
+        {
+          title: "Quay Wall Blocks",
+          copy: "Heavy duty precast concrete elements for port and marine infrastructure.",
+          image: {
+            src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
+            alt: "Precast concrete quay walls",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2023", value: 106.8 },
+            { year: "2024", value: 151.4 },
+            { year: "2025", value: 31.5 },
+          ],
+        },
+        {
+          title: "Concrete Sleeper",
+          copy: "Durable concrete elements ensuring stability and long term performance to underwater pipelines.",
+          image: {
+            src: withInfraBasePath("/images/infra/product-ebawe-built-on-safety.png"),
+            alt: "Concrete sleeper production",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2023", value: 15.7 },
+            { year: "2024", value: 11.9 },
+            { year: "2025", value: 5.5 },
+          ],
+        },
+        {
+          title: "Accropodes",
+          copy: "Engineered concrete armour precast elements for coastal protection and breakwaters.",
+          image: {
+            src: withInfraBasePath("/images/infra/capability-industrial.jpg"),
+            alt: "Accropodes coastal protection elements",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2023", value: 53 },
+            { year: "2025", value: 6.2 },
+          ],
+        },
+        {
+          title: "3D Printed Artificial Reefs",
+          copy: "Innovative marine concrete elements supporting biodiversity and coastal sustainability.",
+          image: {
+            src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
+            alt: "3D printed artificial reef structures",
+          },
+          unit: "In Km3",
+          values: [
+            { year: "2024", value: 67.7 },
+            { year: "2025", value: 6.2 },
+          ],
+        },
+      ],
+    },
+    operationalHighlights: {
+      title: "OPERATIONAL HIGHLIGHTS | CORE CAPABILITIES",
+      subtitle: "Energy and Utilities Construction",
+      description: "The below charts show both the ongoing and completed projects at both the Precast Factory and Infra construction projects during the period of 2023 to 2025",
+      charts: [
+        {
+          title: "Precast Factory Projects",
+          unit: "in nos.",
+          values: [
+            { year: "2023", value: 43 },
+            { year: "2024", value: 41 },
+            { year: "2025", value: 54 },
+            { year: "2026", value: 24 },
+          ],
+        },
+        {
+          title: "Infra Construction Projects",
+          unit: "in nos.",
+          values: [
+            { year: "2023", value: 28 },
+            { year: "2024", value: 40 },
+            { year: "2025", value: 32 },
+            { year: "2026", value: 13 },
+          ],
+        },
+      ],
+    },
     verticals: {
       title: "OUR VERTICALS",
       mobileTitle: "Capabilities",
       items: [
         {
           title: "NMDCCC",
-          body: "We construct educational, healthcare, research, religious, and other institutional facilities that serve communities and support development.",
+          body: "NMDC Infra & CCC Integrated Platform for Onshore Energy EPC in the UAE.",
           image: {
             src: withInfraBasePath("/images/infra/vertical-nmdccc.jpg"),
             alt: "NMDC construction yard",
@@ -231,7 +345,7 @@ export const nmdcInfraContent = {
         },
         {
           title: "LANTANIA NMDC WATER",
-          body: "Lantania NMDC Water is NMDC Infra's dedicated water and wastewater EPC platform, formed following the acquisition of a 51% controlling stake in Spain-based Lantania Aguas.",
+          body: "Lantania NMDC Water is NMDC Infra’s dedicated water and wastewater EPC platform, formed following the acquisition of a 51% controlling stake in Spain-based Lantania Aguas.",
           image: {
             src: withInfraBasePath("/images/infra/vertical-water.jpg"),
             alt: "Water infrastructure plant",
@@ -278,8 +392,12 @@ export const nmdcInfraContent = {
       titleLeading: "Our",
       titleAccent: "Products",
       background: {
-        src: withInfraBasePath("/images/infra/products-hero.jpg"),
+        src: withInfraBasePath("/images/infra/products-hero-.png"),
         alt: "NMDC Infra precast concrete yard",
+      },
+      printing: {
+        src: withInfraBasePath("/images/infra/product-3d-reefs-detail-new.png"),
+        alt: "NMDC Infra 3D printed artificial reef production yard",
       },
     },
     items: [

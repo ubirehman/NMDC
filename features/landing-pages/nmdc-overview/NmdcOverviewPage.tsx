@@ -75,8 +75,9 @@ export function NmdcOverviewPage() {
 
               <div className="mt-7 grid gap-3 md:mt-[28px] md:grid-cols-2 md:gap-3.5">
                 {overviewCards.map((card, index) => (
-                  <article
+                  <a
                     key={card.copy}
+                    href={card.href}
                     className={`rounded-[16px] bg-[rgba(49,61,67,0.88)] p-4 shadow-[0_20px_44px_-22px_rgba(0,0,0,0.58)] backdrop-blur-[18px] md:min-h-[153px] md:p-4 ${
                       index === overviewCards.length - 1 ? "md:col-span-2" : ""
                     }`}
@@ -93,7 +94,7 @@ export function NmdcOverviewPage() {
                     <p className="mt-4 text-[11px] font-bold leading-[1.45] text-white md:mt-6 md:text-[15px] md:leading-5">
                       {card.copy}
                     </p>
-                  </article>
+                  </a>
                 ))}
               </div>
             </div>

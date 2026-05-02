@@ -115,29 +115,31 @@ export function NmdcPeopleCulturePage() {
 
             <MobileMaharaCard />
 
-            <section className="hidden overflow-hidden rounded-[20px] bg-[#dfe7f0] px-8 py-8 md:block md:h-[1163px] md:min-h-[1159px] md:px-[30px] md:py-[26px]">
+            <section className="hidden rounded-[20px] bg-[#dfe7f0] px-8 py-8 md:block md:h-[1163px] md:min-h-[1159px] md:px-[30px] md:py-[26px]">
               <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[24px] md:leading-[36px]">
                 Mahara Fresh Graduate Development Program
               </h2>
-              <div className="mt-6 grid gap-7">
+              <div className="mt-6 grid gap-4">
                 {maharaSections.map((section, index) => (
                   <section key={section.title}>
-                    <h3 className="text-[16px] font-bold leading-[1.35] text-[#43556c] md:text-[20px] md:leading-[28px]">
+                    <h3 className="text-[16px] font-bold leading-[1.35] text-[#43556c] md:text-[18px] md:leading-[24px]">
                       {section.title}
                     </h3>
-                    <div className="mt-2 grid gap-5 text-[15px] leading-[1.43] text-[#43556c] md:text-[18px] md:leading-[28px]">
+                    <div className="mt-2 grid gap-3 text-[15px] leading-[1.43] text-[#43556c] md:text-[16px] md:leading-[24px]">
                       {section.paragraphs.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
+                        <div key={paragraph}>
+                          <p>{paragraph}
+                              {index === 2 && section.paragraphs[2] === paragraph ? <Link
+                            href="/people-and-culture/mahara-fresh-graduate-development-program"
+                            className="mt-2 inline-flex text-[15px] font-bold leading-none text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[16px]"
+                          >
+                            View more...
+                          </Link> : null}
+                          </p>
+                          
+                        </div>
                       ))}
                     </div>
-                    {index === maharaSections.length - 1 ? (
-                      <Link
-                        href="/people-and-culture/mahara-fresh-graduate-development-program"
-                        className="mt-2 inline-flex text-[15px] font-bold leading-none text-primary-blue transition-colors hover:text-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:text-[18px]"
-                      >
-                        Read more...
-                      </Link>
-                    ) : null}
                   </section>
                 ))}
               </div>
@@ -181,7 +183,7 @@ function ProgramBlock({
           title={title}
           className="size-[22px] shrink-0 text-[#53667d] md:size-7 md:text-primary-sky-blue"
         />
-        <h3 className="text-[16px] font-bold uppercase leading-6 text-primary-navy-blue md:text-[20px]">
+        <h3 className="text-[16px] font-bold uppercase leading-6 text-primary-navy-blue md:text-[18px]">
           {title}
         </h3>
       </div>

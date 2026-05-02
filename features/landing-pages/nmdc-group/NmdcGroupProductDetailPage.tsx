@@ -151,86 +151,100 @@ function HailGhashaDetailLayout({
 }: {
   detail: Extract<NmdcGroupProductDetail, { layout: "hail-ghasha" }>;
 }) {
+  const panel = detail.hailPanels[0];
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0b2d3f] text-white">
       <ProductMobileHeader />
-      <section className="relative isolate overflow-hidden bg-[#0b2d3f] px-5 pb-12 pt-[104px] md:px-10 md:pb-[100px] md:pt-[64px]">
+      <section className="relative isolate overflow-hidden bg-[#0b2d3f] px-5 pb-12 pt-[104px] md:min-h-[1276px] md:px-10 md:pb-[100px] md:pt-[64px]">
         <ProductDetailBackdrop />
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px]">
           <ProductBackLink />
           <ProductDetailTitle detail={detail} />
 
-          <div className="mt-6 hidden md:grid md:grid-cols-[641px_583px] md:items-stretch md:gap-4">
-            {detail.hailPanels.map((panel) => (
-              <HailGhashaPanel key={panel.title} panel={panel} />
-            ))}
-          </div>
-
-          <div className="mt-6 grid gap-5 md:hidden">
-            {detail.hailPanels.map((panel) => (
-              <HailGhashaPanel key={panel.title} panel={panel} />
-            ))}
-          </div>
-
-          <div className="mt-12 flex justify-center md:mt-[100px]">
-            <ProductQrImage />
+          <div className="mt-6 md:mt-[31px]">
+            <HailGhashaContentPanel panel={panel} />
           </div>
         </div>
       </section>
 
-      <NmdcFooter
-        variant="compact"
-        logo={energyFooterLogo}
-        pageLinks={energyProductFooterLinks}
-      />
+      <NmdcFooter variant="compact" />
     </main>
   );
 }
 
-function HailGhashaPanel({
+function HailGhashaContentPanel({
   panel,
 }: {
   panel: Extract<NmdcGroupProductDetail, { layout: "hail-ghasha" }>["hailPanels"][number];
 }) {
   return (
-    <article className="h-full rounded-[20px] bg-[#213e50] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:min-h-[1307px] md:px-6 md:py-7">
-      <h2 className="text-[18px] font-bold leading-7 text-[#00bd66] md:text-[24px] md:leading-[34px]">
+    <article className="rounded-[20px] bg-[#213e50] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:min-h-[973px] md:px-6 md:pb-7 md:pt-7">
+      <h2 className="text-[18px] font-bold leading-7 text-[#00bd66] md:text-[18px] md:leading-[28px]">
         {panel.title}
       </h2>
-      {"subtitle" in panel && panel.subtitle ? (
-        <p className="mt-1 text-[17px] font-bold leading-7 text-[#00bd66] md:text-[24px] md:leading-[34px]">
-          {panel.subtitle}
-        </p>
-      ) : null}
 
-      <div className="mt-8 grid gap-5 text-[15px] leading-[25px] text-white/92 md:text-[17px] md:leading-[28px]">
+      <ul className="mt-10 grid gap-1 text-[17px] font-bold leading-[25px] text-[#00bd66] md:mt-[59px] md:text-[20px] md:leading-[28px]">
+        {panel.highlights.map((highlight) => (
+          <li key={highlight} className="flex gap-3">
+            <span
+              className="mt-[10px] size-[5px] shrink-0 rounded-full bg-[#00bd66] md:mt-[12px]"
+              aria-hidden="true"
+            />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-8 grid gap-5 text-[15px] leading-[25px] text-white/92 md:mt-[34px] md:text-[18px] md:leading-[29px]">
         {panel.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
 
-      <div className="mt-8 grid gap-8">
+      <div className="mt-8 grid gap-8 md:mt-[31px] md:gap-[34px]">
         {panel.sections.map((section) => (
-          <section key={section.title}>
-            <h3 className="text-[16px] font-bold leading-6 text-[#00bd66] md:text-[18px] md:leading-7">
-              {section.title}
-            </h3>
-            <ul className="mt-1 grid gap-1 text-[15px] leading-[25px] text-white/92 md:text-[17px] md:leading-[28px]">
-              {section.bullets.map((bullet) => (
-                <li key={bullet} className="flex gap-4">
-                  <span
-                    className="mt-[10px] size-[4px] shrink-0 rounded-full bg-white/92 md:mt-[12px]"
-                    aria-hidden="true"
-                  />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <HailGhashaSection key={section.title} section={section} />
         ))}
       </div>
     </article>
+  );
+}
+
+function HailGhashaSection({
+  section,
+}: {
+  section: Extract<NmdcGroupProductDetail, { layout: "hail-ghasha" }>["hailPanels"][number]["sections"][number];
+}) {
+  return (
+    <section>
+      <h3 className="text-[16px] font-bold leading-6 text-[#00bd66] md:text-[20px] md:leading-7">
+        {section.title}
+      </h3>
+
+      {"bullets" in section && section.bullets ? (
+        <ul className="mt-1 grid gap-1 text-[15px] leading-[25px] text-white/92 md:text-[18px] md:leading-[29px]">
+          {section.bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-4">
+              <span
+                className="mt-[10px] size-[4px] shrink-0 rounded-full bg-white/92 md:mt-[12px]"
+                aria-hidden="true"
+              />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      {"paragraphs" in section && section.paragraphs ? (
+        <div className="mt-1 grid gap-3 text-[15px] leading-[25px] text-white/92 md:text-[18px] md:leading-[29px]">
+          {section.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      ) : null}
+    </section>
   );
 }
 

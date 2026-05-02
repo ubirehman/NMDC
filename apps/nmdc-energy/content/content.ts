@@ -126,16 +126,22 @@ export const nmdcEnergyContent = {
       videos: [
         {
           title: "NMDC Energy overview",
-          src: withEnergyBasePath("/videos/yard_overview.mp4"),
+          src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
           type: "video/mp4",
           playLabel: "Play NMDC Energy overview video",
-        }
+        },
+        {
+          title: "NMDC Energy ROV operations",
+          src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
+          type: "video/mp4",
+          playLabel: "Play NMDC Energy ROV operations video",
+        },
       ],
     },
     technology: {
       title: "Technology and Digital Transformation",
       image: {
-        src: withEnergyBasePath("/images/energy/overview-technology.jpg"),
+        src: withEnergyBasePath("/images/energy/overview-technology-new.png"),
         alt: "NMDC Energy offshore module on a barge",
       },
       cards: [
@@ -143,11 +149,19 @@ export const nmdcEnergyContent = {
           title: "HSE AMAN 24/7",
           body: "Pioneer AI solution for HSE hazard detection, now adopted by other EPC players and implemented in KSA.",
           icon: "shield",
+          image: {
+            src: withEnergyBasePath("/images/energy/nmdc_energy_24_7.png"),
+            alt: "NMDC Energy offshore module on a barge",
+          }
         },
         {
           title: "Yard Scan AI",
-          body: "AI-powered, daily yard operation for real-time tracking and accurate metal tag data capture using phone cameras.",
+          body: "AI-powered, daily yard operation for real-timetracking and accurate metal tag data capture using phone cameras.",
           icon: "scan",
+          image: {
+            src: withEnergyBasePath("/images/energy/nmdc_energy_yard.png"),
+            alt: "NMDC Energy offshore module on a barge",
+          }
         },
       ],
       agents: {
@@ -168,15 +182,15 @@ export const nmdcEnergyContent = {
         accent: "Energy Yards",
       },
       background: {
-        src: withEnergyBasePath("/images/energy/yards-hero.jpg"),
+        src: withEnergyBasePath("/images/energy/yards-hero.png"),
         alt: "NMDC Energy construction vessel with crane at sea",
       },
     },
     keyHighlights: {
       title: "Key Highlights",
-      activeYard: "ICAD-4 Yard",
+      activeYard: "",
       aerialImage: {
-        src: withEnergyBasePath("/images/energy/yards-aerial.jpg"),
+        src: withEnergyBasePath("/images/energy/yards-aerial.png"),
         alt: "Aerial view of NMDC Energy yard facilities",
       },
       slideCount: "(1/4)",
@@ -273,6 +287,7 @@ export const nmdcEnergyContent = {
     },
     achievements: {
       title: "Yard Achievements",
+      summaryTitle: "Completed Fabrication and Loadout in 2025",
       stats: [
         { value: "51", label: "Structures" },
         { value: "80,000", label: "Metric tons" },
@@ -280,7 +295,7 @@ export const nmdcEnergyContent = {
       intro: "Record-Breaking mega operations such as :",
       bullets: [
         "Fabrication & Loadout of a 32,000 Metric Tons (Guinness World Record) Fixed Steel Structure",
-        "Fabrication & Loadout of an 8,200 Metric Tons structure through Self Propelled Modular Trailers(SPMT), led and executed by Emirati personnel",
+        "Fabrication & Loadout of an 8,200 Metric Tons structure through Self Propelled Modular Trailers(SPMT)",
         "Heavy Lifts of modularized platform levels, engineered and executed through in-house capabilities with the heaviest reaching 1,500 MT",
       ],
     },
@@ -322,7 +337,27 @@ export const nmdcEnergyContent = {
       titleLeading: "Our",
       titleAccent: "Products",
       background: {
-        src: withEnergyBasePath("/images/energy/products-hero.jpg"),
+        src: withEnergyBasePath("/images/energy/products-hero.png"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+      topSideBackground: {
+        src: withEnergyBasePath("/images/energy/products-topside-hero.png"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+      jacketBackground: {
+        src: withEnergyBasePath("/images/energy/products-jacket-hero.png"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+      bridgesAndBoatLandingsBackground: {
+        src: withEnergyBasePath("/images/energy/products-bridges-boat-landings-hero.png"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+      pressureVesselsBackground: {
+        src: withEnergyBasePath("/images/energy/products-pressure-vessels-hero.png"),
+        alt: "NMDC Energy offshore module at a fabrication yard",
+      },
+      pipeCoatingBackground: {
+        src: withEnergyBasePath("/images/energy/products-pipe-coating-hero.png"),
         alt: "NMDC Energy offshore module at a fabrication yard",
       },
     },
@@ -340,7 +375,7 @@ export const nmdcEnergyContent = {
         title: "Jackets",
         href: "/products/jackets",
         image: {
-          src: withEnergyBasePath("/images/energy/product-jackets.jpg"),
+          src: withEnergyBasePath("/images/energy/product-jackets.png"),
           alt: "Steel jacket structure under construction",
           objectPosition: "50% 50%",
         },
@@ -349,7 +384,7 @@ export const nmdcEnergyContent = {
         title: "Bridges And Boat Landings",
         href: "/products/bridges-and-boat-landings",
         image: {
-          src: withEnergyBasePath("/images/energy/product-bridges-boat-landings.jpg"),
+          src: withEnergyBasePath("/images/energy/product-bridges-boat-landings.png"),
           alt: "Bridge and boat landing structure being lifted by cranes",
           objectPosition: "50% 50%",
         },
@@ -358,7 +393,7 @@ export const nmdcEnergyContent = {
         title: "Pressure Vessels",
         href: "/products/pressure-vessels",
         image: {
-          src: withEnergyBasePath("/images/energy/product-pressure-vessels.jpg"),
+          src: withEnergyBasePath("/images/energy/product-pressure-vessels.png"),
           alt: "Pressure vessel being handled at an industrial yard",
           objectPosition: "48% 50%",
         },
@@ -367,7 +402,7 @@ export const nmdcEnergyContent = {
         title: "Process Skids",
         href: "/products/process-skids",
         image: {
-          src: withEnergyBasePath("/images/energy/product-process-skids.jpg"),
+          src: withEnergyBasePath("/images/energy/product-process-skids.png"),
           alt: "Process skid equipment mounted above a pressure vessel",
           objectPosition: "50% 50%",
         },
@@ -376,7 +411,7 @@ export const nmdcEnergyContent = {
         title: "Pipe Coating",
         href: "/products/pipe-coating",
         image: {
-          src: withEnergyBasePath("/images/energy/product-pipe-coating.jpg"),
+          src: withEnergyBasePath("/images/energy/product-pipe-coating.png"),
           alt: "Coated pipe sections stacked in an industrial yard",
           objectPosition: "50% 50%",
         },
@@ -507,7 +542,7 @@ export const nmdcEnergyContent = {
         media: {
           label: "Storage Tank",
           image: {
-            src: withEnergyBasePath("/images/energy/product-pressure-vessels-detail.jpg"),
+            src: withEnergyBasePath("/images/energy/product-pressure-vessels-detail.png"),
             alt: "Storage tank pressure vessel in a fabrication workshop",
             objectPosition: "50% 50%",
           },
@@ -528,7 +563,7 @@ export const nmdcEnergyContent = {
         media: {
           label: "Glycol Storage Unit",
           image: {
-            src: withEnergyBasePath("/images/energy/product-process-skids-detail.jpg"),
+            src: withEnergyBasePath("/images/energy/process_skids_image.png"),
             alt: "Glycol storage unit process skid in a workshop",
             objectPosition: "50% 50%",
           },
@@ -554,18 +589,30 @@ export const nmdcEnergyContent = {
             value: "Pipeline coating completed",
             unit: "(~1.230 Million pipes coated, since inception, equivalent to 1/3 the circumference of the Earth)",
             icon: "pipe",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pipe-coating-pipe.png"),
+              alt: "Pipe coating production icon",
+            },
           },
           {
             title: "2025",
             value: "1,005 km of pipe coating completed",
             unit: "82,400 pipes.",
             icon: "coating",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pipe-coating-plant.png"),
+              alt: "Pipe coating plant icon",
+            },
           },
           {
             title: "58,626 pieces",
             value: "Loaded out 28,114 pipes concrete weight coated to Offshore and 30,512 pipes 2-Layer FBE & 3LPE/PP coated to Onshore",
             unit: "(Totaling 58,626 pipes).",
             icon: "stack",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pipe-coating-loadout.png"),
+              alt: "Pipe coating loadout icon",
+            },
           },
         ],
         media: {

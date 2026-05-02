@@ -274,11 +274,11 @@ function MarineVesselsHero() {
         className="object-cover object-[50%_50%] md:object-center"
       />
       <div
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,42,54,0.76)_0%,rgba(6,42,54,0.48)_49%,rgba(6,42,54,0.70)_100%)]"
+        className="absolute inset-0 "
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,42,54,0.18)_0%,rgba(6,42,54,0.36)_48%,rgba(6,42,54,0.78)_100%)]"
+        className="absolute inset-0 "
         aria-hidden="true"
       />
 
@@ -387,17 +387,18 @@ function VesselDetails({
           </li>
         ))}
       </ul>
-      <Link
-        href={vessel.specificationsHref}
-        className={`mt-[20px] flex items-center justify-end gap-[10px] text-[18px] font-bold leading-6 transition-colors md:mt-[47px] md:text-[18px] ${
-          isLight
-            ? "text-lts-ink hover:text-lts-tan"
-            : "text-lts-tan hover:text-white"
+      {vessel.specificationsHref && vessel.specificationsLabel && (
+        <Link
+          href={vessel.specificationsHref}
+          className={`mt-[20px] flex items-center justify-end gap-[10px] text-[18px] font-bold leading-6 transition-colors md:mt-[47px] md:text-[18px] ${
+            isLight
+              ? "text-lts-ink hover:text-lts-tan"
+              : "text-lts-tan hover:text-white"
         }`}
       >
         {vessel.specificationsLabel}
         <ArrowUpRight className="size-5" />
-      </Link>
+      </Link>)}
     </div>
   );
 }
@@ -416,7 +417,7 @@ function LtsVesselSection({
   return (
     <section
       className={`px-5 py-[46px] md:min-h-[714px] md:px-10 md:py-0 ${
-        isLight ? "bg-white text-lts-ink" : "bg-lts-navy text-white"
+        isLight ? "bg-white text-lts-ink" : "bg-primary-deep-navy-blue text-white"
       }`}
     >
       <div className="mx-auto grid max-w-[1280px] gap-[39px] md:min-h-[714px] md:grid-cols-2 md:items-center md:gap-0">
@@ -556,7 +557,7 @@ function WhipstockFeatureIcon({
 
 function WhipstockIntroPanel() {
   return (
-    <article className="order-1 rounded-[24px] bg-lts-navy px-[64px] py-[39px] text-[24px] font-bold leading-[49px] text-white md:order-2 md:min-h-[680px] md:rounded-[24px] md:px-[35px] md:py-[37px] md:text-[20px] md:leading-[24px]">
+    <article className="order-1 rounded-[24px] bg-lts-navy px-[64px] py-[39px] text-[20px] font-light leading-[49px] text-white md:order-2 md:min-h-[680px] md:rounded-[24px] md:px-[35px] md:py-[37px] md:text-[20px] md:leading-[24px]">
       <div className="space-y-[46px] md:space-y-[27px]">
         {content.whipstockSystem.introduction.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
@@ -568,7 +569,7 @@ function WhipstockIntroPanel() {
 
 function WhipstockFeatureCard({ feature }: { feature: WhipstockFeature }) {
   return (
-    <article className="flex min-h-[194px] items-center gap-[25px] rounded-[24px] bg-lts-navy px-[32px] py-[30px] text-white md:h-[160px] md:gap-[24px] md:rounded-[24px] md:px-[34px] md:py-0">
+    <article className="flex min-h-[160px] items-center gap-[25px] rounded-[24px] bg-lts-navy px-[32px] py-[30px] text-white md:h-[160px] md:gap-[24px] md:rounded-[24px] md:px-[34px] md:py-0">
       <WhipstockFeatureIcon
         icon={feature.icon}
         className="size-[76px] shrink-0 text-lts-tan md:size-[60px]"

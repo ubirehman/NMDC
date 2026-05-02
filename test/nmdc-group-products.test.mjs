@@ -260,6 +260,34 @@ test("Coastal and Hydrodynamic Center product detail follows the supplied deskto
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
 });
 
+test("Hail and Ghasha product detail follows the supplied single-panel desktop design", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+  const layoutStart = detailPage.indexOf("function HailGhashaDetailLayout");
+  const nextLayoutStart = detailPage.indexOf("function MarineVesselsDetailLayout", layoutStart);
+  const hailLayout = detailPage.slice(layoutStart, nextLayoutStart);
+
+  assert.match(detailContent, /slug:\s*"hail-ghasha-gop"[\s\S]*layout:\s*"hail-ghasha"/);
+  assert.match(detailContent, /Ghasha Offshore Processing Plant \( GOP \) Project and Process Assembled Unit \(PAU\) Oil Stabilization Project/);
+  assert.match(detailContent, /One of the world’s largest offshore sour gas developments projects\./);
+  assert.match(detailContent, /A key strategic project supporting the UAE’s gas self-sufficiency and energy security goals\./);
+  assert.match(detailContent, /Incorporates advanced technologies for carbon capture and sulfur handling/);
+
+  assert.match(detailPage, /HailGhashaDetailLayout/);
+  assert.match(detailPage, /HailGhashaContentPanel/);
+  assert.match(detailPage, /md:min-h-\[1276px\]/);
+  assert.match(detailPage, /md:mt-\[31px\]/);
+  assert.match(detailPage, /md:min-h-\[973px\]/);
+  assert.match(detailPage, /panel\.highlights\.map/);
+  assert.match(hailLayout, /<NmdcFooter variant="compact" \/>/);
+  assert.doesNotMatch(hailLayout, /ProductQrImage/);
+  assert.doesNotMatch(hailLayout, /logo=\{energyFooterLogo\}/);
+  assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
+});
+
 test("NMDC Group product detail pages use the supplied product-detail desktop template", () => {
   assert.ok(existsSync(detailPagePath), "product detail page component should exist");
   assert.ok(existsSync(detailContentPath), "product detail content should exist");

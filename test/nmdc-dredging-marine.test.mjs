@@ -42,12 +42,20 @@ test("D&M pages include the PDF navigation and major sections", () => {
     "apps/nmdc-dredging-marine/app/pages.tsx",
     "utf8",
   );
+  const dmVideoCarousel = readFileSync(
+    "apps/nmdc-dredging-marine/components/DmVideoCarousel.tsx",
+    "utf8",
+  );
   const content = readFileSync(
     "apps/nmdc-dredging-marine/content/content.ts",
     "utf8",
   );
 
   assert.match(content, /Marine Vessels/);
+  assert.equal(
+    existsSync("apps/nmdc-dredging-marine/components/DmVideoCarousel.tsx"),
+    true,
+  );
   assert.match(content, /Hydraulic Physical Model/);
   assert.match(content, /Caisson Method/);
   assert.match(content, /Overview/);
@@ -66,6 +74,9 @@ test("D&M pages include the PDF navigation and major sections", () => {
   assert.match(page, /content\.home/);
   assert.match(page, /content\.overview/);
   assert.match(page, /content\.marineVessels/);
+  assert.match(page, /DmVideoCarousel/);
+  assert.match(page, /data-marine-vessels-video-carousel/);
+  assert.match(page, /videos=\{content\.videoSources\}/);
   assert.match(page, /content\.hydraulicPhysicalModel/);
   assert.match(page, /content\.caissonMethod/);
   assert.match(page, /bg-dm-navy px-5 pb-\[56px\] pt-\[132px\]/);
@@ -76,6 +87,13 @@ test("D&M pages include the PDF navigation and major sections", () => {
   assert.match(page, /text-\[22px\] font-bold leading-7 text-white/);
   assert.match(content, /Testing facility/);
   assert.match(page, /Play \$\{title\}|Play /);
+  assert.match(dmVideoCarousel, /"use client"/);
+  assert.match(dmVideoCarousel, /useState\(0\)/);
+  assert.match(dmVideoCarousel, /showPreviousVideo/);
+  assert.match(dmVideoCarousel, /showNextVideo/);
+  assert.match(dmVideoCarousel, /onClick=\{showPreviousVideo\}/);
+  assert.match(dmVideoCarousel, /onClick=\{showNextVideo\}/);
+  assert.match(dmVideoCarousel, /translateX\(-\$\{activeIndex \* 100\}%\)/);
   assert.match(content, /Construction and installation process/i);
   assert.match(content, /testingFacilities/);
   assert.match(content, /caissonMethod/);
@@ -118,6 +136,37 @@ test("D&M At a Glance section follows the supplied desktop PDF geometry", () => 
   assert.match(content, /bullets:\s*\[/);
   assert.match(content, /Vibro and Surface Compaction/);
   assert.match(content, /Vibro Replacement \(Stone Columns\)/);
+});
+
+test("D&M overview includes the operational highlights section from the desktop PDF", () => {
+  const page = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+  const content = readFileSync(
+    "apps/nmdc-dredging-marine/content/content.ts",
+    "utf8",
+  );
+
+  assert.match(content, /operationalHighlights/);
+  assert.match(content, /Operational Highlights \| Core Capabilities/);
+  assert.match(content, /Dredging/);
+  assert.match(content, /Reclamation/);
+  assert.match(content, /Rock Installation/);
+  assert.match(content, /Quay Wall Blocks Installation/);
+  assert.match(content, /Ground Improvement/);
+  assert.match(content, /NMDC D&M Project Status/);
+  assert.match(content, /In Mm3/);
+  assert.match(content, /In nos/);
+  assert.match(content, /In Nos\./);
+  assert.match(content, /Completed/);
+  assert.match(content, /Ongoing/);
+  assert.match(page, /DmOperationalHighlightsSection/);
+  assert.match(page, /DmOperationalHighlightCard/);
+  assert.match(page, /DmOperationalBarChart/);
+  assert.match(page, /DmProjectStatusChart/);
+  assert.match(page, /md:grid-cols-2/);
+  assert.match(page, /overview\.operationalHighlights/);
 });
 
 test("D&M home cards match the NMDC Group brand card shell", () => {
@@ -241,9 +290,11 @@ test("D&M hydraulic physical model page follows the Coastal and Hydrodynamic PDF
   assert.match(content, /Sediment & Morphodynamics/);
   assert.match(content, /2D Flume Physical Modeling Test - Coastal Protection/);
   assert.match(content, /3D Basin Physical Modeling - Marina Rubble mound Breakwater/);
+  assert.match(content, /type: "video"/);
   assert.match(page, /HydraulicInfoCard/);
   assert.match(page, /HydraulicCapabilityCard/);
   assert.match(page, /HydraulicMediaFrame/);
+  assert.match(page, /item\.type === "video"/);
   assert.match(page, /my\.matterport\.com\/show\/\?m=rMCdYNJoynP/);
   assert.match(page, /title="NMDC D&M Coastal and Hydrodynamic Center 3D tour"/);
   assert.match(page, /allow="fullscreen; xr-spatial-tracking"/);
@@ -318,6 +369,7 @@ test("D&M caisson method page follows the Caisson Method PDF", () => {
   );
 
   for (const asset of [
+    "apps/nmdc-dredging-marine/public/images/dm/hero_DM.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-hero.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-video.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-carousel.jpg",
@@ -326,6 +378,7 @@ test("D&M caisson method page follows the Caisson Method PDF", () => {
   }
 
   assert.match(content, /gravity-based structures provide a combination/);
+  assert.match(content, /backgroundImage: withDredgingMarineBasePath\("\/images\/dm\/hero_DM\.jpg"\)/);
   assert.match(content, /Gantry Hydraulic Slip-Form System/);
   assert.match(content, /Launch and Towing/);
   assert.match(content, /ballasted with seawater/);
@@ -338,6 +391,8 @@ test("D&M caisson method page follows the Caisson Method PDF", () => {
   assert.match(page, /caisson\.process\.steps/);
   assert.match(page, /caisson\.advantages\.items/);
   assert.match(page, /caisson\.carousel\.image/);
+  assert.match(page, /src=\{caisson\.hero\.backgroundImage\}/);
+  assert.match(page, /absolute inset-0 bg-\[linear-gradient\(180deg,rgba\(3,15,26,0\.46\)_0%,rgba\(3,15,26,0\.54\)_48%,rgba\(3,15,26,0\.72\)_100%\)\]/);
 });
 
 test("D&M caisson method mobile layout follows the mobile PDF", () => {
@@ -353,6 +408,10 @@ test("D&M caisson method mobile layout follows the mobile PDF", () => {
     "apps/nmdc-dredging-marine/components/icons.tsx",
     "utf8",
   );
+  const caissonCarousel = readFileSync(
+    "apps/nmdc-dredging-marine/components/CaissonImageCarousel.tsx",
+    "utf8",
+  );
 
   assert.match(content, /eyebrowAccent: "NMDC - Dredging &"/);
   assert.match(content, /eyebrowSuffix: "Marine"/);
@@ -363,8 +422,10 @@ test("D&M caisson method mobile layout follows the mobile PDF", () => {
   assert.match(page, /text-justify/);
   assert.match(page, /text-\[24px\] font-bold leading-\[36px\]/);
   assert.match(page, /h-\[260px\].*md:h-\[360px\]/s);
-  assert.match(page, /h-\[312px\].*md:h-\[560px\]/s);
-  assert.match(page, /CarouselControls largeMobile/);
+  assert.match(page, /CaissonImageCarousel/);
+  assert.match(caissonCarousel, /h-\[312px\].*md:h-\[560px\]/s);
+  assert.match(caissonCarousel, /onClick=\{showPrev\}/);
+  assert.match(caissonCarousel, /onClick=\{showNext\}/);
   assert.match(icons, /CaissonFabricationIcon/);
   assert.match(icons, /CaissonLaunchIcon/);
   assert.match(icons, /CaissonInstallationIcon/);

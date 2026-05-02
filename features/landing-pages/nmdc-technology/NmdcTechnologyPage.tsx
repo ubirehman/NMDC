@@ -46,7 +46,7 @@ export function NmdcTechnologyPage() {
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end pb-[34px] md:pb-[137px]">
           <div className="max-w-[620px]">
             <h1 className="text-[30px] font-bold leading-[36px] text-white md:text-[48px] md:leading-[58px]">
-              <span className="hidden md:inline">Technology &amp; Ai</span>
+              <span className="hidden md:inline">Technology &amp; AI</span>
               <span className="md:hidden">Technology &amp; AI</span>
             </h1>
             <p className="mt-[9px] max-w-[320px] text-[14px] font-normal leading-[21px] text-white md:hidden">

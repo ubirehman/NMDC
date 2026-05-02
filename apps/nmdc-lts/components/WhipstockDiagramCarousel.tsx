@@ -12,8 +12,8 @@ type WhipstockDiagramImage = {
 
 type WhipstockDiagramCarouselProps = {
   images: readonly WhipstockDiagramImage[];
-  specificationsHref: string;
-  specificationsLabel: string;
+  specificationsHref?: string | null;
+  specificationsLabel?: string | null;
 };
 
 export function WhipstockDiagramCarousel({
@@ -52,13 +52,17 @@ export function WhipstockDiagramCarousel({
       </div>
 
       <div className="mt-[25px] flex flex-col items-center gap-[17px] md:mt-[32px] md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
-        <Link
-          href={specificationsHref}
-          className="order-2 inline-flex items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors hover:text-lts-tan md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
-        >
-          {specificationsLabel}
-          <ArrowUpRight className="size-6 md:size-5" />
-        </Link>
+        {specificationsHref && specificationsLabel ? (
+          <Link
+            href={specificationsHref}
+            className="order-2 inline-flex items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors hover:text-lts-tan md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
+          >
+            {specificationsLabel}
+            <ArrowUpRight className="size-6 md:size-5" />
+          </Link>
+        ) : (
+          <span className="order-2 hidden md:order-1 md:block" aria-hidden="true" />
+        )}
 
         <div className="order-1 flex items-center justify-center gap-[24px] md:order-2">
           <button

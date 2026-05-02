@@ -89,17 +89,12 @@ export function NmdcSafeenSubseaPage() {
 
       <section className="bg-white px-5 pb-0 pt-12 md:px-10 md:py-[49px]">
         <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,744px)_438px] md:items-center md:gap-[58px]">
-          <section className="text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px]">
+          <section className="text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px] gap-4">
+            <p className="text-xl font-bold">
+              {safeenOverview.heading}
+            </p>
             <p>
               {safeenOverview.lead}
-            </p>
-            <ul className="my-5 list-disc space-y-1 border-y border-[#c8d5e3] py-4 pl-6">
-              {safeenEnablers.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <p>
-              {safeenOverview.closing}
             </p>
           </section>
 

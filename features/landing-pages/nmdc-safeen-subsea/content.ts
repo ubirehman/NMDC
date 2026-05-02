@@ -6,26 +6,23 @@ export const nmdcSafeenSubseaNavLinks = getNmdcNavLinks(
 );
 
 export const safeenHero = {
-  image: "/images/landing/safeen-subsea-hero.jpg",
+  image: "/images/landing/safeen-subsea-hero-new.png",
   alt: "SAFEEN offshore vessel operating in rough sea",
-  titlePrefix: "NMDC Group",
-  titleAccent: "Safeen Subsea & AD Ports JV.",
+  titlePrefix: "",
+  titleAccent: "Safeen Subsea",
 };
 
 export const safeenOverview = {
   lead:
-    "SAFEEN supports multiple sectors including oil and gas, offshore wind, ports and terminals and large-scale marine infrastructure projects. This enables:",
-  closing:
-    "The company’s integrated operating model ensures that offshore execution is supported by UAE-based infrastructure and capabilities",
-  image: "/images/landing/safeen-subsea-hero.jpg",
+    "Safeen Survey & Subsea Services contributes to the UAE’s industrial ecosystem by delivering locally based offshore survey, subsea engineering and marine support services that enable the development and maintenance of critical offshore infrastructure. With over 29 years of service and an integrated fleet of more than 15 offshore support vessels, Safeen supports the full lifecycle of offshore projects, from planning and construction through to inspection, repair and maintenance.",
+heading:
+    "An NMDC Group and AD Ports JV",
+  image: "/images/landing/safeen-subsea-hero-.png",
   alt: "SAFEEN offshore vessel at sea",
 };
 
 export const safeenEnablers = [
-  "Local mobilisation of offshore vessels and equipment",
-  "Assembly and integration of subsea systems within the UAE",
-  "Support for offshore construction and maintenance campaigns",
-  "Efficient logistics through UAE port infrastructure",
+  "",
 ];
 
 export const safeenKeyFacts = [

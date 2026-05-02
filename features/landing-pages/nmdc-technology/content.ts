@@ -4,11 +4,11 @@ export const nmdcTechnologyBrand = nmdcBrand;
 export const nmdcTechnologyNavLinks = getNmdcNavLinks("/technology");
 
 export const technologyHero = {
-  title: "Technology & Ai",
+  title: "Technology & AI",
   mobileTitle: "Technology & AI",
   subtitle:
     "Powering NMDC Group's future with intelligent systems and digital innovation.",
-  image: "/images/landing/technology-hero.jpg",
+  image: "/images/landing/tech_ai.png",
   imageAlt: "NMDC AI Hub command center",
 };
 
@@ -22,17 +22,17 @@ export const technologySections = [
     title: "Digital Integration Across NMDC",
     icon: "network",
     points: [
-      "Acts as a unified digital gateway to all NMDC applications and platforms.",
-      "Integrates systems like the AI-Powered HSE Camera Monitoring, Connected Worker Platform, and Digital Twin environments for real-time visibility and decision-making.",
-      "Connects the Group's key divisions - Energy, Infra, Dredging & Marine, and LTS - under one digital ecosystem.",
-      "Supports the NMDC 4.0 transformation, enhancing productivity, collaboration, and sustainability.",
-    ],
+              "Acts as a unified digital gateway to all NMDC applications and platforms.",
+              "Integrates systems like the AI-Powered HSE Camera Monitoring, Connected Worker Platform, and Digital Twin environments for real-time visibility and decision-making.",
+              "Connects the Group’s key divisions —  Dredging & Marine, Energy, Infra,, and LTS — under one digital ecosystem.",
+              "Supports the NMDC 4.0 transformation, enhancing productivity, collaboration, and sustainability."
+            ],
     mobilePoints: [
-      "Acts as a unified digital gateway to all NMDC applications and platforms.",
-      "Integrates systems like AI-Powered HSE Camera Monitoring, Connected Worker Platform, and Digital Twin environments for real-time visibility.",
-      "Connects the Group's key divisions - Energy, Infra, Dredging & Marine, and LTS - under one digital ecosystem.",
-      "Supports the NMDC 4.0 transformation, enhancing productivity, collaboration, and sustainability.",
-    ],
+              "Acts as a unified digital gateway to all NMDC applications and platforms.",
+              "Integrates systems like the AI-Powered HSE Camera Monitoring, Connected Worker Platform, and Digital Twin environments for real-time visibility and decision-making.",
+              "Connects the Group’s key divisions —  Dredging & Marine, Energy, Infra,, and LTS — under one digital ecosystem.",
+              "Supports the NMDC 4.0 transformation, enhancing productivity, collaboration, and sustainability."
+            ],
   },
   {
     title: "Driving Efficiency and Innovation",
@@ -77,7 +77,7 @@ export const technologyMedia = [
     alt: "By 2025, NMDC has developed 70 plus AI agents across its operations",
   },
   {
-    src: "/images/landing/technology-booth.jpg",
+    src: "/images/landing/technology-booth.png",
     alt: "NMDC technology exhibition booth",
   },
 ];

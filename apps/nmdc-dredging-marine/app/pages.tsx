@@ -2,10 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { DmVideoPlayer } from "../components/DmVideoPlayer";
+import { DmVideoCarousel } from "../components/DmVideoCarousel";
 import { DmHomeCardRail } from "../components/DmHomeCardRail";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { HydraulicFacilityImageCarousel } from "../components/HydraulicFacilityImageCarousel";
+import { CaissonImageCarousel } from "../components/CaissonImageCarousel";
 import {
   ArrowLeft,
   ArrowRight,
@@ -164,6 +166,38 @@ function getVesselCardImageClass(slug: string) {
 
 type VesselCardProps = {
   vessel: (typeof content.marineVessels.items)[number];
+};
+
+type OperationalBarMetric = {
+  year: string;
+  value: number;
+  label?: string;
+};
+
+type OperationalStatusMetric = {
+  year: string;
+  totalLabel: string;
+  completed: number;
+  ongoing: number;
+};
+
+type OperationalHighlightsContent = {
+  title: string;
+  items: readonly {
+    title: string;
+    copy: string;
+    unit: string;
+    image?: {
+      src: string;
+      alt: string;
+    };
+    values?: readonly OperationalBarMetric[];
+    legend?: readonly {
+      label: string;
+      color: string;
+    }[];
+    statusValues?: readonly OperationalStatusMetric[];
+  }[];
 };
 
 function MarineVesselCard({ vessel }: VesselCardProps) {
@@ -350,6 +384,217 @@ export function DredgingMarineHomePage() {
   );
 }
 
+function DmOperationalHighlightsSection({
+  highlights,
+}: {
+  highlights: OperationalHighlightsContent;
+}) {
+  return (
+    <section className="bg-[#0b2d3f] px-5 pb-[72px] pt-[72px] text-white md:px-10 md:pb-[104px] md:pt-[92px]">
+      <div className="mx-auto w-full max-w-[1240px]">
+        <h2 className="max-w-[1120px] text-[34px] font-bold uppercase leading-[42px] tracking-normal text-white md:text-[50px] md:leading-[60px]">
+          {highlights.title}
+        </h2>
+
+        <div className="mt-9 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:mt-12 md:grid-cols-2 md:gap-x-5 md:gap-y-7">
+          {highlights.items.map((item) => (
+            <DmOperationalHighlightCard key={item.title} item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DmOperationalHighlightCard({
+  item,
+}: {
+  item: OperationalHighlightsContent["items"][number];
+}) {
+  const isProjectStatus = Boolean(item.statusValues);
+
+  return (
+    <article className="min-w-0 rounded-[22px] bg-[#e5e5e5] px-5 pb-6 pt-6 text-dm-text md:min-h-[302px] md:px-6 md:pb-7">
+      <h3 className="text-[22px] font-bold leading-7 text-dm-text">
+        {item.title}
+      </h3>
+      <p className="mt-2 min-h-[48px] break-words text-[15px] leading-6 text-[#263a55] md:text-[16px]">
+        {item.copy}
+      </p>
+
+      {isProjectStatus && item.statusValues ? (
+        <DmProjectStatusChart
+          unit={item.unit}
+          values={item.statusValues}
+          legend={item.legend ?? []}
+        />
+      ) : item.values ? (
+        <div className="mt-4 grid gap-5 md:grid-cols-[minmax(0,260px)_minmax(0,274px)] md:items-end md:gap-4">
+          <div className="min-w-0">
+            <p className="text-right text-[18px] font-bold leading-6 text-[#465871]">
+              {item.unit}
+            </p>
+            <DmOperationalBarChart values={item.values} />
+          </div>
+
+          {item.image ? (
+            <div className="relative h-[190px] min-w-0 overflow-hidden rounded-[16px] bg-dm-navy md:h-[198px]">
+              <Image
+                src={item.image.src}
+                alt={item.image.alt}
+                fill
+                sizes="(min-width: 768px) 274px, calc(100vw - 80px)"
+                className="object-cover object-center"
+              />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+const operationalBarColors = ["#acd3ea", "#0b93cf", "#24116f"];
+
+function DmOperationalBarChart({
+  values,
+}: {
+  values: readonly OperationalBarMetric[];
+}) {
+  const maxValue = Math.max(...values.map((item) => item.value), 1);
+
+  return (
+    <div className="mt-2">
+      <div className="grid h-[148px] grid-cols-3 items-end gap-3 border-b border-transparent">
+        {values.map((item, index) => {
+          const barHeight =
+            item.value > 0 ? Math.max(56, (item.value / maxValue) * 142) : 0;
+          const label = item.label ?? String(item.value);
+          const isLightBar = index === 0;
+
+          return (
+            <div
+              key={`${item.year}-${index}`}
+              className="grid h-full min-w-0 items-end justify-items-center"
+            >
+              {item.value > 0 ? (
+                <div
+                  className="flex w-full max-w-[74px] items-center justify-center rounded-t-[8px] px-1"
+                  style={{
+                    height: `${barHeight}px`,
+                    backgroundColor:
+                      operationalBarColors[index % operationalBarColors.length],
+                  }}
+                >
+                  {label ? (
+                    <span
+                      className={`text-[18px] font-bold leading-none ${
+                        isLightBar ? "text-[#2c3e55]" : "text-white"
+                      }`}
+                    >
+                      {label}
+                    </span>
+                  ) : null}
+                </div>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-2 grid grid-cols-3 gap-3 text-center text-[14px] leading-5 text-[#263a55]">
+        {values.map((item, index) => (
+          <span key={`${item.year}-label-${index}`}>{item.year}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DmProjectStatusChart({
+  unit,
+  values,
+  legend,
+}: {
+  unit: string;
+  values: readonly OperationalStatusMetric[];
+  legend: readonly {
+    label: string;
+    color: string;
+  }[];
+}) {
+  const maxValue = Math.max(
+    ...values.map((item) => item.completed + item.ongoing),
+    1,
+  );
+
+  return (
+    <div className="mt-4 grid gap-5 md:grid-cols-[minmax(0,1fr)_112px] md:items-center">
+      <div className="min-w-0">
+        <p className="text-right text-[18px] font-bold leading-6 text-[#465871]">
+          {unit}
+        </p>
+        <div className="mt-3 grid h-[162px] grid-cols-3 items-end gap-5 px-4 md:px-10">
+          {values.map((item) => {
+            const total = item.completed + item.ongoing;
+            const totalHeight = Math.max(70, (total / maxValue) * 142);
+            const completedHeight = (item.completed / total) * totalHeight;
+            const ongoingHeight = (item.ongoing / total) * totalHeight;
+
+            return (
+              <div
+                key={item.year}
+                className="grid h-full min-w-0 items-end justify-items-center"
+              >
+                <div className="grid justify-items-center gap-2">
+                  <span className="text-[20px] font-bold leading-none text-dm-text">
+                    {item.totalLabel}
+                  </span>
+                  <div className="w-[76px] overflow-hidden rounded-t-[8px]">
+                    <div
+                      className="flex items-center justify-center bg-[#062d44] text-[18px] font-bold leading-none text-white"
+                      style={{ height: `${ongoingHeight}px` }}
+                    >
+                      {item.ongoing}
+                    </div>
+                    <div
+                      className="flex items-center justify-center bg-[#0b93cf] text-[18px] font-bold leading-none text-white"
+                      style={{ height: `${completedHeight}px` }}
+                    >
+                      {item.completed}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-2 grid grid-cols-3 gap-5 px-4 text-center text-[14px] leading-5 text-[#263a55] md:px-10">
+          {values.map((item) => (
+            <span key={`${item.year}-status-label`}>{item.year}</span>
+          ))}
+        </div>
+      </div>
+
+      <ul className="grid gap-3 justify-self-start text-[15px] leading-5 text-[#263a55] md:justify-self-end">
+        {legend.map((item) => (
+          <li key={item.label} className="flex items-center gap-3">
+            <span
+              className="size-5 shrink-0"
+              style={{ backgroundColor: item.color }}
+              aria-hidden="true"
+            />
+            <span>{item.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function DredgingMarineOverviewPage() {
   const overview = content.overview;
 
@@ -434,6 +679,8 @@ export function DredgingMarineOverviewPage() {
         </div>
       </section>
 
+      <DmOperationalHighlightsSection highlights={overview.operationalHighlights} />
+
       <Footer />
     </main>
   );
@@ -497,6 +744,15 @@ export function DredgingMarineVesselsPage() {
               <MarineVesselCard key={vessel.slug} vessel={vessel} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section
+        data-marine-vessels-video-carousel
+        className="bg-dm-deep-navy px-5 pb-[72px] pt-[56px] md:px-10 md:pb-[112px] md:pt-[96px]"
+      >
+        <div className="mx-auto w-full max-w-[1240px]">
+          <DmVideoCarousel videos={content.videoSources} />
         </div>
       </section>
 
@@ -764,30 +1020,16 @@ function HydraulicMediaFrame({ item }: { item: HydraulicMediaData }) {
         <DmVideoPlayer
           src={item.src}
           ariaLabel={`Play ${item.alt}`}
-          className="h-[245px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[430px]"
+          className="h-[245px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
         />
       ) : (
-        <>
-          <Image
-            src={item.image}
-            alt={item.alt}
-            width={1240}
-            height={390}
-            className="h-[188px] w-full object-cover object-center md:h-[390px]"
-          />
-          <div
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.05)_0%,rgba(3,15,26,0.24)_100%)]"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div
-              className="flex size-[72px] items-center justify-center rounded-full border-[3px] border-white bg-dm-deep-navy/42 text-[19px] font-bold leading-none text-white backdrop-blur-sm md:size-[96px] md:text-[26px]"
-              aria-label="360 view"
-            >
-              360
-            </div>
-          </div>
-        </>
+        <Image
+          src={item.image}
+          alt={item.alt}
+          width={1240}
+          height={390}
+          className="h-[188px] w-full object-cover object-center md:h-[560px]"
+        />
       )}
     </figure>
   );
@@ -872,7 +1114,7 @@ export function HydraulicPhysicalModelPage() {
               alt={hydraulic.overview.image.alt}
               width={461}
               height={319}
-              className="order-1 h-[230px] min-w-0 w-full rounded-[12px] object-cover object-center md:order-2 md:h-[319px]"
+              className="order-1 h-[230px] min-w-0 w-full rounded-[12px] object-cover object-center md:order-2 md:h-full"
             />
           </div>
           <div className="mt-10 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 md:mt-[58px] md:grid-cols-2 md:gap-6">
@@ -1029,8 +1271,20 @@ export function CaissonMethodPage() {
   return (
     <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
       <section className="relative isolate overflow-hidden bg-[#183d4d] px-5 pb-[34px] pt-[124px] text-white md:px-10 md:pb-[90px] md:pt-[146px]">
+        <Image
+          src={caisson.hero.backgroundImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.46)_0%,rgba(3,15,26,0.54)_48%,rgba(3,15,26,0.72)_100%)]"
+          aria-hidden="true"
+        />
         <Header links={getDmNavLinks(caisson.hero.activeHref)} />
-        <div className="mx-auto grid w-[calc(100vw-40px)] min-w-0 max-w-[1240px] gap-[30px] md:w-full md:grid-cols-[minmax(0,492px)_minmax(0,714px)] md:items-center md:justify-between md:gap-[34px]">
+        <div className="relative z-10 mx-auto grid w-[calc(100vw-40px)] min-w-0 max-w-[1240px] gap-[30px] md:w-full md:grid-cols-[minmax(0,492px)_minmax(0,714px)] md:items-center md:justify-between md:gap-[34px]">
           <div className="min-w-0">
             <h1 className="text-[24px] font-bold leading-[36px] md:text-[31px] md:leading-[38px]">
               <span className="text-dm-cyan">
@@ -1081,17 +1335,7 @@ export function CaissonMethodPage() {
             items={caisson.advantages.items}
           />
 
-          <figure className="mx-1 mt-[56px] md:mx-0 md:mt-[32px]">
-            <Image
-              src={caisson.carousel.image}
-              alt={caisson.carousel.alt}
-              width={1240}
-              height={560}
-              sizes="(min-width: 768px) 1240px, 312px"
-              className="h-[312px] w-full rounded-[20px] object-cover object-center md:h-[560px] md:rounded-[14px]"
-            />
-            <CarouselControls largeMobile />
-          </figure>
+          <CaissonImageCarousel images={caisson.carousel.images} />
         </div>
       </section>
 

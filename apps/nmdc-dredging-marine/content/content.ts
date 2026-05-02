@@ -23,8 +23,8 @@ const withGroupAppPath = (path: string) =>
   `${groupAppUrl.replace(/\/$/, "")}${path}`;
 
 const nmdcDredgingMarineVideoSources = [
-  withDredgingMarineBasePath("/videos/safeen-subsea-green.mp4"),
-  withDredgingMarineBasePath("/videos/safeen-subsea-rov.mp4")
+  withDredgingMarineBasePath("/videos/nmdc_dm_1.mp4"),
+  withDredgingMarineBasePath("/videos/nmdc_dm_2.mp4")
 ];
 
 export const nmdcDredgingMarineContent = {
@@ -179,6 +179,116 @@ export const nmdcDredgingMarineContent = {
             "Vibro Replacement (Stone Columns)",
             "Geotechnical Investigation",
             "Vibro Coring & Geophysical Survey"
+          ]
+        }
+      ]
+    },
+    operationalHighlights: {
+      title: "Operational Highlights | Core Capabilities",
+      items: [
+        {
+          title: "Dredging",
+          copy:
+            "Seabed excavation to support channel deepening and navigation purposes",
+          unit: "In Mm3",
+          image: {
+            src: withDredgingMarineBasePath("/images/dm/overview-vessel.jpg"),
+            alt: "NMDC dredging vessel supporting channel works"
+          },
+          values: [
+            { year: "2023", value: 64.3 },
+            { year: "2024", value: 49.5 },
+            { year: "2025", value: 40.4 }
+          ]
+        },
+        {
+          title: "Reclamation",
+          copy:
+            "Creating new land through hydraulic filling to support coastal, port and Oil & Gas developments.",
+          unit: "In Mm3",
+          image: {
+            src: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.webp"),
+            alt: "Dredger pumping reclamation material at sea"
+          },
+          values: [
+            { year: "2023", value: 119 },
+            { year: "2024", value: 271 },
+            { year: "2025", value: 98.3 }
+          ]
+        },
+        {
+          title: "Rock Installation",
+          copy:
+            "Placing graded rock of varying sizes for seabed stabilization, scour protection, and structural support",
+          unit: "In Mm3",
+          image: {
+            src: withDredgingMarineBasePath("/images/dm/caisson-method-carousel.jpg"),
+            alt: "Rock installation works for marine infrastructure"
+          },
+          values: [
+            { year: "2023", value: 2.3 },
+            { year: "2024", value: 1.5 },
+            { year: "2025", value: 1.1 }
+          ]
+        },
+        {
+          title: "Quay Wall Blocks Installation",
+          copy:
+            "Installing precast blocks to form durable quay walls and berthing structures",
+          unit: "In nos",
+          image: {
+            src: withDredgingMarineBasePath("/images/dm/caisson-installation.jpg"),
+            alt: "Quay wall block installation from marine cranes"
+          },
+          values: [
+            { year: "2023", value: 1661 },
+            { year: "2024", value: 4254 },
+            { year: "2025", value: 2973 }
+          ]
+        },
+        {
+          title: "Ground Improvement",
+          copy:
+            "Strengthening weak soils to enhance bearing capacity and control settlement",
+          unit: "In Mm 2",
+          image: {
+            src: withDredgingMarineBasePath("/images/dm/hydraulic-model-2.jpg"),
+            alt: "Ground improvement works at a marine construction site"
+          },
+          values: [
+            { year: "2023", value: 0, label: "" },
+            { year: "2024", value: 16.5 },
+            { year: "2025", value: 17.7 }
+          ]
+        },
+        {
+          title: "NMDC D&M Project Status",
+          copy:
+            "The below charts show both the ongoing and completed projects during the period of 2023 to 2025",
+          unit: "In Nos.",
+          legend: [
+            { label: "Completed", color: "#0b93cf" },
+            { label: "Ongoing", color: "#062d44" }
+          ],
+          statusValues: [
+            {
+              year: "2023",
+              totalLabel: "67.7",
+              completed: 35,
+              ongoing: 32
+            },
+            {
+              year: "2024",
+              totalLabel: "57",
+              completed: 31,
+              ongoing: 26
+            },
+            {
+              year: "2025",
+              totalLabel: "55",
+              completed: 21,
+              ongoing: 34
+            }
           ]
         }
       ]
@@ -747,7 +857,8 @@ export const nmdcDredgingMarineContent = {
   caissonMethod: {
     hero: {
       activeHref: "/caisson-method",
-      image: withDredgingMarineBasePath("/images/dm/caisson-method-hero.jpg"),
+      backgroundImage: withDredgingMarineBasePath("/images/dm/hero_DM.jpg"),
+      image: withDredgingMarineBasePath("/images/dm/hero_DM_sub.jpg"),
       alt: "Dredging vessel operating during caisson works"
     },
     overview: {
@@ -801,8 +912,11 @@ export const nmdcDredgingMarineContent = {
       ]
     },
     carousel: {
-      image: withDredgingMarineBasePath("/images/dm/caisson-method-carousel.jpg"),
-      alt: "Caisson construction platform at sea"
+      images: [
+        { src: withDredgingMarineBasePath("/images/dm/caisson-carousel-3.jpg"), alt: "Caisson construction at sea" },
+        { src: withDredgingMarineBasePath("/images/dm/caisson-carousel-1.jpg"), alt: "Caisson installation process" },
+        { src: withDredgingMarineBasePath("/images/dm/caisson-carousel-2.jpg"), alt: "Caisson method overview" },
+      ] as const,
     }
   },
   footer: {

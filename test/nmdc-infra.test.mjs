@@ -321,8 +321,16 @@ test("NMDC Infra 3D printed reefs product card opens the supplied detail page", 
   const carousel = readFileSync(carouselPath, "utf8");
 
   assert.match(content, /href:\s*"\/products\/3d-printing-artificial-reefs"/);
+  assert.match(content, /printing:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/product-3d-reefs-detail\.jpg"\)/s);
   assert.match(detailRoute, /NmdcInfraArtificialReefsPage/);
   assert.match(page, /function NmdcInfraArtificialReefsPage/);
+  assert.match(page, /function getInfraProductSlugFromPath/);
+  assert.match(page, /productPath\.split\("\/"\)/);
+  assert.match(page, /"3d-printing-artificial-reefs": hero\.printing/);
+  assert.match(page, /selectedBackground \?\? hero\.background/);
+  assert.match(page, /function InfraProductHero/);
+  assert.match(page, /<InfraProductHero productPath=\{products\.activeHref\} \/>/);
+  assert.match(page, /<InfraProductHero productPath=\{detailProductPath\} \/>/);
   assert.match(content, /detail:\s*\{/);
   assert.match(content, /detailImages:\s*\[/);
   assert.match(content, /product-3d-reefs-gallery-01\.jpg/);

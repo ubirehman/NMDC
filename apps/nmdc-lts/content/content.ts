@@ -130,7 +130,7 @@ export const nmdcLtsContent = {
       title: "At a Glance",
       readMoreLabel: "Read more....",
       image: {
-        src: withLtsBasePath("/images/lts/at-glance-vessel.jpg"),
+        src: withLtsBasePath("/images/lts/at-glance-vessel_new.png"),
         alt: "AL ALIA support vessel at sea",
       },
       paragraphs: [
@@ -144,7 +144,7 @@ export const nmdcLtsContent = {
         {
           title: "Vessel Chartering",
           image: {
-            src: withLtsBasePath("/images/lts/capability-vessel-chartering.jpg"),
+            src: withLtsBasePath("/images/lts/capability-vessel-chartering_new.png"),
             alt: "Offshore support vessel and barge",
           },
           description:
@@ -153,7 +153,7 @@ export const nmdcLtsContent = {
         {
           title: "Towing Services",
           image: {
-            src: withLtsBasePath("/images/lts/capability-towing-services.jpg"),
+            src: withLtsBasePath("/images/lts/towing_service.png"),
             alt: "Tug vessels coordinating towing services",
           },
           description:
@@ -162,7 +162,7 @@ export const nmdcLtsContent = {
         {
           title: "Integrated Logistics",
           image: {
-            src: withLtsBasePath("/images/lts/capability-integrated-logistics.jpg"),
+            src: withLtsBasePath("/images/lts/integrated_long.png"),
             alt: "Support vessel and workboat at sea",
           },
           description:
@@ -171,7 +171,7 @@ export const nmdcLtsContent = {
         {
           title: "Technical Services",
           image: {
-            src: withLtsBasePath("/images/lts/capability-technical-services.jpg"),
+            src: withLtsBasePath("/images/lts/technical_service.png"),
             alt: "Technical service crew on vessel deck",
           },
           description:
@@ -211,8 +211,8 @@ export const nmdcLtsContent = {
           "High-quality imported systems from overseas manufacturers for trusted performance",
           "Optimized for transport, lifting, and multipurpose marine operations",
         ],
-        specificationsLabel: "View Specifications",
-        specificationsHref: "#multicat-m-21-specifications",
+        specificationsLabel: null,
+        specificationsHref: null,
       },
       {
         title: "Pushy Cat - P14 & Pushy Cat - P15",
@@ -311,6 +311,11 @@ export const nmdcLtsContent = {
       alt: "EMDAD Mussafah drilling facility whipstock system",
     },
     diagramImages: [
+     
+       {
+        src: withLtsBasePath("/images/lts/nmdc_whipstock.png"),
+        alt: "EMDAD Mussafah facility drilling equipment",
+      },
       {
         src: withLtsBasePath("/images/lts/whipstock-diagram-01.jpg"),
         alt: "EMDAD Mussafah facility drilling equipment",
@@ -341,14 +346,15 @@ export const nmdcLtsContent = {
       alt: "Dark blue contour line background",
     },
     desktopLogo: {
-      src: withLtsBasePath("/images/lts/logo-group.svg"),
-      alt: "NMDC Group",
+      src: withLtsBasePath("/images/lts/logo-lts.svg"),
+      alt: "NMDC LTS",
     },
     mobileLogo: {
-      src: withLtsBasePath("/images/lts/logo-dm.webp"),
-      alt: "NMDC Dredging & Marine",
+      src: withLtsBasePath("/images/lts/logo-lts.svg"),
+      alt: "NMDC LTS",
     },
     businesses: [
+      { label: "NMDC Group", href: groupAppUrl, color: "#ddc19c" },
       { label: "NMDC Dredging & Marine", href: dredgingMarineAppUrl, color: "#009fe3" },
       { label: "NMDC Energy", href: energyAppUrl, color: "#10c66b" },
       {
@@ -357,7 +363,6 @@ export const nmdcLtsContent = {
         color: "#ff7926",
       },
       { label: "NMDC Infra", href: infraAppUrl, color: "#ffc414" },
-      { label: "NMDC LTS", href: ltsAppUrl, color: "#ddc19c" },
     ],
     connectLabel: "Let’s connect",
     socialLinks: [

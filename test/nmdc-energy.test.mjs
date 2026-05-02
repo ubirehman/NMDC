@@ -274,7 +274,9 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(content, /icon: "capabilities"/);
   assert.match(content, /icon: "manpower"/);
   assert.match(content, /Yard Achievements/);
+  assert.match(content, /summaryTitle:\s*"Completed Fabrication and Loadout in 2025"/);
   assert.match(content, /32,000 Metric Tons/);
+  assert.match(content, /Self Propelled Modular Trailers\(SPMT\)"/);
   assert.match(content, /Yard Capabilities/);
   assert.match(content, /165,000/);
   assert.match(content, /Robotic welding and COBOT Welding/);
@@ -290,6 +292,12 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(page, /relative mt-4 hidden h-10 items-center justify-center md:flex/);
   assert.match(page, /absolute right-0 text-\[13px\] font-bold leading-5 text-energy-green/);
   assert.match(page, /EnergyYardAchievements/);
+  assert.match(page, /data-yard-achievements/);
+  assert.match(page, /data-yard-achievement-icon-card/);
+  assert.match(page, /data-yard-achievement-summary-card/);
+  assert.match(page, /data-yard-achievement-copy/);
+  assert.match(page, /md:grid-cols-\[236px_1px_193px_1px_minmax\(0,1fr\)\]/);
+  assert.match(page, /achievements\.summaryTitle/);
   assert.match(page, /EnergyYardCapabilities/);
   assert.match(page, /getEnergyNavLinks\("\/yard-highlights"\)/);
   assert.match(page, /md:h-\[486px\]/);
@@ -366,6 +374,9 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
     "apps/nmdc-energy/public/images/energy/product-process-skids-detail.jpg",
     "apps/nmdc-energy/public/images/energy/product-pipe-coating-video.jpg",
     "apps/nmdc-energy/public/images/energy/product-pipe-coating-mobile.jpg",
+    "apps/nmdc-energy/public/images/energy/icon-pipe-coating-pipe.png",
+    "apps/nmdc-energy/public/images/energy/icon-pipe-coating-plant.png",
+    "apps/nmdc-energy/public/images/energy/icon-pipe-coating-loadout.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -392,10 +403,28 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(content, /Double Jointed CWC Pipes/);
   assert.match(content, /PRODUCTION CAPACITY FOR EACH 3 LPO PLANT/);
   assert.match(content, /TYPES OF TOPSIDES/);
+  assert.match(content, /pipeCoatingBackground/);
+  assert.doesNotMatch(content, /piepCoatingBackground/);
+  assert.match(content, /icon-pipe-coating-pipe\.png/);
+  assert.match(content, /icon-pipe-coating-plant\.png/);
+  assert.match(content, /icon-pipe-coating-loadout\.png/);
   assert.match(page, /function EnergyProductHero/);
+  assert.match(page, /function getEnergyProductSlugFromPath/);
+  assert.match(page, /productPath\.split\("\/"\)/);
+  assert.match(page, /jackets: hero\.jacketBackground/);
+  assert.match(page, /"pipe-coating": hero\.pipeCoatingBackground/);
+  assert.match(page, /selectedBackground \?\? hero\.topSideBackground/);
+  assert.match(page, /productPath=\{`\/products\/\$\{detail\.slug\}`\}/);
   assert.match(page, /function EnergyProductDetailPage/);
   assert.match(page, /function NmdcEnergyProductDetailPage/);
   assert.match(page, /function EnergyProductBarChart/);
+  assert.match(page, /function EnergyPipeCoatingCapabilitiesCard/);
+  assert.match(page, /function EnergyPipeCoatingHighlightsList/);
+  assert.match(page, /data-pipe-coating-overview/);
+  assert.match(page, /data-pipe-coating-capabilities-card/);
+  assert.match(page, /data-pipe-coating-highlights-list/);
+  assert.match(page, /md:grid-cols-\[380px_minmax\(0,1fr\)\]/);
+  assert.match(page, /md:grid-cols-\[190px_minmax\(0,1fr\)\]/);
   assert.match(page, /function EnergyProductMedia/);
   assert.match(page, /function EnergyTopsideTypesSection/);
   assert.match(page, /function EnergyPipeCoatingCapacityTable/);
