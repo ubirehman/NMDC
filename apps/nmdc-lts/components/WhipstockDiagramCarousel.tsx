@@ -53,13 +53,13 @@ export function WhipstockDiagramCarousel({
 
       <div className="mt-[25px] flex flex-col items-center gap-[17px] md:mt-[32px] md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
         {specificationsHref && specificationsLabel ? (
-          <p
+          <Link
             href={specificationsHref}
             className="order-2 cursor-default inline-flex text-white items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
           >
             {specificationsLabel}
             <ArrowUpRight className="cursor-default text-white size-6 md:size-5" />
-          </p>
+          </Link>
         ) : (
           <span className="order-2 hidden md:order-1 md:block" aria-hidden="true" />
         )}

@@ -232,8 +232,8 @@ export const nmdcLtsContent = {
           "Equipment: Fitted with high-quality imported systems from overseas manufacturers",
           "Build Timeframe: Completed in just 6 months, demonstrating efficiency and rapid delivery",
         ],
-        specificationsLabel: "View Specifications",
-        specificationsHref: "#pushy-cat-specifications",
+        specificationsLabel: null,
+        specificationsHref: null,
       },
       {
         title: "Tug Boat - T9",
@@ -255,8 +255,8 @@ export const nmdcLtsContent = {
           "Equipment: Equipped with high-quality imported systems from overseas suppliers for trusted performance",
           "Build Timeframe: Completed in just 9 months, demonstrating efficiency and rapid project execution",
         ],
-        specificationsLabel: "View Specifications",
-        specificationsHref: "#tug-boat-t9-specifications",
+        specificationsLabel: null,
+        specificationsHref: null,
       },
     ],
   },
@@ -283,24 +283,36 @@ export const nmdcLtsContent = {
     ],
     features: [
       {
-        icon: "hydraulic",
+        iconImage: {
+          src: withLtsBasePath("/images/lts/whipstock-icon-hydraulic.png"),
+          alt: "Hydraulic anchor icon",
+        },
         title: "Hydraulic",
         description:
           "Uses applied pressure through drill pipe to activate the anchor mechanism.",
       },
       {
-        icon: "mechanical",
+        iconImage: {
+          src: withLtsBasePath("/images/lts/whipstock-icon-mechanical.png"),
+          alt: "Mechanical anchor icon",
+        },
         title: "Mechanical",
         description:
           "Uses applied weight through drill string to set the anchor.",
       },
       {
-        icon: "permanent",
+        iconImage: {
+          src: withLtsBasePath("/images/lts/whipstock-icon-permanent.png"),
+          alt: "Permanent whipstock icon",
+        },
         title: "Permanent",
         description: "Remains in well for the lifetime of the sidetrack.",
       },
       {
-        icon: "retrievable",
+        iconImage: {
+          src: withLtsBasePath("/images/lts/whipstock-icon-retrievable.png"),
+          alt: "Retrievable whipstock icon",
+        },
         title: "Retrievable",
         description:
           "Can be removed to restore casing drift ID after operations.",

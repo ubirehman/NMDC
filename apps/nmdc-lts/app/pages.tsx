@@ -183,7 +183,6 @@ function LtsCapabilityCard({
           <p className="text-[56px] font-bold leading-[60px] text-white md:text-[56px] md:leading-[64px]">
             {count}
           </p>
-          <span className="mt-[15px] ml-auto block h-[5px] w-[70px] bg-lts-tan md:mt-[18px]" />
         </div>
       </div>
 
@@ -502,59 +501,6 @@ function WhipstockHero() {
 
 type WhipstockFeature = (typeof content.whipstockSystem.features)[number];
 
-function WhipstockFeatureIcon({
-  icon,
-  className,
-}: {
-  icon: WhipstockFeature["icon"];
-  className?: string;
-}) {
-  if (icon === "mechanical") {
-    return (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className={className} aria-hidden="true">
-        <path d="M10 15h44a4 4 0 0 1 0 8H10a4 4 0 0 1 0-8Z" />
-        <path d="M18 23v12M32 23v16M46 23v12" />
-        <circle cx="18" cy="40" r="6" />
-        <circle cx="32" cy="44" r="6" />
-        <circle cx="46" cy="40" r="6" />
-        <path d="M18 46v7M32 50v7M46 46v7" />
-      </svg>
-    );
-  }
-
-  if (icon === "permanent") {
-    return (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className={className} aria-hidden="true">
-        <path d="M14 26c0 12 8 20 18 20s18-8 18-20" />
-        <path d="M16 36c8-8 24-8 32 0" />
-        <path d="M20 54h24" />
-      </svg>
-    );
-  }
-
-  if (icon === "retrievable") {
-    return (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className={className} aria-hidden="true">
-        <rect x="18" y="19" width="28" height="34" rx="4" />
-        <rect x="12" y="11" width="40" height="12" rx="6" />
-        <path d="M32 28v16" />
-        <path d="m24 37 8 8 8-8" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} className={className} aria-hidden="true">
-      <rect x="24" y="7" width="16" height="13" rx="3" />
-      <path d="M27 7a5 5 0 0 1 10 0" />
-      <path d="M23 20h18v16H23z" />
-      <path d="M26 36h12v13H26z" />
-      <circle cx="32" cy="55" r="7" />
-      <circle cx="32" cy="55" r="3" />
-    </svg>
-  );
-}
-
 function WhipstockIntroPanel() {
   return (
     <article className="order-1 rounded-[24px] bg-lts-navy px-[64px] py-[39px] text-[20px] font-light leading-[49px] text-white md:order-2 md:min-h-[680px] md:rounded-[24px] md:px-[35px] md:py-[37px] md:text-[20px] md:leading-[24px]">
@@ -570,11 +516,15 @@ function WhipstockIntroPanel() {
 function WhipstockFeatureCard({ feature }: { feature: WhipstockFeature }) {
   return (
     <article className="flex min-h-[160px] items-center gap-[25px] rounded-[24px] bg-lts-navy px-[32px] py-[30px] text-white md:h-[160px] md:gap-[24px] md:rounded-[24px] md:px-[34px] md:py-0">
-      <WhipstockFeatureIcon
-        icon={feature.icon}
-        className="size-[76px] shrink-0 text-lts-tan md:size-[60px]"
+      <Image
+        src={feature.iconImage.src}
+        alt={feature.iconImage.alt}
+        width={84}
+        height={84}
+        sizes="(min-width: 768px) 68px, 84px"
+        className="size-[84px] shrink-0 object-contain md:size-[68px]"
       />
-      <p className="text-[24px] font-bold leading-[42px] md:text-[20px] md:leading-[24px]">
+      <p className="text-[20px] font-light leading-[30px] md:leading-[24px]">
         <span className="text-lts-tan">{feature.title}:</span>{" "}
         {feature.description}
       </p>
