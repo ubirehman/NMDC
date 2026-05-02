@@ -105,7 +105,7 @@ export const nmdcEnergyContent = {
         {
           value: "20-30",
           unit: "Minutes",
-          label: "Tender planning time (down from 2-3 days)",
+          label: "Tender planning time\n\n(down from 2-3 days)",
           icon: "clock",
         },
         {
@@ -141,7 +141,7 @@ export const nmdcEnergyContent = {
     technology: {
       title: "Technology and Digital Transformation",
       image: {
-        src: withEnergyBasePath("/images/energy/overview-technology-new.png"),
+        src: withEnergyBasePath("/images/energy/safeen_subsea_TD.png"),
         alt: "NMDC Energy offshore module on a barge",
       },
       cards: [
@@ -168,9 +168,30 @@ export const nmdcEnergyContent = {
         title: "Collaborative Agents",
         subtitle: "Across Departments",
         items: [
-          { label: "Proposal & Estimation", icon: "proposal" },
-          { label: "Procurement/Supply Chain", icon: "procurement" },
-          { label: "Engineering", icon: "engineering" },
+          {
+            label: "Proposal & Estimation",
+            icon: "proposal",
+            image: {
+              src: withEnergyBasePath("/images/energy/agent-business-proposal.png"),
+              alt: "Business proposal icon",
+            },
+          },
+          {
+            label: "Procurement/Supply Chain",
+            icon: "procurement",
+            image: {
+              src: withEnergyBasePath("/images/energy/agent-goods.png"),
+              alt: "Goods procurement icon",
+            },
+          },
+          {
+            label: "Engineering",
+            icon: "engineering",
+            image: {
+              src: withEnergyBasePath("/images/energy/agent-worker.png"),
+              alt: "Engineering worker icon",
+            },
+          },
         ],
       },
     },
@@ -189,11 +210,24 @@ export const nmdcEnergyContent = {
     keyHighlights: {
       title: "Key Highlights",
       activeYard: "",
-      aerialImage: {
-        src: withEnergyBasePath("/images/energy/yards-aerial.png"),
-        alt: "Aerial view of NMDC Energy yard facilities",
-      },
-      slideCount: "(1/4)",
+      aerialImages: [
+        {
+          src: withEnergyBasePath("/images/energy/yard-highlight-1.jpg"),
+          alt: "NMDC Energy yard highlight 1",
+        },
+        {
+          src: withEnergyBasePath("/images/energy/yard-highlight-2.jpg"),
+          alt: "NMDC Energy yard highlight 2",
+        },
+        {
+          src: withEnergyBasePath("/images/energy/yard-highlight-3.jpg"),
+          alt: "NMDC Energy yard highlight 3",
+        },
+        {
+          src: withEnergyBasePath("/images/energy/yard-highlight-4.jpg"),
+          alt: "NMDC Energy yard highlight 4",
+        },
+      ],
       yards: [
         {
           name: "Mussafah Yard (UAE)",
@@ -306,14 +340,26 @@ export const nmdcEnergyContent = {
           value: "165,000",
           body: "Metric Tons of steel produced in Yards.",
           icon: "steel",
+          image: {
+            src: withEnergyBasePath("/images/energy/yard-capability-steel.png"),
+            alt: "Steel beam icon",
+          },
         },
         {
           body: "State-of-the-Art Robotic welding and COBOT Welding stations, for welding small to heavy components (up to 3 metric tons)",
           icon: "robot",
+          image: {
+            src: withEnergyBasePath("/images/energy/yard-capability-robot-arm.png"),
+            alt: "Robotic arm icon",
+          },
         },
         {
           body: "Real Time Labor Tracking System – Alerts and Tracking",
           icon: "monitor",
+          image: {
+            src: withEnergyBasePath("/images/energy/yard-capability-monitoring.png"),
+            alt: "Labor monitoring icon",
+          },
         },
         {
           body: "AI-driven HSE site safety analyzer implemented at Heavy Shop facilities with real-time personnel tracking with automated alerts",
@@ -322,10 +368,18 @@ export const nmdcEnergyContent = {
         {
           body: "Industry leading cloud-connected equipment monitoring and AI-driven insights for : utilization, productivity, fuel consumption",
           icon: "cloud",
+          image: {
+            src: withEnergyBasePath("/images/energy/yard-capability-connection.png"),
+            alt: "Cloud connection icon",
+          },
         },
         {
           body: "Proximity Warning Alert System installed onto heavy mobile equipment",
           icon: "alert",
+          image: {
+            src: withEnergyBasePath("/images/energy/yard-capability-alert.png"),
+            alt: "Warning alert icon",
+          },
         },
       ],
     },
@@ -337,11 +391,11 @@ export const nmdcEnergyContent = {
       titleLeading: "Our",
       titleAccent: "Products",
       background: {
-        src: withEnergyBasePath("/images/energy/products-hero.png"),
+        src: withEnergyBasePath("/images/energy/products--hero-.png"),
         alt: "NMDC Energy offshore module at a fabrication yard",
       },
       topSideBackground: {
-        src: withEnergyBasePath("/images/energy/products-topside-hero.png"),
+        src: withEnergyBasePath("/images/energy/products-topside-hero_.png"),
         alt: "NMDC Energy offshore module at a fabrication yard",
       },
       jacketBackground: {
@@ -446,13 +500,31 @@ export const nmdcEnergyContent = {
         typesTitle: "TYPES OF TOPSIDES",
         offshore: {
           title: "OFFSHORE STRUCTURES",
-          items: [
-            { title: "Oil or Gas Production Platform / Wellhead Tower", value: "2000 MT", unit: "(metric tons)" },
-            { title: "Water Injection Platform", value: "1000 MT", unit: "(metric tons)" },
-            { title: "Power Distribution Platform", value: "3500 MT", unit: "(metric tons)" },
-            { title: "Gas Treatment Platform", value: "2500 MT", unit: "(metric tons)" },
-            { title: "Riser Platform / Tie-In Platform", value: "3500 MT", unit: "(metric tons)" },
-            { title: "Accommodation Platform", value: "32000 MT", unit: "(metric tons)" },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-01.png"),
+              alt: "Oil or gas production platform and wellhead tower capacity",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-02.png"),
+              alt: "Water injection platform capacity",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-03.png"),
+              alt: "Power distribution platform capacity",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-04.png"),
+              alt: "Gas treatment platform capacity",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-05.png"),
+              alt: "Riser platform and tie-in platform capacity",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/offshore-structure-06.png"),
+              alt: "Accommodation platform capacity",
+            },
           ],
         },
         onshore: {

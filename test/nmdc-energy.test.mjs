@@ -121,6 +121,9 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
     "apps/nmdc-energy/public/images/energy/overview-video.jpg",
     "apps/nmdc-energy/public/images/energy/overview-technology.jpg",
     "apps/nmdc-energy/public/images/energy/overview-footer-bg.jpg",
+    "apps/nmdc-energy/public/images/energy/agent-business-proposal.png",
+    "apps/nmdc-energy/public/images/energy/agent-goods.png",
+    "apps/nmdc-energy/public/images/energy/agent-worker.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -134,18 +137,27 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(content, /ICV Score 2025/);
   assert.match(content, /85\.16%/);
   assert.match(content, /20-30/);
+  assert.match(content, /Tender planning time\\n\\n\(down from 2-3 days\)/);
   assert.match(content, /42,677/);
   assert.match(content, /USD 1\.3/);
   assert.match(content, /Technology and Digital Transformation/);
   assert.match(content, /HSE AMAN 24\/7/);
   assert.match(content, /Yard Scan AI/);
   assert.match(content, /Collaborative Agents/);
+  assert.match(content, /agent-business-proposal\.png/);
+  assert.match(content, /agent-goods\.png/);
+  assert.match(content, /agent-worker\.png/);
   assert.match(page, /NmdcEnergyOverviewPage/);
   assert.match(page, /EnergyOverviewHero/);
   assert.match(page, /EnergyIcvSection/);
   assert.match(page, /EnergyHighlightsSection/);
+  assert.match(page, /EnergyHighlightLabel/);
+  assert.match(page, /label\.split\("\\n"\)\.filter\(Boolean\)/);
+  assert.match(page, /<EnergyHighlightLabel label=\{item\.label\} \/>/);
   assert.match(page, /EnergyOverviewVideo/);
   assert.match(page, /EnergyTechnologySection/);
+  assert.match(page, /src=\{agent\.image\.src\}/);
+  assert.match(page, /alt=\{agent\.image\.alt\}/);
   assert.match(page, /EnergyFooter/);
   assert.match(page, /md:grid-cols-\[minmax\(0,520px\)_minmax\(0,630px\)\]/);
   assert.match(page, /rounded-\[18px\]/);
@@ -246,10 +258,22 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
   const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
   const route = readFileSync("apps/nmdc-energy/app/yard-highlights/page.tsx", "utf8");
+  const carouselPath = "apps/nmdc-energy/components/EnergyYardImageCarousel.tsx";
+  assert.equal(existsSync(carouselPath), true, `${carouselPath} should exist`);
+  const carousel = existsSync(carouselPath) ? readFileSync(carouselPath, "utf8") : "";
 
   for (const asset of [
     "apps/nmdc-energy/public/images/energy/yards-hero.jpg",
     "apps/nmdc-energy/public/images/energy/yards-aerial.jpg",
+    "apps/nmdc-energy/public/images/energy/yard-highlight-1.jpg",
+    "apps/nmdc-energy/public/images/energy/yard-highlight-2.jpg",
+    "apps/nmdc-energy/public/images/energy/yard-highlight-3.jpg",
+    "apps/nmdc-energy/public/images/energy/yard-highlight-4.jpg",
+    "apps/nmdc-energy/public/images/energy/yard-capability-alert.png",
+    "apps/nmdc-energy/public/images/energy/yard-capability-connection.png",
+    "apps/nmdc-energy/public/images/energy/yard-capability-monitoring.png",
+    "apps/nmdc-energy/public/images/energy/yard-capability-robot-arm.png",
+    "apps/nmdc-energy/public/images/energy/yard-capability-steel.png",
     "apps/nmdc-energy/public/images/energy/yards-video.jpg",
     "apps/nmdc-energy/public/images/energy/guinness-world-record.png",
   ]) {
@@ -260,6 +284,8 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(content, /yardHighlights:\s*\{/);
   assert.match(content, /Energy Yards/);
   assert.match(content, /Key Highlights/);
+  assert.match(content, /aerialImages:\s*\[/);
+  assert.match(content, /yard-highlight-1\.jpg[\s\S]*yard-highlight-2\.jpg[\s\S]*yard-highlight-3\.jpg[\s\S]*yard-highlight-4\.jpg/);
   assert.match(content, /ICAD-4 Yard/);
   assert.match(content, /Mussafah Yard \(UAE\)/);
   assert.match(content, /Area : 1,075,000 sqm/);
@@ -281,24 +307,36 @@ test("NMDC Energy yard highlights follows the supplied desktop and mobile PDF de
   assert.match(content, /165,000/);
   assert.match(content, /Robotic welding and COBOT Welding/);
   assert.match(content, /Proximity Warning Alert System/);
+  assert.match(content, /yard-capability-steel\.png/);
+  assert.match(content, /yard-capability-robot-arm\.png/);
+  assert.match(content, /yard-capability-monitoring\.png/);
+  assert.match(content, /yard-capability-connection\.png/);
+  assert.match(content, /yard-capability-alert\.png/);
   assert.match(page, /function NmdcEnergyYardHighlightsPage/);
   assert.match(page, /EnergyYardHighlightsHero/);
   assert.match(page, /EnergyYardKeyHighlights/);
+  assert.match(page, /EnergyYardImageCarousel/);
+  assert.match(page, /images=\{keyHighlights\.aerialImages\}/);
   assert.match(page, /function EnergyYardFactIcon/);
   assert.match(page, /function EnergyYardRecordLogo/);
   assert.match(page, /keyHighlights\.record\.logo/);
-  assert.match(page, /function EnergyYardArrowControls/);
-  assert.match(page, /mt-4 flex items-center justify-center gap-5 md:hidden/);
-  assert.match(page, /relative mt-4 hidden h-10 items-center justify-center md:flex/);
-  assert.match(page, /absolute right-0 text-\[13px\] font-bold leading-5 text-energy-green/);
+  assert.match(carousel, /"use client"/);
+  assert.match(carousel, /useState/);
+  assert.match(carousel, /showPreviousImage/);
+  assert.match(carousel, /showNextImage/);
+  assert.match(carousel, /currentIndex \+ 1/);
   assert.match(page, /EnergyYardAchievements/);
   assert.match(page, /data-yard-achievements/);
   assert.match(page, /data-yard-achievement-icon-card/);
+  assert.match(page, /ml-auto block h-px w-2\/3 bg-\[#b6c5cf\]/);
   assert.match(page, /data-yard-achievement-summary-card/);
   assert.match(page, /data-yard-achievement-copy/);
   assert.match(page, /md:grid-cols-\[236px_1px_193px_1px_minmax\(0,1fr\)\]/);
   assert.match(page, /achievements\.summaryTitle/);
   assert.match(page, /EnergyYardCapabilities/);
+  assert.match(page, /function EnergyYardCapabilityIcon/);
+  assert.match(page, /src=\{image\.src\}/);
+  assert.match(page, /alt=\{image\.alt\}/);
   assert.match(page, /getEnergyNavLinks\("\/yard-highlights"\)/);
   assert.match(page, /md:h-\[486px\]/);
   assert.match(page, /md:grid-cols-\[minmax\(0,760px\)_436px\]/);
@@ -377,6 +415,12 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
     "apps/nmdc-energy/public/images/energy/icon-pipe-coating-pipe.png",
     "apps/nmdc-energy/public/images/energy/icon-pipe-coating-plant.png",
     "apps/nmdc-energy/public/images/energy/icon-pipe-coating-loadout.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-01.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-02.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-03.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-04.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-05.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structure-06.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -408,6 +452,7 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(content, /icon-pipe-coating-pipe\.png/);
   assert.match(content, /icon-pipe-coating-plant\.png/);
   assert.match(content, /icon-pipe-coating-loadout\.png/);
+  assert.match(content, /offshore-structure-01\.png[\s\S]*offshore-structure-02\.png[\s\S]*offshore-structure-03\.png[\s\S]*offshore-structure-04\.png[\s\S]*offshore-structure-05\.png[\s\S]*offshore-structure-06\.png/);
   assert.match(page, /function EnergyProductHero/);
   assert.match(page, /function getEnergyProductSlugFromPath/);
   assert.match(page, /productPath\.split\("\/"\)/);
@@ -427,6 +472,10 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(page, /md:grid-cols-\[190px_minmax\(0,1fr\)\]/);
   assert.match(page, /function EnergyProductMedia/);
   assert.match(page, /function EnergyTopsideTypesSection/);
+  assert.match(page, /detail\.offshore\.images\.map/);
+  assert.match(page, /offshoreImage\.src/);
+  assert.match(page, /offshoreImage\.alt/);
+  assert.doesNotMatch(page, /detail\.offshore\.items\.map/);
   assert.match(page, /function EnergyPipeCoatingCapacityTable/);
   assert.match(page, /detail\.table\.rows\.map\(\(row, rowIndex\) =>/);
   assert.match(page, /row\.map\(\(cell, cellIndex\) =>/);

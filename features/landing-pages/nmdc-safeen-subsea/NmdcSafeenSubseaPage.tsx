@@ -17,11 +17,26 @@ import {
 
 type SafeenProduct = (typeof safeenProducts)[number];
 
+function getPdfViewerHref(filePath: string, title: string) {
+  const params = new URLSearchParams({
+    file: filePath,
+    title,
+    returnTo: "/safeen-subsea",
+  });
+
+  return `/pdf-viewer?${params.toString()}`;
+}
+
 function getProductImagePosition(title: string) {
   return title === "Safeen NAV" ? "object-[50%_50%]" : "object-center";
 }
 
 function SafeenProductCard({ product }: { product: SafeenProduct }) {
+  const specificationHref =
+    "specificationFile" in product
+      ? getPdfViewerHref(product.specificationFile, product.title)
+      : product.specificationHref;
+
   return (
     <article>
       <figure className="relative overflow-hidden rounded-[18px] bg-primary-navy-blue md:rounded-[20px]">
@@ -43,8 +58,8 @@ function SafeenProductCard({ product }: { product: SafeenProduct }) {
           {product.copy}
         </p>
         <Link
-          href={product.specificationHref}
-          className="text-primary-sky-blue inline-flex items-center gap-2 justify-self-center whitespace-nowrap text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue md:justify-self-end md:text-[18px]"
+          href={specificationHref}
+          className="inline-flex items-center gap-2 justify-self-center whitespace-nowrap text-[18px] font-bold leading-6 text-primary-sky-blue transition-colors hover:text-primary-navy-blue md:justify-self-end md:text-[18px]"
         >
           {product.specificationLabel}
           <ArrowUpRight className="size-5" />

@@ -76,11 +76,11 @@ export function NmdcLtsHomePage() {
 
   return (
     <main className="min-h-screen bg-lts-navy">
-      <section className="relative isolate h-[776px] md:h-[786px] overflow-hidden bg-lts-navy px-5 text-white md:px-10">
+      <section className="relative isolate min-h-[max(786px,100svh)] overflow-hidden bg-lts-navy px-5 text-white md:px-10">
         <LtsBackground />
         <Header links={getLtsNavLinks("/")} />
 
-        <div className="relative z-10 mx-auto h-full w-full max-w-[1240px]">
+        <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
           <div className="pt-[136px] md:absolute md:left-0 md:top-[244px] md:w-[760px] md:pt-0">
             <HomeHeadline />
 

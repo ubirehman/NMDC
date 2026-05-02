@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./icons";
 
@@ -92,7 +91,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
             cardId === "energy" ? "object-cover" : "object-contain";
 
           return (
-            <Link
+            <a
               key={card.title}
               href={card.href}
               aria-label={card.title}
@@ -131,7 +130,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
                   </span>
                 )}
               </div>
-            </Link>
+            </a>
           );
         })}
       </div>

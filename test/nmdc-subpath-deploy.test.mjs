@@ -123,6 +123,6 @@ test("subpath apps prefix raw public SVG and document assets", () => {
 
   assert.match(
     readFileSync("apps/nmdc-dredging-marine/content/content.ts", "utf8"),
-    /withDredgingMarineBasePath\("\/documents\/marine-vessels\/al-yassat\.pdf"\)/,
+    /withDredgingMarineBasePath\("\/pdfs\/al-yassat\.pdf"\)/,
   );
 });

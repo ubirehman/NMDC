@@ -57,6 +57,7 @@ export const safeenProducts = [
     alt: "SAFEEN Green unmanned survey vessel",
     specificationLabel: "View Specifications",
     specificationHref: "#",
+    specificationFile: "/pdfs/safeen-green-specs.pdf",
     copy: "SAFEEN Green is a state-of-the-art remotely operated unmanned vessel (USV) launched by SAFEEN Subsea, part of AD Ports Group. It can operate up to 200 nautical miles offshore, collecting high-quality geophysical and hydrographic data with minimal environmental impact. Operating on 100% renewable electric power or biofuel, SAFEEN Green has only 10% of the emissions of a conventional vessel, significantly reducing its carbon footprint. The vessel is controlled from an onshore Remote Operation Centre (ROC) and features advanced navigation and safety technologies, enhancing safety and efficiency while eliminating risks to personnel.",
   },
   {

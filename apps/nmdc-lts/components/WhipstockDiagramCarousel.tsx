@@ -53,13 +53,13 @@ export function WhipstockDiagramCarousel({
 
       <div className="mt-[25px] flex flex-col items-center gap-[17px] md:mt-[32px] md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
         {specificationsHref && specificationsLabel ? (
-          <Link
+          <p
             href={specificationsHref}
-            className="order-2 inline-flex items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors hover:text-lts-tan md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
+            className="order-2 cursor-default inline-flex text-white items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
           >
             {specificationsLabel}
-            <ArrowUpRight className="size-6 md:size-5" />
-          </Link>
+            <ArrowUpRight className="cursor-default text-white size-6 md:size-5" />
+          </p>
         ) : (
           <span className="order-2 hidden md:order-1 md:block" aria-hidden="true" />
         )}
@@ -69,7 +69,7 @@ export function WhipstockDiagramCarousel({
             type="button"
             aria-label="Previous whipstock specification"
             onClick={showPreviousImage}
-            className="flex size-[52px] items-center justify-center rounded-full border border-[#c7d4e4] text-[#8aa0b8] transition-colors hover:border-lts-tan hover:text-lts-tan focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lts-tan md:size-[64px]"
+            className="flex size-[52px] items-center justify-center rounded-full border border-[#c7d4e4] text-[#8aa0b8] transition-colors hover:border-lts-tan  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lts-tan md:size-[64px]"
           >
             <ArrowLeft className="size-6 md:size-7" />
           </button>

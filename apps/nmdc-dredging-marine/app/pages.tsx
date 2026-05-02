@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { HydraulicFacilityImageCarousel } from "../components/HydraulicFacilityImageCarousel";
 import { CaissonImageCarousel } from "../components/CaissonImageCarousel";
+import { VesselDetailCarousel } from "../components/VesselDetailCarousel";
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,6 +21,43 @@ import {
   getDmNavLinks,
   nmdcDredgingMarineContent as content,
 } from "../content/content";
+
+const nmdcGroupAppUrl =
+  process.env.NEXT_PUBLIC_NMDC_GROUP_APP_URL ?? "http://localhost:3120";
+const dredgingMarineAppUrl =
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121";
+
+function getAppBaseUrl(url: string) {
+  return url.replace(/\/$/, "");
+}
+
+function getPdfViewerHref(filePath: string, title: string, returnTo: string) {
+  const params = new URLSearchParams({
+    file: filePath,
+    title,
+    returnTo,
+  });
+
+  return `${getAppBaseUrl(nmdcGroupAppUrl)}/pdf-viewer?${params.toString()}`;
+}
+
+function getDredgingMarinePdfSource(filePath: string) {
+  if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
+    return filePath;
+  }
+
+  const baseUrl = getAppBaseUrl(dredgingMarineAppUrl);
+
+  if (baseUrl.startsWith("http")) {
+    return `${baseUrl}${filePath}`;
+  }
+
+  return filePath;
+}
+
+function getDredgingMarineReturnPath(path: string) {
+  return `${getAppBaseUrl(dredgingMarineAppUrl)}${path}`;
+}
 
 type HeroProps = {
   activeHref: string;
@@ -238,8 +276,11 @@ function MarineVesselCard({ vessel }: VesselCardProps) {
           </dl>
         </div>
         <a
-          href={`/pdfs/${vessel.slug}.pdf`}
-          download
+          href={getPdfViewerHref(
+            getDredgingMarinePdfSource(vessel.detail.specificationFile),
+            `${vessel.name} Specification`,
+            getDredgingMarineReturnPath("/marine-vessels"),
+          )}
           className="relative z-10 flex items-center justify-center gap-3 rounded-t-[14px] bg-[#0a1e2e]/80 py-4 transition-colors hover:bg-[#0a1e2e]"
         >
           <EyeIcon className="size-[22px] shrink-0 text-dm-cyan" />
@@ -807,7 +848,10 @@ export function DredgingMarineVesselDetailPage({ slug }: { slug: string }) {
     "heroKicker" in vesselDetail
       ? vesselDetail.heroKicker
       : marineVessels.detail.kicker;
-  const detailImage = "image" in vesselDetail ? vesselDetail.image : vessel.image;
+  const detailImages =
+    "images" in vesselDetail && vesselDetail.images.length > 0
+      ? vesselDetail.images
+      : [{ src: "image" in vesselDetail ? vesselDetail.image : vessel.image, alt: vessel.name }];
   const detailPanels =
     "panels" in vesselDetail
       ? vesselDetail.panels
@@ -917,8 +961,11 @@ export function DredgingMarineVesselDetailPage({ slug }: { slug: string }) {
 
             <div className="mt-[38px] flex items-center justify-end gap-8 border-t border-[#c8d4df] pt-0">
               <a
-                href={vesselDetail.specificationFile}
-                download
+                href={getPdfViewerHref(
+                  getDredgingMarinePdfSource(vesselDetail.specificationFile),
+                  `${vessel.name} Specification`,
+                  getDredgingMarineReturnPath(`/marine-vessels/${vessel.slug}`),
+                )}
                 className="inline-flex items-center gap-3 text-[18px] font-bold leading-7 text-dm-cyan transition-colors hover:text-dm-blue"
               >
                 <span className="text-[22px] leading-none" aria-hidden="true">
@@ -929,17 +976,7 @@ export function DredgingMarineVesselDetailPage({ slug }: { slug: string }) {
             </div>
           </div>
 
-          <Image
-            src={detailImage}
-            alt={vessel.name}
-            width={1240}
-            height={560}
-            className="mt-[19px] h-[360px] w-full rounded-[18px] object-cover md:h-[560px]"
-          />
-
-          <div className="mt-[50px] flex items-center justify-center">
-            <CarouselControls />
-          </div>
+          <VesselDetailCarousel images={detailImages} vesselName={vessel.name} />
         </div>
       </section>
 

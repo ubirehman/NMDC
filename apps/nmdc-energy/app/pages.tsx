@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { HTMLAttributes, ReactNode } from "react";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
 import { EnergyOverviewVideoPlayer } from "../components/EnergyOverviewVideoPlayer";
+import { EnergyYardImageCarousel } from "../components/EnergyYardImageCarousel";
 import { Header } from "../components/Header";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
 import { getEnergyNavLinks, nmdcEnergyContent as content } from "../content/content";
@@ -298,7 +299,7 @@ function EnergyAtAGlanceDetailHero() {
             <h1 className="mt-4 text-[40px] font-bold leading-[42px] tracking-[0] md:mt-3 md:text-[58px] md:leading-[1.04]">
               {detail.title}
             </h1>
-            <div className="mt-7 grid gap-10 text-[16px] font-normal leading-[25px] text-white md:mt-7 md:gap-7 md:text-[18px] md:leading-[25px]">
+            <div className="mt-7 break-words grid gap-10 text-[16px] font-normal leading-[25px] text-white md:mt-7 md:gap-7 md:text-[18px] md:leading-[25px]">
               {detail.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -410,6 +411,29 @@ function EnergyYardIcon({
   );
 }
 
+function EnergyYardCapabilityIcon({
+  icon,
+  image,
+}: {
+  icon: string;
+  image?: { src: string; alt: string };
+}) {
+  if (image) {
+    return (
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={84}
+        height={84}
+        sizes="(min-width: 768px) 84px, 56px"
+        className="size-[56px] object-contain md:size-[84px]"
+      />
+    );
+  }
+
+  return <EnergyYardIcon icon={icon} className="size-[56px] md:size-[74px]" />;
+}
+
 function EnergyYardFactIcon({
   icon,
   className = "",
@@ -470,50 +494,12 @@ function EnergyYardRecordLogo({
 
 function EnergyYardSectionTitle({ title }: { title: string }) {
   return (
-    <div className="flex items-center gap-7">
+    <div className="grid grid-cols-2 items-center gap-7">
       <h2 className="shrink-0 text-[20px] font-bold uppercase leading-6 text-energy-green md:text-[24px] md:leading-8">
         {title}
       </h2>
-      <span className="h-px flex-1 bg-[#b6c5cf]" aria-hidden="true" />
+      <span className="ml-auto block h-px w-2/3 bg-[#b6c5cf]" aria-hidden="true" />
     </div>
-  );
-}
-
-function EnergyYardArrowControls({
-  previousLabel,
-  nextLabel,
-  slideCount,
-}: {
-  previousLabel: string;
-  nextLabel: string;
-  slideCount: string;
-}) {
-  const previousClassName =
-    "grid size-9 place-items-center rounded-full border border-[#d5e3ea] bg-white text-[#9aacb8] shadow-[0_8px_18px_rgba(6,43,68,0.08)] transition-colors hover:border-energy-green hover:text-energy-green md:size-10";
-  const nextClassName =
-    "grid size-9 place-items-center rounded-full border border-[#d5e3ea] bg-white text-energy-green shadow-[0_8px_18px_rgba(6,43,68,0.08)] transition-colors hover:border-energy-green hover:bg-energy-green hover:text-white md:size-10";
-
-  const buttons = (
-    <>
-      <button type="button" aria-label={previousLabel} className={previousClassName}>
-        <ArrowLeft className="size-5" />
-      </button>
-      <button type="button" aria-label={nextLabel} className={nextClassName}>
-        <ArrowRight className="size-5" />
-      </button>
-    </>
-  );
-
-  return (
-    <>
-      <div className="mt-4 flex items-center justify-center gap-5 md:hidden">{buttons}</div>
-      <div className="relative mt-4 hidden h-10 items-center justify-center md:flex">
-        <div className="flex items-center justify-center gap-5">{buttons}</div>
-        <span className="absolute right-0 text-[13px] font-bold leading-5 text-energy-green">
-          {slideCount}
-        </span>
-      </div>
-    </>
   );
 }
 
@@ -556,21 +542,10 @@ function EnergyYardKeyHighlights() {
 
         <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,760px)_436px] md:gap-8">
           <div className="min-w-0 md:col-start-1 md:row-start-1">
-            <div className="relative h-[212px] overflow-hidden rounded-[12px] md:h-[576px] md:rounded-[16px]">
-              <Image
-                src={keyHighlights.aerialImage.src}
-                alt={keyHighlights.aerialImage.alt}
-                fill
-                loading="eager"
-                sizes="(min-width: 768px) 760px, 100vw"
-                className="object-cover object-[52%_48%]"
-              />
-            </div>
-
-            <EnergyYardArrowControls
+            <EnergyYardImageCarousel
+              images={keyHighlights.aerialImages}
               previousLabel="Previous yard"
               nextLabel="Next yard"
-              slideCount={keyHighlights.slideCount}
             />
           </div>
 
@@ -668,18 +643,18 @@ function EnergyYardAchievements() {
         <div className="mx-auto grid w-full max-w-[1240px] gap-7 md:min-h-[245px] md:grid-cols-[236px_1px_193px_1px_minmax(0,1fr)] md:items-center md:gap-8">
           <div
             data-yard-achievement-icon-card
-            className="mx-auto grid size-[150px] place-items-center rounded-[14px] bg-[#143a58] text-energy-green md:size-[192px]"
+            className="mx-auto md:w-[193px] flex md:h-[270px] size-[150px] place-items-center rounded-[14px] bg-[#143a58] text-energy-green "
           >
-            <EnergyYardIcon icon="achievement" className="size-[100px] md:size-[132px]" />
+            <EnergyYardIcon icon="achievement" className="mx-auto size-[100px] md:size-[132px]" />
           </div>
 
           <span className="hidden h-[205px] w-px bg-white/12 md:block" aria-hidden="true" />
 
           <div
             data-yard-achievement-summary-card
-            className="mx-auto grid w-full max-w-[220px] rounded-[14px] bg-[#143a58] px-5 py-6 text-center md:h-[205px] md:max-w-none md:content-center"
+            className="mx-auto grid w-full max-w-[270px] rounded-[14px] bg-[#143a58] px-5 py-6 text-center md:h-full md:max-w-none md:content-center"
           >
-            <h3 className="text-[14px] font-bold leading-5 text-white md:text-[15px]">
+            <h3 className="text-[14px] font-bold leading-5 text-white">
               {achievements.summaryTitle}
             </h3>
             <span className="mx-auto my-5 h-px w-full bg-energy-green" aria-hidden="true" />
@@ -741,7 +716,10 @@ function EnergyYardCapabilities() {
               className="grid min-h-[122px] grid-cols-[86px_minmax(0,1fr)] items-center rounded-[8px] bg-[#113a58] px-5 py-5 md:min-h-[150px] md:grid-cols-[184px_minmax(0,1fr)] md:px-8"
             >
               <div className="grid h-full place-items-center border-r border-white/22 pr-5 text-energy-green md:pr-9">
-                <EnergyYardIcon icon={item.icon} className="size-[56px] md:size-[74px]" />
+                <EnergyYardCapabilityIcon
+                  icon={item.icon}
+                  image={"image" in item ? item.image : undefined}
+                />
               </div>
               <div className="pl-5 md:pl-9">
                 {"value" in item && item.value ? (
@@ -904,7 +882,7 @@ function EnergyProductBarChart({
       <p className="max-w-[190px] text-[14px] font-bold leading-5 text-energy-green md:text-[15px]">
         {chart.title}
       </p>
-      <div className="mt-5 grid h-[116px] grid-cols-3 items-end gap-7 border-b border-energy-green/80 px-4 md:mt-0 md:h-[120px] md:px-8">
+      <div className="mt-5 grid h-[116px] grid-cols-3 items-end gap-7 px-4 md:mt-0 md:h-[120px] md:px-8">
         {chart.values.map((item) => (
           <div key={item.year} className="grid justify-items-center gap-3">
             <span className="text-[32px] font-bold leading-none text-white md:text-[36px]">
@@ -923,6 +901,7 @@ function EnergyProductBarChart({
           <span key={item.year}>{item.year}</span>
         ))}
       </div>
+      <div className="border-t flex-1 border-energy-green/80" />
     </EnergyDetailCard>
   );
 }
@@ -1153,35 +1132,22 @@ function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) 
 
   return (
     <section className="mt-10 md:mt-[72px]">
-      <div className="flex items-center gap-7">
-        <h2 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[24px]">
-          {detail.typesTitle}
-        </h2>
-        <span className="hidden h-px flex-1 bg-[#a8b4bd] md:block" aria-hidden="true" />
-      </div>
-
-      <div className="mt-8 grid gap-8">
-        <article className="rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8">
+      <div className="grid gap-8">
+        <article className="rounded-[14px] bg-[#062b43] p-5 text-white md:rounded-[16px] md:p-8">
           <h3 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[26px]">
             {detail.offshore.title}
           </h3>
           <div className="mt-7 grid gap-4 md:grid-cols-3">
-            {detail.offshore.items.map((item) => (
-              <div
-                key={item.title}
-                className="grid min-h-[132px] grid-cols-[84px_minmax(0,1fr)] items-center rounded-[8px] bg-[#113a58] p-5"
-              >
-                <div className="grid h-full place-items-center border-r border-white/24 pr-4 text-energy-green">
-                  <EnergyYardIcon icon="steel" className="size-11" />
-                </div>
-                <div className="pl-5">
-                  <p className="text-[12px] font-bold leading-4 text-white">{item.title}</p>
-                  <p className="mt-2 text-[26px] font-bold leading-8 text-energy-green">
-                    {item.value}
-                  </p>
-                  <p className="text-[12px] font-bold leading-4 text-white">{item.unit}</p>
-                </div>
-              </div>
+            {detail.offshore.images.map((offshoreImage) => (
+              <Image
+                key={offshoreImage.src}
+                src={offshoreImage.src}
+                alt={offshoreImage.alt}
+                width={772}
+                height={420}
+                sizes="(min-width: 768px) 386px, calc(100vw - 40px)"
+                className="h-auto w-full rounded-[8px]"
+              />
             ))}
           </div>
         </article>
@@ -1439,15 +1405,27 @@ function EnergyHighlightsSection() {
                     {item.unit}
                   </p>
                 ) : null}
-                <p className="mt-2 text-[16px] font-normal leading-[22px] md:mt-6 md:text-[16px] md:leading-[23px]">
-                  {item.label}
-                </p>
+                <EnergyHighlightLabel label={item.label} />
               </div>
             </article>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function EnergyHighlightLabel({ label }: { label: string }) {
+  const lines = label.split("\n").filter(Boolean);
+
+  return (
+    <p className="mt-2 text-[16px] font-normal leading-[22px] md:mt-6 md:text-[16px] md:leading-[23px]">
+      {lines.map((line) => (
+        <span key={line} className="block">
+          {line}
+        </span>
+      ))}
+    </p>
   );
 }
 
@@ -1494,14 +1472,13 @@ function EnergyTechnologySection() {
         <EnergySectionHeading title={technology.title} />
 
         <div className="mt-9 grid gap-6 md:grid-cols-[390px_minmax(0,1fr)] md:gap-6">
-          <div className="grid gap-4 md:content-start">
+          <div className="grid gap-10 md:content-start">
             {technology.cards.map((card) => (
               <article
                 key={card.title}
-                className="grid min-h-[143px] grid-cols-[116px_minmax(0,1fr)] items-center gap-7 rounded-[16px] bg-[#052b44] p-3 shadow-[0_18px_34px_rgba(0,0,0,0.22)] md:min-h-[122px] md:grid-cols-[90px_minmax(0,1fr)] md:gap-5 md:rounded-[12px]"
+                className="grid min-h-[143px] grid-cols-[116px_minmax(0,1fr)] items-center gap-7 rounded-[16px] bg-[#052b44] p-3 shadow-[0_18px_34px_rgba(0,0,0,0.22)] md:min-h-[122px] md:grid-cols-[90px_minmax(0,1fr)] md:gap-3 md:rounded-[12px]"
               >
                 <div className="grid size-[116px] place-items-center rounded-[8px] bg-white/14 text-energy-green md:size-[90px]">
-                  {/* <EnergyLineIcon icon={card.icon} className="size-[72px] md:size-[58px]" /> */}
                   <Image
                     src={card.image.src}
                     alt={card.image.alt}
@@ -1531,11 +1508,18 @@ function EnergyTechnologySection() {
               <span className="mt-6 block h-px bg-energy-green" aria-hidden="true" />
               <div className="mt-6 grid gap-7 md:grid-cols-2 md:gap-x-8 md:gap-y-7">
                 {technology.agents.items.map((agent) => (
-                  <div key={agent.label} className="flex items-center gap-4">
-                    <span className="grid size-[52px] shrink-0 place-items-center rounded-full bg-white/12 text-energy-green">
-                      <EnergyLineIcon icon={agent.icon} className="size-8" />
+                  <div key={agent.label} className="flex text-[12px] items-center gap-4">
+                    <span className="grid shrink-0 place-items-center w-[48px] h-[48px] rounded-full bg-white/12 text-energy-green">
+                      <Image
+                        src={agent.image.src}
+                        alt={agent.image.alt}
+                        width={32}
+                        height={32}
+                        sizes="32px"
+                        className="size-8 object-contain"
+                      />
                     </span>
-                    <span className="min-w-0 text-[22px] font-bold leading-7 md:text-[16px] md:leading-6">
+                    <span className="min-w-0 text-[18px] font-bold leading-7 md:text-[16px] md:leading-6">
                       <AgentLabel label={agent.label} />
                     </span>
                   </div>

@@ -9,6 +9,16 @@ import { type NmdcGroupProductDetail } from "./productDetailsContent";
 type ProductDetailSection = NmdcGroupProductDetail["sections"][number];
 type ProductDetailMedia = NmdcGroupProductDetail["media"][number];
 
+function getPdfViewerHref(filePath: string, title: string, returnTo: string) {
+  const params = new URLSearchParams({
+    file: filePath,
+    title,
+    returnTo,
+  });
+
+  return `/pdf-viewer?${params.toString()}`;
+}
+
 export function NmdcGroupProductDetailPage({
   detail,
 }: {
@@ -348,8 +358,11 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
           </dl>
         </div>
         <a
-          href={`/pdfs/${pdfSlug}.pdf`}
-          download
+          href={getPdfViewerHref(
+            `/pdfs/${pdfSlug}.pdf`,
+            `${vessel.name} Specification`,
+            "/products/marine-vessels",
+          )}
           className="flex items-center justify-center gap-3 rounded-t-xl bg-[#0a1e2e]/80 py-4 transition-colors hover:bg-[#0a1e2e]"
         >
           <EyeIcon className="size-5 shrink-0 text-primary-sky-blue" />

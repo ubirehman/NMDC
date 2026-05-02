@@ -444,37 +444,47 @@ test("D&M marine vessel specification pages use the extracted PDF content", () =
   for (const pdf of [
     "al-sadr.pdf",
     "al-yassat.pdf",
+    "al-mirfa.pdf",
     "jananah.pdf",
     "sarb.pdf",
     "ghasha.pdf",
   ]) {
     assert.equal(
-      existsSync(`apps/nmdc-dredging-marine/public/documents/marine-vessels/${pdf}`),
+      existsSync(`apps/nmdc-dredging-marine/public/pdfs/${pdf}`),
       true,
-      `${pdf} should be available for download`,
+      `${pdf} should be available for PDF viewing`,
     );
+    assert.equal(existsSync(`public/pdfs/${pdf}`), true, `${pdf} should be available to the central PDF viewer`);
   }
 
-  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/al-sadr\.pdf"/);
+  assert.match(content, /specificationFile: withDredgingMarineBasePath\("\/pdfs\/al-sadr\.pdf"\)/);
   assert.match(content, /Power Submersible Dredge Pump/);
   assert.match(content, /BV Registration Number/);
-  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/al-yassat\.pdf"/);
+  assert.match(content, /specificationFile: withDredgingMarineBasePath\("\/pdfs\/al-yassat\.pdf"\)/);
   assert.match(content, /Navigation Area/);
   assert.match(content, /On Board Crew Accomodation/);
-  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/jananah\.pdf"/);
+  assert.match(content, /specificationFile: withDredgingMarineBasePath\("\/pdfs\/jananah\.pdf"\)/);
   assert.match(content, /04882 R/);
-  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/sarb\.pdf"/);
+  assert.match(content, /specificationFile: withDredgingMarineBasePath\("\/pdfs\/sarb\.pdf"\)/);
   assert.match(content, /Backhoe Dredger/);
   assert.match(content, /Fuel & Water Capacity/);
   assert.match(content, /Bucket Capacity/);
-  assert.match(content, /specificationFile: "\/documents\/marine-vessels\/ghasha\.pdf"/);
+  assert.match(content, /specificationFile: withDredgingMarineBasePath\("\/pdfs\/ghasha\.pdf"\)/);
   assert.match(content, /Trailing Suction Hopper Dredger/);
   assert.match(content, /Total Installed Power/);
   assert.match(content, /9674 kW/);
   assert.match(content, /leftPanels/);
   assert.match(content, /panels/);
+  assert.match(page, /function getPdfViewerHref/);
+  assert.match(page, /NEXT_PUBLIC_NMDC_GROUP_APP_URL/);
+  assert.match(page, /NEXT_PUBLIC_DREDGING_MARINE_APP_URL/);
+  assert.match(page, /baseUrl\.startsWith\("http"\)/);
+  assert.match(page, /getDredgingMarinePdfSource\(vessel\.detail\.specificationFile\)/);
+  assert.match(page, /getDredgingMarineReturnPath\("\/marine-vessels"\)/);
+  assert.match(page, /getDredgingMarineReturnPath\(`\/marine-vessels\/\$\{vessel\.slug\}`\)/);
   assert.match(page, /detailLeftPanels/);
   assert.match(page, /detailPanels/);
+  assert.doesNotMatch(page, /\sdownload(?:=|\s|>)/);
 });
 
 test("Docker runs the NMDC Group and D&M apps together", () => {

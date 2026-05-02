@@ -218,6 +218,9 @@ test("Marine Vessels product detail follows the supplied desktop vessel card gri
   assert.match(detailPage, /bg-\[#22475b\]\/92/);
   assert.match(detailPage, /detail\.vesselCards\.map/);
   assert.match(detailPage, /vessel\.specs\.map/);
+  assert.match(detailPage, /function getPdfViewerHref/);
+  assert.match(detailPage, /getPdfViewerHref\(\s*`\/pdfs\/\$\{pdfSlug\}\.pdf`/);
+  assert.doesNotMatch(detailPage, /\sdownload(?:=|\s|>)/);
   assert.match(detailPage, /ProductQrImage/);
   assert.match(detailPage, /energyProductFooterLinks/);
   assert.match(detailPage, /logo-energy\.webp/);
