@@ -16,8 +16,8 @@ redirecting to `/dredging/` because Next.js canonicalizes `/dredging/` back to
 `/dredging`.
 
 ```bash
-sudo cp deploy/nginx/nmdcgroups.conf /etc/nginx/sites-available/nmdcgroups.com
-sudo ln -sf /etc/nginx/sites-available/nmdcgroups.com /etc/nginx/sites-enabled/nmdcgroups.com
+sudo cp deploy/nginx/nmdcgroups.conf /etc/nginx/sites-available/exhibitions.nmdc-group.com
+sudo ln -sf /etc/nginx/sites-available/exhibitions.nmdc-group.com /etc/nginx/sites-enabled/exhibitions.nmdc-group.com
 sudo nginx -t
 sudo systemctl reload nginx
 ```
@@ -31,9 +31,9 @@ docker compose --profile prod up -d --build
 After deployment, confirm D&M assets are prefixed:
 
 ```bash
-curl -L http://nmdcgroups.com/dredging/ | grep '/dredging/_next/static'
-curl -I http://nmdcgroups.com/dredging
-curl -I http://nmdcgroups.com/dredging/
+curl -L https://exhibitions.nmdc-group.com/dredging/ | grep '/dredging/_next/static'
+curl -I https://exhibitions.nmdc-group.com/dredging
+curl -I https://exhibitions.nmdc-group.com/dredging/
 ```
 
 

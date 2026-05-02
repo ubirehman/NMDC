@@ -68,6 +68,30 @@ test("Nginx subpath proxy config preserves prefixes for Next.js basePath apps wi
   assert.equal(existsSync(nginxPath), true, `${nginxPath} should exist`);
 
   const nginx = readFileSync(nginxPath, "utf8");
+  const deployReadme = readFileSync("deploy/README.md", "utf8");
+  const productionDomain = "exhibitions.nmdc-group.com";
+  const retiredDomainPattern = new RegExp("(?:www\\.)?nmdc" + "groups\\.com");
+
+  assert.match(
+    nginx,
+    new RegExp(`server_name\\s+${productionDomain.replace(/[.-]/g, "\\$&")};`),
+    "nginx should serve the current exhibitions NMDC Group domain",
+  );
+  assert.doesNotMatch(
+    nginx,
+    retiredDomainPattern,
+    "nginx should not keep the retired group domain",
+  );
+  assert.match(
+    deployReadme,
+    new RegExp(productionDomain.replace(/[.-]/g, "\\$&")),
+    "deployment docs should use the current exhibitions NMDC Group domain",
+  );
+  assert.doesNotMatch(
+    deployReadme,
+    retiredDomainPattern,
+    "deployment docs should not keep the retired group domain",
+  );
 
   for (const app of subpathApps) {
     assert.match(
