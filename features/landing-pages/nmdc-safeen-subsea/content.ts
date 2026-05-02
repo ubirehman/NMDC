@@ -76,6 +76,13 @@ export const safeenVideos = [
   {
     title: "SAFEEN Green",
     src: "/videos/SAFFEN_CORPORATE_VIDEO_V1.mp4",
+    poster: "/images/landing/safeen-poster-new.png",
+    alt: "SAFEEN Green vessel video",
+    playLabel: "Play SAFEEN Green video",
+  },
+  {
+    title: "SAFEEN Green",
+    src: "/videos/safeen-subsea-rov.mp4",
     poster: "/images/landing/safeen-poster.png",
     alt: "SAFEEN Green vessel video",
     playLabel: "Play SAFEEN Green video",

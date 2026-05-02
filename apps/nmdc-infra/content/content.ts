@@ -210,7 +210,7 @@ export const nmdcInfraContent = {
       videos: [
         {
           title: "NMDC Infra overview",
-          src: withInfraBasePath("/videos/nmdc_infra.mp4"),
+          src: withInfraBasePath("/videos/nmdc_infra-porduction-overview.mp4"),
           type: "video/mp4",
           playLabel: "Play NMDC Infra overview video",
         }
@@ -371,7 +371,7 @@ export const nmdcInfraContent = {
         videos: [
           {
             title: "3D printed artificial reefs",
-            src: withInfraBasePath("/videos/nmdc_infra_new.mp4"),
+            src: withInfraBasePath("/videos/nmdc_infra_3d_printing.mp4"),
             type: "video/mp4",
             playLabel: "Play 3D printing of artificial reefs video",
           }
@@ -460,7 +460,7 @@ export const nmdcInfraContent = {
         videos: [
           {
             title: "Ebawe Anlagentechnik",
-            src: withInfraBasePath("/videos/nmdc-overview.mp4"),
+            src: withInfraBasePath("/videos/nmdc_infra_ebawe.mp4"),
             type: "video/mp4",
             playLabel: "Play Ebawe Anlagentechnik video",
           }

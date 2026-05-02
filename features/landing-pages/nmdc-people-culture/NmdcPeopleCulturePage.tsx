@@ -18,12 +18,12 @@ import {
 
 const peopleCultureVideos = [
   {
-    src: "/videos/safeen-subsea-green.mp4",
-    playLabel: "Play SAFEEN Green video",
+    src: "/videos/nmdc_technology.mp4",
+    playLabel: "Play NMDC Technology video",
   },
   {
-    src: "/videos/safeen-subsea-rov.mp4",
-    playLabel: "Play ROV operations video",
+    src: "/videos/nmdc_people_and_culture_and_at-a_glance.mp4",
+    playLabel: "Play NMDC People and Culture video",
   },
 ];
 

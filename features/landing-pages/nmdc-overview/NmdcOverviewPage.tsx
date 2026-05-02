@@ -100,7 +100,7 @@ export function NmdcOverviewPage() {
 
             <div className="overflow-hidden rounded-[10px] md:mt-[136px] md:rounded-[8px]">
               <Image
-                src="/images/landing/nmdc-vessel-overview.webp"
+                src="/images/landing/nmdc_at_a_glance.jpg"
                 alt="NMDC offshore energy project"
                 width={694}
                 height={829}

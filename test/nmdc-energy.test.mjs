@@ -399,6 +399,10 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(page, /function EnergyProductMedia/);
   assert.match(page, /function EnergyTopsideTypesSection/);
   assert.match(page, /function EnergyPipeCoatingCapacityTable/);
+  assert.match(page, /detail\.table\.rows\.map\(\(row, rowIndex\) =>/);
+  assert.match(page, /row\.map\(\(cell, cellIndex\) =>/);
+  assert.match(page, /key=\{`\$\{rowIndex\}-\$\{cellIndex\}`\}/);
+  assert.doesNotMatch(page, /key=\{cell\}/);
   assert.match(page, /md:grid-cols-\[minmax\(0,560px\)_minmax\(0,640px\)\]/);
   assert.match(page, /md:grid-cols-3/);
   assert.match(page, /EnergyFooter/);

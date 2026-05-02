@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LtsFooter } from "../components/Footer";
 import { Header } from "../components/Header";
 import { LtsHomeCardRail } from "../components/LtsHomeCardRail";
+import { WhipstockDiagramCarousel } from "../components/WhipstockDiagramCarousel";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
 import { getLtsNavLinks, nmdcLtsContent as content } from "../content/content";
 
@@ -75,11 +76,11 @@ export function NmdcLtsHomePage() {
 
   return (
     <main className="min-h-screen bg-lts-navy">
-      <section className="relative isolate min-h-[max(786px,100svh)] overflow-hidden bg-lts-navy px-5 text-white md:px-10">
+      <section className="relative isolate h-[776px] md:h-[786px] overflow-hidden bg-lts-navy px-5 text-white md:px-10">
         <LtsBackground />
         <Header links={getLtsNavLinks("/")} />
 
-        <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
+        <div className="relative z-10 mx-auto h-full w-full max-w-[1240px]">
           <div className="pt-[136px] md:absolute md:left-0 md:top-[244px] md:w-[760px] md:pt-0">
             <HomeHeadline />
 
@@ -585,46 +586,11 @@ function WhipstockDiagram() {
 
   return (
     <div className="mx-auto mt-[42px] max-w-full md:mt-[39px] md:w-[1240px]">
-      <div className="relative h-[318px] overflow-hidden rounded-[32px] bg-lts-navy md:h-[624px] md:rounded-[28px]">
-        <Image
-          src={whipstock.diagram.src}
-          alt={whipstock.diagram.alt}
-          fill
-          sizes="(min-width: 768px) 1000px, calc(100vw - 80px)"
-          className="object-contain p-[30px] md:p-[118px]"
-        />
-      </div>
-
-      <div className="mt-[25px] flex flex-col items-center gap-[17px] md:mt-[32px] md:grid md:grid-cols-[1fr_auto_1fr] md:items-center">
-        <Link
-          href={whipstock.specificationsHref}
-          className="order-2 inline-flex items-center gap-[10px] text-[23px] font-bold leading-7 text-lts-ink transition-colors hover:text-lts-tan md:order-1 md:justify-self-start md:text-[18px] md:leading-6"
-        >
-          {whipstock.specificationsLabel}
-          <ArrowUpRight className="size-6 md:size-5" />
-        </Link>
-
-        <div className="order-1 flex items-center justify-center gap-[24px] md:order-2">
-          <button
-            type="button"
-            aria-label="Previous whipstock specification"
-            className="flex size-[52px] items-center justify-center rounded-full border border-[#c7d4e4] text-[#8aa0b8] md:size-[64px]"
-          >
-            <ArrowLeft className="size-6 md:size-7" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next whipstock specification"
-            className="flex size-[52px] items-center justify-center rounded-full bg-lts-tan text-lts-ink md:size-[64px]"
-          >
-            <ArrowRight className="size-6 md:size-7" />
-          </button>
-        </div>
-
-        <div className="order-3 hidden h-[7px] w-full max-w-[506px] overflow-hidden rounded-full bg-[#dedede] md:block md:justify-self-end">
-          <span className="block h-full w-[135px] rounded-full bg-lts-tan" />
-        </div>
-      </div>
+      <WhipstockDiagramCarousel
+        images={whipstock.diagramImages}
+        specificationsHref={whipstock.specificationsHref}
+        specificationsLabel={whipstock.specificationsLabel}
+      />
     </div>
   );
 }

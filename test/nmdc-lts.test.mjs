@@ -273,10 +273,17 @@ test("NMDC LTS whipstock system follows the supplied desktop, mobile, and iPad d
   for (const asset of [
     "apps/nmdc-lts/public/images/lts/whipstock-hero-desktop.png",
     "apps/nmdc-lts/public/images/lts/whipstock-hero-mobile.png",
-    "apps/nmdc-lts/public/images/lts/whipstock-system-diagram.png",
+    "apps/nmdc-lts/public/images/lts/whipstock-diagram-01.jpg",
+    "apps/nmdc-lts/public/images/lts/whipstock-diagram-02.jpg",
+    "apps/nmdc-lts/public/images/lts/whipstock-diagram-03.jpg",
+    "apps/nmdc-lts/public/images/lts/whipstock-diagram-04.jpg",
+    "apps/nmdc-lts/public/images/lts/whipstock-diagram-05.jpg",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
+  const carouselPath = "apps/nmdc-lts/components/WhipstockDiagramCarousel.tsx";
+  assert.equal(existsSync(carouselPath), true, `${carouselPath} should exist`);
+  const carousel = readFileSync(carouselPath, "utf8");
 
   assert.match(route, /NmdcLtsWhipstockSystemPage/);
   assert.match(content, /whipstockSystem/);
@@ -291,19 +298,32 @@ test("NMDC LTS whipstock system follows the supplied desktop, mobile, and iPad d
   assert.match(content, /View Specifications/);
   assert.match(content, /whipstock-hero-desktop\.png/);
   assert.match(content, /whipstock-hero-mobile\.png/);
-  assert.match(content, /whipstock-system-diagram\.png/);
+  assert.match(content, /diagramImages:\s*\[/);
+  assert.match(content, /whipstock-diagram-01\.jpg/);
+  assert.match(content, /whipstock-diagram-05\.jpg/);
 
   assert.match(page, /NmdcLtsWhipstockSystemPage/);
   assert.match(page, /WhipstockHero/);
   assert.match(page, /WhipstockFeatureCard/);
   assert.match(page, /WhipstockDiagram/);
+  assert.match(page, /WhipstockDiagramCarousel/);
   assert.match(page, /getLtsNavLinks\("\/whipstock-system"\)/);
   assert.match(page, /h-\[421px\] md:h-\[486px\]/);
   assert.match(page, /md:grid-cols-\[minmax\(0,560px\)_minmax\(0,670px\)\]/);
   assert.match(page, /md:order-1/);
   assert.match(page, /md:order-2/);
-  assert.match(page, /md:h-\[624px\]/);
+  assert.match(carousel, /md:h-\[624px\]/);
   assert.match(page, /md:w-\[1240px\]/);
+  assert.match(carousel, /"use client";/);
+  assert.match(carousel, /useState/);
+  assert.match(carousel, /showPreviousImage/);
+  assert.match(carousel, /showNextImage/);
+  assert.match(carousel, /onClick=\{showPreviousImage\}/);
+  assert.match(carousel, /onClick=\{showNextImage\}/);
+  assert.match(carousel, /\(index - 1 \+ images\.length\) % images\.length/);
+  assert.match(carousel, /\(index \+ 1\) % images\.length/);
+  assert.match(carousel, /progressWidth/);
+  assert.match(carousel, /images\.length/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 

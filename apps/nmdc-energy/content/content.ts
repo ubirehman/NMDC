@@ -126,16 +126,10 @@ export const nmdcEnergyContent = {
       videos: [
         {
           title: "NMDC Energy overview",
-          src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+          src: withEnergyBasePath("/videos/yard_overview.mp4"),
           type: "video/mp4",
           playLabel: "Play NMDC Energy overview video",
-        },
-        {
-          title: "NMDC Energy ROV operations",
-          src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
-          type: "video/mp4",
-          playLabel: "Play NMDC Energy ROV operations video",
-        },
+        }
       ],
     },
     technology: {
@@ -264,13 +258,13 @@ export const nmdcEnergyContent = {
         videos: [
           {
             title: "NMDC Energy yards",
-            src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+            src: withEnergyBasePath("/videos/nmdc_yardhighlight_1.mp4"),
             type: "video/mp4",
             playLabel: "Play NMDC Energy yards video",
           },
           {
             title: "NMDC Energy yard operations",
-            src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
+            src: withEnergyBasePath("/videos/nmdc_yardhighlight.mp4"),
             type: "video/mp4",
             playLabel: "Play NMDC Energy yard operations video",
           },
@@ -590,7 +584,7 @@ export const nmdcEnergyContent = {
           videos: [
             {
               title: "Pipe coating yard",
-              src: withEnergyBasePath("/videos/pipe_coating.mp4"),
+              src: withEnergyBasePath("/videos/our_products_icad_pipe_coating.mp4"),
               type: "video/mp4",
               playLabel: "Play pipe coating yard video",
             }

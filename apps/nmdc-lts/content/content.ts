@@ -307,9 +307,31 @@ export const nmdcLtsContent = {
       },
     ],
     diagram: {
-      src: withLtsBasePath("/images/lts/whipstock-system-diagram.png"),
-      alt: "Whipstock system technical diagram",
+      src: withLtsBasePath("/images/lts/whipstock-diagram-01.jpg"),
+      alt: "EMDAD Mussafah drilling facility whipstock system",
     },
+    diagramImages: [
+      {
+        src: withLtsBasePath("/images/lts/whipstock-diagram-01.jpg"),
+        alt: "EMDAD Mussafah facility drilling equipment",
+      },
+      {
+        src: withLtsBasePath("/images/lts/whipstock-diagram-02.jpg"),
+        alt: "EMDAD Mussafah drilling workshop equipment",
+      },
+      {
+        src: withLtsBasePath("/images/lts/whipstock-diagram-03.jpg"),
+        alt: "Whipstock system components at EMDAD Mussafah facility",
+      },
+      {
+        src: withLtsBasePath("/images/lts/whipstock-diagram-04.jpg"),
+        alt: "EMDAD whipstock system equipment detail",
+      },
+      {
+        src: withLtsBasePath("/images/lts/whipstock-diagram-05.jpg"),
+        alt: "EMDAD drilling tools and whipstock system equipment",
+      },
+    ],
     specificationsLabel: "View Specifications",
     specificationsHref: "#whipstock-system-specifications",
   },

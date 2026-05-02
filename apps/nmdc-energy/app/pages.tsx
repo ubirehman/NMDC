@@ -1137,13 +1137,13 @@ function EnergyPipeCoatingCapacityTable({ detail }: { detail: EnergyProductDetai
             </div>
           ))}
         </div>
-        {detail.table.rows.map((row) => (
+        {detail.table.rows.map((row, rowIndex) => (
           <div
-            key={row.join("-")}
+            key={`capacity-row-${rowIndex}`}
             className="grid grid-cols-4 border-t border-white/10 text-center text-[11px] leading-4 md:text-[14px] md:leading-5"
           >
-            {row.map((cell) => (
-              <div key={cell} className="px-3 py-5">
+            {row.map((cell, cellIndex) => (
+              <div key={`${rowIndex}-${cellIndex}`} className="px-3 py-5">
                 {cell}
               </div>
             ))}
