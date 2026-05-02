@@ -38,13 +38,13 @@ function SafeenProductCard({ product }: { product: SafeenProduct }) {
         </figcaption>
       </figure>
 
-      <div className="mt-6 grid gap-5 rounded-[20px] bg-[#e5edf6] px-4 py-7 text-primary-navy-blue/78 md:min-h-[162px] md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:px-8 md:py-7">
+      <div className="mt-6 flex flex-col gap-5 rounded-[20px] bg-[#e5edf6] px-4 py-7 text-primary-navy-blue/78 md:min-h-[162px] md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:px-8 md:py-7">
         <p className="min-w-0 text-[14px] leading-[27px] md:text-[18px] md:leading-[30px]">
           {product.copy}
         </p>
         <Link
           href={product.specificationHref}
-          className="inline-flex items-center gap-2 justify-self-center whitespace-nowrap text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue md:justify-self-end md:text-[18px]"
+          className="text-primary-sky-blue inline-flex items-center gap-2 justify-self-center whitespace-nowrap text-[18px] font-bold leading-6 text-primary-blue transition-colors hover:text-primary-sky-blue md:justify-self-end md:text-[18px]"
         >
           {product.specificationLabel}
           <ArrowUpRight className="size-5" />
@@ -78,8 +78,8 @@ export function NmdcSafeenSubseaPage() {
         />
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1240px] items-end justify-center pb-[107px] md:justify-start md:pb-[128px]">
-          <h1 className="max-w-[320px] text-center text-[24px] font-bold uppercase leading-[31px] md:max-w-[1240px] md:whitespace-nowrap md:text-left md:text-[48px] md:leading-[58px]">
-            {safeenHero.titlePrefix}{" "}
+          <h1 className="max-w-[320px] text-center text-[24px] font-bold leading-[31px] md:max-w-[1240px] md:whitespace-nowrap md:text-left md:text-[48px] md:leading-[58px]">
+            {safeenHero.titlePrefix ? `${safeenHero.titlePrefix} ` : ""}
             <span className="text-primary-sky-blue">
               {safeenHero.titleAccent}
             </span>
@@ -89,14 +89,14 @@ export function NmdcSafeenSubseaPage() {
 
       <section className="bg-white px-5 pb-0 pt-12 md:px-10 md:py-[49px]">
         <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,744px)_438px] md:items-center md:gap-[58px]">
-          <section className="text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px] gap-4">
+          <div className="flex flex-col gap-4 text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px]">
             <p className="text-xl font-bold">
               {safeenOverview.heading}
             </p>
             <p>
               {safeenOverview.lead}
             </p>
-          </section>
+          </div>
 
           <Image
             src={safeenOverview.image}
@@ -112,15 +112,22 @@ export function NmdcSafeenSubseaPage() {
       <section className="bg-[#001d2d] px-5 py-14 text-white md:px-10 md:py-[118px]">
         <div className="mx-auto w-full max-w-[1240px]">
           <h2 className="text-[32px] font-bold uppercase leading-10 md:text-[48px] md:leading-[58px]">
-            Capabilities.
+            Capabilities
           </h2>
-          <div className="mt-[39px] grid gap-3 md:mt-12 md:grid-cols-4 md:gap-4">
-            {safeenCapabilities.map((capability) => (
+          <div className="mt-[39px] grid gap-3 md:mt-12 md:grid-cols-3 md:gap-4">
+            {safeenCapabilities.map((capability, index) => (
               <article
                 key={capability}
-                className="min-h-[122px] rounded-[12px] border-0 bg-[#e5edf6] px-8 py-8 text-[18px] font-bold leading-7 text-primary-navy-blue md:h-[170px] md:rounded-[20px] md:border-[2px] md:border-primary-sky-blue md:py-8 md:text-[24px] md:leading-[36px]"
+                className="flex min-h-[122px] flex-col gap-3 rounded-[12px] bg-[#0d2e40] px-6 py-6 md:min-h-[170px] md:rounded-[20px] md:px-8 md:py-8"
               >
-                {capability}
+                <span className="flex w-[56px]  h-[56px] rounded-xl bg-[#314158]">
+                    <p className="text-[14px] font-bold leading-none text-primary-sky-blue md:text-[36px] m-auto">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                </span>
+                <p className="text-[16px] font-bold leading-6 text-primary-sky-blue md:text-[18px] md:leading-7">
+                  {capability}
+                </p>
               </article>
             ))}
           </div>

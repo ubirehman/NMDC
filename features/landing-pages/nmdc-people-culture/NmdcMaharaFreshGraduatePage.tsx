@@ -4,7 +4,7 @@ import { ArrowLeft } from "../../../app/components/landing/icons";
 import { Header } from "../../../app/components/landing/Header";
 import { NmdcFooter } from "../../../app/components/landing/NmdcFooter";
 import {
-  maharaFreshGraduateDetail,
+  maharaFreshGraduateDesignDetail,
   nmdcPeopleCultureBrand,
   nmdcPeopleCultureNavLinks,
 } from "./content";
@@ -57,12 +57,12 @@ export function NmdcMaharaFreshGraduatePage() {
             Back
           </Link>
 
-          <article className="mt-8 rounded-[18px] bg-[#dfe7f0] px-5 py-6 md:mt-[43px] md:h-[1726px] md:overflow-hidden md:rounded-[20px] md:px-8 md:py-[31px]">
+          <article className="mt-8 rounded-[18px] bg-[#dfe7f0] px-5 py-6 md:mt-[43px] md:h-full md:overflow-hidden md:rounded-[20px] md:px-8 md:py-[31px]">
             <h2 className="text-[22px] font-bold leading-[1.18] text-primary-navy-blue md:text-[28px] md:leading-[36px]">
-              {maharaFreshGraduateDetail.title}
+              {maharaFreshGraduateDesignDetail.title}
             </h2>
             <div className="mt-7 grid gap-7 text-[16px] leading-[1.55] text-[#43556c] md:mt-7 md:gap-[24px] md:text-[17px] md:leading-[26px]">
-              {maharaFreshGraduateDetail.sections.map((section, index) => (
+              {maharaFreshGraduateDesignDetail.sections.map((section, index) => (
                 <section key={`${section.title}-${index}`}>
                   <h3 className="text-[16px] font-bold leading-6 text-[#43556c] md:text-[17px] md:leading-[26px]">
                     {section.title}
@@ -79,8 +79,8 @@ export function NmdcMaharaFreshGraduatePage() {
 
           <div className="relative mt-10 overflow-hidden rounded-[18px] bg-primary-navy-blue md:mt-[64px] md:h-[591px] md:rounded-[24px]">
             <Image
-              src={maharaFreshGraduateDetail.image.src}
-              alt={maharaFreshGraduateDetail.image.alt}
+              src={maharaFreshGraduateDesignDetail.image.src}
+              alt={maharaFreshGraduateDesignDetail.image.alt}
               width={4096}
               height={2445}
               className="h-[320px] w-full object-cover md:h-full"

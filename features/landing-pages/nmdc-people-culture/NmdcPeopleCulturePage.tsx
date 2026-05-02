@@ -51,16 +51,20 @@ export function NmdcPeopleCulturePage() {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1240px] pb-[84px] md:pb-[89px]">
-          <div className="grid gap-5 md:grid-cols-[430px_1fr] md:items-start md:gap-20">
+          <div className="grid gap-5 md:grid-cols-[430px_minmax(0,1fr)] md:items-start md:gap-20">
             <h1 className="whitespace-nowrap text-center text-[23px] font-bold uppercase leading-[1.05] md:whitespace-normal md:text-left md:text-[48px] md:leading-[58px]">
               NMDC PEOPLE &amp;{" "}
               <br className="hidden md:block" />
               <span className="text-primary-sky-blue">CULTURE</span>
             </h1>
-            <p className="mx-auto max-w-[318px] text-center text-[13px] leading-[1.45] text-white md:mx-0 md:max-w-[730px] md:justify-self-end md:pt-[43px] md:text-[24px] md:leading-[32px]">
-              We are defined by a strong and cohesive company culture. We strive
-              to cultivate a working environment where everyone can thrive.
-            </p>
+            <div className="flex flex-col my-auto">
+              <p className="mx-auto max-w-[318px] text-center text-[13px] leading-[1.45] text-white md:mx-0 md:max-w-[730px] md:justify-self-end md:whitespace-nowrap md:text-[24px] md:leading-[32px]">
+                We are defined by a strong and cohesive company culture.
+              </p>
+              <p className="mx-auto max-w-[318px] text-center text-[13px] leading-[1.45] text-white md:mx-0 md:max-w-[730px] md:justify-self-end md:whitespace-nowrap md:text-[24px] md:leading-[32px]">
+                We striveto cultivate a working environment where everyone can thrive.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -80,9 +84,6 @@ export function NmdcPeopleCulturePage() {
           <StatsGrid className="mt-8 md:hidden" mobile />
 
           <div className="mt-7 hidden max-w-[1240px] md:block">
-            <p className="text-[16px] font-medium uppercase leading-6 text-[#485a70]">
-              {emiratizationContent.eyebrow}
-            </p>
             <div className="mt-7 grid gap-[14px] text-[15px] leading-[1.45] text-[#43556c] md:text-[16px] md:leading-[22px]">
               {emiratizationContent.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -216,9 +217,9 @@ function StatsGrid({
       {emiratizationStats.map((stat) => (
         <article
           key={stat.year}
-          className={`bg-[#062c45] text-white ${
+          className={`flex flex-col bg-[#062c45] text-white items-center ${
             mobile
-              ? "h-[177px] rounded-[20px] px-6 py-7"
+              ? "h-[177px] rounded-[20px] px-6 py-6"
               : "rounded-[20px] px-6 py-7 md:h-[177px] md:min-h-[177px]"
           }`}
         >

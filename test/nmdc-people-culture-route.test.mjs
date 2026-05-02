@@ -39,8 +39,8 @@ test("People & Culture read-more opens the Mahara detail page", () => {
   assert.match(detailPage, /href="\/people-and-culture"/);
   assert.match(detailPage, /Back/);
   assert.match(detailPage, /people-hero-boardroom\.jpg/);
-  assert.match(content, /people-mahara-women\.jpg/);
-  assert.match(detailPage, /maharaFreshGraduateDetail/);
+  assert.match(content, /people_culture_at_glance\.jpeg/);
+  assert.match(detailPage, /maharaFreshGraduateDesignDetail/);
   assert.match(detailPage, /<NmdcFooter/);
   assert.match(index, /NmdcMaharaFreshGraduatePage/);
   assert.match(index, /nmdcMaharaFreshGraduateMetadata/);
@@ -61,4 +61,37 @@ test("Mahara detail page follows the supplied desktop article geometry", () => {
   assert.match(detailPage, /md:mt-\[64px\]/);
   assert.match(detailPage, /md:h-\[591px\]/);
   assert.match(detailPage, /max-w-\[1240px\]/);
+});
+
+test("Mahara detail design uses isolated PDF copy", () => {
+  const content = readFileSync(contentPath, "utf8");
+  const detailPage = readFileSync(maharaPagePath, "utf8");
+  const designStart = content.indexOf(
+    "export const maharaFreshGraduateDesignDetail",
+  );
+  const designEnd = content.indexOf("export const peopleCultureGallery");
+  const designBlock = content.slice(designStart, designEnd);
+
+  assert.notEqual(designStart, -1);
+  assert.match(detailPage, /maharaFreshGraduateDesignDetail/);
+  assert.match(detailPage, /maharaFreshGraduateDesignDetail\.title/);
+  assert.match(detailPage, /maharaFreshGraduateDesignDetail\.sections\.map/);
+  assert.match(designBlock, /title:\s*"Other Initiatives"/);
+  assert.match(designBlock, /Women Empowerment Initiatives \(Yard\)"/);
+  assert.match(
+    designBlock,
+    /Leadership and Communication Development - The Hive Toastmasters"/,
+  );
+  assert.match(
+    designBlock,
+    /E-Learning and Continuous Development - Tumooh Initiative"/,
+  );
+  assert.match(
+    designBlock,
+    /practice influence, decision-making, and effective communication/,
+  );
+  assert.match(designBlock, /organizational capability development/);
+  assert.doesNotMatch(designBlock, /Read More|pace\.Mahara/);
+  assert.doesNotMatch(designBlock, /- 29 UAE Nationals|\(10 UAE Nationals\)/);
+  assert.equal([...designBlock.matchAll(/^\s+title:\s*"/gm)].length, 5);
 });

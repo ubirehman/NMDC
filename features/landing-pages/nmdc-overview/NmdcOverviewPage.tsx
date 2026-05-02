@@ -119,11 +119,10 @@ export function NmdcOverviewPage() {
         <div className="mx-auto w-full max-w-[1240px]">
           <div className="max-w-[560px] md:max-w-[880px]">
             <h2 className="text-[28px] font-bold uppercase leading-[1.08] text-[#06447a] md:text-[48px] md:leading-[64px]">
-              KEY FIGURES & GLOBAL PRESENCE.
+              KEY FIGURES & GLOBAL PRESENCE
             </h2>
-            <p className="mt-4 max-w-[390px] text-sm leading-[1.6] text-primary-navy-blue/70 md:mt-3 md:max-w-[440px] md:text-[16px] md:leading-6">
-              Our strategic pillars define our dominance in marine engineering
-              and infrastructure development across the globe.
+            <p className="mt-4 text-sm leading-[1.6] text-primary-navy-blue/70 md:mt-3 w-full md:text-[16px] md:leading-6">
+              Our strategic pillars define our dominance in marine engineering and infrastructure development across the globe.
             </p>
           </div>
 

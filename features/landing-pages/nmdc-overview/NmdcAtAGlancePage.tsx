@@ -50,7 +50,7 @@ export function NmdcAtAGlancePage() {
             </h1>
             <div className="mt-9 max-w-[1240px] text-[18px] leading-[1.65] text-white md:mt-[24px] md:text-[20px] md:leading-[28px]">
               <p>{atAGlanceDetail.lead}</p>
-              <div className="mt-3 grid gap-[34px] md:mt-2 md:gap-[37px]">
+              <div className="pt-6 grid gap-[34px] md:mt-2 md:gap-[37px]">
                 {atAGlanceDetail.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
