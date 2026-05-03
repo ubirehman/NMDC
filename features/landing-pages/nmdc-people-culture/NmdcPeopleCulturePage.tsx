@@ -18,8 +18,8 @@ import {
 
 const peopleCultureVideos = [
   {
-    src: "/videos/nmdc_technology.mp4",
-    poster: "/images/landing/video-posters/nmdc-technology.png",
+    src: "/videos/nmdc_technology_.mp4",
+    poster: "/images/landing/video-posters/nmdc-technology_.png",
     playLabel: "Play NMDC Technology video",
   },
   {
