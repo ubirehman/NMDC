@@ -617,7 +617,7 @@ function MussafahYardDetailLayout({
             {detail.fullTitle}
           </h1>
 
-          <div className="mt-6 grid gap-5 md:mt-[54px] md:min-h-[846px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
+          <div className="mt-6 grid gap-5 md:mt-[54px] md:min-h-[646px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
             <MussafahTextCard detail={detail} />
             <div className="relative aspect-square overflow-hidden rounded-[20px] bg-[#12394d] md:h-auto md:rounded-[20px]">
               <Image

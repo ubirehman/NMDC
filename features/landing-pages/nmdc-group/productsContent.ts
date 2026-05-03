@@ -22,7 +22,7 @@ export const nmdcGroupProductsContent = {
       alt: "NMDC marine vessel",
     },
     {
-      title: "Mussafah Yard",
+      title: "Mussafah Yard and Its Solutions",
       href: "/products/mussafah-yard",
       image: `${productsImageBase}/mussafah-yard.jpg`,
       alt: "Mussafah Yard offshore module",
@@ -141,7 +141,7 @@ export const nmdcGroupProductsContent = {
       logoClassName: "h-[52px] w-auto",
       cards: [
         {
-          title: "Mussafah Yard and Its Products",
+          title: "Mussafah Yard and Its Productsss",
           href: "/products/mussafah-yard",
           accentClassName: "text-[#00bd66]",
           images: [

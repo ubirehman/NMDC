@@ -138,9 +138,9 @@ export const nmdcGroupProductDetails = [
   {
     slug: "mussafah-yard",
     layout: "mussafah-yard",
-    fullTitle: "Mussafah Yard and Its Products",
+    fullTitle: "Mussafah Yard and Its Solutions",
     brandName: null,
-    title: "Mussafah Yard and Its Products",
+    title: "Mussafah Yard and Its Solutions",
     accentClassName: "text-[#00bd66]",
     media: [
       {
@@ -375,9 +375,9 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "pipe-coating-materials",
-    fullTitle: "NMDC Energy | Pipe Coating Sample Materials",
+    fullTitle: "NMDC Energy | Pipe Coating",
     brandName: null,
-    title: "Pipe Coating Sample Materials",
+    title: "Pipe Coating",
     accentClassName: "text-[#00bd66]",
     media: [
       {
