@@ -281,7 +281,7 @@ export const nmdcGroupProductsContent = {
     { label: "Overview", href: "/nmdc-overview" },
     { label: "Marine Vessels", href: `${dredgingMarineAppUrl}/marine-vessels` },
     {
-      label: "Hydraulic Physical Model",
+      label: "Costal & Hydrodynamic Center",
       href: `${dredgingMarineAppUrl}/hydraulic-physical-model`,
     },
     { label: "Caisson Method", href: `${dredgingMarineAppUrl}/caisson-method` },

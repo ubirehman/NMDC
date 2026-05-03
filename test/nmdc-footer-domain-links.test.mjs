@@ -64,6 +64,17 @@ const expectedGroupFooterRoutes = [
   ["/safeen-subsea", "Safeen Subsea"],
 ];
 
+const footerPlacementFiles = [
+  {
+    name: "Shared NMDC",
+    componentPath: "app/components/landing/NmdcFooter.tsx",
+  },
+  ...standaloneFooters.map((footer) => ({
+    name: footer.name,
+    componentPath: footer.componentPath,
+  })),
+];
+
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -141,6 +152,75 @@ test("standalone footer navigation keys are stable when routes repeat", () => {
       component,
       /key=\{link\.href\}/,
       `${footer.name} footer should not key navigation items by href alone`,
+    );
+  }
+});
+
+test("all footers use the same desktop placement shell", () => {
+  for (const footer of footerPlacementFiles) {
+    const component = readFileSync(footer.componentPath, "utf8");
+
+    assert.match(
+      component,
+      /md:grid-cols-\[365px_360px_minmax\(0,1fr\)\]/,
+      `${footer.name} footer should use the shared desktop column placement`,
+    );
+    assert.match(
+      component,
+      /md:grid-rows-\[1fr_auto\]/,
+      `${footer.name} footer should keep the copyright in a bottom row`,
+    );
+    assert.match(
+      component,
+      /md:gap-0/,
+      `${footer.name} footer should align columns without desktop gaps`,
+    );
+    assert.match(
+      component,
+      /md:border-x/,
+      `${footer.name} footer nav should keep the same center-column separators`,
+    );
+    assert.match(
+      component,
+      /md:col-span-3/,
+      `${footer.name} footer copyright should span the three columns`,
+    );
+  }
+});
+
+test("all footers use the NMDC LTS typography scale", () => {
+  for (const footer of footerPlacementFiles) {
+    const component = readFileSync(footer.componentPath, "utf8");
+
+    assert.match(
+      component,
+      /text-\[20px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
+      `${footer.name} footer business links should match the LTS size`,
+    );
+    assert.match(
+      component,
+      /text-\[25px\][^"]*md:text-\[16px\][^"]*md:leading-6/,
+      `${footer.name} footer connect label should match the LTS size`,
+    );
+    assert.match(
+      component,
+      /text-\[27px\][^"]*leading-\[32px\]/,
+      `${footer.name} footer mobile nav/contact heading should match the LTS size`,
+    );
+    assert.match(
+      component,
+      /text-\[24px\][^"]*leading-\[30px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
+      `${footer.name} footer contact labels should match the LTS size`,
+    );
+    assert.match(
+      component,
+      /text-\[22px\][^"]*leading-\[28px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
+      `${footer.name} footer contact email values should match the LTS size`,
+    );
+    assert.match(
+      component,
+      /text-\[18px\][^"]*leading-\[26px\][^"]*md:text-\[16px\][^"]*md:leading-6/,
+      `${footer.name} footer copyright should match the LTS size`,
     );
   }
 });

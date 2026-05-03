@@ -446,7 +446,7 @@ function InfraFooter() {
         className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(2,11,29,0.30)_0%,rgba(2,11,29,0.08)_54%,rgba(0,127,137,0.50)_100%)]"
         aria-hidden="true"
       />
-      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-9 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:min-h-[525px] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-[48px] md:py-[56px]">
+      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-9 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:min-h-[525px] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-[48px] md:py-[52px]">
         <div className="flex flex-col justify-between">
           <div>
             <Image
@@ -456,7 +456,7 @@ function InfraFooter() {
               height={60}
               className="h-[58px] w-[148px] object-contain"
             />
-            <ul className="mt-10 grid gap-5 text-[15px] font-semibold leading-5 text-white md:mt-[58px] md:gap-[28px] md:text-[16px] md:leading-6">
+            <ul className="mt-10 grid gap-5 text-[20px] font-semibold leading-6 text-white md:mt-[58px] md:gap-[28px] md:text-[16px] md:leading-5">
               {footer.businesses.map((business) => (
                 <li key={business.label}>
                   <a
@@ -476,7 +476,7 @@ function InfraFooter() {
           <div className="mt-9 flex flex-nowrap items-center gap-[10px] md:mt-0 md:flex-wrap md:gap-5">
             <a
               href={footer.connect.href}
-              className="inline-flex shrink-0 text-[14px] font-bold leading-6 text-white transition-colors hover:text-infra-yellow md:text-[16px]"
+              className="inline-flex shrink-0 text-[25px] font-bold leading-[31px] text-white transition-colors hover:text-infra-yellow md:text-[16px] md:leading-6"
             >
               {footer.connect.label}
             </a>
@@ -488,10 +488,10 @@ function InfraFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={link.label}
-                  className="grid size-8 place-items-center rounded-full bg-infra-yellow text-[12px] font-bold leading-none text-infra-ink transition-colors hover:bg-white md:size-9"
+                  className="grid size-[48px] place-items-center rounded-full bg-infra-yellow text-[18px] font-bold leading-none text-infra-ink transition-colors hover:bg-white md:size-[34px] md:text-[14px]"
                 >
                   {link.label === "Instagram" ? (
-                    <InstagramIcon className="size-[15px]" />
+                    <InstagramIcon className="size-[22px] md:size-[16px]" />
                   ) : (
                     link.marker
                   )}
@@ -503,7 +503,7 @@ function InfraFooter() {
 
         <nav
           aria-label={footer.navigationLabel}
-          className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:border-white/16 md:px-[92px] md:py-[96px]"
+          className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:border-white/16 md:px-[88px] md:py-[146px]"
         >
           <ul className="hidden gap-[24px] text-[16px] leading-6 text-white md:grid">
             {footerNavigationLinks.map((link) => (
@@ -520,7 +520,7 @@ function InfraFooter() {
               </li>
             ))}
           </ul>
-          <ul className="grid gap-5 text-[15px] leading-5 text-white md:hidden">
+          <ul className="grid gap-[24px] text-[27px] leading-[32px] text-white md:hidden">
             {mobileFooterLinks.map((link) => (
               <li key={link.label}>
                 {isInfraInternalHref(link.href) ? (
@@ -537,21 +537,21 @@ function InfraFooter() {
           </ul>
         </nav>
 
-        <div id="contact" className="md:px-[88px] md:py-[96px]">
-          <h2 className="text-base font-normal leading-6 text-white">
+        <div id="contact" className="md:px-[88px] md:pt-[146px]">
+          <h2 className="text-[27px] font-normal leading-[32px] text-white md:text-[16px] md:leading-6">
             {footer.emailTitle}
           </h2>
-          <dl className="mt-5 grid gap-5 text-sm leading-5 md:mt-[28px] md:gap-[28px]">
+          <dl className="mt-5 grid gap-5 md:mt-[28px] md:gap-[28px]">
             {footer.emails.map((email) => (
               <div key={email.label}>
-                <dt className="font-normal text-white">{email.label}</dt>
-                <dd className="mt-2 font-bold text-infra-yellow">{email.value}</dd>
+                <dt className="text-[24px] font-normal leading-[30px] text-white md:text-[16px] md:leading-5">{email.label}</dt>
+                <dd className="mt-2 text-[22px] font-bold leading-[28px] text-infra-yellow md:text-[16px] md:leading-5">{email.value}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <p className="text-center text-[12px] leading-5 text-white md:col-span-3 md:mt-[78px] md:border-t md:border-white/16 md:pt-[20px] md:text-[16px] md:leading-6">
+        <p className="text-center text-[18px] leading-[26px] text-white md:col-span-3 md:mt-8 md:border-t md:border-white/16 md:pt-5 md:text-[16px] md:leading-6">
           {footer.copyright}
         </p>
       </div>

@@ -1680,7 +1680,7 @@ function EnergyFooter() {
               height={60}
               className="h-[58px] w-[148px] object-contain"
             />
-            <ul className="mt-10 grid gap-5 text-[21px] font-bold leading-7 text-white md:mt-[58px] md:gap-4 md:text-[15px] md:leading-5">
+            <ul className="mt-10 grid gap-5 text-[20px] font-bold leading-6 text-white md:mt-[58px] md:gap-4 md:text-[16px] md:leading-5">
               {footer.businesses.map((business) => (
                 <li key={business.label}>
                   <a
@@ -1701,7 +1701,7 @@ function EnergyFooter() {
           <div className="mt-11 flex flex-wrap items-center gap-5 md:mt-0">
             <Link
               href={footer.connect.href}
-              className="inline-flex shrink-0 text-[17px] font-normal leading-6 text-white transition-colors hover:text-energy-green md:text-[16px]"
+              className="inline-flex shrink-0 text-[25px] font-normal leading-[31px] text-white transition-colors hover:text-energy-green md:text-[16px] md:leading-6"
             >
               {footer.connect.label}
             </Link>
@@ -1713,10 +1713,10 @@ function EnergyFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={link.label}
-                  className="grid size-9 place-items-center rounded-full bg-[#effff6] text-[12px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white"
+                  className="grid size-[48px] place-items-center rounded-full bg-[#effff6] text-[18px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white md:size-[34px] md:text-[14px]"
                 >
                   {link.label === "Instagram" ? (
-                    <InstagramIcon className="size-[16px]" />
+                    <InstagramIcon className="size-[22px] md:size-[16px]" />
                   ) : (
                     link.marker
                   )}
@@ -1730,7 +1730,7 @@ function EnergyFooter() {
           aria-label={footer.navigationLabel}
           className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
-          <ul className="hidden gap-6 text-[22px] font-normal leading-7 text-white md:grid md:gap-4 md:text-[15px] md:leading-5">
+          <ul className="hidden gap-6 text-[16px] font-normal leading-6 text-white md:grid md:gap-4">
             {footerNavigationLinks.map((link) => (
               <li key={`${link.label}-${link.href}`}>
                 <a href={link.href} className="transition-colors hover:text-energy-green">
@@ -1739,7 +1739,7 @@ function EnergyFooter() {
               </li>
             ))}
           </ul>
-          <ul className="grid gap-6 text-[22px] font-normal leading-7 text-white md:hidden">
+          <ul className="grid gap-[24px] text-[27px] font-normal leading-[32px] text-white md:hidden">
             {mobileFooterLinks.map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="transition-colors hover:text-energy-green">
@@ -1751,14 +1751,14 @@ function EnergyFooter() {
         </nav>
 
         <div id="contact" className="md:px-[88px] md:pt-[146px]">
-          <h2 className="text-[22px] font-normal leading-7 text-white md:text-base md:font-bold md:leading-6">
+          <h2 className="text-[27px] font-normal leading-[32px] text-white md:text-[16px] md:font-bold md:leading-6">
             {footer.emailTitle}
           </h2>
-          <dl className="mt-6 grid gap-6 text-[20px] leading-7 md:mt-5 md:gap-5 md:text-sm md:leading-5">
+          <dl className="mt-6 grid gap-6 md:mt-5 md:gap-5">
             {footer.emails.map((email) => (
               <div key={email.label}>
-                <dt className="font-normal text-white md:font-medium">{email.label}</dt>
-                <dd className="mt-2 font-bold text-energy-green md:mt-1 md:font-normal">
+                <dt className="text-[24px] font-normal leading-[30px] text-white md:text-[16px] md:font-medium md:leading-5">{email.label}</dt>
+                <dd className="mt-2 text-[22px] font-bold leading-[28px] text-energy-green md:mt-1 md:text-[16px] md:font-normal md:leading-5">
                   {email.value}
                 </dd>
               </div>
@@ -1766,7 +1766,7 @@ function EnergyFooter() {
           </dl>
         </div>
 
-        <p className="border-t border-white/12 pt-8 text-[16px] leading-6 text-white md:col-span-3 md:mt-8 md:text-center md:text-[12px] md:leading-5">
+        <p className="border-t border-white/12 pt-8 text-[18px] leading-[26px] text-white md:col-span-3 md:mt-8 md:text-center md:text-[16px] md:leading-6">
           {footer.copyright}
         </p>
       </div>

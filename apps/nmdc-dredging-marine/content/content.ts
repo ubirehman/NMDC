@@ -52,7 +52,7 @@ export const nmdcDredgingMarineContent = {
       { label: "Home", href: "/" },
       { label: "Overview", href: "/overview" },
       { label: "Marine Vessels", href: "/marine-vessels" },
-      { label: "Hydraulic Physical Model", href: "/hydraulic-physical-model" },
+      { label: "Coastal & Hydrodynamic Center", href: "/hydraulic-physical-model" },
       { label: "Caisson Method", href: "/caisson-method" }
     ]
   },
@@ -134,11 +134,15 @@ export const nmdcDredgingMarineContent = {
   },
   overview: {
     activeHref: "/overview",
-    eyebrow: "NMDC - Dredging & Marine",
+    eyebrow: "NMDC Dredging & Marine",
     title: "At a glance",
     intro: [
       "NMDC Dredging & Marine combines global expertise with cutting-edge technology to deliver dredging, reclamation and construction services of exceptional quality. Working across the energy, tourism and urban development sectors, we shape the marine environments around us. The company's expertise spans a wide range of services, including dredging, reclamation, geotechnical works, and marine logistics. Its Marine Civil Works division executes complex projects such as jetties, marinas, breakwaters, and man-made islands, ensuring superior craftsmanship and structural integrity. Advanced ground improvement techniques like vibro compaction and stone column installation enhance soil stability, while hydrographic and geophysical surveys guide projects from concept to completion."
     ],
+    background: {
+      src: withDredgingMarineBasePath("/images/dm/overview-hero.png"),
+      alt: "NMDC Dredging and Marine overview background"
+    },
     image: {
       src: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.webp"),
       alt: "NMDC dredging vessel"
@@ -717,7 +721,7 @@ export const nmdcDredgingMarineContent = {
       activeHref: "/hydraulic-physical-model",
       image: withDredgingMarineBasePath("/images/dm/hydraulic-center-hero.jpg"),
       title: {
-        neutral: "NMDC Dredging & marine",
+        neutral: "",
         accent: "Costal & hydrodynamic center"
       }
     },
@@ -870,7 +874,7 @@ export const nmdcDredgingMarineContent = {
       alt: "Dredging vessel operating during caisson works"
     },
     overview: {
-      eyebrow: "NMDC - Dredging & Marine",
+      eyebrow: "",
       eyebrowAccent: "NMDC - Dredging &",
       eyebrowSuffix: "Marine",
       title: "Caisson Method",

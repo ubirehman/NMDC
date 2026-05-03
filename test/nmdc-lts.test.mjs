@@ -229,7 +229,8 @@ test("NMDC LTS at a glance follows the supplied desktop and mobile PDF design", 
   assert.match(page, /h-\[138px\] w-\[118px\]/);
   assert.match(page, /md:h-\[120px\] md:w-\[160px\]/);
 
-  assert.match(footer, /md:grid-cols-\[minmax\(0,420px\)_minmax\(0,300px\)_minmax\(0,360px\)\]/);
+  assert.match(footer, /md:grid-cols-\[365px_360px_minmax\(0,1fr\)\]/);
+  assert.match(footer, /md:grid-rows-\[1fr_auto\]/);
   assert.match(footer, /rounded-\[28px\] md:rounded-\[18px\]/);
 });
 

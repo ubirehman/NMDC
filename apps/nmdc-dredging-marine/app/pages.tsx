@@ -640,8 +640,17 @@ export function DredgingMarineOverviewPage() {
   return (
     <main className="overflow-x-hidden bg-[#f4f4f6] text-dm-text">
       <section className="relative isolate bg-dm-navy px-5 pb-[56px] pt-[132px] text-white md:min-h-[843px] md:px-10 md:pb-[80px] md:pt-[176px]">
+        <Image
+          src={overview.background.src}
+          alt={overview.background.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-45"
+        />
+        <div className="absolute inset-0" aria-hidden="true" />
         <Header links={getDmNavLinks(overview.activeHref)} />
-        <div className="mx-auto grid min-w-0 w-full max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,482px)_minmax(0,715px)] md:items-start md:gap-[43px]">
+        <div className="relative z-10 mx-auto grid min-w-0 w-full max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-[minmax(0,482px)_minmax(0,715px)] md:items-start md:gap-[43px]">
           <div className="min-w-0 w-full max-w-[350px] md:max-w-none md:pt-[17px]">
             <p className="text-[20px] font-bold leading-7 text-dm-cyan md:text-[31px] md:leading-[38px]">
               {overview.eyebrow}
@@ -1127,7 +1136,6 @@ export function HydraulicPhysicalModelPage() {
         <Header links={getDmNavLinks(hydraulic.hero.activeHref)} />
         <div className="relative z-10 mx-auto flex h-full w-[calc(100vw-40px)] min-w-0 max-w-[1240px] items-end pb-[45px] pt-[128px] md:w-full md:pb-[76px]">
           <h1 className="w-full max-w-[320px] break-words text-[28px] font-bold uppercase leading-[1.16] text-white md:max-w-[760px] md:text-[48px] md:leading-[58px]">
-            <span className="block">{hydraulic.hero.title.neutral}</span>
             <span className="block text-dm-cyan">
               {hydraulic.hero.title.accent}
             </span>

@@ -53,38 +53,40 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
       />
 
       <div
-        className={`mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:grid-cols-[1.2fr_0.8fr_1.1fr] md:gap-16 md:px-10 ${
+        className={`mx-auto grid w-full max-w-[1240px] gap-10 rounded-[10px] bg-[#082d45] px-5 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.28)] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-12 ${
           isCompact ? "md:min-h-[407px] md:py-8" : "md:min-h-[525px] md:py-10"
         }`}
       >
-        <div>
-          <Image
-            src={footerLogo.src}
-            alt={footerLogo.alt}
-            width={footerLogo.width}
-            height={footerLogo.height}
-            className={footerLogo.className}
-          />
-          <ul className="mt-8 grid gap-5 text-[16px] font-semibold leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
-            {nmdcBusinessLinks.map((link, index) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-3 transition-colors hover:text-primary-sky-blue"
-                >
-                <span
-                  className={`size-3 rounded-full ${businessDotColors[index]}`}
-                  aria-hidden="true"
-                />
-                {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 flex items-center gap-5 md:mt-9">
+        <div className="flex flex-col justify-between">
+          <div>
+            <Image
+              src={footerLogo.src}
+              alt={footerLogo.alt}
+              width={footerLogo.width}
+              height={footerLogo.height}
+              className={footerLogo.className}
+            />
+            <ul className="mt-8 grid gap-5 text-[20px] font-semibold leading-6 text-white md:mt-[58px] md:gap-3 md:text-[16px] md:leading-5 md:text-white/78">
+              {nmdcBusinessLinks.map((link, index) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-3 transition-colors hover:text-primary-sky-blue"
+                  >
+                    <span
+                      className={`size-3 rounded-full ${businessDotColors[index]}`}
+                      aria-hidden="true"
+                    />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-10 flex items-center gap-5 md:mt-0">
             <Link
               href="#contact"
-              className="inline-flex text-[14px] font-medium leading-5 text-white transition-colors hover:text-primary-sky-blue md:text-[20px] md:font-bold md:leading-7"
+              className="inline-flex text-[25px] font-medium leading-[31px] text-white transition-colors hover:text-primary-sky-blue md:text-[16px] md:font-bold md:leading-6"
             >
               Let&apos;s connect
             </Link>
@@ -96,7 +98,7 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
                   target="_blank"
                   rel="noreferrer"
                   aria-label={link.label}
-                  className="flex size-8 items-center justify-center rounded-full bg-white text-[12px] font-bold text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white"
+                  className="flex size-[48px] items-center justify-center rounded-full bg-white text-[18px] font-bold text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white md:size-[34px] md:text-[14px]"
                 >
                   {link.label === "Instagram" ? (
                     <InstagramIcon className="size-[15px]" />
@@ -111,9 +113,9 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
 
         <nav
           aria-label="Footer navigation"
-          className="border-y border-white/12 py-8 md:border-y-0 md:py-0"
+          className="border-y border-white/12 py-8 md:border-x md:border-y-0 md:border-white/16 md:px-[88px] md:py-[146px]"
         >
-          <ul className="grid gap-5 text-[16px] leading-5 text-white md:gap-3 md:text-sm md:text-white/78">
+          <ul className="grid gap-[24px] text-[27px] leading-[32px] text-white md:gap-3 md:text-[16px] md:leading-6 md:text-white/78">
             {footerLinks.map((link) => (
               <li key={`${link.label}-${link.href}`}>
                 <Link
@@ -127,18 +129,20 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
           </ul>
         </nav>
 
-        <div id="contact" className="border-b border-white/12 pb-8 md:border-b-0 md:pb-0">
-          <h2 className="text-[16px] font-medium leading-6 text-white md:font-bold">
+        <div id="contact" className="border-b border-white/12 pb-8 md:border-b-0 md:px-[88px] md:pt-[146px] md:pb-0">
+          <h2 className="text-[27px] font-medium leading-[32px] text-white md:text-[16px] md:font-bold md:leading-6">
             Email
           </h2>
-          <dl className="mt-5 grid gap-5 text-[16px] leading-6 md:mt-4 md:gap-4 md:text-sm md:leading-5">
+          <dl className="mt-5 grid gap-5 md:mt-4 md:gap-4">
             {nmdcEmailLinks.map((email) => (
               <div key={email.label}>
-                <dt className="font-medium text-white">{email.label}</dt>
+                <dt className="text-[24px] font-medium leading-[30px] text-white md:text-[16px] md:leading-5">
+                  {email.label}
+                </dt>
                 <dd className="mt-1">
                   <Link
                     href={`mailto:${email.value}`}
-                    className="text-primary-sky-blue transition-colors hover:text-white"
+                    className="text-[22px] font-bold leading-[28px] text-primary-sky-blue transition-colors hover:text-white md:text-[16px] md:font-normal md:leading-5"
                   >
                     {email.value}
                   </Link>
@@ -148,7 +152,7 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
           </dl>
         </div>
 
-        <p className="text-center text-[12px] leading-5 text-white md:col-span-3 md:border-t md:border-white/14 md:pt-5">
+        <p className="border-t border-white/12 pt-8 text-center text-[18px] leading-[26px] text-white md:col-span-3 md:mt-8 md:border-white/14 md:pt-5 md:text-[16px] md:leading-6">
           © Copyright, All rights reserved by NMDC Group.
         </p>
       </div>

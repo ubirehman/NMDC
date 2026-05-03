@@ -50,27 +50,21 @@ function SocialLinks() {
 function FooterNav() {
   return (
     <>
-      <nav
-        aria-label="Footer"
-        className="hidden flex-col gap-[24px] text-center text-[16px] leading-6 text-white md:flex"
-      >
+      <div className="hidden flex-col gap-[24px] text-[16px] leading-6 text-white md:flex">
         {content.footer.desktopNav.map((link) => (
           <a key={link.label} href={link.href} className="hover:text-lts-tan">
             {link.label}
           </a>
         ))}
-      </nav>
+      </div>
 
-      <nav
-        aria-label="Footer mobile"
-        className="flex flex-col gap-[24px] text-[27px] leading-[32px] text-white md:hidden"
-      >
+      <div className="flex flex-col gap-[24px] text-[27px] leading-[32px] text-white md:hidden">
         {content.footer.mobileNav.map((link) => (
           <a key={link.label} href={link.href} className="hover:text-lts-tan">
             {link.label}
           </a>
         ))}
-      </nav>
+      </div>
     </>
   );
 }
@@ -115,45 +109,47 @@ export function LtsFooter() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-[320px] rounded-[28px] md:rounded-[18px] bg-lts-navy px-[35px] py-[58px] shadow-[0_28px_70px_rgba(0,0,0,0.26)] md:max-w-[1240px] md:px-[48px] md:py-[46px]">
-        <div className="md:pb-[18px]">
-          <Image
-            src={content.footer.desktopLogo.src}
-            alt={content.footer.desktopLogo.alt}
-            width={180}
-            height={66}
-            className="hidden h-[66px] w-[180px] object-contain md:block"
-          />
-          <Image
-            src={content.footer.mobileLogo.src}
-            alt={content.footer.mobileLogo.alt}
-            width={220}
-            height={72}
-            className="h-[72px] w-[220px] object-contain md:hidden"
-          />
-        </div>
-
-        <div className="mt-[47px] grid gap-[46px] md:mt-[34px] md:grid-cols-[minmax(0,420px)_minmax(0,300px)_minmax(0,360px)] md:gap-[34px]">
-          <div className="md:border-r md:border-white/20 md:pr-[56px]">
-            <BusinessList />
-            <div className="mt-[56px] flex flex-col gap-[22px] md:mt-[72px] md:flex-row md:items-center md:gap-[24px]">
-              <p className="text-[25px] leading-[31px] md:text-[16px] md:leading-6">
-                {content.footer.connectLabel}
-              </p>
-              <SocialLinks />
+      <div className="relative z-10 mx-auto grid w-full max-w-[320px] gap-10 rounded-[28px] md:rounded-[18px] bg-lts-navy px-[35px] py-[58px] shadow-[0_28px_70px_rgba(0,0,0,0.26)] md:max-w-[1240px] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-12 md:py-[52px]">
+        <div className="flex flex-col justify-between">
+          <div>
+            <Image
+              src={content.footer.desktopLogo.src}
+              alt={content.footer.desktopLogo.alt}
+              width={180}
+              height={66}
+              className="hidden h-[66px] w-[180px] object-contain md:block"
+            />
+            <Image
+              src={content.footer.mobileLogo.src}
+              alt={content.footer.mobileLogo.alt}
+              width={220}
+              height={72}
+              className="h-[72px] w-[220px] object-contain md:hidden"
+            />
+            <div className="mt-[47px] md:mt-[58px]">
+              <BusinessList />
             </div>
           </div>
-
-          <div className="border-y border-white/18 py-[31px] md:border-y-0 md:border-r md:py-[20px] md:pr-[34px]">
-            <FooterNav />
-          </div>
-
-          <div className="border-b border-white/18 pb-[34px] md:border-b-0 md:pb-0 md:pl-[58px]">
-            <ContactList />
+          <div className="mt-[56px] flex flex-col gap-[22px] md:mt-0 md:flex-row md:items-center md:gap-[24px]">
+            <p className="text-[25px] leading-[31px] md:text-[16px] md:leading-6">
+              {content.footer.connectLabel}
+            </p>
+            <SocialLinks />
           </div>
         </div>
 
-        <p className="mt-[34px] border-t border-white/18 pt-[29px] text-center text-[18px] leading-[26px] text-white md:mt-[39px] md:pt-[20px] md:text-[16px] md:leading-6">
+        <nav
+          aria-label="Footer"
+          className="border-y border-white/18 py-[31px] md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
+        >
+          <FooterNav />
+        </nav>
+
+        <div className="border-b border-white/18 pb-[34px] md:border-b-0 md:px-[88px] md:pt-[146px] md:pb-0">
+          <ContactList />
+        </div>
+
+        <p className="border-t border-white/18 pt-[29px] text-center text-[18px] leading-[26px] text-white md:col-span-3 md:mt-8 md:pt-5 md:text-[16px] md:leading-6">
           {content.footer.copyright}
         </p>
       </div>

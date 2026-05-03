@@ -128,6 +128,14 @@ test("D&M At a Glance section follows the supplied desktop PDF geometry", () => 
   assert.match(page, /md:text-\[31px\]/);
   assert.match(page, /md:text-\[64px\]/);
   assert.match(page, /md:text-\[21px\]/);
+  assert.match(content, /background:\s*\{[\s\S]*overview-hero\.png/);
+  assert.match(content, /image:\s*\{[\s\S]*vessel-al-mirfa\.webp/);
+  assert.match(page, /overview\.background\.src/);
+  assert.equal(
+    existsSync("apps/nmdc-dredging-marine/public/images/dm/overview-hero.png"),
+    true,
+    "D&M overview hero image should exist",
+  );
   assert.match(page, /bg-\[#f4f4f6\] px-5 pb-\[86px\] pt-\[70px\]/);
   assert.match(page, /md:grid-cols-3 md:gap-x-\[20px\] md:gap-y-\[20px\]/);
   assert.match(page, /md:min-h-\[468px\]/);
