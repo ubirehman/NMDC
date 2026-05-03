@@ -73,7 +73,7 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(content, /logo-lts-card\.svg/);
   assert.match(
     content,
-    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*withGroupAppPath\("\/products"\)/s,
   );
   assert.match(content, /href: "\/overview"/);
   assert.match(css, /--infra-yellow:\s*#ffcf00;/);
@@ -104,6 +104,16 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(cards, /group-hover:bg-infra-yellow/);
 });
 
+test("NMDC Infra cross-app home cards do not receive the Infra basePath", () => {
+  const cards = readFileSync(
+    "apps/nmdc-infra/components/InfraHomeCardRail.tsx",
+    "utf8",
+  );
+
+  assert.doesNotMatch(cards, /<Link[^>]*href=\{card\.href\}/s);
+  assert.match(cards, /<a[^>]*href=\{card\.href\}/s);
+});
+
 test("NMDC Infra footer follows the supplied desktop card design", () => {
   const page = readFileSync("apps/nmdc-infra/app/pages.tsx", "utf8");
   const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
@@ -130,6 +140,7 @@ test("NMDC Infra footer follows the supplied desktop card design", () => {
 
 test("NMDC Infra footer navigation uses Infra page links", () => {
   const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
+  const page = readFileSync("apps/nmdc-infra/app/pages.tsx", "utf8");
 
   const expectedLinks = /\{\s*label:\s*"Home",\s*href:\s*withGroupAppPath\("\/"\)\s*\},\s*\{\s*label:\s*"NMDC Infra Overview",\s*href:\s*"\/overview"\s*\},\s*\{\s*label:\s*"Our Products",\s*href:\s*"\/products"\s*\},?/s;
 
@@ -137,6 +148,10 @@ test("NMDC Infra footer navigation uses Infra page links", () => {
   assert.match(content, new RegExp(`mobileNavigationLinks:\\s*\\[\\s*${expectedLinks.source}\\s*\\]`, "s"));
   assert.doesNotMatch(content, /navigationLinks:\s*\[[\s\S]*People & Culture[\s\S]*?\]/);
   assert.doesNotMatch(content, /navigationLinks:\s*\[[\s\S]*Safeen Subsea[\s\S]*?\]/);
+  assert.doesNotMatch(page, /<Link[^>]*href=\{business\.href\}/s);
+  assert.match(page, /<a[^>]*href=\{business\.href\}/s);
+  assert.match(page, /function isInfraInternalHref/);
+  assert.match(page, /isInfraInternalHref\(link\.href\)/);
 });
 
 test("NMDC Infra overview follows the supplied desktop PDF structure", () => {

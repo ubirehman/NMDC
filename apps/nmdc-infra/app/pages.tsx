@@ -422,6 +422,10 @@ function InfraStatCard({
   );
 }
 
+function isInfraInternalHref(href: string) {
+  return href === "/overview" || href === "/products";
+}
+
 function InfraFooter() {
   const footer = content.footer;
   const footerNavigationLinks = footer.navigationLinks;
@@ -455,7 +459,7 @@ function InfraFooter() {
             <ul className="mt-10 grid gap-5 text-[15px] font-semibold leading-5 text-white md:mt-[58px] md:gap-[28px] md:text-[16px] md:leading-6">
               {footer.businesses.map((business) => (
                 <li key={business.label}>
-                  <Link
+                  <a
                     href={business.href}
                     className="flex items-center gap-3 transition-colors hover:text-infra-yellow"
                   >
@@ -464,21 +468,21 @@ function InfraFooter() {
                       aria-hidden="true"
                     />
                     {business.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-9 flex flex-nowrap items-center gap-[10px] md:mt-0 md:flex-wrap md:gap-5">
-            <Link
+            <a
               href={footer.connect.href}
               className="inline-flex shrink-0 text-[14px] font-bold leading-6 text-white transition-colors hover:text-infra-yellow md:text-[16px]"
             >
               {footer.connect.label}
-            </Link>
+            </a>
             <div className="flex items-center gap-[10px] md:gap-4">
               {footer.socialLinks.map((link) => (
-                <Link
+                <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
@@ -487,7 +491,7 @@ function InfraFooter() {
                   className="grid size-8 place-items-center rounded-full bg-infra-yellow text-[12px] font-bold leading-none text-infra-ink transition-colors hover:bg-white md:size-9"
                 >
                   {link.marker}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -500,18 +504,30 @@ function InfraFooter() {
           <ul className="hidden gap-[24px] text-[16px] leading-6 text-white md:grid">
             {footerNavigationLinks.map((link) => (
               <li key={`${link.label}-${link.href}`}>
-                <Link href={link.href} className="transition-colors hover:text-infra-yellow">
-                  {link.label}
-                </Link>
+                {isInfraInternalHref(link.href) ? (
+                  <Link href={link.href} className="transition-colors hover:text-infra-yellow">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a href={link.href} className="transition-colors hover:text-infra-yellow">
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
           <ul className="grid gap-5 text-[15px] leading-5 text-white md:hidden">
             {mobileFooterLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-infra-yellow">
-                  {link.label}
-                </Link>
+                {isInfraInternalHref(link.href) ? (
+                  <Link href={link.href} className="transition-colors hover:text-infra-yellow">
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a href={link.href} className="transition-colors hover:text-infra-yellow">
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

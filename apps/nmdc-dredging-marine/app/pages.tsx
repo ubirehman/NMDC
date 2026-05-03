@@ -13,9 +13,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  CaissonFabricationIcon,
-  CaissonInstallationIcon,
-  CaissonLaunchIcon,
 } from "../components/icons";
 import {
   getDmNavLinks,
@@ -1162,7 +1159,10 @@ export function HydraulicPhysicalModelPage() {
         </div>
       </section>
 
-      <section className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-[96px]">
+      <section
+        id="virtual-tour"
+        className="bg-dm-deep-navy px-5 py-12 text-white md:px-10 md:py-[96px]"
+      >
         <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
           <div className="grid min-w-0 pb-10">
             <div className="relative h-[480px] min-w-0 overflow-hidden rounded-[14px] bg-dm-navy shadow-[0_28px_70px_rgba(0,0,0,0.32)] md:h-[650px] md:rounded-[20px]">
@@ -1176,13 +1176,7 @@ export function HydraulicPhysicalModelPage() {
             </div>
           </div>
 
-          <div className="grid min-w-0 gap-[42px] md:gap-[72px]">
-            {hydraulic.media.map((item) => (
-              <HydraulicMediaFrame key={item.image} item={item} />
-            ))}
-          </div>
-
-          <div className="mt-[62px] md:mt-[96px]">
+          <div className="mt-[62px] md:mt-[60px]">
             <h2 className="text-[30px] font-bold uppercase leading-[1.15] text-white md:text-[42px] md:leading-[52px]">
               {hydraulic.capabilities.title}
             </h2>
@@ -1201,13 +1195,7 @@ export function HydraulicPhysicalModelPage() {
 
       <section className="bg-[#f4f4f6] px-5 py-12 md:px-10 md:py-[96px]">
         <div className="mx-auto w-[calc(100vw-40px)] min-w-0 max-w-[1240px] md:w-full">
-          <p className="text-sm font-bold uppercase leading-5 text-dm-cyan">
-            {hydraulic.testingFacilities.eyebrow}
-          </p>
-          <h2 className="mt-2 max-w-[760px] text-[30px] font-bold uppercase leading-[1.15] text-dm-blue md:text-[42px] md:leading-[52px]">
-            {hydraulic.testingFacilities.title}
-          </h2>
-          <div className="mt-9 grid min-w-0 gap-12 md:mt-[54px] md:gap-[78px]">
+          <div className="mt-9 grid min-w-0 gap-12 md:mt-- md:gap-[78px]">
             {hydraulic.testingFacilities.items.map((facility) => (
               <figure key={facility.title} className="min-w-0">
                 <h3 className="break-words text-[20px] font-bold uppercase leading-7 text-dm-blue md:text-[24px] md:leading-8">
@@ -1240,18 +1228,16 @@ export function HydraulicPhysicalModelPage() {
 
 type CaissonProcessStep = (typeof content.caissonMethod.process.steps)[number];
 
-function CaissonStepIcon({ icon }: { icon: CaissonProcessStep["icon"] }) {
-  const className = "size-6 text-dm-cyan";
-
-  if (icon === "launch") {
-    return <CaissonLaunchIcon className={className} />;
-  }
-
-  if (icon === "installation") {
-    return <CaissonInstallationIcon className={className} />;
-  }
-
-  return <CaissonFabricationIcon className={className} />;
+function CaissonStepIcon({ step }: { step: CaissonProcessStep }) {
+  return (
+    <Image
+      src={step.iconImage.src}
+      alt={step.iconImage.alt}
+      width={96}
+      height={96}
+      className="size-6 object-contain"
+    />
+  );
 }
 
 function CaissonProcessCard({ step }: { step: CaissonProcessStep }) {
@@ -1262,7 +1248,7 @@ function CaissonProcessCard({ step }: { step: CaissonProcessStep }) {
           className="flex size-6 shrink-0 items-center justify-center"
           aria-hidden="true"
         >
-          <CaissonStepIcon icon={step.icon} />
+          <CaissonStepIcon step={step} />
         </span>
         <h3 className="min-w-0 text-[16px] font-bold uppercase leading-6 text-dm-text md:text-[14px] md:leading-5">
           {step.title}

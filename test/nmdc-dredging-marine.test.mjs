@@ -373,6 +373,9 @@ test("D&M caisson method page follows the Caisson Method PDF", () => {
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-hero.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-video.jpg",
     "apps/nmdc-dredging-marine/public/images/dm/caisson-method-carousel.jpg",
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-fabrication-icon.png",
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-launch-icon.png",
+    "apps/nmdc-dredging-marine/public/images/dm/caisson-installation-icon.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -382,10 +385,14 @@ test("D&M caisson method page follows the Caisson Method PDF", () => {
   assert.match(content, /Gantry Hydraulic Slip-Form System/);
   assert.match(content, /Launch and Towing/);
   assert.match(content, /ballasted with seawater/);
+  assert.match(content, /caisson-fabrication-icon\.png/);
+  assert.match(content, /caisson-launch-icon\.png/);
+  assert.match(content, /caisson-installation-icon\.png/);
   assert.match(content, /Technical and Economic Advantages of Caissons in Marine Engineering/);
   assert.match(content, /High production rate due to the ability to prefabricate off-site/);
   assert.match(content, /Less maintenance and repair requirements/);
   assert.match(page, /CaissonProcessCard/);
+  assert.match(page, /step\.iconImage\.src/);
   assert.match(page, /CaissonAdvantagesPanel/);
   assert.match(page, /caisson\.overview\.paragraph/);
   assert.match(page, /caisson\.process\.steps/);

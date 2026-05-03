@@ -40,6 +40,10 @@ export function NmdcGroupProductDetailPage({
     return <HailGhashaDetailLayout detail={detail} />;
   }
 
+  if (detail.slug === "valve") {
+    return <ValveDetailLayout detail={detail} />;
+  }
+
   return <StandardProductDetailLayout detail={detail} />;
 }
 
@@ -154,6 +158,85 @@ function getSectionMinHeightClassName(detail: NmdcGroupProductDetail) {
   return "sectionMinHeightClassName" in detail
     ? detail.sectionMinHeightClassName
     : "";
+}
+
+function ValveDetailLayout({ detail }: { detail: NmdcGroupProductDetail }) {
+  return (
+    <main className="min-h-screen overflow-x-hidden bg-[#0b2d3f] text-white">
+      <ProductMobileHeader />
+      <section className="relative isolate overflow-hidden bg-[#0b2d3f] px-5 pb-20 pt-[104px] md:min-h-[825px] md:px-10 md:pb-[92px] md:pt-[64px]">
+        <ProductDetailBackdrop />
+
+        <div className="relative z-10 mx-auto w-full max-w-[1240px]">
+          <ProductBackLink />
+          <ProductDetailTitle detail={detail} />
+
+          <div className="mt-10 max-w-[612px] md:mt-[58px]">
+            <ValveSpecificationCard detail={detail} />
+          </div>
+        </div>
+      </section>
+
+      <NmdcFooter
+        variant="compact"
+        logo={energyFooterLogo}
+        pageLinks={energyProductFooterLinks}
+      />
+    </main>
+  );
+}
+
+function ValveSpecificationCard({ detail }: { detail: NmdcGroupProductDetail }) {
+  const introTitle =
+    "introTitle" in detail && detail.introTitle ? detail.introTitle : "";
+
+  return (
+    <article className="rounded-[22px] bg-[#213e50] px-6 py-7 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:min-h-[494px] md:px-6 md:py-7">
+      {introTitle ? (
+        <h2 className="text-[18px] font-bold leading-7 text-[#00bd66] md:text-[20px]">
+          {introTitle}
+        </h2>
+      ) : null}
+
+      <div className="mt-8 grid gap-4 text-[16px] leading-[27px] text-white/92 md:text-[18px] md:leading-[29px]">
+        {detail.summary.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+
+      <div className="mt-7 grid gap-7">
+        {detail.sections.map((section) => (
+          <section key={section.title}>
+            <h3 className="text-[16px] font-bold leading-6 text-[#00bd66] md:text-[18px] md:leading-7">
+              {section.title}
+            </h3>
+
+            {"paragraphs" in section && section.paragraphs ? (
+              <div className="mt-1 grid gap-2 text-[16px] leading-[27px] text-white/92 md:text-[18px] md:leading-[29px]">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            ) : null}
+
+            {"bullets" in section && section.bullets ? (
+              <ul className="mt-1 grid gap-1 text-[16px] leading-[27px] text-white/92 md:text-[18px] md:leading-[29px]">
+                {section.bullets.map((bullet) => (
+                  <li key={bullet} className="flex gap-3">
+                    <span
+                      className="mt-[12px] size-[4px] shrink-0 rounded-full bg-white/92"
+                      aria-hidden="true"
+                    />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        ))}
+      </div>
+    </article>
+  );
 }
 
 function HailGhashaDetailLayout({
@@ -475,7 +558,7 @@ function CoastalHydrodynamicTextCard({
 
       <Link
         href={detail.cta.href}
-        className="group mt-7 inline-flex h-[48px] w-full items-center gap-3 rounded-[4px] bg-[#0a344d] px-5 text-[13px] font-normal leading-5 text-white transition-colors hover:bg-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:mt-auto md:h-[61px]"
+        className="group mt-7 inline-flex h-[48px] w-full items-center gap-3 rounded-[4px] bg-[#0a344d] px-5 text-[13px] font-normal leading-5 text-white transition-colors hover:bg-primary-sky-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue md:h-[61px]"
       >
         <span
           className="size-0 border-y-[10px] border-l-[16px] border-y-transparent border-l-primary-sky-blue transition-colors group-hover:border-l-white"
@@ -553,7 +636,7 @@ function MussafahTextCard({
   detail: Extract<NmdcGroupProductDetail, { slug: "mussafah-yard" }>;
 }) {
   return (
-    <article className="rounded-[20px] bg-[#213848] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:h-[846px] md:px-6 md:py-7">
+    <article className="rounded-[20px] bg-[#213848] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:h-full md:px-6 md:py-7">
       <div className="grid gap-4 text-[15px] font-normal leading-[25px] text-white/92 md:text-[17px] md:leading-[28px]">
         {detail.summary.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>

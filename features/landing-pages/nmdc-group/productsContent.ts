@@ -34,16 +34,10 @@ export const nmdcGroupProductsContent = {
       alt: "Coastal and hydrodynamic testing basin",
     },
     {
-      title: "Hail and Ghasha - GOP",
+      title: "Hail and Ghasha Development Projectct",
       href: "/products/hail-ghasha-gop",
       image: `${productsImageBase}/hail-ghasha-gop.webp`,
-      alt: "Hail and Ghasha GOP marine vessel",
-    },
-    {
-      title: "Hail and Ghasha - PAU",
-      href: "/products/hail-ghasha-pau",
-      image: `${productsImageBase}/hail_and_gasha_pau.jpg`,
-      alt: "Hail and Ghasha PAU placeholder panel",
+      alt: "Hail and Ghasha development project",
     },
     {
       title: "3D Printed Artificial Reefs",
@@ -64,16 +58,16 @@ export const nmdcGroupProductsContent = {
       alt: "Valve product placeholder panel",
     },
     {
-      title: "Pipe Coating Materials",
-      href: "/products/pipe-coating-materials",
-      image: `${productsImageBase}/pipe-coating-materials.jpg`,
-      alt: "Pipe coating materials placeholder panel",
-    },
-    {
       title: "Whipstock System",
       href: "/products/whipstock-system",
       image: `${productsImageBase}/whipstock-system.webp`,
       alt: "Whipstock system product render",
+    },
+    {
+      title: "Pipe Coating Materials",
+      href: "/products/pipe-coating-materials",
+      image: `${productsImageBase}/pipe-coating-materials.jpg`,
+      alt: "Pipe coating materials placeholder panel",
     },
     {
       title: "ESP Pump",

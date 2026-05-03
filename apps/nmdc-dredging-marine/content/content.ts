@@ -374,7 +374,7 @@ export const nmdcDredgingMarineContent = {
         slug: "al-sadr",
         name: "Al Sadr",
         type: "Heavy Duty CSDs",
-        image: withDredgingMarineBasePath("/images/dm/vessel-al-sadr.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/vessel-al-sadr.png"),
         specs: [
           ["Dredging Depth", "27.0 m"],
           ["Breadth", "20.30 m"],
@@ -880,18 +880,30 @@ export const nmdcDredgingMarineContent = {
       steps: [
         {
           icon: "fabrication",
+          iconImage: {
+            src: withDredgingMarineBasePath("/images/dm/caisson-fabrication-icon.png"),
+            alt: ""
+          },
           title: "Fabrication:",
           copy:
             "The caisson base slab and walls are constructed using a Gantry Hydraulic Slip-Form System on a floating dock or dry dock, ensuring consistent quality and precision. Reinforced concrete partitions form internal cells, providing stability and space for infill materials."
         },
         {
           icon: "launch",
+          iconImage: {
+            src: withDredgingMarineBasePath("/images/dm/caisson-launch-icon.png"),
+            alt: ""
+          },
           title: "Launch and Towing",
           copy:
             "Once construction reaches the required height, the caisson is floated and towed to the project site using tugboats."
         },
         {
           icon: "installation",
+          iconImage: {
+            src: withDredgingMarineBasePath("/images/dm/caisson-installation-icon.png"),
+            alt: ""
+          },
           title: "Installation",
           copy:
             "At the site, the caisson is ballasted with seawater until it settles on a prepared bedding layer. The internal cells are then filled with dredged sand for additional stability. This process minimizes underwater operations, ensures accurate placement, and improves overall project efficiency."

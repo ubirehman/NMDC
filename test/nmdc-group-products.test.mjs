@@ -69,12 +69,20 @@ test("NMDC Group product detail QR image changes with the product slug", () => {
     { width: 1496, height: 1500 },
   );
   assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/mussafah-yard.png"),
+    { width: 1494, height: 1494 },
+  );
+  assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/multicat-21.png"),
     { width: 1522, height: 1520 },
   );
   assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/whipstock-system-qr.png"),
     { width: 1522, height: 1524 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/3d-printed-artificial-reefs.png"),
+    { width: 1538, height: 1540 },
   );
 });
 
@@ -116,6 +124,32 @@ test("NMDC Group Whipstock detail image fills the media panel", () => {
   assert.doesNotMatch(whipstockDetail, /wrapperBackgroundColor/);
 });
 
+test("NMDC Group Valve detail follows the supplied specification card design", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+  const valveDetail = detailContent.slice(
+    detailContent.indexOf('slug: "valve"'),
+    detailContent.indexOf('slug: "pipe-coating-materials"'),
+  );
+
+  assert.match(valveDetail, /layout:\s*"valve"/);
+  assert.match(valveDetail, /Valve Description including size and rating:/);
+  assert.match(valveDetail, /Manual Ball Valve with size of 20”/);
+  assert.match(valveDetail, /ASTM A352 LCC/);
+  assert.match(valveDetail, /INCONEL 825 \(ASTM B564 UNS N08825\)/);
+  assert.match(valveDetail, /Carbon Steel \+ INCONEL 625 Cladding/);
+  assert.match(valveDetail, /-45°C~ 150°C/);
+  assert.match(valveDetail, /SOUR TOXIC- High Pressure Flare- Low Pressure Flare- Hydrocarbon Sour/);
+
+  assert.match(detailPage, /detail\.slug === "valve"/);
+  assert.match(detailPage, /ValveDetailLayout/);
+  assert.match(detailPage, /ValveSpecificationCard/);
+  assert.doesNotMatch(detailPage, /<ProductMediaPanel media=\{detail\.media\} \/>[\s\S]*detail\.slug === "valve"/);
+});
+
 test("NMDC Group products page route is available from root and legacy nmdc-group path redirects", () => {
   assert.ok(existsSync(routePath), "products route should exist");
   assert.ok(existsSync(groupedRoutePath), "nmdc-group products route should exist");
@@ -150,8 +184,7 @@ test("NMDC Group products desktop layout follows the supplied three-column showc
     "Marine vessels",
     "Mussafah Yard",
     "Coastal and Hydrodynamic Center",
-    "Hail and Ghasha - GOP",
-    "Hail and Ghasha - PAU",
+    "Hail and Ghasha Development Projectct",
     "3D Printed Artificial Reefs",
     "Multicad - 21",
     "Valve",
@@ -163,6 +196,13 @@ test("NMDC Group products desktop layout follows the supplied three-column showc
   ]) {
     assert.match(content, new RegExp(product.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
+
+  assert.doesNotMatch(content, /Hail and Ghasha - GOP/);
+  assert.doesNotMatch(content, /Hail and Ghasha - PAU/);
+  assert.match(
+    content,
+    /Marine vessels[\s\S]*Mussafah Yard[\s\S]*Coastal and Hydrodynamic Center[\s\S]*Hail and Ghasha Development Projectct[\s\S]*3D Printed Artificial Reefs[\s\S]*Multicad - 21[\s\S]*Valve[\s\S]*Whipstock System[\s\S]*Pipe Coating Materials[\s\S]*ESP Pump[\s\S]*Safeen Green[\s\S]*Safeen NAV/,
+  );
 });
 
 test("NMDC Group products mobile layout contains the PDF descriptive showcase groups", () => {
@@ -329,6 +369,10 @@ test("Coastal and Hydrodynamic Center product detail follows the supplied deskto
   assert.match(detailContent, /coastal-hydrodynamic-collage\.png/);
   assert.match(detailContent, /"The state-of-the-art NMDC D&M Coastal and Hydrodynamic Center/);
   assert.match(detailContent, /"Play virtual tour"/);
+  assert.match(
+    detailContent,
+    /cta:\s*\{[\s\S]*label:\s*"Play virtual tour"[\s\S]*href:\s*`\$\{dredgingMarineAppUrl\}\/hydraulic-physical-model#virtual-tour`[\s\S]*\}/,
+  );
 
   for (const asset of [
     "public/images/landing/products/coastal-hydrodynamic-center.webp",
@@ -347,6 +391,15 @@ test("Coastal and Hydrodynamic Center product detail follows the supplied deskto
   assert.match(detailPage, /energyProductFooterLinks/);
   assert.match(detailPage, /logo-energy\.webp/);
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
+});
+
+test("Dredging hydraulic physical model exposes a virtual tour anchor", () => {
+  const dredgingPage = readFileSync(
+    "apps/nmdc-dredging-marine/app/pages.tsx",
+    "utf8",
+  );
+
+  assert.match(dredgingPage, /id="virtual-tour"[\s\S]*<iframe/);
 });
 
 test("Hail and Ghasha product detail follows the supplied single-panel desktop design", () => {

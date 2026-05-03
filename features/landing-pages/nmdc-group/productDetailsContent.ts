@@ -1,4 +1,7 @@
 const productsImageBase = "/images/landing/products";
+const dredgingMarineAppUrl = (
+  process.env.NEXT_PUBLIC_DREDGING_MARINE_APP_URL ?? "http://localhost:3121"
+).replace(/\/$/, "");
 
 const hailGhashaPanels = [
   {
@@ -189,7 +192,10 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC Dredging and Marine",
     title: "Coastal & Hydrodynamic Center",
     accentClassName: "text-primary-sky-blue",
-    cta: { label: "Play virtual tour", href: "/videos/safeen-subsea-green.mp4" },
+    cta: {
+      label: "Play virtual tour",
+      href: `${dredgingMarineAppUrl}/hydraulic-physical-model#virtual-tour`,
+    },
     media: [
       {
         src: `${productsImageBase}/coastal-hydrodynamic-center.webp`,
@@ -203,7 +209,7 @@ export const nmdcGroupProductDetails = [
       fit: "cover",
     },
     summary: [
-      "The state-of-the-art NMDC D&M Coastal and Hydrodynamic Center, which spans approximately 2800 sqm, allows engineers to simulate and validate the impact of hydrodynamic environmental actions on strategic infrastructure, including ports, breakwaters, sea walls and offshore structures. Using scaled physical models to replicate real-world environments, it ensures that model behaviour reflects full-scale performance, including wave forces, pressures and structural response, enabling designs to be tested, refined and optimised before construction. The new facility features a 3D wave basin and 2D wave flume with advanced wave generation systems and controlled water environments, designed to test both fixed and floating structures across a wide range of conditions. It supports applications from early-stage research to validation of large-scale infrastructure, including wave transformation, overtopping, scour and harbor behavior under operational conditions.",
+      "The state-of-the-art NMDC D&M Coastal and Hydrodynamic Center, which spans approximately 2800 sqm, allows engineers to simulate and validate the impact of hydrodynamic environmental actions on strategic infrastructure, including ports, breakwaters, sea walls and offshore structures. Using scaled physical models to replicate real-world environments, it ensures that model behaviour reflects full-scale performance, including wave forces, pressures and structural response, enabling designs to be tested, refined and optimised before construction.The new facility features a 3D wave basin and 2D wave flume with advanced wave generation systems and controlled water environments, designed to test both fixed and floating structures across a wide range of conditions. It supports applications from early-stage research to validation of large-scale infrastructure, including wave transformation, overtopping, scour and harbor behavior under operational conditions.",
     ],
     sections: [],
   },
@@ -293,9 +299,9 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "3d-printed-artificial-reefs",
-    fullTitle: "NMDC Infra | 3d Printed Artificial Reefs",
+    fullTitle: "3D Printed Artificial Reefs",
     brandName: "NMDC Infra",
-    title: "3d Printed Artificial Reefs",
+    title: "3D Printed Artificial Reefs",
     accentClassName: "text-[#ffcf00]",
     panelHeightClassName: "md:min-h-[731px]",
     sectionMinHeightClassName: "md:min-h-[1341px]",
@@ -347,27 +353,33 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "valve",
+    layout: "valve",
     fullTitle: "NMDC Energy | Valve",
     brandName: "NMDC Energy",
     title: "Valve",
     accentClassName: "text-[#00bd66]",
-    media: [
-      {
-        src: `${productsImageBase}/valve.webp`,
-        alt: "Valve product showcase panel",
-        fit: "contain",
-      },
-    ],
+    media: [],
+    introTitle: "Valve Description including size and rating:",
     summary: [
-      "Valve products are showcased as part of NMDC Energy's fabrication and industrial product capability for offshore and onshore facilities.",
+      "Manual Ball Valve with size of 20”; thickness of 12.7 mm and Class 150 rating (Bi-directional Sealing)",
     ],
     sections: [
       {
-        title: "Product Showcase",
+        title: "Material of Construction:",
         bullets: [
-          "Supports modular fabrication and facility integration.",
-          "Presented with NMDC Energy yard product capabilities.",
-          "Part of the broader showcased products portfolio.",
+          "Body: (Carbon Steel) ASTM A352 LCC",
+          "Stem: INCONEL 825 (ASTM B564 UNS N08825)",
+          "Ball: Carbon Steel + INCONEL 625 Cladding",
+        ],
+      },
+      {
+        title: "Design Temperature Range:",
+        paragraphs: ["-45°C~ 150°C"],
+      },
+      {
+        title: "Service:",
+        paragraphs: [
+          "SOUR TOXIC- High Pressure Flare- Low Pressure Flare- Hydrocarbon Sour",
         ],
       },
     ],
