@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { InstagramIcon } from "../../../app/components/landing/SocialIcons";
 import { nmdcDredgingMarineContent as content } from "../content/content";
 
 export function Footer() {
@@ -63,7 +64,11 @@ export function Footer() {
                   aria-label={link.label}
                   className="grid size-7 place-items-center rounded-full bg-[#d8efff] text-[10px] font-bold leading-none text-dm-blue transition-colors hover:bg-dm-cyan hover:text-white md:size-9 md:text-[12px]"
                 >
-                  {link.marker}
+                  {link.label === "Instagram" ? (
+                    <InstagramIcon className="size-[14px] md:size-[16px]" />
+                  ) : (
+                    link.marker
+                  )}
                 </Link>
               ))}
             </div>

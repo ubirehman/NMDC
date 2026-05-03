@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { InstagramIcon } from "../../../app/components/landing/SocialIcons";
 import { nmdcLtsContent as content } from "../content/content";
 
 function BusinessList() {
@@ -35,7 +36,11 @@ function SocialLinks() {
           aria-label={social.label}
           className="flex size-[48px] items-center justify-center rounded-full bg-[#d8edff] text-[18px] font-bold lowercase leading-none text-[#0072bc] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lts-tan md:size-[34px] md:text-[14px]"
         >
-          {social.shortLabel}
+          {social.label === "Instagram" ? (
+            <InstagramIcon className="size-[22px] md:size-[16px]" />
+          ) : (
+            social.shortLabel
+          )}
         </a>
       ))}
     </div>

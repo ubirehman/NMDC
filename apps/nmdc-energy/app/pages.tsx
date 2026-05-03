@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { HTMLAttributes, ReactNode } from "react";
+import { InstagramIcon } from "../../../app/components/landing/SocialIcons";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
 import { EnergyOverviewVideoPlayer } from "../components/EnergyOverviewVideoPlayer";
 import { EnergyProductImageCarousel } from "../components/EnergyProductImageCarousel";
@@ -1714,7 +1715,11 @@ function EnergyFooter() {
                   aria-label={link.label}
                   className="grid size-9 place-items-center rounded-full bg-[#effff6] text-[12px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white"
                 >
-                  {link.marker}
+                  {link.label === "Instagram" ? (
+                    <InstagramIcon className="size-[16px]" />
+                  ) : (
+                    link.marker
+                  )}
                 </Link>
               ))}
             </div>

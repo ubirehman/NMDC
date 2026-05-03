@@ -7,6 +7,7 @@ import {
   nmdcGroupHomeHref,
   nmdcPageLinks,
 } from "./nmdcShared";
+import { InstagramIcon } from "./SocialIcons";
 
 type NmdcFooterProps = {
   variant?: "default" | "compact";
@@ -97,7 +98,11 @@ export function NmdcFooter({ variant = "default", logo, pageLinks }: NmdcFooterP
                   aria-label={link.label}
                   className="flex size-8 items-center justify-center rounded-full bg-white text-[12px] font-bold text-primary-blue transition-colors hover:bg-primary-sky-blue hover:text-white"
                 >
-                  {link.shortLabel}
+                  {link.label === "Instagram" ? (
+                    <InstagramIcon className="size-[15px]" />
+                  ) : (
+                    link.shortLabel
+                  )}
                 </Link>
               ))}
             </div>

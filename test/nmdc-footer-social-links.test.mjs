@@ -53,3 +53,16 @@ test("footer social anchors open external channels consistently", () => {
     assert.match(source, /rel="noreferrer"/, `${file} should use safe external link rel`);
   }
 });
+
+test("footer Instagram links render the Instagram icon instead of the ig text marker", () => {
+  for (const file of footerRenderFiles) {
+    const source = readFileSync(file, "utf8");
+
+    assert.match(source, /InstagramIcon/, `${file} should render the Instagram icon`);
+    assert.doesNotMatch(
+      source,
+      /aria-label=\{(?:link|social)\.label\}[\s\S]{0,500}\{(?:link\.marker|link\.shortLabel|social\.shortLabel)\}/,
+      `${file} should not render the raw Instagram ig marker`,
+    );
+  }
+});

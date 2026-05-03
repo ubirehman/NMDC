@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { InstagramIcon } from "../../../app/components/landing/SocialIcons";
 import { Header } from "../components/Header";
 import { InfraDetailImageCarousel } from "../components/InfraDetailImageCarousel";
 import { InfraHomeCardRail } from "../components/InfraHomeCardRail";
@@ -140,7 +141,6 @@ function InfraSectionHeading({
           aria-hidden="true"
         />
       </div>
-      <span className="mt-4 block h-[5px] w-[88px] bg-infra-yellow" aria-hidden="true" />
     </div>
   );
 }
@@ -490,7 +490,11 @@ function InfraFooter() {
                   aria-label={link.label}
                   className="grid size-8 place-items-center rounded-full bg-infra-yellow text-[12px] font-bold leading-none text-infra-ink transition-colors hover:bg-white md:size-9"
                 >
-                  {link.marker}
+                  {link.label === "Instagram" ? (
+                    <InstagramIcon className="size-[15px]" />
+                  ) : (
+                    link.marker
+                  )}
                 </a>
               ))}
             </div>
