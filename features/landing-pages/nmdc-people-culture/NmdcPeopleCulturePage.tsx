@@ -230,7 +230,7 @@ function StatsGrid({
               mobile ? "text-[13px] leading-5" : "text-[13px] leading-5"
             }`}
           >
-            EMIRATIZATION RATE (NMDC GROUP)
+            EMIRATIZATION RATE
           </p>
           <p
             className={`font-bold leading-none text-primary-sky-blue ${

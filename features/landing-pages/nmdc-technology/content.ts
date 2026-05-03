@@ -55,6 +55,7 @@ export const technologySections = [
 export const technologyApplications = {
   title: "Applications in Our AI Hub",
   knowMoreLabel: "Know more-",
+  linkLabel: "Visit our AI Hub",
   href: "https://ai.nmdc-group.com/",
 };
 
@@ -62,7 +63,7 @@ export const aiPlatforms = [
   "NHSE AI Camera System (AMAN)",
   "NMDC 4.0 Platform",
   "Procurement & Supply Chain AI Platform",
-  "PEngineering AI Platform",
+  "Engineering AI Platform",
   "Yard AI Platform",
   "Tender & Estimation AI Platform",
   "People & Culture AI Platform",

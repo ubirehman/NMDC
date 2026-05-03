@@ -118,7 +118,7 @@ export function NmdcTechnologyPage() {
                     href={technologyApplications.href}
                     className="text-primary-sky-blue underline underline-offset-4 transition-colors hover:text-white"
                   >
-                    {technologyApplications.href}
+                    {technologyApplications.linkLabel}
                   </Link>
                 </p>
               </div>
@@ -209,12 +209,12 @@ function MobileTechnologyContent() {
           ))}
         </div>
         <p className="mt-[26px] break-words text-[16px] leading-6 text-white">
-          {technologyApplications.knowMoreLabel}
+          {technologyApplications.knowMoreLabel}{" "}
           <Link
             href={technologyApplications.href}
             className="text-primary-sky-blue underline underline-offset-4"
           >
-            {technologyApplications.href}
+            {technologyApplications.linkLabel}
           </Link>
         </p>
       </section>

@@ -143,13 +143,15 @@ test("NMDC Technology follows the supplied desktop PDF layout", () => {
   const technologyDesign = `${technology}\n${technologyContent}`;
 
   assert.match(technology, /md:h-\[487px\]/);
-  assert.match(technologyDesign, /Technology &(?:amp; )?Ai/);
+  assert.match(technologyDesign, /Technology &(?:amp; )?AI/);
   assert.match(technologyDesign, /NMDC AI Hub - Empowering a Smarter, Safer and More/);
   assert.match(technology, /md:grid-cols-2 md:gap-6/);
   assert.match(technologyDesign, /Digital Integration Across NMDC/);
   assert.match(technologyDesign, /bg-\[#062c45\].*Digital Integration Across NMDC/s);
   assert.match(technologyDesign, /Applications in Our AI Hub/);
   assert.match(technologyDesign, /Know more-/);
+  assert.match(technologyDesign, /linkLabel:\s*"Visit our AI Hub"/);
+  assert.match(technology, /technologyApplications\.linkLabel/);
   assert.match(technology, /technologyMedia/);
   assert.match(technology, /grid content-start gap-8/);
   assert.doesNotMatch(technology, /TechnologyMediaRail/);
