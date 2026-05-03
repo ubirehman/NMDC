@@ -1320,11 +1320,6 @@ export function CaissonMethodPage() {
         <div className="relative z-10 mx-auto grid w-[calc(100vw-40px)] min-w-0 max-w-[1240px] gap-[30px] md:w-full md:grid-cols-[minmax(0,492px)_minmax(0,714px)] md:items-center md:justify-between md:gap-[34px]">
           <div className="min-w-0">
             <h1 className="text-[24px] font-bold leading-[36px] md:text-[31px] md:leading-[38px]">
-              <span className="text-dm-cyan">
-                {caisson.overview.eyebrowAccent}
-              </span>
-              <span className="text-white"> {caisson.overview.eyebrowSuffix}</span>
-              <br />
               <span className="text-white">{caisson.overview.title}</span>
             </h1>
             <p className="mt-5 max-w-[492px] break-words text-[14px] leading-[21px] text-white md:text-[16px] md:leading-[24px]">
