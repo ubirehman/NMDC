@@ -39,9 +39,7 @@ export function NmdcGroupProductsPage() {
 
           <div>
             <h1 className="text-[22px] font-bold leading-[32px] md:text-[44px] md:leading-[56px]">
-              <span className="block md:inline">{content.hero.titleLeading}</span>
-              <span className="mx-5 hidden text-white/82 md:inline">|</span>
-              <span className="block text-primary-sky-blue md:inline">
+              <span className="block text-white md:inline">
                 {content.hero.titleAccent}
               </span>
             </h1>
@@ -71,7 +69,7 @@ export function NmdcGroupProductsPage() {
                     className="object-cover transition duration-300 group-hover:scale-105 [@media_(pointer:coarse)_and_(max-width:1199px)]:object-contain [@media_(pointer:coarse)_and_(max-width:1199px)]:group-hover:scale-100"
                   />
                 </div>
-                <h2 className="mt-[19px] text-[18px] font-bold leading-6 text-white transition-colors group-hover:text-primary-sky-blue">
+                <h2 className="mt-[19px] text-[16px] font-bold leading-6 text-white transition-colors group-hover:text-primary-sky-blue">
                   {product.title}
                 </h2>
               </Link>

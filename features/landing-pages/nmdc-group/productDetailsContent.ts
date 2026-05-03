@@ -47,7 +47,7 @@ export const nmdcGroupProductDetails = [
     layout: "marine-vessels",
     fullTitle: "NMDC Dredging and Marine | Marine Vessels",
     brandName: null,
-    title: "Marine Vessels",
+    title: "Integrated Marine Construction Operation",
     accentClassName: "text-primary-sky-blue",
     media: [
       {

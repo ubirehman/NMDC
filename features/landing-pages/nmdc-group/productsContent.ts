@@ -16,7 +16,7 @@ export const nmdcGroupProductsContent = {
   },
   desktopProducts: [
     {
-      title: "Marine vessels",
+      title: "Integrated Marine Construction Operation",
       href: "/products/marine-vessels",
       image: `${productsImageBase}/marine-vessels.jpg`,
       alt: "NMDC marine vessel",

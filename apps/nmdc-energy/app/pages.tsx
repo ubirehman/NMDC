@@ -1739,7 +1739,7 @@ function EnergyFooter() {
 
         <nav
           aria-label={footer.navigationLabel}
-          className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px]"
+          className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
         >
           <ul className="hidden gap-6 text-[16px] font-normal leading-6 text-white md:grid md:gap-4">
             {footerNavigationLinks.map((link) => (
