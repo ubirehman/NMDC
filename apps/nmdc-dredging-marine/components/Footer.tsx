@@ -32,7 +32,7 @@ export function Footer() {
           <ul className="mt-10 grid gap-4 text-[15px] font-semibold leading-5 text-white md:mt-[58px]">
             {footer.businesses.map((business) => (
               <li key={business.label}>
-                <Link
+                <a
                   href={business.href}
                   className="flex items-center gap-3 transition-colors hover:text-dm-cyan"
                 >
@@ -41,7 +41,7 @@ export function Footer() {
                     aria-hidden="true"
                   />
                   {business.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -77,9 +77,9 @@ export function Footer() {
           <ul className="grid gap-4 text-[15px] leading-5 text-white">
             {footer.navigationLinks.map((link) => (
               <li key={`${link.label}-${link.href}`}>
-                <Link href={link.href} className="transition-colors hover:text-dm-cyan">
+                <a href={link.href} className="transition-colors hover:text-dm-cyan">
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

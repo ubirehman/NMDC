@@ -54,7 +54,7 @@ export function NmdcGroupProductsPage() {
 
       <section className="overflow-hidden bg-[#001d2c] px-5 pb-16 pt-9 md:px-10 md:pb-[100px] md:pt-[66px]">
         <div className="mx-auto w-full max-w-[1240px]">
-          <div className="hidden md:grid md:grid-cols-3 md:gap-x-5 md:gap-y-5">
+          <div className="hidden md:grid md:grid-cols-3 md:gap-x-5 md:gap-y-5 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:grid-cols-2">
             {content.desktopProducts.map((product) => (
               <Link
                 key={product.title}

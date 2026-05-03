@@ -70,7 +70,7 @@ test("NMDC Group product detail QR image changes with the product slug", () => {
   );
   assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/mussafah-yard.png"),
-    { width: 1494, height: 1494 },
+    { width: 1518, height: 1496 },
   );
   assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/multicat-21.png"),
@@ -83,6 +83,14 @@ test("NMDC Group product detail QR image changes with the product slug", () => {
   assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/3d-printed-artificial-reefs.png"),
     { width: 1538, height: 1540 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/coastal-hydrodynamic-center.png"),
+    { width: 1510, height: 1508 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/safeen-green.png"),
+    { width: 1436, height: 1436 },
   );
 });
 
@@ -175,6 +183,8 @@ test("NMDC Group products desktop layout follows the supplied three-column showc
 
   assert.match(content, /Products to be Showcased/);
   assert.match(page, /md:grid-cols-3/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:grid-cols-2/);
+  assert.doesNotMatch(page, /min-\[1200px\]:grid-cols-3/);
   assert.match(page, /hidden md:grid/);
   assert.match(page, /md:hidden/);
   assert.match(page, /Back/);

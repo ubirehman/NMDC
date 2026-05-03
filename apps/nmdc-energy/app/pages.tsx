@@ -1682,7 +1682,7 @@ function EnergyFooter() {
             <ul className="mt-10 grid gap-5 text-[21px] font-bold leading-7 text-white md:mt-[58px] md:gap-4 md:text-[15px] md:leading-5">
               {footer.businesses.map((business) => (
                 <li key={business.label}>
-                  <Link
+                  <a
                     href={business.href}
                     className="flex items-center gap-4 transition-colors hover:text-energy-green md:gap-3"
                   >
@@ -1691,7 +1691,7 @@ function EnergyFooter() {
                       aria-hidden="true"
                     />
                     {business.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -1728,18 +1728,18 @@ function EnergyFooter() {
           <ul className="hidden gap-6 text-[22px] font-normal leading-7 text-white md:grid md:gap-4 md:text-[15px] md:leading-5">
             {footerNavigationLinks.map((link) => (
               <li key={`${link.label}-${link.href}`}>
-                <Link href={link.href} className="transition-colors hover:text-energy-green">
+                <a href={link.href} className="transition-colors hover:text-energy-green">
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
           <ul className="grid gap-6 text-[22px] font-normal leading-7 text-white md:hidden">
             {mobileFooterLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-energy-green">
+                <a href={link.href} className="transition-colors hover:text-energy-green">
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
