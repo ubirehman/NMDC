@@ -19,10 +19,12 @@ import {
 const peopleCultureVideos = [
   {
     src: "/videos/nmdc_technology.mp4",
+    poster: "/images/landing/video-posters/nmdc-technology.png",
     playLabel: "Play NMDC Technology video",
   },
   {
     src: "/videos/nmdc_people_and_culture_and_at-a_glance.mp4",
+    poster: "/images/landing/video-posters/nmdc-people-culture-at-glance.png",
     playLabel: "Play NMDC People and Culture video",
   },
 ];
@@ -302,6 +304,7 @@ function MobileMediaGallery() {
                 playsInline
                 preload="metadata"
                 src={video.src}
+                poster={video.poster}
                 aria-label={video.playLabel}
                 className="h-[320px] w-full bg-primary-navy-blue object-cover"
               />

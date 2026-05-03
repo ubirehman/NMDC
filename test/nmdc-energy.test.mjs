@@ -192,19 +192,18 @@ test("NMDC Energy overview streams local videos with native Safeen-style control
   );
 
   for (const asset of [
-    "apps/nmdc-energy/public/videos/energy-overview-green.mp4",
-    "apps/nmdc-energy/public/videos/energy-overview-rov.mp4",
+    "apps/nmdc-energy/public/videos/energy-overview-mussafah.mp4",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
     assert.ok(statSync(asset).size > 1_000_000, `${asset} should be a copied video asset`);
   }
 
   assert.match(content, /videos:\s*\[/);
-  assert.match(content, /energy-overview-green\.mp4/);
-  assert.match(content, /energy-overview-rov\.mp4/);
+  assert.match(content, /energy-overview-mussafah\.mp4/);
+  assert.doesNotMatch(content, /energy-overview-green\.mp4/);
+  assert.doesNotMatch(content, /energy-overview-rov\.mp4/);
   assert.match(content, /type:\s*"video\/mp4"/);
-  assert.doesNotMatch(content, /poster:\s*\{/);
-  assert.doesNotMatch(content, /videos:\s*\[[\s\S]*overview-video\.jpg/);
+  assert.match(content, /poster:\s*withEnergyBasePath\("\/images\/energy\/video-posters\/overview-mussafah\.png"\)/);
   assert.match(page, /EnergyOverviewVideoPlayer/);
   assert.match(page, /videos=\{video\.videos\}/);
   assert.match(player, /"use client";/);
@@ -216,7 +215,7 @@ test("NMDC Energy overview streams local videos with native Safeen-style control
   assert.doesNotMatch(player, /controls=\{isPlaying\}/);
   assert.match(player, /playsInline/);
   assert.match(player, /preload="metadata"/);
-  assert.doesNotMatch(player, /poster=/);
+  assert.match(player, /poster=\{video\.poster\}/);
   assert.match(player, /src=\{video\.src\}/);
   assert.doesNotMatch(player, /playVideo/);
   assert.doesNotMatch(player, /setIsPlaying/);
@@ -409,7 +408,10 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   const route = readFileSync("apps/nmdc-energy/app/products/[slug]/page.tsx", "utf8");
 
   for (const asset of [
-    "apps/nmdc-energy/public/images/energy/product-topside-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-topside-carousel-1.jpg",
+    "apps/nmdc-energy/public/images/energy/product-topside-carousel-2.jpg",
+    "apps/nmdc-energy/public/images/energy/product-topside-carousel-3.jpg",
+    "apps/nmdc-energy/public/images/energy/product-topside-carousel-4.jpg",
     "apps/nmdc-energy/public/images/energy/product-jackets-detail.jpg",
     "apps/nmdc-energy/public/images/energy/product-jackets-carousel-1.jpg",
     "apps/nmdc-energy/public/images/energy/product-jackets-carousel-2.jpg",
@@ -456,6 +458,7 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
     assert.match(content, new RegExp(`slug: "${slug}"`));
   }
   assert.match(content, /Riser Platform/);
+  assert.match(content, /product-topside-carousel-1\.jpg[\s\S]*product-topside-carousel-2\.jpg[\s\S]*product-topside-carousel-3\.jpg[\s\S]*product-topside-carousel-4\.jpg/);
   assert.match(content, /Eight Legged Jacket/);
   assert.match(content, /product-jackets-carousel-1\.jpg[\s\S]*product-jackets-carousel-2\.jpg[\s\S]*product-jackets-carousel-3\.jpg/);
   assert.match(content, /Bridges"/);

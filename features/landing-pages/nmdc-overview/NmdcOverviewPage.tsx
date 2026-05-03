@@ -175,6 +175,7 @@ function NmdcOverviewVideoSection() {
     <section className="bg-white px-5 pt-14 md:px-10 md:pt-[110px]">
       <div className="mx-auto flex h-full w-full max-w-[1240px]">
         <OverviewVideoPlayer
+          poster={overviewVideo.poster}
           sources={overviewVideo.sources}
         />
       </div>

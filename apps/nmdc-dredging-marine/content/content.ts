@@ -60,11 +60,13 @@ export const nmdcDredgingMarineContent = {
     {
       src: nmdcDredgingMarineVideoSources[0],
       type: "video/mp4",
+      poster: withDredgingMarineBasePath("/images/dm/video-posters/nmdc-dm-1.png"),
       playLabel: "Play NMDC Dredging and Marine video"
     },
     {
       src: nmdcDredgingMarineVideoSources[1],
       type: "video/mp4",
+      poster: withDredgingMarineBasePath("/images/dm/video-posters/nmdc-dm-2.png"),
       playLabel: "Play NMDC Dredging and Marine ROV operations video"
     }
   ],
@@ -754,7 +756,7 @@ export const nmdcDredgingMarineContent = {
       {
         type: "video",
         src: nmdcDredgingMarineVideoSources[0],
-        image: withDredgingMarineBasePath("/images/dm/hydraulic-center-video.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/video-posters/nmdc-dm-1.png"),
         alt: "NMDC Dredging and Marine engineers reviewing hydraulic model testing"
       }
     ],
@@ -911,7 +913,7 @@ export const nmdcDredgingMarineContent = {
       ],
       video: {
         src: nmdcDredgingMarineVideoSources[0],
-        image: withDredgingMarineBasePath("/images/dm/caisson-method-video.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/video-posters/nmdc-dm-1.png"),
         alt: "Caisson method video still"
       }
     },

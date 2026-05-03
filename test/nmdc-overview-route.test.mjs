@@ -140,12 +140,12 @@ test("NMDC overview content has the five group business cards and four key figur
 test("NMDC overview video is self-hosted", () => {
   assert.equal(existsSync(contentPath), true);
   assert.equal(
-    existsSync("public/videos/safeen-subsea-rov.mp4"),
+    existsSync("public/videos/nmdc-overview.mp4"),
     true,
-    "public/videos/safeen-subsea-rov.mp4 should exist",
+    "public/videos/nmdc-overview.mp4 should exist",
   );
   assert.ok(
-    statSync("public/videos/safeen-subsea-rov.mp4").size > 1_000_000,
+    statSync("public/videos/nmdc-overview.mp4").size > 1_000_000,
     "NMDC overview video should be a real copied video asset",
   );
   const player = readFileSync(
@@ -154,13 +154,13 @@ test("NMDC overview video is self-hosted", () => {
   );
   const page = readFileSync(pagePath, "utf8");
   const content = readFileSync(contentPath, "utf8");
-  assert.match(content, /\/videos\/safeen-subsea-rov\.mp4/);
-  assert.doesNotMatch(content, /poster:\s*|overview-video-vessel\.jpg/);
+  assert.match(content, /\/videos\/nmdc-overview\.mp4/);
+  assert.match(content, /poster:\s*"\/images\/landing\/video-posters\/nmdc-overview\.png"/);
   assert.match(player, /<video/);
   assert.match(player, /<source/);
   assert.match(player, /\scontrols\s/);
   assert.match(player, /preload="metadata"/);
-  assert.doesNotMatch(page, /poster=\{overviewVideo\.poster\}/);
+  assert.match(page, /poster=\{overviewVideo\.poster\}/);
   assert.doesNotMatch(player, /playVideo|controls=\{isPlaying\}|border-l-primary-sky-blue/);
   assert.match(player, /max-w-\[1240px\]/);
   assert.doesNotMatch(page, /iframe|youtube\.com|vimeo\.com/i);

@@ -514,6 +514,7 @@ export const nmdcGroupProductDetails = [
     accentClassName: "text-primary-sky-blue",
     panelHeightClassName: "md:min-h-[370px]",
     sectionMinHeightClassName: "md:min-h-[980px]",
+    specificationFile: "/pdfs/safeen-nav-specs.pdf",
     media: [
       {
         src: `${productsImageBase}/safeen-nav.jpg`,

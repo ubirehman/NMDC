@@ -626,6 +626,7 @@ type InfraProductDetailContent = {
       title: string;
       src: string;
       type: string;
+      poster: string;
       playLabel: string;
     }[];
   };

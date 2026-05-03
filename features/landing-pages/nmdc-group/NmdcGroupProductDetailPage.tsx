@@ -119,7 +119,7 @@ function StandardProductDetailLayout({
           <ProductBackLink />
           <ProductDetailTitle detail={detail} />
 
-          <div className="mt-6 hidden md:grid md:grid-cols-[641px_583px] md:items-stretch md:gap-4">
+          <div className="mt-6 hidden md:grid md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:items-stretch md:gap-4">
             <ProductTextCard
               detail={detail}
               panelHeightClassName={panelHeightClassName}
@@ -511,7 +511,7 @@ function CoastalHydrodynamicDetailLayout({
             <span className="min-w-0 break-words text-white">{detail.title}</span>
           </h1>
 
-          <div className="mt-6 grid gap-5 md:mt-[39px] md:grid-cols-[641px_583px] md:gap-4">
+          <div className="mt-6 grid gap-5 md:mt-[39px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
             <CoastalHydrodynamicTextCard detail={detail} />
             <div className="relative h-[520px] overflow-hidden rounded-[20px] bg-[#12394d] md:h-[862px]">
               <Image
@@ -601,9 +601,9 @@ function MussafahYardDetailLayout({
             {detail.fullTitle}
           </h1>
 
-          <div className="mt-6 grid gap-5 md:mt-[54px] md:grid-cols-[641px_583px] md:gap-4">
+          <div className="mt-6 grid gap-5 md:mt-[54px] md:min-h-[846px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
             <MussafahTextCard detail={detail} />
-            <div className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#12394d] md:h-full md:rounded-[20px]">
+            <div className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#12394d] md:h-auto md:min-h-[846px] md:rounded-[20px]">
               <Image
                 src={detail.media[0].src}
                 alt={detail.media[0].alt}
@@ -729,6 +729,15 @@ function ProductTextCard({
         >
           <span className="size-0 border-y-[10px] border-l-[16px] border-y-transparent border-l-primary-sky-blue group-hover:border-l-white" />
           {detail.cta.label}
+        </Link>
+      ) : null}
+
+      {"specificationFile" in detail && detail.specificationFile ? (
+        <Link
+          href={getPdfViewerHref(detail.specificationFile, detail.title, `/products/${detail.slug}`)}
+          className="mt-6 inline-flex h-[48px] w-full items-center justify-center rounded-[4px] bg-[#0a344d] px-5 text-[13px] font-bold leading-5 text-white transition-colors hover:bg-primary-sky-blue md:mt-auto"
+        >
+          View Specification
         </Link>
       ) : null}
     </article>

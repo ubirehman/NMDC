@@ -154,7 +154,7 @@ export const maharaFreshGraduateDetail = {
 export const maharaFreshGraduateDesignDetail = {
   title: "Other Initiatives",
   image: {
-    src: "/images/landing/people_culture_at_glance.jpeg",
+    src: "/images/landing/people_culture_at_glance_.jpeg",
     alt: "NMDC women empowerment initiative group session",
   },
   sections: [

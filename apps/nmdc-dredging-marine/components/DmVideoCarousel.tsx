@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight } from "./icons";
 type DmVideoItem = {
   readonly src: string;
   readonly type?: string;
+  readonly poster: string;
   readonly playLabel: string;
 };
 
@@ -50,6 +51,7 @@ export function DmVideoCarousel({ videos }: DmVideoCarouselProps) {
                 controls
                 playsInline
                 preload="metadata"
+                poster={video.poster}
                 aria-label={video.playLabel}
                 className="h-[245px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
               >

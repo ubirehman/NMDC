@@ -7,6 +7,7 @@ type InfraVideoItem = {
   title?: string;
   src: string;
   type: string;
+  poster: string;
   playLabel: string;
 };
 
@@ -58,6 +59,7 @@ export function InfraVideoCarousel({
                 playsInline
                 preload="metadata"
                 src={video.src}
+                poster={video.poster}
                 aria-label={video.playLabel}
                 className={videoClassName}
               />

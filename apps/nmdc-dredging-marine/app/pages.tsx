@@ -327,6 +327,7 @@ function MediaPanel({
           src={content.videoSources[0].src}
           ariaLabel={`Play ${title}`}
           className="h-[250px] w-full bg-dm-navy object-cover md:h-[430px]"
+          poster={content.videoSources[0].poster}
         />
       </div>
       <figcaption
@@ -1055,6 +1056,7 @@ function HydraulicMediaFrame({ item }: { item: HydraulicMediaData }) {
           src={item.src}
           ariaLabel={`Play ${item.alt}`}
           className="h-[245px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
+          poster={item.image}
         />
       ) : (
         <Image
@@ -1350,6 +1352,7 @@ export function CaissonMethodPage() {
               src={caisson.process.video.src}
               ariaLabel="Play Caisson Method video"
               className="h-[260px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
+              poster={caisson.process.video.image}
             />
           </figure>
 

@@ -126,15 +126,10 @@ export const nmdcEnergyContent = {
       videos: [
         {
           title: "NMDC Energy overview",
-          src: withEnergyBasePath("/videos/energy-overview-green.mp4"),
+          src: withEnergyBasePath("/videos/energy-overview-mussafah.mp4"),
           type: "video/mp4",
+          poster: withEnergyBasePath("/images/energy/video-posters/overview-mussafah.png"),
           playLabel: "Play NMDC Energy overview video",
-        },
-        {
-          title: "NMDC Energy ROV operations",
-          src: withEnergyBasePath("/videos/energy-overview-rov.mp4"),
-          type: "video/mp4",
-          playLabel: "Play NMDC Energy ROV operations video",
         },
       ],
     },
@@ -308,12 +303,14 @@ export const nmdcEnergyContent = {
             title: "NMDC Energy yards",
             src: withEnergyBasePath("/videos/nmdc_yardhighlight_1.mp4"),
             type: "video/mp4",
+            poster: withEnergyBasePath("/images/energy/video-posters/yards-1.png"),
             playLabel: "Play NMDC Energy yards video",
           },
           {
             title: "NMDC Energy yard operations",
             src: withEnergyBasePath("/videos/nmdc_yardhighlight.mp4"),
             type: "video/mp4",
+            poster: withEnergyBasePath("/images/energy/video-posters/yards-2.png"),
             playLabel: "Play NMDC Energy yard operations video",
           },
         ],
@@ -492,10 +489,32 @@ export const nmdcEnergyContent = {
         media: {
           label: "Riser Platform",
           image: {
-            src: withEnergyBasePath("/images/energy/product-topside-detail.jpg"),
+            src: withEnergyBasePath("/images/energy/product-topside-carousel-1.jpg"),
             alt: "NMDC Energy riser platform topside module",
             objectPosition: "50% 50%",
           },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/product-topside-carousel-1.jpg"),
+              alt: "NMDC Energy topside module in fabrication yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-topside-carousel-2.jpg"),
+              alt: "NMDC Energy topside structure during construction",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-topside-carousel-3.jpg"),
+              alt: "NMDC Energy topside module assembly",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-topside-carousel-4.jpg"),
+              alt: "NMDC Energy topside project module",
+              objectPosition: "50% 50%",
+            },
+          ],
         },
         typesTitle: "TYPES OF TOPSIDES",
         offshore: {
@@ -807,6 +826,7 @@ export const nmdcEnergyContent = {
               title: "Pipe coating yard",
               src: withEnergyBasePath("/videos/our_products_icad_pipe_coating.mp4"),
               type: "video/mp4",
+              poster: withEnergyBasePath("/images/energy/video-posters/product-pipe-coating.png"),
               playLabel: "Play pipe coating yard video",
             }
           ],

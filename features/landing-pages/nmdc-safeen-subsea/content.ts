@@ -66,6 +66,7 @@ export const safeenProducts = [
     alt: "SAFEEN Nav positioning system hardware",
     specificationLabel: "View Specifications",
     specificationHref: "#",
+    specificationFile: "/pdfs/safeen-nav-specs.pdf",
     copy: "Our proprietary SAFEEN Nav positioning system has redefined accuracy in marine operations. By replacing hired signals, we've enhanced precision and reduced costs-another step forward in innovation.",
   },
 ];
@@ -74,14 +75,14 @@ export const safeenVideos = [
   {
     title: "SAFEEN Green",
     src: "/videos/SAFFEN_CORPORATE_VIDEO_V1.mp4",
-    poster: "/images/landing/safeen-poster-new.png",
+    poster: "/images/landing/video-posters/safeen-corporate.png",
     alt: "SAFEEN Green vessel video",
     playLabel: "Play SAFEEN Green video",
   },
   {
     title: "SAFEEN Green",
     src: "/videos/safeen-subsea-rov.mp4",
-    poster: "/images/landing/safeen-poster.png",
+    poster: "/images/landing/video-posters/safeen-subsea-rov.png",
     alt: "SAFEEN Green vessel video",
     playLabel: "Play SAFEEN Green video",
   }

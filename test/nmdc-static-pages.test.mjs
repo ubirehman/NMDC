@@ -243,7 +243,7 @@ test("NMDC Safeen Subsea bottom video streams from the public folder", () => {
     "utf8",
   );
   const videoPaths = [
-    "public/videos/safeen-subsea-green.mp4",
+    "public/videos/SAFFEN_CORPORATE_VIDEO_V1.mp4",
     "public/videos/safeen-subsea-rov.mp4",
   ];
 
@@ -251,9 +251,10 @@ test("NMDC Safeen Subsea bottom video streams from the public folder", () => {
     assert.equal(existsSync(videoPath), true, `${videoPath} should exist in public/videos`);
     assert.ok(statSync(videoPath).size > 1_000_000, `${videoPath} should be the copied MP4 asset`);
   }
-  assert.match(content, /src:\s*"\/videos\/safeen-subsea-green\.mp4"/);
+  assert.match(content, /src:\s*"\/videos\/SAFFEN_CORPORATE_VIDEO_V1\.mp4"/);
   assert.match(content, /src:\s*"\/videos\/safeen-subsea-rov\.mp4"/);
-  assert.match(content, /poster:\s*"\/images\/landing\/safeen-vessel\.jpg"/);
+  assert.match(content, /poster:\s*"\/images\/landing\/video-posters\/safeen-corporate\.png"/);
+  assert.match(content, /poster:\s*"\/images\/landing\/video-posters\/safeen-subsea-rov\.png"/);
   assert.match(content, /safeenVideos/);
   assert.match(safeen, /SafeenVideoCarousel/);
   assert.match(safeen, /videos=\{safeenVideos\}/);

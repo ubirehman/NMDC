@@ -296,8 +296,9 @@ test("Mussafah Yard product detail follows the supplied desktop Figma layout", (
   assert.match(detailPage, /detail\.slug === "mussafah-yard"/);
   assert.match(detailPage, /MussafahYardDetailLayout/);
   assert.match(detailPage, /md:min-h-\[1390px\]/);
-  assert.match(detailPage, /md:grid-cols-\[641px_583px\]/);
-  assert.match(detailPage, /md:h-\[846px\]/);
+  assert.match(detailPage, /md:grid-cols-\[minmax\(0,641fr\)_minmax\(0,583fr\)\]/);
+  assert.match(detailPage, /md:min-h-\[846px\]/);
+  assert.doesNotMatch(detailPage, /md:h-\[846px\]/);
   assert.match(detailPage, /detail\.fullTitle/);
   assert.match(detailPage, /logo-energy\.webp/);
   assert.doesNotMatch(detailPage, /\b(?:lg|xl|2xl):/);
@@ -385,7 +386,7 @@ test("Coastal and Hydrodynamic Center product detail follows the supplied deskto
   assert.match(detailPage, /CoastalHydrodynamicDetailLayout/);
   assert.match(detailPage, /detail\.collageImage\.src/);
   assert.match(detailPage, /md:min-h-\[1458px\]/);
-  assert.match(detailPage, /md:grid-cols-\[641px_583px\]/);
+  assert.match(detailPage, /md:grid-cols-\[minmax\(0,641fr\)_minmax\(0,583fr\)\]/);
   assert.match(detailPage, /md:h-\[862px\]/);
   assert.match(detailPage, /ProductQrImage/);
   assert.match(detailPage, /energyProductFooterLinks/);
@@ -441,7 +442,8 @@ test("NMDC Group product detail pages use the supplied product-detail desktop te
 
   assert.match(detailPage, /StandardProductDetailLayout/);
   assert.match(detailPage, /HailGhashaDetailLayout/);
-  assert.match(detailPage, /md:grid-cols-\[641px_583px\]/);
+  assert.match(detailPage, /md:grid-cols-\[minmax\(0,641fr\)_minmax\(0,583fr\)\]/);
+  assert.doesNotMatch(detailPage, /md:grid-cols-\[641px_583px\]/);
   assert.match(detailPage, /md:items-stretch/);
   assert.match(detailPage, /md:text-\[36px\]/);
   assert.match(detailPage, /ProductQrImage/);
@@ -466,7 +468,7 @@ test("NMDC Group product detail pages use the supplied product-detail desktop te
   assert.match(detailContent, /NMDC Infra is also pioneering digital manufacturing/);
   assert.doesNotMatch(detailContent, /title:\s*"Digital Manufacturing"/);
   assert.match(detailContent, /slug:\s*"3d-printed-artificial-reefs"[\s\S]*panelHeightClassName:\s*"md:min-h-\[731px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1341px\]"/);
-  assert.match(detailContent, /multicat-21-detail\.png/);
+  assert.match(detailContent, /multicat-21-detail-new\.png/);
   assert.match(detailContent, /slug:\s*"multicat-21"[\s\S]*panelHeightClassName:\s*"md:min-h-\[607px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1341px\]"/);
   assert.match(detailContent, /titleClassName:\s*"text-white\/92"/);
   assert.match(detailContent, /Constructed by NMDC LTS -Workshops/);

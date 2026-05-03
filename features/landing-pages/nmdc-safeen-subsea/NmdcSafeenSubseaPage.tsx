@@ -32,10 +32,9 @@ function getProductImagePosition(title: string) {
 }
 
 function SafeenProductCard({ product }: { product: SafeenProduct }) {
-  const specificationHref =
-    "specificationFile" in product
-      ? getPdfViewerHref(product.specificationFile, product.title)
-      : product.specificationHref;
+  const specificationHref = product.specificationFile
+    ? getPdfViewerHref(product.specificationFile, product.title)
+    : product.specificationHref;
 
   return (
     <article>
