@@ -1238,6 +1238,17 @@ function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) 
           </div>
         </article>
 
+        {"specificationImage" in detail.offshore && detail.offshore.specificationImage ? (
+          <Image
+            src={detail.offshore.specificationImage.src}
+            alt={detail.offshore.specificationImage.alt}
+            width={1938}
+            height={929}
+            sizes="(min-width: 768px) 1000px, calc(100vw - 40px)"
+            className="h-auto w-full rounded-[8px] object-contain"
+          />
+        ) : null}
+
         {"onshore" in detail && detail.onshore ? (
           <article className="rounded-[14px] bg-[#062b43] p-6 text-white md:rounded-[16px] md:p-8">
             <h3 className="text-[22px] font-bold uppercase leading-7 text-energy-green md:text-[26px]">
@@ -1728,7 +1739,7 @@ function EnergyFooter() {
 
         <nav
           aria-label={footer.navigationLabel}
-          className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
+          className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px]"
         >
           <ul className="hidden gap-6 text-[16px] font-normal leading-6 text-white md:grid md:gap-4">
             {footerNavigationLinks.map((link) => (

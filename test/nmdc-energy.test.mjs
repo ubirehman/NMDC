@@ -464,6 +464,7 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
     "apps/nmdc-energy/public/images/energy/offshore-structure-04.png",
     "apps/nmdc-energy/public/images/energy/offshore-structure-05.png",
     "apps/nmdc-energy/public/images/energy/offshore-structure-06.png",
+    "apps/nmdc-energy/public/images/energy/offshore-structures-high-level-specifications.jpg",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -509,6 +510,7 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(content, /icon-pipe-coating-plant\.png/);
   assert.match(content, /icon-pipe-coating-loadout\.png/);
   assert.match(content, /offshore-structure-01\.png[\s\S]*offshore-structure-02\.png[\s\S]*offshore-structure-03\.png[\s\S]*offshore-structure-04\.png[\s\S]*offshore-structure-05\.png[\s\S]*offshore-structure-06\.png/);
+  assert.match(content, /offshore-structures-high-level-specifications\.jpg/);
   assert.match(page, /function EnergyProductHero/);
   assert.match(page, /function getEnergyProductSlugFromPath/);
   assert.match(page, /productPath\.split\("\/"\)/);
@@ -544,6 +546,9 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(productImageCarousel, /onClick=\{showNextMediaImage\}/);
   assert.match(productImageCarousel, /onClick=\{showMediaImageAtProgress\}/);
   assert.match(page, /function EnergyTopsideTypesSection/);
+  assert.match(page, /detail\.offshore\.specificationImage/);
+  assert.match(page, /src=\{detail\.offshore\.specificationImage\.src\}/);
+  assert.match(page, /detail\.offshore\.images\.map[\s\S]*<\/article>[\s\S]*detail\.offshore\.specificationImage[\s\S]*\{"onshore" in detail/);
   assert.match(page, /detail\.offshore\.images\.map/);
   assert.match(page, /offshoreImage\.src/);
   assert.match(page, /offshoreImage\.alt/);

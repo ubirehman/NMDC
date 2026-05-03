@@ -528,6 +528,12 @@ export const nmdcEnergyContent = {
         typesTitle: "TYPES OF TOPSIDES",
         offshore: {
           title: "OFFSHORE STRUCTURES",
+          specificationImage: {
+            src: withEnergyBasePath(
+              "/images/energy/offshore-structures-high-level-specifications.jpg",
+            ),
+            alt: "Offshore structures high level specifications",
+          },
           images: [
             {
               src: withEnergyBasePath("/images/energy/offshore-structure-01.png"),
