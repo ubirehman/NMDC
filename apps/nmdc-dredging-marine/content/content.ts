@@ -213,7 +213,7 @@ export const nmdcDredgingMarineContent = {
             "Creating new land through hydraulic filling to support coastal, port and Oil & Gas developments.",
           unit: "In Mm3",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/overview-operational-reclamation.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-quay-wall-blocks.jpg"),
             alt: "Dredger pumping reclamation material at sea"
           },
           values: [
@@ -243,7 +243,7 @@ export const nmdcDredgingMarineContent = {
             "Installing precast blocks to form durable quay walls and berthing structures",
           unit: "In nos",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/overview-operational-quay-wall-blocks.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-reclamation.jpg"),
             alt: "Quay wall block installation from marine cranes"
           },
           values: [
