@@ -124,6 +124,8 @@ function StandardProductDetailLayout({
 }) {
   const panelHeightClassName = getPanelHeightClassName(detail);
   const sectionMinHeightClassName = getSectionMinHeightClassName(detail);
+  const isCompactTextCard = detail.slug === "3d-printed-artificial-reefs";
+  const isSquareMedia = detail.slug === "3d-printed-artificial-reefs";
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0b2d3f] text-white">
@@ -141,16 +143,18 @@ function StandardProductDetailLayout({
             <ProductTextCard
               detail={detail}
               panelHeightClassName={panelHeightClassName}
+              compact={isCompactTextCard}
             />
             <ProductMediaPanel
               media={detail.media}
               panelHeightClassName={panelHeightClassName}
+              square={isSquareMedia}
             />
           </div>
 
           <div className="mt-6 grid gap-5 md:hidden">
-            <ProductTextCard detail={detail} />
-            <ProductMediaPanel media={detail.media} />
+            <ProductTextCard detail={detail} compact={isCompactTextCard} />
+            <ProductMediaPanel media={detail.media} square={isSquareMedia} />
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[100px]">
@@ -707,15 +711,18 @@ function MussafahSection({
 function ProductTextCard({
   detail,
   panelHeightClassName = "",
+  compact = false,
 }: {
   detail: NmdcGroupProductDetail;
   panelHeightClassName?: string;
+  compact?: boolean;
 }) {
   const introTitle =
     "introTitle" in detail && detail.introTitle ? detail.introTitle : "";
+  const sizeClassName = compact ? "h-auto md:self-start" : `h-full ${panelHeightClassName}`;
 
   return (
-    <article className={`flex h-full flex-col rounded-[20px] bg-[#213e50] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:px-6 md:py-6 ${panelHeightClassName}`}>
+    <article className={`flex flex-col rounded-[20px] bg-[#213e50] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:px-6 md:py-6 ${sizeClassName}`}>
       {introTitle ? (
         <h2 className={`text-[14px] font-bold leading-5 md:text-[15px] ${detail.accentClassName}`}>
           {introTitle}
@@ -871,12 +878,14 @@ function ProductSectionContent({
 function ProductMediaPanel({
   media,
   panelHeightClassName = "",
+  square = false,
 }: {
   media: readonly ProductDetailMedia[];
   panelHeightClassName?: string;
+  square?: boolean;
 }) {
   return (
-    <div className="grid h-full gap-3">
+    <div className={`grid gap-3 ${square ? "h-auto md:self-start" : "h-full"}`}>
       {media.map((item) => {
         const isVideo = "type" in item && item.type === "video";
         const isContain = item.fit === "contain";
@@ -896,6 +905,9 @@ function ProductMediaPanel({
             : "";
         const backgroundClassName =
           wrapperClassName || (isContain ? "bg-[#033241]" : "bg-[#12394d]");
+        const sizeClassName = square
+          ? "aspect-square"
+          : `h-full min-h-[220px] md:min-h-0 ${panelHeightClassName}`;
 
         return (
           <div
@@ -905,7 +917,7 @@ function ProductMediaPanel({
                 ? { backgroundColor: wrapperBackgroundColor }
                 : undefined
             }
-            className={`relative h-full min-h-[220px] rounded-[20px] md:min-h-0 ${isVideo ? "" : "overflow-hidden"} ${panelHeightClassName} ${backgroundClassName}`}
+            className={`relative rounded-[20px] ${sizeClassName} ${isVideo ? "" : "overflow-hidden"} ${backgroundClassName}`}
           >
             {isVideo ? (
               <video

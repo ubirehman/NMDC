@@ -407,7 +407,7 @@ export const nmdcGroupProductDetails = [
     slug: "whipstock-system",
     fullTitle: "EMDAD | Whipstock",
     brandName: null,
-    title: "Whipstock",
+    title: "Whipstock System",
     accentClassName: "text-[#ddc19c]",
     panelHeightClassName: "md:min-h-[581px]",
     sectionMinHeightClassName: "md:min-h-[1188px]",
@@ -489,7 +489,7 @@ export const nmdcGroupProductDetails = [
     sectionMinHeightClassName: "md:min-h-[936px]",
     media: [
       {
-        src: `${productsImageBase}/safeen-green.webp`,
+        src: `${productsImageBase}/safeen-green copy.jpg`,
         alt: "Safeen Green unmanned vessel",
         fit: "cover",
       },
@@ -507,10 +507,10 @@ export const nmdcGroupProductDetails = [
     accentClassName: "text-primary-sky-blue",
     panelHeightClassName: "md:min-h-[370px]",
     sectionMinHeightClassName: "md:min-h-[980px]",
-    specificationFile: "/pdfs/safeen-nav-specs.pdf",
+    specificationFile: null,
     media: [
       {
-        src: `${productsImageBase}/safeen-nav.jpg`,
+        src: `${productsImageBase}/safeen_nav.jpeg`,
         alt: "Safeen NAV positioning unit",
         fit: "cover",
       },

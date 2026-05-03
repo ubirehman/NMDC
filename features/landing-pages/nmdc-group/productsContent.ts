@@ -46,7 +46,7 @@ export const nmdcGroupProductsContent = {
       alt: "3D printed artificial reef structure underwater",
     },
     {
-      title: "Multicad - 21",
+      title: "Multicad 21",
       href: "/products/multicat-21",
       image: `${productsImageBase}/new-multicad-21.jpg`,
       alt: "Multicad product placeholder panel",
@@ -141,7 +141,7 @@ export const nmdcGroupProductsContent = {
       logoClassName: "h-[52px] w-auto",
       cards: [
         {
-          title: "Mussafah Yard and Its Productsss",
+          title: "Mussafah Yard and Its Products",
           href: "/products/mussafah-yard",
           accentClassName: "text-[#00bd66]",
           images: [

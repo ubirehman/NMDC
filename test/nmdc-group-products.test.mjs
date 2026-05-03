@@ -515,3 +515,22 @@ test("NMDC Group product detail pages use the supplied product-detail desktop te
   assert.match(detailContent, /slug:\s*"safeen-green"[\s\S]*panelHeightClassName:\s*"md:min-h-\[328px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[936px\]"/);
   assert.match(detailContent, /slug:\s*"safeen-nav"[\s\S]*panelHeightClassName:\s*"md:min-h-\[370px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[980px\]"/);
 });
+
+test("3D Printed Artificial Reefs product detail renders compact text and square media only for that product", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+  const detailContent = readFileSync(detailContentPath, "utf8");
+
+  assert.match(detailContent, /slug:\s*"3d-printed-artificial-reefs"/);
+  assert.match(detailPage, /const isCompactTextCard = detail\.slug === "3d-printed-artificial-reefs";/);
+  assert.match(detailPage, /const isSquareMedia = detail\.slug === "3d-printed-artificial-reefs";/);
+  assert.match(detailPage, /<ProductTextCard[\s\S]*panelHeightClassName=\{panelHeightClassName\}[\s\S]*compact=\{isCompactTextCard\}/);
+  assert.match(detailPage, /<ProductTextCard detail=\{detail\} compact=\{isCompactTextCard\} \/>/);
+  assert.match(detailPage, /compact \? "h-auto md:self-start" : `h-full \$\{panelHeightClassName\}`/);
+  assert.match(detailPage, /<ProductMediaPanel[\s\S]*panelHeightClassName=\{panelHeightClassName\}[\s\S]*square=\{isSquareMedia\}/);
+  assert.match(detailPage, /<ProductMediaPanel media=\{detail\.media\} square=\{isSquareMedia\} \/>/);
+  assert.match(detailPage, /square \? "h-auto md:self-start" : "h-full"/);
+  assert.match(detailPage, /square\s*\?\s*"aspect-square"\s*:/);
+});

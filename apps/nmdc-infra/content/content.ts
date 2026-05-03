@@ -224,7 +224,7 @@ export const nmdcInfraContent = {
           title: "Precast Wall Panels",
           copy: "Rapid installation solutions for structural and architectural precast elements.",
           image: {
-            src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+            src: withInfraBasePath("/images/infra/factory-highlight-1.jpg"),
             alt: "Precast wall panels at scale",
           },
           unit: "In Km3",
@@ -238,7 +238,7 @@ export const nmdcInfraContent = {
           title: "Hollow Core Slabs",
           copy: "Lightweight, prestressed slabs enabling faster floor construction.",
           image: {
-            src: withInfraBasePath("/images/infra/product-ebawe-durable-infrastructure.png"),
+            src: withInfraBasePath("/images/infra/factory-highlight-2.jpg"),
             alt: "Hollow core slab infrastructure",
           },
           unit: "In Km3",
@@ -252,7 +252,7 @@ export const nmdcInfraContent = {
           title: "Quay Wall Blocks",
           copy: "Heavy duty precast concrete elements for port and marine infrastructure.",
           image: {
-            src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
+            src: withInfraBasePath("/images/infra/factory-highlight-3.jpg"),
             alt: "Precast concrete quay walls",
           },
           unit: "In Km3",
@@ -266,7 +266,7 @@ export const nmdcInfraContent = {
           title: "Concrete Sleeper",
           copy: "Durable concrete elements ensuring stability and long term performance to underwater pipelines.",
           image: {
-            src: withInfraBasePath("/images/infra/product-ebawe-built-on-safety.png"),
+            src: withInfraBasePath("/images/infra/factory-highlight-4.jpg"),
             alt: "Concrete sleeper production",
           },
           unit: "In Km3",
@@ -280,7 +280,7 @@ export const nmdcInfraContent = {
           title: "Accropodes",
           copy: "Engineered concrete armour precast elements for coastal protection and breakwaters.",
           image: {
-            src: withInfraBasePath("/images/infra/capability-industrial.jpg"),
+            src: withInfraBasePath("/images/infra/factory-highlight-5.jpg"),
             alt: "Accropodes coastal protection elements",
           },
           unit: "In Km3",
@@ -293,7 +293,7 @@ export const nmdcInfraContent = {
           title: "3D Printed Artificial Reefs",
           copy: "Innovative marine concrete elements supporting biodiversity and coastal sustainability.",
           image: {
-            src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
+            src: withInfraBasePath("/images/infra/factory-highlight-6.jpg"),
             alt: "3D printed artificial reef structures",
           },
           unit: "In Km3",
