@@ -146,8 +146,20 @@ test("NMDC LTS home cards follow the PDF brand order and routes", () => {
   assert.match(cards, /title:\s*"NMDC Group"[\s\S]*?href:\s*groupAppUrl[\s\S]*?card-platform\.jpg[\s\S]*?logo-group\.svg/);
   assert.match(cards, /title:\s*"NMDC Dredging\\n& Marine"[\s\S]*?href:\s*dredgingMarineAppUrl[\s\S]*?card-dredging\.jpg[\s\S]*?logo-dm\.webp/);
   assert.match(cards, /title:\s*"NMDC Energy"[\s\S]*?href:\s*energyAppUrl[\s\S]*?card-energy\.jpg[\s\S]*?logo-energy\.webp/);
-  assert.match(cards, /title:\s*"NMDC Infra"[\s\S]*?href:\s*infraAppUrl[\s\S]*?card-infra\.jpg[\s\S]*?logo-infra\.webp/);
-  assert.match(cards, /title:\s*"NMDC Product Highlight"[\s\S]*?href:\s*`\$\{groupAppUrl\}\/products`[\s\S]*?card-product\.jpg/);
+  assert.match(cards, /title:\s*"NMDC Infra"[\s\S]*?href:\s*infraAppUrl[\s\S]*?card-infra\.webp[\s\S]*?logo-infra\.webp/);
+  assert.match(cards, /title:\s*"NMDC Product Highlight"[\s\S]*?href:\s*withGroupAppPath\("\/products"\)[\s\S]*?card-product\.jpg/);
+});
+
+test("NMDC LTS cross-app links do not receive the LTS basePath", () => {
+  const cards = readFileSync("apps/nmdc-lts/components/LtsHomeCardRail.tsx", "utf8");
+  const footer = readFileSync("apps/nmdc-lts/components/Footer.tsx", "utf8");
+
+  assert.doesNotMatch(cards, /<Link[\s\S]*href=\{card\.href\}/);
+  assert.match(cards, /<a[\s\S]*href=\{card\.href\}/);
+  assert.doesNotMatch(footer, /<Link[\s\S]*href=\{business\.href\}/);
+  assert.doesNotMatch(footer, /<Link[\s\S]*href=\{link\.href\}/);
+  assert.match(footer, /<a[\s\S]*href=\{business\.href\}/);
+  assert.match(footer, /<a[\s\S]*href=\{link\.href\}/);
 });
 
 test("NMDC LTS at a glance follows the supplied desktop and mobile PDF design", () => {

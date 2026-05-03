@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./icons";
 
@@ -97,7 +96,7 @@ export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
             cardId === "dm" || cardId === "energy" ? "object-cover" : "object-contain";
 
           return (
-            <Link
+            <a
               key={card.title}
               href={card.href}
               aria-label={card.title.replace("\n", " ")}
@@ -136,7 +135,7 @@ export function LtsHomeCardRail({ cards }: LtsHomeCardRailProps) {
                   </span>
                 )}
               </div>
-            </Link>
+            </a>
           );
         })}
       </div>

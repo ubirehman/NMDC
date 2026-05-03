@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { nmdcLtsContent as content } from "../content/content";
 
 function BusinessList() {
@@ -7,7 +6,7 @@ function BusinessList() {
     <ul className="space-y-[27px] md:space-y-[26px]">
       {content.footer.businesses.map((business) => (
         <li key={business.label}>
-          <Link
+          <a
             href={business.href}
             className="flex items-center gap-[17px] text-[20px] font-bold leading-6 text-white transition-colors hover:text-lts-tan md:text-[16px] md:leading-5"
           >
@@ -17,7 +16,7 @@ function BusinessList() {
               aria-hidden="true"
             />
             {business.label}
-          </Link>
+          </a>
         </li>
       ))}
     </ul>
@@ -28,7 +27,7 @@ function SocialLinks() {
   return (
     <div className="flex items-center gap-[20px] md:gap-[18px]">
       {content.footer.socialLinks.map((social) => (
-        <Link
+        <a
           key={social.label}
           href={social.href}
           target="_blank"
@@ -37,7 +36,7 @@ function SocialLinks() {
           className="flex size-[48px] items-center justify-center rounded-full bg-[#d8edff] text-[18px] font-bold lowercase leading-none text-[#0072bc] transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lts-tan md:size-[34px] md:text-[14px]"
         >
           {social.shortLabel}
-        </Link>
+        </a>
       ))}
     </div>
   );
@@ -51,9 +50,9 @@ function FooterNav() {
         className="hidden flex-col gap-[24px] text-center text-[16px] leading-6 text-white md:flex"
       >
         {content.footer.desktopNav.map((link) => (
-          <Link key={link.label} href={link.href} className="hover:text-lts-tan">
+          <a key={link.label} href={link.href} className="hover:text-lts-tan">
             {link.label}
-          </Link>
+          </a>
         ))}
       </nav>
 
@@ -62,9 +61,9 @@ function FooterNav() {
         className="flex flex-col gap-[24px] text-[27px] leading-[32px] text-white md:hidden"
       >
         {content.footer.mobileNav.map((link) => (
-          <Link key={link.label} href={link.href} className="hover:text-lts-tan">
+          <a key={link.label} href={link.href} className="hover:text-lts-tan">
             {link.label}
-          </Link>
+          </a>
         ))}
       </nav>
     </>
@@ -83,12 +82,12 @@ function ContactList() {
             <p className="text-[24px] leading-[30px] md:text-[16px] md:leading-5">
               {contact.label}
             </p>
-            <Link
+            <a
               href={`mailto:${contact.email}`}
               className="block text-[22px] font-bold leading-[28px] text-lts-cyan hover:text-white md:text-[16px] md:leading-5"
             >
               {contact.email}
-            </Link>
+            </a>
           </div>
         ))}
       </div>
