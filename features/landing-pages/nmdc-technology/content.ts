@@ -84,6 +84,6 @@ export const technologyMedia = [
 ];
 
 export const technologyVideo = {
-  poster: "/images/landing/video-posters/nmdc-technology.png",
-  sources: [{ src: "/videos/nmdc_technology.mp4", type: "video/mp4" }],
+  poster: "/images/landing/video-posters/nmdc-technology_.png",
+  sources: [{ src: "/videos/nmdc_technology_.mp4", type: "video/mp4" }],
 };
