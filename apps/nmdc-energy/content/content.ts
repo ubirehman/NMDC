@@ -590,7 +590,7 @@ export const nmdcEnergyContent = {
           ],
         },
         chart: {
-          title: "Total Manufactured Topside From 2003",
+          title: "Total Manufactured Jackets From 2003",
           values: [
             { year: "2023", value: 23 },
             { year: "2024", value: 10 },
@@ -634,7 +634,7 @@ export const nmdcEnergyContent = {
           ],
         },
         chart: {
-          title: "Total Manufactured Topside From 2003",
+          title: "Total Manufactured Bridges And Boat Landings From 2003",
           values: [
             { year: "2023", value: 0 },
             { year: "2024", value: 2 },
