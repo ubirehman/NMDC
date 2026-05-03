@@ -297,13 +297,12 @@ export const nmdcGroupProductDetails = [
     brandName: "NMDC Infra",
     title: "3d Printed Artificial Reefs",
     accentClassName: "text-[#ffcf00]",
-    cta: { label: "Play virtual tour", href: "/videos/safeen-subsea-green.mp4" },
     panelHeightClassName: "md:min-h-[731px]",
     sectionMinHeightClassName: "md:min-h-[1341px]",
     media: [
       {
-        src: `${productsImageBase}/3d-printed-artificial-reefs-collage-.png`,
-        alt: "3D printed artificial reef and production collage",
+        src: `${productsImageBase}/3d-printed-artificial-reefs-detail.png`,
+        alt: "3D printing robot producing artificial reef structures",
         fit: "cover",
       },
     ],
@@ -409,16 +408,18 @@ export const nmdcGroupProductDetails = [
     sectionMinHeightClassName: "md:min-h-[1188px]",
     media: [
       {
-        src: `${productsImageBase}/whipstock-detail.png`,
+        src: `${productsImageBase}/whipstock-system-updated.png`,
         alt: "Whipstock system tools",
-        fit: "contain",
-        className: "object-contain p-0",
-        wrapperBackgroundColor: "#00232f",
+        fit: "cover",
+        className: "object-cover object-center",
       },
     ],
     summary: [
-      "Emdad, founded in 1979, has a long-standing track record in delivering technical expertise and innovative solutions across the UAE and MENA region. Under NMDC's ownership, Emdad is positioned as a cornerstone of NMDC's oil and gas business, leveraging combined capabilities to improve service excellence, expand regional reach, and create greater value for clients. The integration also aligns with NMDC's strategy to diversify its energy portfolio and drive sustainable growth.",
-      "Specializing in whipstock services for the oil and gas industry. They offer a range of products and solutions, including high-pressure hoses, rotating machinery, and various drilling tools. Their whipstock system is designed for efficient casing exit solutions and is equipped with hydraulic packers and mechanical anchors to support the whipstock concave in highly deviated holes. Emdad has a strong reputation for providing innovative and integrated services, ensuring reliability and efficiency in oil and gas operations.",
+      "Emdad, founded in 1979, has a long-standing track record in delivering technical expertise and innovative solutions across the UAE and MENA region. Under NMDC’s ownership, Emdad is positioned as a cornerstone of NMDC’s oil and gas business, leveraging combined capabilities to improve service excellence, expand regional reach, and create greater value for clients. The integration also aligns with NMDC’s strategy to diversify its energy portfolio and drive sustainable growth.",
+      "Emdad Proudly produces a UAE Patent Whipstock system that is 100% designed and manufactured locally leveraging UAE talents and expertise. Our Whipstock systems are proven directional drilling tools used to initiate controlled sidetracks from existing wellbores. provide a stable and accurately oriented kickoff point for casing exit and re-entry operations, enabling efficient wellbore redirection while reducing rig time and intervention costs.",
+      "The systems are available in hydraulic and mechanical configurations, and can be deployed as permanent or retrievable assemblies, depending on well objectives and operational strategy.",
+      "Designed for HPHT environments, the systems ensure high structural integrity and consistent performance under demanding downhole conditions.",
+      "Whipstocks are typically available for casing sizes ranging from 7\" to 20\", with custom sizes available upon request."
     ],
     sections: [],
   },
@@ -503,7 +504,7 @@ export const nmdcGroupProductDetails = [
     sectionMinHeightClassName: "md:min-h-[980px]",
     media: [
       {
-        src: `${productsImageBase}/safeen-nav.webp`,
+        src: `${productsImageBase}/safeen-nav.jpg`,
         alt: "Safeen NAV positioning unit",
         fit: "cover",
       },

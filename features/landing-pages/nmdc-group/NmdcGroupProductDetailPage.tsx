@@ -132,7 +132,7 @@ function StandardProductDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[100px]">
-            <ProductQrImage />
+            <ProductQrImage detail={detail} />
           </div>
         </div>
       </section>
@@ -310,7 +310,7 @@ function MarineVesselsDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[100px]">
-            <ProductQrImage />
+            <ProductQrImage detail={detail} />
           </div>
         </div>
       </section>
@@ -443,7 +443,7 @@ function CoastalHydrodynamicDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[100px]">
-            <ProductQrImage />
+            <ProductQrImage detail={detail} />
           </div>
         </div>
       </section>
@@ -533,7 +533,7 @@ function MussafahYardDetailLayout({
           </div>
 
           <div className="mt-12 flex justify-center md:mt-[84px]">
-            <ProductQrImage />
+            <ProductQrImage detail={detail} />
           </div>
         </div>
       </section>
@@ -782,7 +782,7 @@ function ProductMediaPanel({
             ? image.wrapperClassName
             : "";
         const wrapperBackgroundColor =
-          "wrapperBackgroundColor" in image && image.wrapperBackgroundColor
+          "wrapperBackgroundColor" in image && typeof image.wrapperBackgroundColor === "string"
             ? image.wrapperBackgroundColor
             : "";
         const backgroundClassName =
@@ -835,11 +835,31 @@ function ProductQrCode() {
   );
 }
 
-function ProductQrImage() {
+function getProductQrImageSrc(detail: NmdcGroupProductDetail) {
+  if (detail.slug === "safeen-nav") {
+    return "/images/landing/products/qr/safeen-nav-subsea.png";
+  }
+
+  if (detail.slug === "whipstock-system") {
+    return "/images/landing/products/qr/whipstock-system-qr.png";
+  }
+
+  return `/images/landing/products/qr/${detail.slug}.png`;
+}
+
+function shouldShowProductQrImage(detail: NmdcGroupProductDetail) {
+  return detail.slug !== "esp-pump";
+}
+
+function ProductQrImage({ detail }: { detail: NmdcGroupProductDetail }) {
+  if (!shouldShowProductQrImage(detail)) {
+    return null;
+  }
+
   return (
     <Image
-      src="/images/landing/products/mussafah-yard-qr.webp"
-      alt="Product QR code"
+      src={getProductQrImageSrc(detail)}
+      alt={`${detail.title} QR code`}
       width={154}
       height={154}
       className="size-[128px] bg-white md:size-[154px]"

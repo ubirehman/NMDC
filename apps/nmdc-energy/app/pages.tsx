@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { HTMLAttributes, ReactNode } from "react";
 import { EnergyHomeCardRail } from "../components/EnergyHomeCardRail";
 import { EnergyOverviewVideoPlayer } from "../components/EnergyOverviewVideoPlayer";
+import { EnergyProductImageCarousel } from "../components/EnergyProductImageCarousel";
 import { EnergyYardImageCarousel } from "../components/EnergyYardImageCarousel";
 import { Header } from "../components/Header";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "../components/icons";
@@ -896,12 +897,11 @@ function EnergyProductBarChart({
           </div>
         ))}
       </div>
-      <div className="mt-3 grid grid-cols-3 px-4 text-center text-[24px] font-bold leading-8 text-energy-green md:px-8">
+      <div className="mt-3 border-t flex-1 border-energy-green/80 grid grid-cols-3 px-4 text-center text-[24px] font-bold leading-8 text-energy-green md:px-8">
         {chart.values.map((item) => (
           <span key={item.year}>{item.year}</span>
         ))}
       </div>
-      <div className="border-t flex-1 border-energy-green/80" />
     </EnergyDetailCard>
   );
 }
@@ -959,6 +959,84 @@ function EnergyPipeCoatingOverview({ detail }: { detail: EnergyProductDetail }) 
     >
       <EnergyProductIntroCard detail={detail} />
       <EnergyPipeCoatingCapabilitiesCard detail={detail} />
+    </div>
+  );
+}
+
+function EnergyPressureVesselsOverview({ detail }: { detail: EnergyProductDetail }) {
+  if (
+    detail.slug !== "pressure-vessels" ||
+    !("highlights" in detail) ||
+    !detail.highlights
+  ) {
+    return null;
+  }
+
+  const introParagraphs =
+    "paragraphs" in detail.intro && detail.intro.paragraphs
+      ? detail.intro.paragraphs
+      : [];
+
+  return (
+    <div
+      data-pressure-vessels-overview
+      className="grid gap-5 md:grid-cols-[minmax(0,560px)_minmax(0,680px)]"
+    >
+      <EnergyDetailCard className="min-h-[300px] rounded-[22px] px-8 py-10 md:min-h-[340px] md:rounded-[28px] md:px-16 md:py-[76px]">
+        <div className="grid gap-5 text-[22px] leading-[30px] text-white md:text-[29px] md:leading-[38px]">
+          {introParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </EnergyDetailCard>
+
+      <EnergyDetailCard
+        data-pressure-vessels-highlights
+        className="min-h-[300px] rounded-[22px] px-8 py-10 md:min-h-[340px] md:rounded-[28px] md:px-9 md:py-9"
+      >
+        {"highlightsTitle" in detail && detail.highlightsTitle ? (
+          <h3 className="text-[24px] font-bold leading-8 text-energy-green md:text-[26px]">
+            {detail.highlightsTitle}
+          </h3>
+        ) : null}
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-x-14 md:gap-y-10">
+          {detail.highlights.map((item) => {
+            const iconImage = "image" in item ? item.image : null;
+
+            return (
+              <article
+                key={`${item.title}-${item.value}`}
+                className="grid grid-cols-[96px_minmax(0,1fr)] items-center gap-7"
+              >
+                <span className="grid size-[96px] shrink-0 place-items-center rounded-[10px] bg-[#113a58] md:size-[104px]">
+                  {iconImage ? (
+                    <Image
+                      src={iconImage.src}
+                      alt={iconImage.alt}
+                      width={72}
+                      height={72}
+                      className="size-[64px] object-contain md:size-[72px]"
+                    />
+                  ) : (
+                    <EnergyProductIcon icon={item.icon} />
+                  )}
+                </span>
+                <span>
+                  <span className="block text-[14px] font-bold leading-5 text-white md:text-[16px]">
+                    {item.title}
+                  </span>
+                  <span className="mt-2 block text-[32px] font-bold leading-9 text-energy-green md:text-[34px]">
+                    {item.value}
+                  </span>
+                  <span className="mt-2 block text-[14px] font-bold leading-5 text-white md:text-[16px]">
+                    {item.unit}
+                  </span>
+                </span>
+              </article>
+            );
+          })}
+        </div>
+      </EnergyDetailCard>
     </div>
   );
 }
@@ -1078,6 +1156,7 @@ function EnergyDetailArrowControls() {
 
 function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
   const hasMobileImage = "mobileImage" in detail.media && detail.media.mobileImage;
+  const mediaImages = "images" in detail.media ? detail.media.images : null;
 
   if ("videos" in detail.media && detail.media.videos) {
     return (
@@ -1090,6 +1169,15 @@ function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
           label={detail.media.label}
         />
       </section>
+    );
+  }
+
+  if (mediaImages && mediaImages.length > 0) {
+    return (
+      <EnergyProductImageCarousel
+        images={mediaImages}
+        label={detail.media.label}
+      />
     );
   }
 
@@ -1158,11 +1246,17 @@ function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) 
               {detail.onshore.title}
             </h3>
             <div className="mt-7 grid gap-4">
-              <div className="grid min-h-[124px] items-center rounded-[8px] bg-[#113a58] p-5 md:grid-cols-[260px_1fr_210px]">
-                <div className="hidden place-items-center text-energy-green md:grid">
-                  <EnergyYardIcon icon="steel" className="size-14" />
+              <div className="grid min-h-[124px] items-center overflow-hidden rounded-[8px] bg-[#113a58] p-5 md:grid-cols-[260px_1fr_210px] md:p-0">
+                <div className="hidden place-items-center md:grid md:px-5">
+                  <Image
+                    src={detail.onshore.icon}
+                    alt="Onshore structure icon"
+                    width={56}
+                    height={56}
+                    className="size-14"
+                  />
                 </div>
-                <div className="md:border-l md:border-white/28 md:pl-10">
+                <div className="md:border-l md:border-white/28 md:py-5 md:pl-10">
                   <p className="text-[14px] font-bold leading-5 text-white">
                     {detail.onshore.module.title}
                   </p>
@@ -1172,6 +1266,15 @@ function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) 
                   <p className="text-[12px] font-bold leading-4 text-white">
                     {detail.onshore.module.unit}
                   </p>
+                </div>
+                <div className="hidden md:block">
+                  <Image
+                    src={detail.onshore.moduleImage}
+                    alt="Onshore structure"
+                    width={210}
+                    height={124}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               </div>
               <div className="grid gap-4 md:grid-cols-3">
@@ -1237,6 +1340,7 @@ function EnergyPipeCoatingCapacityTable({ detail }: { detail: EnergyProductDetai
 
 function EnergyProductDetailPage({ detail }: { detail: EnergyProductDetail }) {
   const isPipeCoating = detail.slug === "pipe-coating";
+  const isPressureVessels = detail.slug === "pressure-vessels";
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
@@ -1257,6 +1361,10 @@ function EnergyProductDetailPage({ detail }: { detail: EnergyProductDetail }) {
           {isPipeCoating ? (
             <div className="mt-8">
               <EnergyPipeCoatingOverview detail={detail} />
+            </div>
+          ) : isPressureVessels ? (
+            <div className="mt-8">
+              <EnergyPressureVesselsOverview detail={detail} />
             </div>
           ) : (
             <div className="mt-8 grid gap-5 md:grid-cols-[minmax(0,560px)_minmax(0,640px)]">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { Header } from "../components/Header";
 import { InfraDetailImageCarousel } from "../components/InfraDetailImageCarousel";
 import { InfraHomeCardRail } from "../components/InfraHomeCardRail";
@@ -334,7 +335,17 @@ function InfraVerticalCard({
         />
       </div>
       <div className="absolute left-1/2 top-[224px] grid size-[72px] -translate-x-1/2 place-items-center rounded-full border-[3px] border-white bg-infra-yellow text-infra-ink shadow-[0_10px_24px_rgba(0,0,0,0.22)] md:top-[138px] md:size-[58px] md:border-0">
-        <OverviewLineIcon icon={item.icon} className="size-10 md:size-8" />
+        {item.iconImage ? (
+          <Image
+            src={item.iconImage.src}
+            alt={item.iconImage.alt}
+            width={40}
+            height={40}
+            className="size-10 object-contain md:size-8"
+          />
+        ) : (
+          <OverviewLineIcon icon={item.icon} className="size-10 md:size-8" />
+        )}
       </div>
       <div className="mt-[282px] flex flex-1 flex-col items-center text-center md:mt-[112px]">
         <h3 className="w-full max-w-[270px] rounded-[8px] bg-infra-yellow px-5 py-4 text-[16px] font-bold uppercase leading-5 text-infra-ink md:rounded-full md:px-6 md:py-3 md:text-[19px]">
@@ -356,7 +367,17 @@ function InfraSectorCard({
   return (
     <article className="flex min-h-[215px] flex-col items-center justify-start px-1 py-3 text-center text-white md:min-h-[202px] md:justify-center md:rounded-[18px] md:border md:border-white/12 md:bg-white/[0.03] md:px-4 md:py-6">
       <div className="grid size-[121px] place-items-center rounded-[8px] bg-[#113047] md:size-auto md:bg-transparent">
-        <OverviewLineIcon icon={item.icon} className="size-[70px] text-infra-yellow md:size-[58px]" />
+        {item.iconImage ? (
+          <Image
+            src={item.iconImage.src}
+            alt={item.iconImage.alt}
+            width={70}
+            height={70}
+            className="size-[70px] object-contain md:size-[58px]"
+          />
+        ) : (
+          <OverviewLineIcon icon={item.icon} className="size-[70px] text-infra-yellow md:size-[58px]" />
+        )}
       </div>
       <h3 className="mt-7 text-[12px] font-medium leading-[1.45] md:mt-5 md:text-[18px] md:font-bold md:leading-[1.35]">
         {item.label}
@@ -375,12 +396,18 @@ function InfraStatCard({
       <div className="bg-infra-navy px-7 py-6 text-center text-[19px] font-bold uppercase leading-6 text-white md:px-9 md:py-5 md:text-left md:text-[18px]">
         {item.label}
       </div>
-      <div className="flex min-h-[82px] items-center justify-center gap-7 px-7 py-4 md:min-h-[206px] md:flex-col md:items-start md:gap-0 md:px-9 md:py-7">
-        <div className="md:hidden grid size-[45px] shrink-0 place-items-center">
-          <OverviewLineIcon icon={item.icon} className="size-[45px]" />
+      <div className="flex min-h-[82px] items-center justify-center gap-7 px-7 py-4 md:min-h-[206px] md:gap-10 md:px-9 md:py-7">
+        <div className="grid size-[45px] shrink-0 place-items-center md:size-[80px]">
+          <Image
+            src={item.image}
+            alt={item.label}
+            width={80}
+            height={80}
+            className="size-[45px] md:size-[80px]"
+          />
         </div>
-        <span className="md:hidden h-[45px] w-px shrink-0 bg-[#d3ad00]" aria-hidden="true" />
-        <div>
+        <span className="h-[45px] w-px shrink-0 bg-[#d3ad00] md:h-[80px]" aria-hidden="true" />
+        <div className="text-center">
           <p className="text-[52px] font-bold leading-none tracking-[0] md:text-[88px]">
             {item.value}
           </p>
@@ -536,12 +563,6 @@ function InfraProductCard({
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,21,33,0.04)_0%,rgba(5,21,33,0.14)_42%,rgba(5,21,33,0.92)_100%)]"
         aria-hidden="true"
       />
-      <span
-        className="absolute right-[14px] top-[13px] grid size-[79px] place-items-center rounded-[25px] border border-white bg-[#8f8227]/75 text-infra-yellow backdrop-blur-[2px] transition-colors group-hover:bg-infra-yellow group-hover:text-infra-ink md:right-[17px] md:top-[17px] md:size-[96px] md:rounded-[30px]"
-        aria-hidden="true"
-      >
-        <ArrowUpRight className="size-[31px] md:size-[35px]" />
-      </span>
       <h3 className="absolute bottom-[28px] left-[27px] right-6 text-[35px] font-bold leading-[39px] text-infra-yellow md:bottom-[34px] md:left-[30px] md:text-[40px] md:leading-[48px]">
         {product.title.map((line) => (
           <span key={line} className="block">
@@ -564,6 +585,7 @@ type InfraProductFeature = {
   title: string;
   body: string;
   icon: string;
+  featureImage?: InfraProductImage;
 };
 
 type InfraProductDetailContent = {
@@ -575,6 +597,8 @@ type InfraProductDetailContent = {
   readMoreLabel?: string;
   readMoreHref?: string;
   heroImage: InfraProductImage;
+  contentImage?: InfraProductImage;
+  mediaLayout?: "videoFeaturesGallery";
   detailImage?: InfraProductImage;
   detailImages?: readonly InfraProductImage[];
   galleryImage?: InfraProductImage;
@@ -630,7 +654,17 @@ function InfraProductFeatureCard({
     <article className="relative min-h-[226px] rounded-[6px] bg-[#12334a] px-[18px] pb-[22px] pt-[22px] text-white md:min-h-[218px] md:rounded-[20px] md:px-6 md:pb-7 md:pt-6">
       <div className="flex items-start justify-between gap-5">
         <div className="grid size-[78px] place-items-center rounded-[5px] bg-[#1d3c4c] text-infra-yellow md:size-[89px]">
-          <OverviewLineIcon icon={feature.icon} className="size-[58px] md:size-[66px]" />
+          {feature.featureImage ? (
+            <Image
+              src={feature.featureImage.src}
+              alt={feature.featureImage.alt}
+              width={89}
+              height={89}
+              className="size-full object-contain"
+            />
+          ) : (
+            <OverviewLineIcon icon={feature.icon} className="size-[58px] md:size-[66px]" />
+          )}
         </div>
         <div className="text-right">
           <span className="block text-[40px] font-bold leading-none text-white md:text-[43px]">
@@ -678,17 +712,21 @@ function InfraProductVideo({
 
 function InfraProductMediaSection({
   detail,
+  mediaMode = "all",
 }: {
   detail: InfraProductDetailContent;
+  mediaMode?: "all" | "videoOnly";
 }) {
-  if (!detail.galleryImage && !detail.galleryImages && !detail.video) {
+  const showGallery = mediaMode === "all";
+
+  if ((!showGallery || (!detail.galleryImage && !detail.galleryImages)) && !detail.video) {
     return null;
   }
 
   return (
     <section className="bg-infra-deep-navy px-5 py-[46px] md:px-10 md:py-[104px]">
       <div className="mx-auto w-full max-w-[1240px]">
-        {detail.galleryImages ? (
+        {showGallery && detail.galleryImages ? (
           <InfraDetailImageCarousel
             images={detail.galleryImages}
             frameClassName="relative h-[246px] overflow-hidden rounded-[18px] md:h-[625px] md:rounded-[24px]"
@@ -698,7 +736,7 @@ function InfraProductMediaSection({
             nextButtonClassName="grid size-[51px] place-items-center rounded-full bg-white text-infra-yellow transition-colors hover:bg-infra-yellow hover:text-infra-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:size-[64px]"
             dataAttribute="gallery"
           />
-        ) : detail.galleryImage ? (
+        ) : showGallery && detail.galleryImage ? (
           <>
             <div
               data-product-detail-gallery
@@ -717,17 +755,101 @@ function InfraProductMediaSection({
         ) : null}
 
         {detail.video ? (
-          <div className={detail.galleryImage || detail.galleryImages ? "mt-[62px] md:mt-[72px]" : ""}>
+          <div className={showGallery && (detail.galleryImage || detail.galleryImages) ? "mt-[62px] md:mt-[72px]" : ""}>
             <InfraProductVideo
               video={detail.video}
               heightClassName={
-                detail.galleryImage || detail.galleryImages
+                showGallery && (detail.galleryImage || detail.galleryImages)
                   ? "h-[319px] md:h-[478px]"
                   : undefined
               }
             />
           </div>
         ) : null}
+      </div>
+    </section>
+  );
+}
+
+function InfraProductFeaturesSection({
+  detail,
+  standalone = false,
+}: {
+  detail: InfraProductDetailContent;
+  standalone?: boolean;
+}) {
+  if (!detail.features || detail.features.length === 0) {
+    return null;
+  }
+
+  const content = (
+    <section
+      id="benefits"
+      className={`${standalone ? "" : "mt-[38px] md:mt-[93px]"} rounded-[14px] bg-infra-deep-navy p-[12px] shadow-[0_12px_28px_rgba(7,28,40,0.32)] md:rounded-[24px] md:p-[21px]`}
+    >
+      <div className="grid gap-[12px] md:grid-cols-2 md:gap-[16px]">
+        {detail.features.map((feature) => (
+          <InfraProductFeatureCard key={feature.number} feature={feature} />
+        ))}
+      </div>
+    </section>
+  );
+
+  if (!standalone) {
+    return content;
+  }
+
+  return (
+    <section className="bg-white px-5 py-[46px] text-infra-ink md:px-10 md:py-[104px]">
+      <div className="mx-auto w-full max-w-[1240px]">
+        {content}
+      </div>
+    </section>
+  );
+}
+
+function InfraProductDetailImagesSection({
+  detail,
+  standalone = false,
+}: {
+  detail: InfraProductDetailContent;
+  standalone?: boolean;
+}) {
+  let content: ReactNode = null;
+
+  if (detail.detailImages) {
+    content = <InfraDetailImageCarousel images={detail.detailImages} />;
+  } else if (detail.detailImage) {
+    content = (
+      <>
+        <div data-detail-image className="relative mt-[26px] h-[321px] overflow-hidden rounded-[14px] md:mt-[78px] md:h-[625px] md:rounded-[24px]">
+          <Image
+            src={detail.detailImage.src}
+            alt={detail.detailImage.alt}
+            fill
+            sizes="(min-width: 768px) 1240px, 320px"
+            className="object-cover object-[52%_50%]"
+            style={{ objectPosition: detail.detailImage.objectPosition }}
+          />
+        </div>
+
+        <InfraDetailArrowControls />
+      </>
+    );
+  }
+
+  if (!content) {
+    return null;
+  }
+
+  if (!standalone) {
+    return content;
+  }
+
+  return (
+    <section className="bg-white px-5 pb-[75px] pt-[12px] text-infra-ink md:px-10 md:pb-[104px] md:pt-[4px]">
+      <div className="mx-auto w-full max-w-[1240px]">
+        {content}
       </div>
     </section>
   );
@@ -767,7 +889,7 @@ function InfraBarChart({
             >
               {v.value > 0 ? (
                 <div
-                  className="flex w-full items-center justify-center rounded-t-[5px] bg-infra-yellow"
+                  className="flex w-full items-start justify-center rounded-t-[5px] bg-infra-yellow pt-1"
                   style={{ height: `${barH}px` }}
                 >
                   <span className="text-[11px] font-bold leading-none text-infra-ink md:text-[12px]">
@@ -1187,6 +1309,8 @@ function NmdcInfraProductDetailPage({
 }) {
   const detailProductPath = productPath;
   const isWideImageIntro = detail.introLayout === "wideImage";
+  const isVideoFeaturesGalleryLayout = detail.mediaLayout === "videoFeaturesGallery";
+  const introImage = detail.contentImage ?? detail.heroImage;
   const detailContainerClassName = isWideImageIntro
     ? "mx-auto w-full max-w-[1370px]"
     : "mx-auto w-full max-w-[1240px]";
@@ -1253,8 +1377,8 @@ function NmdcInfraProductDetailPage({
 
             <div className={heroImageClassName}>
               <Image
-                src={detail.heroImage.src}
-                alt={detail.heroImage.alt}
+                src={introImage.src}
+                alt={introImage.alt}
                 fill
                 sizes={
                   isWideImageIntro
@@ -1262,48 +1386,31 @@ function NmdcInfraProductDetailPage({
                     : "(min-width: 768px) 399px, 320px"
                 }
                 className="object-cover"
-                style={{ objectPosition: detail.heroImage.objectPosition }}
+                style={{ objectPosition: introImage.objectPosition }}
               />
             </div>
           </article>
 
           <div data-product-detail-rule className={ruleClassName} aria-hidden="true" />
 
-          {detail.detailImages ? (
-            <InfraDetailImageCarousel images={detail.detailImages} />
-          ) : detail.detailImage ? (
+          {!isVideoFeaturesGalleryLayout ? (
             <>
-              <div data-detail-image className="relative mt-[26px] h-[321px] overflow-hidden rounded-[14px] md:mt-[78px] md:h-[625px] md:rounded-[24px]">
-                <Image
-                  src={detail.detailImage.src}
-                  alt={detail.detailImage.alt}
-                  fill
-                  sizes="(min-width: 768px) 1240px, 320px"
-                  className="object-cover object-[52%_50%]"
-                  style={{ objectPosition: detail.detailImage.objectPosition }}
-                />
-              </div>
-
-              <InfraDetailArrowControls />
+              <InfraProductDetailImagesSection detail={detail} />
+              <InfraProductFeaturesSection detail={detail} />
             </>
-          ) : null}
-
-          {detail.features && detail.features.length > 0 ? (
-            <section
-              id="benefits"
-              className="mt-[38px] rounded-[14px] bg-infra-deep-navy p-[12px] shadow-[0_12px_28px_rgba(7,28,40,0.32)] md:mt-[93px] md:rounded-[24px] md:p-[21px]"
-            >
-              <div className="grid gap-[12px] md:grid-cols-2 md:gap-[16px]">
-                {detail.features.map((feature) => (
-                  <InfraProductFeatureCard key={feature.number} feature={feature} />
-                ))}
-              </div>
-            </section>
           ) : null}
         </div>
       </section>
 
-      <InfraProductMediaSection detail={detail} />
+      {isVideoFeaturesGalleryLayout ? (
+        <>
+          <InfraProductMediaSection detail={detail} mediaMode="videoOnly" />
+          <InfraProductFeaturesSection detail={detail} standalone />
+          <InfraProductDetailImagesSection detail={detail} standalone />
+        </>
+      ) : (
+        <InfraProductMediaSection detail={detail} />
+      )}
       <InfraFooter />
     </main>
   );

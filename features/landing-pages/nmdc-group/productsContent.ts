@@ -252,7 +252,7 @@ export const nmdcGroupProductsContent = {
           accentClassName: "text-primary-sky-blue",
           images: [
             {
-              src: `${productsImageBase}/safeen-nav-mobile.webp`,
+              src: `${productsImageBase}/safeen-nav.jpg`,
               alt: "Safeen NAV positioning unit",
             },
           ],

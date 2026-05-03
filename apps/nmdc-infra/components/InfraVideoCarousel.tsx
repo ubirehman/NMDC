@@ -66,7 +66,7 @@ export function InfraVideoCarousel({
         </div>
       </div>
 
-      <div className={controlsClassName}>
+      {/* <div className={controlsClassName}>
         <button
           type="button"
           aria-label="Previous video"
@@ -83,7 +83,7 @@ export function InfraVideoCarousel({
         >
           <ArrowRight className="size-5" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

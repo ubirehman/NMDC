@@ -402,14 +402,30 @@ test("NMDC Energy products follows the supplied desktop and mobile PDF design", 
 test("NMDC Energy product cards open their respective PDF-designed detail pages", () => {
   const content = readFileSync("apps/nmdc-energy/content/content.ts", "utf8");
   const page = readFileSync("apps/nmdc-energy/app/pages.tsx", "utf8");
+  const productImageCarousel = readFileSync(
+    "apps/nmdc-energy/components/EnergyProductImageCarousel.tsx",
+    "utf8",
+  );
   const route = readFileSync("apps/nmdc-energy/app/products/[slug]/page.tsx", "utf8");
 
   for (const asset of [
     "apps/nmdc-energy/public/images/energy/product-topside-detail.jpg",
     "apps/nmdc-energy/public/images/energy/product-jackets-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-jackets-carousel-1.jpg",
+    "apps/nmdc-energy/public/images/energy/product-jackets-carousel-2.jpg",
+    "apps/nmdc-energy/public/images/energy/product-jackets-carousel-3.jpg",
     "apps/nmdc-energy/public/images/energy/product-bridges-detail.jpg",
     "apps/nmdc-energy/public/images/energy/product-pressure-vessels-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels-source-1.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels-source-2.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels-source-3.jpg",
+    "apps/nmdc-energy/public/images/energy/product-pressure-vessels-source-4.jpg",
+    "apps/nmdc-energy/public/images/energy/icon-pressure-vessel.png",
+    "apps/nmdc-energy/public/images/energy/icon-pressure-vessel-weight.png",
+    "apps/nmdc-energy/public/images/energy/icon-pressure-vessel-schedule.png",
     "apps/nmdc-energy/public/images/energy/product-process-skids-detail.jpg",
+    "apps/nmdc-energy/public/images/energy/product-process-skids-carousel-1.jpg",
+    "apps/nmdc-energy/public/images/energy/product-process-skids-carousel-2.jpg",
     "apps/nmdc-energy/public/images/energy/product-pipe-coating-video.jpg",
     "apps/nmdc-energy/public/images/energy/product-pipe-coating-mobile.jpg",
     "apps/nmdc-energy/public/images/energy/icon-pipe-coating-pipe.png",
@@ -441,9 +457,15 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   }
   assert.match(content, /Riser Platform/);
   assert.match(content, /Eight Legged Jacket/);
+  assert.match(content, /product-jackets-carousel-1\.jpg[\s\S]*product-jackets-carousel-2\.jpg[\s\S]*product-jackets-carousel-3\.jpg/);
   assert.match(content, /Bridges"/);
   assert.match(content, /Storage Tank/);
+  assert.match(content, /product-pressure-vessels-source-1\.jpg[\s\S]*product-pressure-vessels-source-2\.jpg[\s\S]*product-pressure-vessels-source-3\.jpg[\s\S]*product-pressure-vessels-source-4\.jpg/);
+  assert.match(content, /icon-pressure-vessel\.png/);
+  assert.match(content, /icon-pressure-vessel-weight\.png/);
+  assert.match(content, /icon-pressure-vessel-schedule\.png/);
   assert.match(content, /Glycol Storage Unit/);
+  assert.match(content, /product-process-skids-carousel-1\.jpg[\s\S]*product-process-skids-carousel-2\.jpg/);
   assert.match(content, /Double Jointed CWC Pipes/);
   assert.match(content, /PRODUCTION CAPACITY FOR EACH 3 LPO PLANT/);
   assert.match(content, /TYPES OF TOPSIDES/);
@@ -471,6 +493,22 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(page, /md:grid-cols-\[380px_minmax\(0,1fr\)\]/);
   assert.match(page, /md:grid-cols-\[190px_minmax\(0,1fr\)\]/);
   assert.match(page, /function EnergyProductMedia/);
+  assert.match(page, /function EnergyPressureVesselsOverview/);
+  assert.match(page, /data-pressure-vessels-overview/);
+  assert.match(page, /data-pressure-vessels-highlights/);
+  assert.match(page, /detail\.slug === "pressure-vessels"/);
+  assert.match(page, /mediaImages/);
+  assert.match(page, /EnergyProductImageCarousel/);
+  assert.match(productImageCarousel, /"use client"/);
+  assert.match(productImageCarousel, /useState/);
+  assert.match(productImageCarousel, /showPreviousMediaImage/);
+  assert.match(productImageCarousel, /showNextMediaImage/);
+  assert.match(productImageCarousel, /showMediaImageAtProgress/);
+  assert.match(productImageCarousel, /getBoundingClientRect/);
+  assert.match(productImageCarousel, /aria-label=\{`Image \$\{currentIndex \+ 1\} of \$\{images\.length\}/);
+  assert.match(productImageCarousel, /onClick=\{showPreviousMediaImage\}/);
+  assert.match(productImageCarousel, /onClick=\{showNextMediaImage\}/);
+  assert.match(productImageCarousel, /onClick=\{showMediaImageAtProgress\}/);
   assert.match(page, /function EnergyTopsideTypesSection/);
   assert.match(page, /detail\.offshore\.images\.map/);
   assert.match(page, /offshoreImage\.src/);

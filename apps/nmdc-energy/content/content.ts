@@ -529,6 +529,8 @@ export const nmdcEnergyContent = {
         },
         onshore: {
           title: "ONSHORE STRUCTURES",
+          icon: withEnergyBasePath("/images/energy/icon-onshore-structure.png"),
+          moduleImage: withEnergyBasePath("/images/energy/product-topside-detail.jpg"),
           module: {
             title: "Pre-assembled Module (Substations/ Process Modules)",
             value: "500 MT",
@@ -568,6 +570,23 @@ export const nmdcEnergyContent = {
             alt: "Eight legged jacket structure on a transport platform",
             objectPosition: "50% 50%",
           },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/product-jackets-carousel-1.jpg"),
+              alt: "Jacket structure fabrication at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-jackets-carousel-2.jpg"),
+              alt: "Jacket structure being assembled at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-jackets-carousel-3.jpg"),
+              alt: "Completed jacket structure at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+          ],
         },
       },
       {
@@ -591,10 +610,32 @@ export const nmdcEnergyContent = {
         media: {
           label: "Bridges",
           image: {
-            src: withEnergyBasePath("/images/energy/product-bridges-detail.jpg"),
-            alt: "Fabricated bridge structure in an NMDC Energy yard",
+            src: withEnergyBasePath("/images/energy/product-bridges-carousel-4.jpg"),
+            alt: "Bridge structure fabricated at NMDC Energy yard",
             objectPosition: "50% 50%",
           },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/product-bridges-carousel-4.jpg"),
+              alt: "Bridge structure fabricated at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-bridges-carousel-3.jpg"),
+              alt: "Bridge and boat landing structure at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-bridges-carousel-1.jpg"),
+              alt: "Completed bridge structure at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-bridges-carousel-2.jpg"),
+              alt: "Bridge structure detail at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+          ],
         },
       },
       {
@@ -607,9 +648,36 @@ export const nmdcEnergyContent = {
         },
         highlightsTitle: "Key Highlights",
         highlights: [
-          { title: "Fabricated Around", value: "1200", unit: "Pieces", icon: "pressure" },
-          { title: "Weighs up to", value: "300", unit: "Metric ton per piece", icon: "weight" },
-          { title: "Fabrication duration", value: "3 to 12", unit: "Months", icon: "duration" },
+          {
+            title: "Fabricated Around",
+            value: "1200",
+            unit: "Pieces",
+            icon: "pressure",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pressure-vessel.png"),
+              alt: "Pressure vessel icon",
+            },
+          },
+          {
+            title: "Weighs up to",
+            value: "300",
+            unit: "Metric ton per piece",
+            icon: "weight",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pressure-vessel-weight.png"),
+              alt: "Pressure vessel weight icon",
+            },
+          },
+          {
+            title: "Fabrication duration",
+            value: "3 to 12",
+            unit: "Months",
+            icon: "duration",
+            image: {
+              src: withEnergyBasePath("/images/energy/icon-pressure-vessel-schedule.png"),
+              alt: "Pressure vessel fabrication schedule icon",
+            },
+          },
         ],
         media: {
           label: "Storage Tank",
@@ -618,6 +686,28 @@ export const nmdcEnergyContent = {
             alt: "Storage tank pressure vessel in a fabrication workshop",
             objectPosition: "50% 50%",
           },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/product-pressure-vessels-source-1.jpg"),
+              alt: "Pressure vessel fabrication at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-pressure-vessels-source-2.jpg"),
+              alt: "Pressure vessel assembly at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-pressure-vessels-source-3.jpg"),
+              alt: "Pressure vessel workshop detail at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-pressure-vessels-source-4.jpg"),
+              alt: "Completed pressure vessel at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+          ],
         },
       },
       {
@@ -639,6 +729,18 @@ export const nmdcEnergyContent = {
             alt: "Glycol storage unit process skid in a workshop",
             objectPosition: "50% 50%",
           },
+          images: [
+            {
+              src: withEnergyBasePath("/images/energy/product-process-skids-carousel-1.jpg"),
+              alt: "Process skid fabrication at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+            {
+              src: withEnergyBasePath("/images/energy/product-process-skids-carousel-2.jpg"),
+              alt: "Process skid assembly at NMDC Energy yard",
+              objectPosition: "50% 50%",
+            },
+          ],
         },
       },
       {

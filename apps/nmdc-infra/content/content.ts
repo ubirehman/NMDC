@@ -228,9 +228,9 @@ export const nmdcInfraContent = {
           },
           unit: "In Km3",
           values: [
-            { year: "2023", value: 72.2 },
-            { year: "2024", value: 67.7 },
-            { year: "2025", value: 58.7 },
+            { year: "2023", value: 58.7 },
+            { year: "2024", value: 72.2 },
+            { year: "2025", value: 67.7 },
           ],
         },
         {
@@ -242,9 +242,9 @@ export const nmdcInfraContent = {
           },
           unit: "In Km3",
           values: [
-            { year: "2023", value: 19.7 },
-            { year: "2024", value: 14.8 },
-            { year: "2025", value: 13.2 },
+            { year: "2023", value: 13.2 },
+            { year: "2024", value: 19.7 },
+            { year: "2025", value: 14.8 },
           ],
         },
         {
@@ -256,9 +256,9 @@ export const nmdcInfraContent = {
           },
           unit: "In Km3",
           values: [
-            { year: "2023", value: 106.8 },
-            { year: "2024", value: 151.4 },
-            { year: "2025", value: 31.5 },
+            { year: "2023", value: 31.5 },
+            { year: "2024", value: 106.8 },
+            { year: "2025", value: 151.4 },
           ],
         },
         {
@@ -270,9 +270,9 @@ export const nmdcInfraContent = {
           },
           unit: "In Km3",
           values: [
-            { year: "2023", value: 15.7 },
-            { year: "2024", value: 11.9 },
-            { year: "2025", value: 5.5 },
+            { year: "2023", value: 11.9 },
+            { year: "2024", value: 5.5 },
+            { year: "2025", value: 15.7 },
           ],
         },
         {
@@ -285,7 +285,7 @@ export const nmdcInfraContent = {
           unit: "In Km3",
           values: [
             { year: "2023", value: 53 },
-            { year: "2025", value: 6.2 },
+            { year: "2024", value: 6.2 },
           ],
         },
         {
@@ -297,8 +297,7 @@ export const nmdcInfraContent = {
           },
           unit: "In Km3",
           values: [
-            { year: "2024", value: 67.7 },
-            { year: "2025", value: 6.2 },
+            { year: "2025", value: 67.7 },
           ],
         },
       ],
@@ -338,40 +337,94 @@ export const nmdcInfraContent = {
           title: "NMDCCC",
           body: "NMDC Infra & CCC Integrated Platform for Onshore Energy EPC in the UAE.",
           image: {
-            src: withInfraBasePath("/images/infra/vertical-nmdccc.jpg"),
-            alt: "NMDC construction yard",
+            src: withInfraBasePath("/images/infra/verticals/nmdccc.png"),
+            alt: "NMDCCC onshore energy plant",
           },
           icon: "construction",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/verticals/nmdccc-icon.png"),
+            alt: "NMDCCC construction tools icon",
+          },
         },
         {
           title: "LANTANIA NMDC WATER",
           body: "Lantania NMDC Water is NMDC Infra’s dedicated water and wastewater EPC platform, formed following the acquisition of a 51% controlling stake in Spain-based Lantania Aguas.",
           image: {
-            src: withInfraBasePath("/images/infra/vertical-water.jpg"),
-            alt: "Water infrastructure plant",
+            src: withInfraBasePath("/images/infra/verticals/lantania-water.png"),
+            alt: "Lantania NMDC Water treatment facility",
           },
           icon: "water",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/verticals/lantania-water-icon.png"),
+            alt: "Lantania NMDC Water drop icon",
+          },
         },
         {
           title: "EMARAT EUROPE",
           body: "Emarat Europe and NMDC Infra are at the forefront of innovation, pioneering precast construction and 3D printing solutions.",
           image: {
-            src: withInfraBasePath("/images/infra/vertical-emarat-europe.jpg"),
-            alt: "Precast concrete yard",
+            src: withInfraBasePath("/images/infra/verticals/emarat-europe.png"),
+            alt: "Emarat Europe precast construction yard",
           },
           icon: "precast",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/verticals/emarat-europe-icon.png"),
+            alt: "Emarat Europe 3D printing icon",
+          },
         },
       ],
     },
     sectors: {
       title: "SECTORS SERVED",
       items: [
-        { label: "Industrial & Data Centre", icon: "industrial" },
-        { label: "Roads, Bridges & Tunneling", icon: "roads" },
-        { label: "Water Infrastructure", icon: "water" },
-        { label: "Onshore Oil & Gas", icon: "oilGas" },
-        { label: "Piling", icon: "piling" },
-        { label: "Precast Construction & 3D Printing", icon: "precast" },
+        {
+          label: "Industrial & Data Centre",
+          icon: "industrial",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/industrial-data-centre.png"),
+            alt: "Industrial and data centre sector icon",
+          },
+        },
+        {
+          label: "Roads, Bridges & Tunneling",
+          icon: "roads",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/roads-bridges-tunneling.png"),
+            alt: "Roads, bridges and tunneling sector icon",
+          },
+        },
+        {
+          label: "Water Infrastructure",
+          icon: "water",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/water-infrastructure.png"),
+            alt: "Water infrastructure sector icon",
+          },
+        },
+        {
+          label: "Onshore Oil & Gas",
+          icon: "oilGas",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/onshore-oil-gas.png"),
+            alt: "Onshore oil and gas sector icon",
+          },
+        },
+        {
+          label: "Piling",
+          icon: "piling",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/piling.png"),
+            alt: "Piling sector icon",
+          },
+        },
+        {
+          label: "Precast Construction & 3D Printing",
+          icon: "precast",
+          iconImage: {
+            src: withInfraBasePath("/images/infra/sector-icons/precast-3d-printing.png"),
+            alt: "Precast construction and 3D printing sector icon",
+          },
+        },
       ],
     },
     stats: {
@@ -380,8 +433,8 @@ export const nmdcInfraContent = {
         alt: "Dark technical line pattern",
       },
       items: [
-        { label: "PROJECTS COMPLETED", value: "800+", icon: "projects" },
-        { label: "PRODUCTION YARDS", value: "200K", unit: "SQUARE METER", icon: "yard" },
+        { label: "PROJECTS COMPLETED", value: "800+", icon: "projects", image: withInfraBasePath("/images/infra/icon-projects-completed.png") },
+        { label: "PRODUCTION YARDS", value: "200K", unit: "SQUARE METER", icon: "yard", image: withInfraBasePath("/images/infra/icon-production-yards.png") },
       ],
     },
   },
@@ -418,66 +471,67 @@ export const nmdcInfraContent = {
           alt: "Ebawe Anlagentechnik precast concrete production yard",
           objectPosition: "50% 50%",
         },
+        contentImage: {
+        src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
+        alt: "NMDC Infra precast excellence at scale",
+      },
       },
     ],
     detail: {
       backLabel: "Back",
       backHref: "/products",
       title: "3D PRINTING OF ARTICIAL REEFS",
+      mediaLayout: "videoFeaturesGallery",
       paragraphs: [
         "NMDC Infra is also pioneering digital manufacturing through its in-house 3D-printing facility, enabling production of innovative concrete forms.",
         "One key highlight is the development of 3Dprinted coral reefs, engineered to replicate natural reef structures and support marine ecosystem restoration.",
       ],
-      readMoreLabel: "Read more...",
+      readMoreLabel: "",
       readMoreHref: "#benefits",
       heroImage: {
         src: withInfraBasePath("/images/infra/product-3d-artificial-reefs.png"),
         alt: "3D printed artificial reef structure underwater",
       },
+      contentImage: {
+        src: withInfraBasePath("/images/infra/product-3d-artificial-reefs.png"),
+        alt: "NMDC Infra precast excellence at scale",
+      },
       detailImage: {
-        src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
+        src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/1.jpeg"),
         alt: "NMDC Infra team inspecting 3D printed reef structures",
       },
       detailImages: [
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-01.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/1.jpeg"),
           alt: "NMDC Infra 3D printed artificial reef structure inspection",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-02.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/2.jpeg"),
           alt: "3D printed artificial reef units inside the NMDC Infra facility",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-03.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/3.jpeg"),
           alt: "Artificial reef concrete forms produced by 3D printing",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-04.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/4.jpeg"),
           alt: "NMDC Infra artificial reef fabrication area",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-05.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/5.jpeg"),
           alt: "Detailed view of a 3D printed artificial reef structure",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-06.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/6.jpeg"),
           alt: "3D printed reef module positioned in the production area",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-07.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/7.jpeg"),
           alt: "Artificial reef modules arranged for inspection",
         },
         {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-08.jpg"),
+          src: withInfraBasePath("/images/infra/product-3d-reefs-carousel/8.jpeg"),
           alt: "Close view of 3D printed concrete reef texture",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-09.jpg"),
-          alt: "NMDC Infra 3D printing artificial reef production detail",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-3d-reefs-gallery-10.jpg"),
-          alt: "3D printed artificial reef structure ready for deployment",
         },
       ],
       video: {
@@ -501,24 +555,40 @@ export const nmdcInfraContent = {
           title: "Customized Complexity",
           body: "Precisely designed structural complexity that mimics natural reef formations, creating optimal habitats for diverse marine species.",
           icon: "network",
+          featureImage: {
+            src: withInfraBasePath("/images/infra/product-3d-reefs-features/1.png"),
+            alt: "Customized complexity feature icon",
+          },
         },
         {
           number: "02",
           title: "Sustainable Materials",
           body: "Can be created using eco-friendly materials like pHneutral concrete",
           icon: "leafCycle",
+          featureImage: {
+            src: withInfraBasePath("/images/infra/product-3d-reefs-features/2.png"),
+            alt: "Sustainable materials feature icon",
+          },
         },
         {
           number: "03",
           title: "Enhanced Performance",
           body: "Studies show 30-50% higher marine biodiversity compared to traditional artificial reef structures",
           icon: "performance",
+          featureImage: {
+            src: withInfraBasePath("/images/infra/product-3d-reefs-features/3.png"),
+            alt: "Enhanced performance feature icon",
+          },
         },
         {
           number: "04",
           title: "Research Optimization",
           body: "Allows for controlled experiments with different designs to determine optimal configurations for specific conservation goal",
           icon: "research",
+          featureImage: {
+            src: withInfraBasePath("/images/infra/product-3d-reefs-features/4.png"),
+            alt: "Research optimization feature icon",
+          },
         },
       ],
     },
@@ -535,40 +605,10 @@ export const nmdcInfraContent = {
         src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
         alt: "NMDC Infra precast excellence at scale",
       },
-      galleryImage: {
-        src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
-        alt: "NMDC Infra precast concrete quay walls",
+      contentImage: {
+        src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence-.png"),
+        alt: "NMDC Infra precast excellence at scale",
       },
-      galleryImages: [
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-quay-walls.png"),
-          alt: "NMDC Infra precast concrete quay walls",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-durable-infrastructure.png"),
-          alt: "NMDC Infra durable precast infrastructure",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-built-on-safety.png"),
-          alt: "NMDC Infra precast operations built on safety",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-construction-leadership.jpg"),
-          alt: "NMDC Infra construction leadership team at site",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-construction-hse.jpg"),
-          alt: "NMDC Infra construction HSE activity",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-abu-al-abyad-project.jpg"),
-          alt: "NMDC Infra Abu Al Abyad project",
-        },
-        {
-          src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),
-          alt: "NMDC Infra precast excellence at scale",
-        },
-      ],
       video: {
         image: {
           src: withInfraBasePath("/images/infra/product-ebawe-precast-excellence.png"),

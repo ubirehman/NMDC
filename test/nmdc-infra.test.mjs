@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const infraFiles = [
@@ -143,6 +143,23 @@ test("NMDC Infra overview follows the supplied desktop PDF structure", () => {
   const content = readFileSync("apps/nmdc-infra/content/content.ts", "utf8");
   const page = readFileSync("apps/nmdc-infra/app/pages.tsx", "utf8");
 
+  for (const asset of [
+    "apps/nmdc-infra/public/images/infra/verticals/nmdccc.png",
+    "apps/nmdc-infra/public/images/infra/verticals/nmdccc-icon.png",
+    "apps/nmdc-infra/public/images/infra/verticals/lantania-water.png",
+    "apps/nmdc-infra/public/images/infra/verticals/lantania-water-icon.png",
+    "apps/nmdc-infra/public/images/infra/verticals/emarat-europe.png",
+    "apps/nmdc-infra/public/images/infra/verticals/emarat-europe-icon.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/industrial-data-centre.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/roads-bridges-tunneling.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/water-infrastructure.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/onshore-oil-gas.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/piling.png",
+    "apps/nmdc-infra/public/images/infra/sector-icons/precast-3d-printing.png",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+
   for (const phrase of [
     "At a Glance",
     "With advanced engineering techniques",
@@ -179,6 +196,15 @@ test("NMDC Infra overview follows the supplied desktop PDF structure", () => {
   assert.match(page, /InfraVerticalCard/);
   assert.match(page, /InfraSectorCard/);
   assert.match(page, /InfraStatCard/);
+  assert.match(content, /NMDCCC",\s*body:[\s\S]*?src:\s*withInfraBasePath\("\/images\/infra\/verticals\/nmdccc\.png"\)[\s\S]*?iconImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/verticals\/nmdccc-icon\.png"\)/s);
+  assert.match(content, /LANTANIA NMDC WATER",\s*body:[\s\S]*?src:\s*withInfraBasePath\("\/images\/infra\/verticals\/lantania-water\.png"\)[\s\S]*?iconImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/verticals\/lantania-water-icon\.png"\)/s);
+  assert.match(content, /EMARAT EUROPE",\s*body:[\s\S]*?src:\s*withInfraBasePath\("\/images\/infra\/verticals\/emarat-europe\.png"\)[\s\S]*?iconImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/verticals\/emarat-europe-icon\.png"\)/s);
+  assert.match(page, /item\.iconImage/);
+  assert.match(page, /alt=\{item\.iconImage\.alt\}/);
+  assert.match(content, /Industrial & Data Centre",\s*icon:\s*"industrial",\s*iconImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/sector-icons\/industrial-data-centre\.png"\)/s);
+  assert.match(content, /Precast Construction & 3D Printing",\s*icon:\s*"precast",\s*iconImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/sector-icons\/precast-3d-printing\.png"\)/s);
+  assert.match(page, /item\.iconImage/);
+  assert.match(page, /alt=\{item\.iconImage\.alt\}/);
   assert.match(page, /md:h-\[652px\]/);
   assert.match(page, /md:grid-cols-\[minmax\(0,520px\)_minmax\(0,659px\)\]/);
   assert.match(page, /md:grid-cols-3/);
@@ -304,16 +330,22 @@ test("NMDC Infra 3D printed reefs product card opens the supplied detail page", 
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
   for (const asset of [
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-01.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-02.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-03.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-04.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-05.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-06.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-07.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-08.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-09.jpg",
-    "apps/nmdc-infra/public/images/infra/product-3d-reefs-gallery-10.jpg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/1.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/2.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/3.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/4.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/5.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/6.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/7.jpeg",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-carousel/8.jpeg",
+  ]) {
+    assert.equal(existsSync(asset), true, `${asset} should exist`);
+  }
+  for (const asset of [
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-features/1.png",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-features/2.png",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-features/3.png",
+    "apps/nmdc-infra/public/images/infra/product-3d-reefs-features/4.png",
   ]) {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
@@ -321,7 +353,7 @@ test("NMDC Infra 3D printed reefs product card opens the supplied detail page", 
   const carousel = readFileSync(carouselPath, "utf8");
 
   assert.match(content, /href:\s*"\/products\/3d-printing-artificial-reefs"/);
-  assert.match(content, /printing:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/product-3d-reefs-detail\.jpg"\)/s);
+  assert.match(content, /printing:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/product-3d-reefs-detail-new\.png"\)/s);
   assert.match(detailRoute, /NmdcInfraArtificialReefsPage/);
   assert.match(page, /function NmdcInfraArtificialReefsPage/);
   assert.match(page, /function getInfraProductSlugFromPath/);
@@ -332,15 +364,25 @@ test("NMDC Infra 3D printed reefs product card opens the supplied detail page", 
   assert.match(page, /<InfraProductHero productPath=\{products\.activeHref\} \/>/);
   assert.match(page, /<InfraProductHero productPath=\{detailProductPath\} \/>/);
   assert.match(content, /detail:\s*\{/);
+  assert.match(content, /mediaLayout:\s*"videoFeaturesGallery"/);
   assert.match(content, /detailImages:\s*\[/);
-  assert.match(content, /product-3d-reefs-gallery-01\.jpg/);
-  assert.match(content, /product-3d-reefs-gallery-10\.jpg/);
+  assert.match(content, /product-3d-reefs-carousel\/1\.jpeg/);
+  assert.match(content, /product-3d-reefs-carousel\/8\.jpeg/);
+  assert.doesNotMatch(content, /detailImages:\s*\[[\s\S]*product-3d-reefs-gallery-01\.jpg/);
   assert.match(content, /Customized Complexity/);
   assert.match(content, /Sustainable Materials/);
   assert.match(content, /Enhanced Performance/);
   assert.match(content, /Research Optimization/);
   assert.match(content, /30-50% higher marine biodiversity/);
+  assert.match(content, /featureImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/product-3d-reefs-features\/1\.png"\)/s);
+  assert.match(content, /featureImage:\s*\{\s*src:\s*withInfraBasePath\("\/images\/infra\/product-3d-reefs-features\/4\.png"\)/s);
   assert.match(page, /InfraDetailImageCarousel/);
+  assert.match(page, /function InfraProductFeaturesSection/);
+  assert.match(page, /function InfraProductDetailImagesSection/);
+  assert.match(page, /feature\.featureImage/);
+  assert.match(page, /alt=\{feature\.featureImage\.alt\}/);
+  assert.match(page, /isVideoFeaturesGalleryLayout/);
+  assert.match(page, /<InfraProductMediaSection detail=\{detail\} mediaMode="videoOnly" \/>[\s\S]*<InfraProductFeaturesSection detail=\{detail\} standalone \/>[\s\S]*<InfraProductDetailImagesSection detail=\{detail\} standalone \/>/);
   assert.match(page, /detail\.detailImages/);
   assert.match(carousel, /"use client";/);
   assert.match(carousel, /useState/);
@@ -382,9 +424,13 @@ test("NMDC Infra Ebawe product card opens the supplied detail page", () => {
     assert.equal(existsSync(asset), true, `${asset} should exist`);
   }
   assert.equal(
-    existsSync("apps/nmdc-infra/public/videos/nmdc-overview.mp4"),
+    existsSync("apps/nmdc-infra/public/videos/nmdc_infra_ebawe.mp4"),
     true,
-    "nmdc-overview.mp4 should be available to the Infra app",
+    "nmdc_infra_ebawe.mp4 should be available to the Infra app",
+  );
+  assert.ok(
+    statSync("apps/nmdc-infra/public/videos/nmdc_infra_ebawe.mp4").size > 1_000_000,
+    "nmdc_infra_ebawe.mp4 should be a real video asset",
   );
 
   assert.match(content, /href:\s*"\/products\/ebawe-anlagentechnik"/);
@@ -394,10 +440,12 @@ test("NMDC Infra Ebawe product card opens the supplied detail page", () => {
   assert.match(content, /ebaweDetail:\s*\{/);
   assert.match(content, /EBAWE ANLAGENTECHNIK/);
   assert.match(content, /product-ebawe-precast-excellence\.png/);
-  assert.match(content, /product-ebawe-abu-al-abyad-project\.jpg/);
-  assert.match(content, /\/videos\/nmdc-overview\.mp4/);
+  assert.doesNotMatch(content, /product-ebawe-abu-al-abyad-project\.jpg/);
+  assert.match(content, /\/videos\/nmdc_infra_ebawe\.mp4/);
+  assert.doesNotMatch(content, /ebaweDetail:[\s\S]*\/videos\/nmdc-overview\.mp4/);
   assert.doesNotMatch(content, /ebaweDetail:[\s\S]*\/videos\/safeen-subsea-rov\.mp4/);
-  assert.match(content, /galleryImages:\s*\[/);
+  assert.doesNotMatch(content, /ebaweDetail:[\s\S]*galleryImages:\s*\[/);
+  assert.doesNotMatch(content, /ebaweDetail:[\s\S]*galleryImage:\s*\{/);
   assert.match(content, /state-of-the-art carousel line/);
   assert.match(content, /pre-stressed hollow core slabs/);
   assert.match(content, /45 pallets from Ebawe Anlagen Technik/);
@@ -410,15 +458,10 @@ test("NMDC Infra Ebawe product card opens the supplied detail page", () => {
   assert.match(page, /md:h-\[356px\] md:rounded-\[22px\]/);
   assert.match(page, /md:max-w-\[650px\]/);
   assert.match(page, /data-product-detail-rule/);
-  assert.match(page, /detail\.galleryImages/);
-  assert.match(page, /<InfraDetailImageCarousel[\s\S]*images=\{detail\.galleryImages\}/);
-  assert.match(page, /detail\.galleryImage/);
   assert.match(page, /detail\.video/);
-  assert.match(page, /detail\.features && detail\.features\.length > 0/);
-  assert.match(page, /data-product-detail-gallery/);
+  assert.match(page, /function InfraProductFeaturesSection/);
   assert.match(page, /data-product-detail-video/);
-  assert.match(page, /h-\[246px\].*md:h-\[625px\]/s);
-  assert.match(page, /h-\[319px\].*md:h-\[478px\]/s);
+  assert.match(page, /h-\[203px\].*md:h-\[478px\]/s);
 });
 
 test("NMDC Infra is wired into Docker and the NMDC Group card", () => {

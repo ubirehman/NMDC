@@ -14,6 +14,15 @@ const detailContentPath =
 const landingContentPath = "features/landing-pages/nmdc-group/content.ts";
 const landingHeaderPath = "app/components/landing/Header.tsx";
 
+function getPngDimensions(path) {
+  const buffer = readFileSync(path);
+
+  return {
+    width: buffer.readUInt32BE(16),
+    height: buffer.readUInt32BE(20),
+  };
+}
+
 const productDetailSlugs = [
   "marine-vessels",
   "mussafah-yard",
@@ -28,7 +37,84 @@ const productDetailSlugs = [
   "esp-pump",
   "safeen-green",
   "safeen-nav",
+  "caissons-application",
 ];
+
+test("NMDC Group product detail QR image changes with the product slug", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+
+  assert.match(detailPage, /<ProductQrImage detail=\{detail\} \/>/);
+  assert.match(detailPage, /function getProductQrImageSrc/);
+  assert.match(detailPage, /function shouldShowProductQrImage/);
+  assert.match(detailPage, /detail\.slug !== "esp-pump"/);
+  assert.doesNotMatch(detailPage, /detail\.slug !== "whipstock-system"/);
+  assert.match(detailPage, /whipstock-system-qr\.png/);
+  assert.match(detailPage, /safeen-nav-subsea\.png/);
+  assert.match(detailPage, /`\/images\/landing\/products\/qr\/\$\{detail\.slug\}\.png`/);
+  assert.doesNotMatch(
+    detailPage,
+    /src="\/images\/landing\/products\/mussafah-yard-qr\.webp"/,
+  );
+
+  for (const slug of productDetailSlugs) {
+    assert.ok(
+      existsSync(`public/images/landing/products/qr/${slug}.png`),
+      `${slug} QR image should exist`,
+    );
+  }
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/safeen-nav-subsea.png"),
+    { width: 1496, height: 1500 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/multicat-21.png"),
+    { width: 1522, height: 1520 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/whipstock-system-qr.png"),
+    { width: 1522, height: 1524 },
+  );
+});
+
+test("NMDC Group 3D printed artificial reefs detail uses the supplied robot image", () => {
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailContent = readFileSync(detailContentPath, "utf8");
+  const reefImagePath =
+    "public/images/landing/products/3d-printed-artificial-reefs-detail.png";
+
+  assert.ok(existsSync(reefImagePath), `${reefImagePath} should exist`);
+  assert.deepEqual(getPngDimensions(reefImagePath), {
+    width: 583,
+    height: 732,
+  });
+  assert.match(
+    detailContent,
+    /slug:\s*"3d-printed-artificial-reefs"[\s\S]*3d-printed-artificial-reefs-detail\.png/,
+  );
+  assert.doesNotMatch(
+    detailContent,
+    /3d-printed-artificial-reefs-collage-\.png/,
+  );
+});
+
+test("NMDC Group Whipstock detail image fills the media panel", () => {
+  assert.ok(existsSync(detailContentPath), "product detail content should exist");
+
+  const detailContent = readFileSync(detailContentPath, "utf8");
+  const whipstockDetail = detailContent.slice(
+    detailContent.indexOf('slug: "whipstock-system"'),
+    detailContent.indexOf('slug: "esp-pump"'),
+  );
+
+  assert.match(whipstockDetail, /whipstock-system-updated\.png/);
+  assert.match(whipstockDetail, /fit:\s*"cover"/);
+  assert.match(whipstockDetail, /className:\s*"object-cover object-center"/);
+  assert.doesNotMatch(whipstockDetail, /object-contain/);
+  assert.doesNotMatch(whipstockDetail, /wrapperBackgroundColor/);
+});
 
 test("NMDC Group products page route is available from root and legacy nmdc-group path redirects", () => {
   assert.ok(existsSync(routePath), "products route should exist");
@@ -331,7 +417,7 @@ test("NMDC Group product detail pages use the supplied product-detail desktop te
   assert.match(detailContent, /slug:\s*"multicat-21"[\s\S]*panelHeightClassName:\s*"md:min-h-\[607px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1341px\]"/);
   assert.match(detailContent, /titleClassName:\s*"text-white\/92"/);
   assert.match(detailContent, /Constructed by NMDC LTS -Workshops/);
-  assert.match(detailContent, /whipstock-detail\.png/);
+  assert.match(detailContent, /whipstock-system-updated\.png/);
   assert.match(detailContent, /slug:\s*"whipstock-system"[\s\S]*panelHeightClassName:\s*"md:min-h-\[581px\]"[\s\S]*sectionMinHeightClassName:\s*"md:min-h-\[1188px\]"/);
   assert.match(detailContent, /wrapperBackgroundColor:\s*"#00232f"/);
   assert.match(detailContent, /brandName:\s*"EMDAD"[\s\S]*accentClassName:\s*"text-\[#ddc19c\]"/);
