@@ -42,4 +42,11 @@ sudo docker compose down --remove-orphans && \
 sudo docker rm -f nextjs-dev-container nextjs-standalone-container 2>/dev/null || true && \
 sudo docker compose --profile prod up -d --build nextjs-standalone && \
 sudo docker ps
+
+// build image first, then remove the old one
+sudo docker compose --profile prod build nextjs-standalone && \
+sudo docker compose down --remove-orphans && \
+(sudo docker rm -f nextjs-dev-container nextjs-standalone-container 2>/dev/null || true) && \
+sudo docker compose --profile prod up -d nextjs-standalone && \
+sudo docker ps
 ```
