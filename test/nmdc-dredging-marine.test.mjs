@@ -162,6 +162,22 @@ test("D&M overview includes the operational highlights section from the desktop 
   assert.match(content, /In Nos\./);
   assert.match(content, /Completed/);
   assert.match(content, /Ongoing/);
+  const operationalImages = [
+    "overview-operational-dredging.jpg",
+    "overview-operational-reclamation.jpg",
+    "overview-operational-rock-installation.jpg",
+    "overview-operational-quay-wall-blocks.jpg",
+    "overview-operational-ground-improvement.jpg",
+  ];
+
+  for (const image of operationalImages) {
+    assert.match(content, new RegExp(`/images/dm/${image}`));
+    assert.equal(
+      existsSync(`apps/nmdc-dredging-marine/public/images/dm/${image}`),
+      true,
+      `${image} should exist for the operational highlights section`,
+    );
+  }
   assert.match(page, /DmOperationalHighlightsSection/);
   assert.match(page, /DmOperationalHighlightCard/);
   assert.match(page, /DmOperationalBarChart/);

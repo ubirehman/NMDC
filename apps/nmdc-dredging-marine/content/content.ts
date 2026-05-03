@@ -194,7 +194,7 @@ export const nmdcDredgingMarineContent = {
             "Seabed excavation to support channel deepening and navigation purposes",
           unit: "In Mm3",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/overview-vessel.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-dredging.jpg"),
             alt: "NMDC dredging vessel supporting channel works"
           },
           values: [
@@ -209,7 +209,7 @@ export const nmdcDredgingMarineContent = {
             "Creating new land through hydraulic filling to support coastal, port and Oil & Gas developments.",
           unit: "In Mm3",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/vessel-al-mirfa.webp"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-reclamation.jpg"),
             alt: "Dredger pumping reclamation material at sea"
           },
           values: [
@@ -224,7 +224,7 @@ export const nmdcDredgingMarineContent = {
             "Placing graded rock of varying sizes for seabed stabilization, scour protection, and structural support",
           unit: "In Mm3",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/caisson-method-carousel.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-rock-installation.jpg"),
             alt: "Rock installation works for marine infrastructure"
           },
           values: [
@@ -239,7 +239,7 @@ export const nmdcDredgingMarineContent = {
             "Installing precast blocks to form durable quay walls and berthing structures",
           unit: "In nos",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/caisson-installation.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-quay-wall-blocks.jpg"),
             alt: "Quay wall block installation from marine cranes"
           },
           values: [
@@ -254,7 +254,7 @@ export const nmdcDredgingMarineContent = {
             "Strengthening weak soils to enhance bearing capacity and control settlement",
           unit: "In Mm 2",
           image: {
-            src: withDredgingMarineBasePath("/images/dm/hydraulic-model-2.jpg"),
+            src: withDredgingMarineBasePath("/images/dm/overview-operational-ground-improvement.jpg"),
             alt: "Ground improvement works at a marine construction site"
           },
           values: [
