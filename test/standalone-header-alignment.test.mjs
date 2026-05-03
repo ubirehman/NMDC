@@ -47,6 +47,28 @@ test("standalone project desktop headers center nav tabs like the NMDC Group hea
   }
 });
 
+test("standalone project headers keep mobile navigation on iPad-sized touch screens", () => {
+  for (const [name, path] of projectHeaders) {
+    const source = readFileSync(path, "utf8");
+
+    assert.match(
+      source,
+      /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:hidden/,
+      `${name} desktop nav should hide on iPad-sized touch screens`,
+    );
+    assert.match(
+      source,
+      /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/,
+      `${name} menu drawer should remain available on iPad-sized touch screens`,
+    );
+    assert.match(
+      source,
+      /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:block/,
+      `${name} overlay should remain available on iPad-sized touch screens`,
+    );
+  }
+});
+
 test("standalone project headers stay fixed while preserving design top offsets", () => {
   for (const [name, path, positionPattern] of projectHeaders) {
     const source = readFileSync(path, "utf8");

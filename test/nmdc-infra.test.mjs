@@ -91,7 +91,11 @@ test("NMDC Infra home follows the supplied desktop and mobile PDF theme", () => 
   assert.match(page, /text-infra-yellow/);
   assert.match(page, /bg-infra-yellow/);
   assert.match(page, /md:absolute md:bottom-\[74px\] md:right-0/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:w-\[calc\(100vw-80px\)\]/);
   assert.match(cards, /h-\[200px\] w-\[150px\]/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:overflow-x-auto/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/);
   assert.match(cards, /function getCardId/);
   assert.match(cards, /logoFrameClassName/);
   assert.match(cards, /dm:\s*"h-\[28px\] w-\[122px\]"/);

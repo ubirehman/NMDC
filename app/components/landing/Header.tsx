@@ -43,7 +43,7 @@ export function Header({
             aria-controls={mobileMenuId}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="flex size-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sky focus-visible:outline-primary-sky-blue md:hidden"
+            className="flex size-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-sky focus-visible:outline-primary-sky-blue md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex"
           >
             {isMenuOpen ? (
               <CloseIcon className="size-6" />
@@ -70,7 +70,7 @@ export function Header({
 
           <nav
             aria-label="Primary"
-            className="hidden md:absolute md:left-1/2 md:-translate-x-1/2 md:flex md:items-center md:justify-center md:gap-6"
+            className="hidden md:absolute md:left-1/2 md:-translate-x-1/2 md:flex md:items-center md:justify-center md:gap-6 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:hidden"
           >
             {links.map((link) => (
               <Link
@@ -88,14 +88,14 @@ export function Header({
             ))}
           </nav>
 
-          <div className="size-10 shrink-0 md:hidden" aria-hidden="true" />
+          <div className="size-10 shrink-0 md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:block" aria-hidden="true" />
         </div>
 
         <button
           type="button"
           aria-label={`Close ${brandName} menu`}
           onClick={() => setIsMenuOpen(false)}
-          className={`fixed inset-0 z-30 bg-black/35 transition-[opacity,visibility] duration-200 md:hidden ${
+          className={`fixed inset-0 z-30 bg-black/35 transition-[opacity,visibility] duration-200 md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:block ${
             isMenuOpen ? "visible opacity-100" : "invisible opacity-0"
           }`}
         />
@@ -103,7 +103,7 @@ export function Header({
         <nav
           id={mobileMenuId}
           aria-label="Mobile primary"
-          className={`fixed inset-y-0 left-0 z-40 flex w-[82vw] max-w-[340px] flex-col overflow-hidden  shadow-2xl shadow-white bg-[rgba(6,24,38,0.88)] bg-glass-navy-88 px-5 py-6 backdrop-blur-[17.5px] transition-[transform,visibility] duration-300 ease-out md:hidden ${
+          className={`fixed inset-y-0 left-0 z-40 flex w-[82vw] max-w-[340px] flex-col overflow-hidden  shadow-2xl shadow-white bg-[rgba(6,24,38,0.88)] bg-glass-navy-88 px-5 py-6 backdrop-blur-[17.5px] transition-[transform,visibility] duration-300 ease-out md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex ${
             isMenuOpen
               ? "visible translate-x-0"
               : "invisible -translate-x-full"

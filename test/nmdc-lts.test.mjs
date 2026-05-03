@@ -104,9 +104,13 @@ test("NMDC LTS home follows the supplied desktop and mobile PDF design", () => {
   assert.match(page, /text-lts-tan/);
   assert.match(page, /bg-lts-tan/);
   assert.match(page, /md:absolute md:bottom-\[82px\] md:right-0/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:w-\[calc\(100vw-80px\)\]/);
   assert.match(page, /object-\[62%_50%\].*md:object-center/s);
   assert.match(cards, /h-\[200px\] w-\[150px\]/);
   assert.match(cards, /md:w-\[150px\]/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:overflow-x-auto/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/);
   assert.match(cards, /function getCardId/);
   assert.match(cards, /imagePositionClassName/);
   assert.match(cards, /logoFrameClassName/);

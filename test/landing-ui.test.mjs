@@ -80,6 +80,21 @@ test("desktop header navigation uses the PDF-sized link typography", () => {
   assert.match(header, /shrink-0 whitespace-nowrap/);
 });
 
+test("NMDC Group header keeps mobile navigation on iPad-sized touch screens", () => {
+  assert.match(
+    header,
+    /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:hidden/,
+  );
+  assert.match(
+    header,
+    /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/,
+  );
+  assert.match(
+    header,
+    /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:block/,
+  );
+});
+
 test("mobile navigation is a left sliding drawer, not a dropdown", () => {
   assert.match(header, /fixed inset-y-0 left-0/);
   assert.match(header, /translate-x-0/);
@@ -92,7 +107,11 @@ test("NMDC Group landing matches the 1440x786 PDF artboard geometry", () => {
   assert.match(groupLanding, /md:bottom-\[80px\]/);
   assert.match(hero, /md:gap-6/);
   assert.match(hero, /max-w-\[320px\][^"]*md:max-w-\[559px\]/);
+  assert.match(hero, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
   assert.match(brandCards, /md:w-\[822px\]/);
+  assert.match(brandCards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
+  assert.match(brandCards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:overflow-x-auto/);
+  assert.match(brandCards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/);
   assert.doesNotMatch(groupLanding, /h-\[786px\]/);
 });
 

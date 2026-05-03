@@ -48,7 +48,7 @@ export function Header({ links, mobileSize = "regular" }: HeaderProps) {
             aria-controls={mobileMenuId}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="flex size-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-infra-yellow md:hidden"
+            className="flex size-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-infra-yellow md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex"
           >
             {isMenuOpen ? <CloseIcon className="size-6" /> : <MenuIcon className="size-6" />}
           </button>
@@ -71,7 +71,7 @@ export function Header({ links, mobileSize = "regular" }: HeaderProps) {
 
           <nav
             aria-label={header.primaryLabel}
-            className="hidden md:absolute md:left-1/2 md:-translate-x-1/2 md:flex md:items-center md:justify-center md:gap-7"
+            className="hidden md:absolute md:left-1/2 md:-translate-x-1/2 md:flex md:items-center md:justify-center md:gap-7 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:hidden"
           >
             {links.map((link) => (
               <Link
@@ -87,14 +87,14 @@ export function Header({ links, mobileSize = "regular" }: HeaderProps) {
             ))}
           </nav>
 
-          <div className="size-9 shrink-0 md:hidden" aria-hidden="true" />
+          <div className="size-9 shrink-0 md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:block" aria-hidden="true" />
         </div>
 
         <button
           type="button"
           aria-label={header.closeMenuLabel}
           onClick={() => setIsMenuOpen(false)}
-          className={`fixed inset-0 z-30 bg-black/40 transition-[opacity,visibility] duration-200 md:hidden ${
+          className={`fixed inset-0 z-30 bg-black/40 transition-[opacity,visibility] duration-200 md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:block ${
             isMenuOpen ? "visible opacity-100" : "invisible opacity-0"
           }`}
         />
@@ -102,7 +102,7 @@ export function Header({ links, mobileSize = "regular" }: HeaderProps) {
         <nav
           id={mobileMenuId}
           aria-label={header.mobilePrimaryLabel}
-          className={`fixed inset-y-0 left-0 z-40 flex w-[84vw] max-w-[340px] flex-col overflow-hidden bg-[rgba(7,28,40,0.95)] px-5 py-6 shadow-2xl backdrop-blur-[18px] transition-[transform,visibility] duration-300 ease-out md:hidden ${
+          className={`fixed inset-y-0 left-0 z-40 flex w-[84vw] max-w-[340px] flex-col overflow-hidden bg-[rgba(7,28,40,0.95)] px-5 py-6 shadow-2xl backdrop-blur-[18px] transition-[transform,visibility] duration-300 ease-out md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex ${
             isMenuOpen ? "visible translate-x-0" : "invisible -translate-x-full"
           }`}
         >

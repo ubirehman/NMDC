@@ -72,6 +72,7 @@ test("D&M pages include the PDF navigation and major sections", () => {
   assert.match(content, /NMDC Dredging & Marine/);
   assert.match(page, /nmdcDredgingMarineContent as content/);
   assert.match(page, /content\.home/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
   assert.match(page, /content\.overview/);
   assert.match(page, /content\.marineVessels/);
   assert.match(page, /DmVideoCarousel/);
@@ -180,6 +181,8 @@ test("D&M home cards match the NMDC Group brand card shell", () => {
   );
 
   assert.match(dmCards, /h-\[200px\] w-\[150px\]/);
+  assert.match(dmCards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:overflow-x-auto/);
+  assert.match(dmCards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/);
   assert.match(dmCards, /function getCardId/);
   assert.match(dmCards, /logo\?:/);
   assert.match(dmCards, /card\.logo \?/);
@@ -293,6 +296,10 @@ test("D&M hydraulic physical model page follows the Coastal and Hydrodynamic PDF
   assert.match(content, /type: "video"/);
   assert.match(page, /HydraulicInfoCard/);
   assert.match(page, /HydraulicCapabilityCard/);
+  assert.match(page, /bg-\[#17384d\]/);
+  assert.match(page, /text-white/);
+  assert.match(page, /bg-white/);
+  assert.doesNotMatch(page, /HydraulicCapabilityCard[\s\S]*border-2 border-dm-cyan bg-white/);
   assert.match(page, /HydraulicMediaFrame/);
   assert.match(page, /item\.type === "video"/);
   assert.match(page, /my\.matterport\.com\/show\/\?m=rMCdYNJoynP/);

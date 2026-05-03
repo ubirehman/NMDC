@@ -81,7 +81,7 @@ export function NmdcLtsHomePage() {
         <Header links={getLtsNavLinks("/")} />
 
         <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
-          <div className="pt-[136px] md:absolute md:left-0 md:top-[244px] md:w-[760px] md:pt-0">
+          <div className="pt-[136px] md:absolute px-10 lg:px-0 md:left-0 md:top-[244px] md:w-[760px] md:pt-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
             <HomeHeadline />
 
             <div className="mt-[28px] flex max-w-[304px] items-start gap-[13px] md:mt-[36px] md:max-w-[520px] md:gap-[15px]">
@@ -99,7 +99,7 @@ export function NmdcLtsHomePage() {
             </div>
           </div>
 
-          <div className="absolute inset-x-0 top-[447px] z-10 px-5 md:absolute md:bottom-[82px] md:right-0 md:top-auto md:left-auto md:w-[832px] md:px-0">
+          <div className="absolute inset-x-0 top-[447px] z-10 px-5 md:absolute md:bottom-[82px] md:right-0 md:top-auto md:left-auto md:w-[832px] md:px-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)]">
             <LtsHomeCardRail cards={content.home.cards} />
           </div>
         </div>

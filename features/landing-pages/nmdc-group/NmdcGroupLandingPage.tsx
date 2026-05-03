@@ -29,7 +29,7 @@ export function NmdcGroupLandingPage() {
 
         <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px] px-5 pt-12 pb-10 md:px-10 md:pt-0 md:pb-0">
           <div className="flex min-h-[max(786px,100svh)] flex-col justify-end gap-10 md:block">
-            <div className="md:absolute md:left-0 md:top-[244px]">
+            <div className="md:absolute px-10 lg:px-0 md:left-0 md:top-[244px]">
               <Hero hero={content.hero} />
             </div>
             <div className="md:absolute md:right-0 md:bottom-[80px]">

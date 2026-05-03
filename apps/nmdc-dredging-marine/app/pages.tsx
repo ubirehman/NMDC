@@ -95,7 +95,7 @@ function DmHero({
       />
       <Header links={getDmNavLinks(activeHref)} />
       <div className="relative z-10 mx-auto flex min-h-[inherit] w-full max-w-[1240px] flex-col justify-end pb-10 pt-[116px] md:pb-14 md:pt-[132px]">
-        <div className="max-w-[760px] pb-2">
+        <div className="max-w-[760px] pb-2 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
           {eyebrow ? (
             <p className="text-[18px] font-bold uppercase leading-6 text-dm-cyan md:text-[22px]">
               {eyebrow}
@@ -364,8 +364,8 @@ export function DredgingMarineHomePage() {
 
         <div className="relative z-10 mx-auto min-h-[100svh] w-full max-w-[1240px] px-5 pb-10 pt-12 md:min-h-[786px] md:px-10 md:pb-0 md:pt-0">
           <div className="flex min-h-[calc(100svh-7rem)] flex-col justify-start gap-8 pt-[76px] md:block md:h-[786px] md:min-h-0 md:pt-0">
-            <div className="md:absolute md:left-0 md:top-[244px]">
-              <div className="flex w-full max-w-[559px] flex-col gap-6 text-white md:gap-8">
+            <div className="md:absolute px-10 lg:px-0 md:left-0 md:top-[244px]">
+              <div className="flex w-full max-w-[559px] flex-col gap-6 text-white md:gap-8 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
                 <h1 className="max-w-[547px] text-[28px] font-bold uppercase leading-[1.18] tracking-[-0.2px] md:text-[48px] md:leading-[56px] md:tracking-[-0.5px]">
                   <span className="block text-white md:inline">
                     {home.hero.headline.leading}
@@ -386,7 +386,7 @@ export function DredgingMarineHomePage() {
                   </span>
                 </h1>
 
-                <div className="flex w-full max-w-[350px] items-stretch gap-3 md:max-w-[559px]">
+                <div className="flex w-full max-w-[350px] items-stretch gap-3 md:max-w-[559px] [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
                   <span
                     aria-hidden="true"
                     className="mt-[2px] h-[43px] w-[3px] shrink-0 rounded-[20px] bg-dm-cyan shadow-[0_0_6px_0_rgba(41,183,227,0.75)]"
@@ -413,7 +413,7 @@ export function DredgingMarineHomePage() {
               </div>
             </div>
 
-            <div className="md:absolute md:translate-y-12 md:bottom-[58px] md:right-0">
+            <div className="md:absolute md:translate-y-12 md:bottom-[58px] md:right-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
               <DmHomeCardRail cards={home.cards} />
             </div>
           </div>
@@ -1080,22 +1080,22 @@ function HydraulicCapabilityCard({
 }) {
   return (
     <article
-      className={`min-w-0 rounded-[14px] border-2 border-dm-cyan bg-white px-5 py-6 text-dm-muted md:px-7 md:py-8 ${
+      className={`min-w-0 rounded-[6px] bg-[#17384d] px-5 py-6 text-white md:px-7 md:py-8 ${
         wide ? "md:col-span-2" : ""
       }`}
     >
-      <h3 className="text-[20px] font-bold leading-7 text-dm-blue md:text-[24px] md:leading-8">
+      <h3 className="text-[20px] font-bold leading-7 text-white md:text-[24px] md:leading-8">
         {capability.title}
       </h3>
       <ul
-        className={`mt-5 grid gap-x-8 gap-y-3 text-[15px] leading-6 md:text-[18px] md:leading-8 ${
+        className={`mt-5 grid gap-x-8 gap-y-3 text-[15px] leading-6 text-white md:text-[18px] md:leading-8 ${
           wide ? "md:grid-cols-2" : "md:grid-cols-1"
         }`}
       >
         {capability.points.map((point) => (
           <li key={point} className="relative min-w-0 break-words pl-5">
             <span
-              className="absolute left-0 top-[0.68em] size-2 rounded-full bg-dm-cyan"
+              className="absolute left-0 top-[0.68em] size-1.5 rounded-full bg-white"
               aria-hidden="true"
             />
             {point}
@@ -1346,15 +1346,6 @@ export function CaissonMethodPage() {
               <CaissonProcessCard key={step.title} step={step} />
             ))}
           </div>
-
-          <figure className="mx-1 mt-10 overflow-hidden rounded-[20px] bg-dm-navy shadow-[0_26px_70px_-44px_rgba(0,0,0,0.72)] md:mx-0 md:mt-[42px] md:rounded-[14px]">
-            <DmVideoPlayer
-              src={caisson.process.video.src}
-              ariaLabel="Play Caisson Method video"
-              className="h-[260px] w-full bg-dm-navy object-cover object-[50%_43%] md:h-[560px]"
-              poster={caisson.process.video.image}
-            />
-          </figure>
 
           <CaissonAdvantagesPanel
             title={caisson.advantages.title}

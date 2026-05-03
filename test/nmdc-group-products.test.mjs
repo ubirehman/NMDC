@@ -184,6 +184,10 @@ test("NMDC Group products desktop layout follows the supplied three-column showc
   assert.match(content, /Products to be Showcased/);
   assert.match(page, /md:grid-cols-3/);
   assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:grid-cols-2/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(max-width:1199px\)\]:object-contain/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(max-width:1199px\)\]:group-hover:scale-100/);
+  assert.match(page, /overflow-hidden rounded-\[10px\] bg-\[#092d42\]/);
+  assert.doesNotMatch(page, /overflow-hidden bg-white/);
   assert.doesNotMatch(page, /min-\[1200px\]:grid-cols-3/);
   assert.match(page, /hidden md:grid/);
   assert.match(page, /md:hidden/);
@@ -215,24 +219,22 @@ test("NMDC Group products desktop layout follows the supplied three-column showc
   );
 });
 
-test("NMDC Group products mobile layout contains the PDF descriptive showcase groups", () => {
+test("NMDC Group products mobile layout uses the same product cards and images as desktop in one column", () => {
   assert.ok(existsSync(productsContentPath), "products page content should exist");
+  assert.ok(existsSync(pagePath), "products page component should exist");
   const content = readFileSync(productsContentPath, "utf8");
+  const page = readFileSync(pagePath, "utf8");
 
-  for (const expected of [
-    "Marine Vessels and Its Capabilities",
-    "Coastal & Hydrodynamic Center",
-    "Caissons Application",
-    "Mussafah Yard and Its Products",
-    "Hail & Ghasha Development Project Offshore Facilities Ghasha Offshore Processing Plant",
-    "Hail & Ghasha Development Project Offshore Facilities Process Assembled Unit",
-    "3D Printed Artificial Reefs",
-    "Multicat 21 (M21) Vessel",
-    "Safeen NAV",
-    "Whipstock System",
-  ]) {
-    assert.match(content, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
-  }
+  assert.match(page, /md:hidden/);
+  assert.match(page, /grid-cols-1/);
+  assert.match(page, /content\.desktopProducts\.map\(\(product\)/);
+  assert.match(page, /src=\{product\.image\}/);
+  assert.match(page, /href=\{product\.href\}/);
+  assert.doesNotMatch(page, /content\.mobileSections\.map/);
+  assert.doesNotMatch(page, /href=\{card\.href\}/);
+  assert.doesNotMatch(page, /src=\{image\.src\}/);
+
+  assert.match(content, /desktopProducts:\s*\[/);
 });
 
 test("NMDC Group product cards link to canonical showcased product detail pages", () => {
@@ -248,7 +250,7 @@ test("NMDC Group product cards link to canonical showcased product detail pages"
 
   assert.match(page, /<Link[\s\S]*href=\{product\.href\}/);
   assert.match(page, /aria-label=\{`Open \$\{product\.title\}`\}/);
-  assert.match(page, /<Link[\s\S]*href=\{card\.href\}/);
+  assert.doesNotMatch(page, /href=\{card\.href\}/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
 });
 
@@ -288,6 +290,20 @@ test("NMDC Group product detail pages are generated for every showcased product 
   ]) {
     assert.match(detailContent, new RegExp(expectedTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
+});
+
+test("NMDC Group product detail title shows the brand divider only when a brand name is present", () => {
+  assert.ok(existsSync(detailPagePath), "product detail page component should exist");
+
+  const detailPage = readFileSync(detailPagePath, "utf8");
+
+  assert.match(detailPage, /function getProductBrandName/);
+  assert.match(detailPage, /const brandName = getProductBrandName\(detail\);/);
+  assert.match(detailPage, /typeof detail\.brandName === "string"/);
+  assert.match(detailPage, /brandName \? \(/);
+  assert.match(detailPage, /<span className=\{detail\.accentClassName\}>\{brandName\}<\/span>/);
+  assert.match(detailPage, /<span className="text-white">\|<\/span>/);
+  assert.doesNotMatch(detailPage, /\{detail\.brandName\}/);
 });
 
 test("Mussafah Yard product detail follows the supplied desktop Figma layout", () => {

@@ -43,14 +43,14 @@ export function BrandCards({ brands }: BrandCardsProps) {
     <div className="flex w-full flex-col items-center gap-6 md:items-end">
       <div
         ref={scrollerRef}
-        className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0"
+        className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)] [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)] [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:overflow-x-auto"
       >
         {brands.map((brand) => (
           <BrandCard key={brand.id} brand={brand} />
         ))}
       </div>
 
-      <div className="flex items-center gap-6 md:hidden">
+      <div className="flex items-center gap-6 md:hidden [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex">
         <button
           type="button"
           aria-label="Previous brands"

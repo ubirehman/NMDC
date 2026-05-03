@@ -89,6 +89,8 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(page, /h-\[49px\] w-\[174px\]/);
   assert.match(page, /size-\[49px\].*bg-energy-green/s);
   assert.match(page, /md:bottom-\[82px\] md:right-0/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:max-w-\[calc\(100vw-80px\)\]/);
+  assert.match(page, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:w-\[calc\(100vw-80px\)\]/);
   assert.match(header, /rounded-full border border-white\/20/);
   assert.match(header, /text-energy-green/);
   assert.match(cards, /h-\[200px\] w-\[150px\]/);
@@ -96,6 +98,8 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(cards, /hover:drop-shadow-white/);
   assert.match(cards, /focus-visible:outline-white/);
   assert.match(cards, /focus-visible:shadow-\[0_0_28px_0_rgba\(255,255,255,0\.86\)\]/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:overflow-x-auto/);
+  assert.match(cards, /\[@media_\(pointer:coarse\)_and_\(min-width:768px\)_and_\(max-width:1199px\)\]:flex/);
   assert.match(cards, /logoFrameOverflowClassName/);
   assert.match(cards, /group: "h-\[32px\] w-\[102px\]"/);
   assert.match(cards, /dm: "h-\[30px\] w-\[94px\]"/);
@@ -140,6 +144,20 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(content, /Tender planning time\\n\\n\(down from 2-3 days\)/);
   assert.match(content, /42,677/);
   assert.match(content, /USD 1\.3/);
+  assert.match(content, /overview-highlight-people\.png/);
+  assert.match(content, /overview-highlight-money\.png/);
+  assert.match(page, /item\.iconImage \? \(/);
+  assert.match(page, /src=\{item\.iconImage\.src\}/);
+  assert.equal(
+    existsSync("apps/nmdc-energy/public/images/energy/overview-highlight-people.png"),
+    true,
+    "overview people highlight icon should exist",
+  );
+  assert.equal(
+    existsSync("apps/nmdc-energy/public/images/energy/overview-highlight-money.png"),
+    true,
+    "overview money highlight icon should exist",
+  );
   assert.match(content, /Technology and Digital Transformation/);
   assert.match(content, /HSE AMAN 24\/7/);
   assert.match(content, /Yard Scan AI/);
@@ -147,6 +165,9 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(content, /agent-business-proposal\.png/);
   assert.match(content, /agent-goods\.png/);
   assert.match(content, /agent-worker\.png/);
+  assert.match(page, /label === "Procurement\/Supply Chain"[\s\S]*\? \[label\]/);
+  assert.match(page, /whitespace-nowrap/);
+  assert.doesNotMatch(page, /\["Procurement\/", "Supply Chain"\]/);
   assert.match(page, /NmdcEnergyOverviewPage/);
   assert.match(page, /EnergyOverviewHero/);
   assert.match(page, /EnergyIcvSection/);
@@ -471,6 +492,12 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(content, /product-process-skids-carousel-1\.jpg[\s\S]*product-process-skids-carousel-2\.jpg/);
   assert.match(content, /Double Jointed CWC Pipes/);
   assert.match(content, /PRODUCTION CAPACITY FOR EACH 3 LPO PLANT/);
+  assert.match(content, /production-capacity-each-3-lpo-plant\.png/);
+  assert.equal(
+    existsSync("apps/nmdc-energy/public/images/energy/production-capacity-each-3-lpo-plant.png"),
+    true,
+    "production capacity image should exist",
+  );
   assert.match(content, /TYPES OF TOPSIDES/);
   assert.match(content, /pipeCoatingBackground/);
   assert.doesNotMatch(content, /piepCoatingBackground/);
@@ -518,10 +545,11 @@ test("NMDC Energy product cards open their respective PDF-designed detail pages"
   assert.match(page, /offshoreImage\.alt/);
   assert.doesNotMatch(page, /detail\.offshore\.items\.map/);
   assert.match(page, /function EnergyPipeCoatingCapacityTable/);
-  assert.match(page, /detail\.table\.rows\.map\(\(row, rowIndex\) =>/);
-  assert.match(page, /row\.map\(\(cell, cellIndex\) =>/);
-  assert.match(page, /key=\{`\$\{rowIndex\}-\$\{cellIndex\}`\}/);
-  assert.doesNotMatch(page, /key=\{cell\}/);
+  assert.match(page, /detail\.capacityImage/);
+  assert.match(page, /src=\{detail\.capacityImage\.src\}/);
+  assert.match(page, /className="h-auto w-full object-contain"/);
+  assert.doesNotMatch(page, /detail\.table\.rows\.map/);
+  assert.doesNotMatch(page, /row\.map\(\(cell, cellIndex\) =>/);
   assert.match(page, /md:grid-cols-\[minmax\(0,560px\)_minmax\(0,640px\)\]/);
   assert.match(page, /md:grid-cols-3/);
   assert.match(page, /EnergyFooter/);

@@ -89,11 +89,29 @@ function ProductBackLink() {
   );
 }
 
-function ProductDetailTitle({ detail }: { detail: NmdcGroupProductDetail }) {
+function getProductBrandName(detail: NmdcGroupProductDetail) {
+  return "brandName" in detail && typeof detail.brandName === "string"
+    ? detail.brandName.trim()
+    : "";
+}
+
+function ProductDetailTitle({
+  detail,
+  className = "mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[38px] md:gap-x-[8px] md:text-[36px] md:leading-[46px]",
+}: {
+  detail: NmdcGroupProductDetail;
+  className?: string;
+}) {
+  const brandName = getProductBrandName(detail);
+
   return (
-    <h1 className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[38px] md:gap-x-[8px] md:text-[36px] md:leading-[46px]">
-      <span className={detail.accentClassName}>{detail.brandName}</span>
-      <span className="text-white">|</span>
+    <h1 className={className}>
+      {brandName ? (
+        <>
+          <span className={detail.accentClassName}>{brandName}</span>
+          <span className="text-white">|</span>
+        </>
+      ) : null}
       <span className="min-w-0 break-words text-white">{detail.title}</span>
     </h1>
   );
@@ -372,11 +390,10 @@ function MarineVesselsDetailLayout({
             Back
           </Link>
 
-          <h1 className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]">
-            <span className={detail.accentClassName}>{detail.brandName}</span>
-            <span className="text-white">|</span>
-            <span className="min-w-0 break-words text-white">{detail.title}</span>
-          </h1>
+          <ProductDetailTitle
+            detail={detail}
+            className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]"
+          />
 
           <article className="mt-8 rounded-[8px] bg-[#22475b]/92 px-5 py-5 shadow-[0_24px_64px_rgba(0,0,0,0.14)] md:mt-[32px] md:min-h-[102px] md:rounded-[18px] md:px-6 md:py-6">
             <div className="grid gap-4 text-[13px] font-medium leading-[21px] text-white md:text-[13px] md:leading-[20px]">
@@ -505,11 +522,10 @@ function CoastalHydrodynamicDetailLayout({
             Back
           </Link>
 
-          <h1 className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]">
-            <span className={detail.accentClassName}>{detail.brandName}</span>
-            <span className="text-white">|</span>
-            <span className="min-w-0 break-words text-white">{detail.title}</span>
-          </h1>
+          <ProductDetailTitle
+            detail={detail}
+            className="mt-8 flex max-w-full flex-wrap items-baseline gap-x-2 text-[24px] font-bold leading-[32px] md:mt-[28px] md:text-[31px] md:leading-[42px]"
+          />
 
           <div className="mt-6 grid gap-5 md:mt-[39px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
             <CoastalHydrodynamicTextCard detail={detail} />

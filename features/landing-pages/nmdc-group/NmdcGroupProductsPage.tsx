@@ -62,13 +62,13 @@ export function NmdcGroupProductsPage() {
                 aria-label={`Open ${product.title}`}
                 className="group h-[274px] rounded-[13px] bg-[#092d42] p-6 shadow-[0_18px_42px_rgba(0,0,0,0.16)] transition duration-300 hover:-translate-y-1 hover:bg-[#0d3852] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-sky-blue"
               >
-                <div className="relative h-[188px] overflow-hidden rounded-[10px]">
+                <div className="relative h-[188px] overflow-hidden rounded-[10px] bg-[#092d42]">
                   <Image
                     src={product.image}
                     alt={product.alt}
                     fill
                     sizes="352px"
-                    className="object-cover transition duration-300 group-hover:scale-105"
+                    className="object-cover transition duration-300 group-hover:scale-105 [@media_(pointer:coarse)_and_(max-width:1199px)]:object-contain [@media_(pointer:coarse)_and_(max-width:1199px)]:group-hover:scale-100"
                   />
                 </div>
                 <h2 className="mt-[19px] text-[18px] font-bold leading-6 text-white transition-colors group-hover:text-primary-sky-blue">
@@ -78,59 +78,27 @@ export function NmdcGroupProductsPage() {
             ))}
           </div>
 
-          <div className="mx-auto grid w-full max-w-[320px] min-w-0 gap-[92px] md:hidden">
-            {content.mobileSections.map((section) => (
-              <section key={section.logoAlt} className="grid min-w-0 gap-7">
-                <div className="flex justify-center">
+          <div className="mx-auto grid w-full max-w-[360px] grid-cols-1 gap-[18px] md:hidden">
+            {content.desktopProducts.map((product) => (
+              <Link
+                key={product.title}
+                href={product.href}
+                aria-label={`Open ${product.title}`}
+                className="group min-w-0 rounded-[12px] bg-[#092d42] p-4 shadow-[0_20px_42px_rgba(0,0,0,0.18)] transition duration-300 active:scale-[0.99]"
+              >
+                <div className="relative h-[188px] overflow-hidden rounded-[10px] bg-[#092d42]">
                   <Image
-                    src={section.logo}
-                    alt={section.logoAlt}
-                    width={220}
-                    height={90}
-                    className={section.logoClassName}
+                    src={product.image}
+                    alt={product.alt}
+                    fill
+                    sizes="328px"
+                    className="object-contain"
                   />
                 </div>
-
-                <div className="grid gap-[18px]">
-                  {section.cards.map((card) => (
-                    <Link
-                      key={card.title}
-                      href={card.href}
-                      className="group min-w-0 overflow-hidden rounded-[12px] bg-[#00304a] px-4 py-[18px] text-center shadow-[0_20px_42px_rgba(0,0,0,0.18)] transition duration-300 active:scale-[0.99]"
-                    >
-                      <h2
-                        className={`mx-auto max-w-[288px] break-words text-[17px] font-bold leading-[26px] transition-opacity group-active:opacity-80 ${card.accentClassName}`}
-                      >
-                        {card.title}
-                      </h2>
-
-                      <div className="mt-[14px] grid gap-3">
-                        {card.images.map((image) => (
-                          <div
-                            key={image.src}
-                            className="relative mx-auto w-full max-w-[288px] overflow-hidden bg-white"
-                          >
-                            <Image
-                              src={image.src}
-                              alt={image.alt}
-                              width={288}
-                              height={190}
-                              sizes="288px"
-                              className="h-auto w-full"
-                            />
-                          </div>
-                        ))}
-                      </div>
-
-                      {card.description ? (
-                        <p className="mx-auto mt-[14px] max-w-[276px] text-[14px] font-medium leading-[24px] text-white">
-                          {card.description}
-                        </p>
-                      ) : null}
-                    </Link>
-                  ))}
-                </div>
-              </section>
+                <h2 className="mt-[14px] break-words text-center text-[17px] font-bold leading-[26px] text-white transition-opacity group-active:opacity-80">
+                  {product.title}
+                </h2>
+              </Link>
             ))}
           </div>
         </div>

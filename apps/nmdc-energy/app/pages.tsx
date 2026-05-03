@@ -83,7 +83,7 @@ export function NmdcEnergyHomePage() {
         <Header links={getEnergyNavLinks("/")} />
 
         <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
-          <div className="pt-[140px] md:absolute md:left-0 md:top-[188px] md:w-[670px] md:pt-0">
+          <div className="pt-[140px] md:absolute md:left-0 md:top-[188px] md:w-[670px] md:pt-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
             <HomeHeadline />
 
             <div className="mt-[24px] flex max-w-[320px] items-start gap-[18px] md:mt-[38px] md:max-w-[600px] md:gap-[14px]">
@@ -101,7 +101,7 @@ export function NmdcEnergyHomePage() {
             </div>
           </div>
 
-          <div className="absolute inset-x-0 top-[480px] z-10 px-5 md:absolute md:bottom-[82px] md:right-0 md:top-auto md:left-auto md:w-[832px] md:px-0">
+          <div className="absolute inset-x-0 top-[480px] z-10 px-5 md:absolute md:bottom-[82px] md:right-0 md:top-auto md:left-auto md:w-[832px] md:px-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)]">
             <EnergyHomeCardRail cards={content.home.cards} />
           </div>
         </div>
@@ -1301,7 +1301,11 @@ function EnergyTopsideTypesSection({ detail }: { detail: EnergyProductDetail }) 
 }
 
 function EnergyPipeCoatingCapacityTable({ detail }: { detail: EnergyProductDetail }) {
-  if (detail.slug !== "pipe-coating" || !("table" in detail) || !detail.table) {
+  if (
+    detail.slug !== "pipe-coating" ||
+    !("capacityImage" in detail) ||
+    !detail.capacityImage
+  ) {
     return null;
   }
 
@@ -1309,30 +1313,19 @@ function EnergyPipeCoatingCapacityTable({ detail }: { detail: EnergyProductDetai
     <section className="mt-12 border-t border-[#a8b4bd] pt-12 md:mt-[72px] md:pt-[74px]">
       <div className="flex items-center gap-7">
         <h2 className="text-[20px] font-bold uppercase leading-7 text-energy-green md:text-[24px]">
-          {detail.table.title}
+          {detail.capacityImage.title}
         </h2>
         <span className="hidden h-px flex-1 bg-[#a8b4bd] md:block" aria-hidden="true" />
       </div>
-      <div className="mt-8 overflow-hidden rounded-[14px] bg-[#062b43] text-white md:rounded-[16px]">
-        <div className="grid grid-cols-4 bg-energy-green text-center text-[11px] leading-4 md:text-[14px] md:leading-5">
-          {detail.table.columns.map((column) => (
-            <div key={column} className="px-3 py-4">
-              {column}
-            </div>
-          ))}
-        </div>
-        {detail.table.rows.map((row, rowIndex) => (
-          <div
-            key={`capacity-row-${rowIndex}`}
-            className="grid grid-cols-4 border-t border-white/10 text-center text-[11px] leading-4 md:text-[14px] md:leading-5"
-          >
-            {row.map((cell, cellIndex) => (
-              <div key={`${rowIndex}-${cellIndex}`} className="px-3 py-5">
-                {cell}
-              </div>
-            ))}
-          </div>
-        ))}
+      <div className="mt-8 w-full overflow-hidden rounded-[14px] md:rounded-[16px]">
+        <Image
+          src={detail.capacityImage.src}
+          alt={detail.capacityImage.alt}
+          width={3723}
+          height={1230}
+          sizes="(min-width: 768px) 1240px, calc(100vw - 40px)"
+          className="h-auto w-full object-contain"
+        />
       </div>
     </section>
   );
@@ -1502,7 +1495,17 @@ function EnergyHighlightsSection() {
               } md:grid-cols-[108px_minmax(0,1fr)] md:items-center md:text-left`}
             >
               <div className="mx-auto grid h-[112px] w-full max-w-[172px] place-items-center rounded-[8px] bg-white/10 text-energy-green md:mx-0 md:h-[148px] md:w-[108px]">
-                <EnergyLineIcon icon={item.icon} className="size-[66px] md:size-[58px]" />
+                {"iconImage" in item && item.iconImage ? (
+                  <Image
+                    src={item.iconImage.src}
+                    alt={item.iconImage.alt}
+                    width={72}
+                    height={72}
+                    className="size-[66px] object-contain md:size-[58px]"
+                  />
+                ) : (
+                  <EnergyLineIcon icon={item.icon} className="size-[66px] md:size-[58px]" />
+                )}
               </div>
               <div>
                 <p className="text-[27px] font-bold leading-none md:text-[34px]">
@@ -1557,7 +1560,7 @@ function EnergyTechnologySection() {
       label === "Proposal & Estimation"
         ? ["Proposal &", "Estimation"]
         : label === "Procurement/Supply Chain"
-          ? ["Procurement/", "Supply Chain"]
+          ? [label]
           : [label];
 
     return (
@@ -1565,7 +1568,7 @@ function EnergyTechnologySection() {
         <span className="break-words md:hidden">{label}</span>
         <span className="hidden md:block">
           {desktopLines.map((line) => (
-            <span key={line} className="block">
+            <span key={line} className="block whitespace-nowrap">
               {line}
             </span>
           ))}
@@ -1636,12 +1639,12 @@ function EnergyTechnologySection() {
             </article>
           </div>
 
-          <div className="relative hidden min-h-[665px] overflow-hidden rounded-[18px] md:block">
+          <div className="relative hidden min-h-[595px] overflow-hidden rounded-[18px] md:block">
             <Image
               src={technology.image.src}
               alt={technology.image.alt}
               fill
-              sizes="826px"
+              sizes="800px"
               className="object-cover"
             />
           </div>

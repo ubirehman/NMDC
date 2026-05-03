@@ -62,7 +62,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
     <div className="relative flex w-full flex-col items-center gap-6 md:static md:items-end">
       <div
         ref={scrollerRef}
-        className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0"
+        className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)] [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:overflow-x-auto"
       >
         {cards.map((card) => {
           const cardId = getCardId(card);
@@ -135,7 +135,7 @@ export function DmHomeCardRail({ cards }: DmHomeCardRailProps) {
         })}
       </div>
 
-      <div className="absolute left-1/2 top-[224px] z-10 flex -translate-x-1/2 items-center gap-6 md:static md:hidden md:translate-x-0">
+      <div className="absolute left-1/2 top-[224px] z-10 flex -translate-x-1/2 items-center gap-6 md:static md:hidden md:translate-x-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:flex">
         <button
           type="button"
           aria-label="Previous D&M cards"

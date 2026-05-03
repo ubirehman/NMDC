@@ -80,7 +80,7 @@ export function NmdcInfraHomePage() {
         <Header links={getInfraNavLinks("/")} />
 
         <div className="relative z-10 mx-auto min-h-[max(786px,100svh)] w-full max-w-[1240px]">
-          <div className="pt-[113px] md:absolute md:left-0 md:top-[197px] md:w-[630px] md:pt-0">
+          <div className="pt-[113px] md:absolute md:left-0 md:top-[197px] md:w-[630px] md:pt-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:max-w-[calc(100vw-80px)]">
             <HomeHeadline />
 
             <div className="mt-5 flex max-w-[304px] items-start gap-[13px] md:mt-7 md:max-w-[620px] md:gap-[15px]">
@@ -98,7 +98,7 @@ export function NmdcInfraHomePage() {
             </div>
           </div>
 
-          <div className="absolute inset-x-0 top-[502px] z-10 px-5 md:absolute md:bottom-[74px] md:right-0 md:top-auto md:left-auto md:w-[822px] md:px-0">
+          <div className="absolute inset-x-0 top-[502px] z-10 px-5 md:absolute md:bottom-[74px] md:right-0 md:top-auto md:left-auto md:w-[822px] md:px-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)]">
             <InfraHomeCardRail cards={content.home.cards} />
           </div>
         </div>

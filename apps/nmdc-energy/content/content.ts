@@ -113,12 +113,20 @@ export const nmdcEnergyContent = {
           unit: "",
           label: "Man-hours saved annually",
           icon: "people",
+          iconImage: {
+            src: withEnergyBasePath("/images/energy/overview-highlight-people.png"),
+            alt: "Man-hours saved icon",
+          },
         },
         {
           value: "USD 1.3",
           unit: "mn",
           label: "Cost savings per year",
           icon: "cost",
+          iconImage: {
+            src: withEnergyBasePath("/images/energy/overview-highlight-money.png"),
+            alt: "Cost savings icon",
+          },
         },
       ],
     },
@@ -831,20 +839,10 @@ export const nmdcEnergyContent = {
             }
           ],
         },
-        table: {
+        capacityImage: {
           title: "PRODUCTION CAPACITY FOR EACH 3 LPO PLANT",
-          columns: [
-            "Outer Diameter (inches)",
-            "Fusion Bonded Epoxy (FBE) (1)",
-            "3 Layer (2)",
-            "Concrete Coating on Top of (1) and (2)",
-          ],
-          rows: [
-            ["4.5\"", "4.87 m / min", "4.87 m / min", "2.2 m / min"],
-            ["12.75\"", "4.57 m / min", "4.57 m / min", "2.2 m / min"],
-            ["20\"", "2.65 m / min", "2.65 m / min", "1.73 m / min"],
-            ["48\"", "1.07 m / min", "1.07 m / min", "1.13 m / min"],
-          ],
+          src: withEnergyBasePath("/images/energy/production-capacity-each-3-lpo-plant.png"),
+          alt: "Production capacity for each 3 LPO plant table",
         },
       },
     ],
