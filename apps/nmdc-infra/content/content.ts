@@ -68,7 +68,7 @@ export const nmdcInfraContent = {
       {
         title: "NMDC Group",
         href: groupAppUrl,
-        image: withInfraBasePath("/images/infra/card-platform.png"),
+        image: withInfraBasePath("/images/infra/card-platform.jpg"),
         logo: {
           src: withInfraBasePath("/images/infra/logo-group.svg"),
           alt: "NMDC Group",
