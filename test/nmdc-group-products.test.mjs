@@ -53,6 +53,7 @@ test("NMDC Group product detail QR image changes with the product slug", () => {
   assert.match(detailPage, /whipstock-system-qr\.png/);
   assert.match(detailPage, /safeen-nav-subsea\.png/);
   assert.match(detailPage, /`\/images\/landing\/products\/qr\/\$\{detail\.slug\}\.png`/);
+  assert.match(detailPage, /unoptimized/);
   assert.doesNotMatch(
     detailPage,
     /src="\/images\/landing\/products\/mussafah-yard-qr\.webp"/,
@@ -91,6 +92,10 @@ test("NMDC Group product detail QR image changes with the product slug", () => {
   assert.deepEqual(
     getPngDimensions("public/images/landing/products/qr/safeen-green.png"),
     { width: 1436, height: 1436 },
+  );
+  assert.deepEqual(
+    getPngDimensions("public/images/landing/products/qr/pipe-coating-materials.png"),
+    { width: 1514, height: 1512 },
   );
 });
 
@@ -324,6 +329,7 @@ test("Mussafah Yard product detail follows the supplied desktop Figma layout", (
   assert.match(detailPage, /md:min-h-\[1390px\]/);
   assert.match(detailPage, /md:grid-cols-\[minmax\(0,641fr\)_minmax\(0,583fr\)\]/);
   assert.match(detailPage, /md:min-h-\[846px\]/);
+  assert.match(detailPage, /aspect-square/);
   assert.doesNotMatch(detailPage, /md:h-\[846px\]/);
   assert.match(detailPage, /detail\.fullTitle/);
   assert.match(detailPage, /logo-energy\.webp/);

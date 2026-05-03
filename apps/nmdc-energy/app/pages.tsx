@@ -264,7 +264,7 @@ function EnergyAtAGlanceDetailHero() {
   const detail = content.overview.atAGlanceDetail;
 
   return (
-    <section className="relative isolate overflow-hidden bg-energy-deep-navy px-5 pb-10 pt-[110px] text-white md:h-[821px] md:px-10 md:pb-0 md:pt-0">
+    <section className="relative isolate overflow-hidden bg-energy-deep-navy px-5 pb-10 pt-[110px] text-white md:min-h-[821px] md:px-10 md:pb-16 md:pt-0">
       <Image
         src={detail.background.src}
         alt={detail.background.alt}
@@ -293,7 +293,7 @@ function EnergyAtAGlanceDetailHero() {
         </Link>
 
         <div className="mt-[92px] grid gap-8 md:mt-[58px] md:grid-cols-[minmax(0,520px)_minmax(0,630px)] md:items-start md:gap-[90px]">
-          <div>
+          <div className="flex flex-col w-full h-fit">
             <p className="text-[18px] font-bold leading-6 text-energy-green md:text-[30px] md:leading-9">
               {detail.eyebrow}
             </p>

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "./icons";
 
@@ -92,7 +91,7 @@ export function EnergyHomeCardRail({ cards }: EnergyHomeCardRailProps) {
             cardId === "lts" ? "overflow-visible" : "overflow-hidden";
 
           return (
-            <Link
+            <a
               key={card.title}
               href={card.href}
               aria-label={card.title.replace("\n", " ")}
@@ -126,7 +125,7 @@ export function EnergyHomeCardRail({ cards }: EnergyHomeCardRailProps) {
                   </span>
                 )}
               </div>
-            </Link>
+            </a>
           );
         })}
       </div>

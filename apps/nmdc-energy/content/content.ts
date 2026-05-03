@@ -87,6 +87,7 @@ export const nmdcEnergyContent = {
       body: [
         "In 1973, NMDC Energy was founded by ADNOC and CCC as the National Petroleum Construction Company (NPCC) to encourage innovation in the energy sector and drive sustainable growth.",
         "Since then, we have developed an exceptional track record for our forward thinking, integrated EPC solutions for the energy sector.Our vast capacity enables us to achieve exceptional results for projects of all complexities, with 10,000 skilled employees, more than 1,500experienced engineers, an extensive fleet and a 1.3 million square meter yard. We specialize in offshore construction and operations for the oil, gas and energy sectors, and are committed to continuous investment in our equipment, fleet, people and capabilities. Together, we are leading the field and creating tangible value for the energy sector.",
+        "Over the past five years, NMDC Energy has reinjected more than AED 34 billion into the UAE economy."
       ],
     },
     icv: {
@@ -577,7 +578,7 @@ export const nmdcEnergyContent = {
           title: "FIXED TYPE JACKETS",
           bullets: [
             "Jackets are used as foundations to install different types of topside",
-            "Jacket's height depend on the water depth up to 90 meters",
+            "Jacket height depend on the water depth up to 90 meters",
             "Number of jacket legs vary from three (3) legs up to eight (8) legs based on the topside and the water depth",
             "Approximately weighs from 500 MT up to 4500 MT (metric tons)",
           ],

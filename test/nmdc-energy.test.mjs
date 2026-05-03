@@ -109,6 +109,8 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(cards, /cardId === "lts" \? "overflow-visible" : "overflow-hidden"/);
   assert.match(cards, /sizes=\{cardId === "lts" \? "124px" : "102px"\}/);
   assert.match(cards, /group-hover:scale-\[1\.03\]/);
+  assert.match(cards, /<a[\s\S]*href=\{card\.href\}/);
+  assert.doesNotMatch(cards, /<Link[\s\S]*href=\{card\.href\}/);
   assert.doesNotMatch(cards, /group-hover:bg-energy-green/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);
   assert.doesNotMatch(header, /\b(?:lg|xl|2xl):/);
@@ -264,11 +266,13 @@ test("NMDC Energy overview read-more opens the At a Glance detail page", () => {
   assert.match(content, /1\.3 million square meter yard/);
   assert.match(content, /1,500experienced engineers/);
   assert.match(content, /tangible value for the energy sector/);
+  assert.match(content, /AED 34 billion into the UAE economy/);
   assert.match(page, /function NmdcEnergyAtAGlancePage/);
   assert.match(page, /getEnergyNavLinks\("\/overview"\)/);
   assert.match(page, /detail\.back\.href/);
   assert.match(page, /md:grid-cols-\[minmax\(0,520px\)_minmax\(0,630px\)\]/);
-  assert.match(page, /md:h-\[821px\]/);
+  assert.match(page, /md:min-h-\[821px\]/);
+  assert.doesNotMatch(page, /md:h-\[821px\]/);
   assert.match(page, /md:pt-\[180px\]/);
   assert.match(page, /EnergyFooter/);
   assert.doesNotMatch(page, /\b(?:lg|xl|2xl):/);

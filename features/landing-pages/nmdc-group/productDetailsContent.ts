@@ -162,17 +162,6 @@ export const nmdcGroupProductDetails = [
         ],
       },
       {
-        title: "Yard Capabilities",
-        bullets: [
-          "165,000 Metric Tons of steel produced in Yards.",
-          "State-of-the-Art Robotic welding and COBOT Welding stations, for welding small to heavy components (up to 3 metric tons)",
-          "Real Time Labor Tracking System - Alerts and Tracking",
-          "AI-driven HSE site safety analyzer implemented at Heavy Shop facilities with real-time personnel tracking with automated alerts",
-          "Industry leading cloud-connected equipment monitoring and AI-driven insights for: utilization, productivity, fuel consumption",
-          "Proximity Warning Alert System installed onto heavy mobile equipment",
-        ],
-      },
-      {
         title: "Highlighted Yard Products",
         bullets: [
           "Topside",
@@ -386,26 +375,30 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "pipe-coating-materials",
-    fullTitle: "NMDC Energy | Pipe Coating Materials",
+    fullTitle: "NMDC Energy | Pipe Coating Sample Materials",
     brandName: null,
-    title: "Pipe Coating Materials",
+    title: "Pipe Coating Sample Materials",
     accentClassName: "text-[#00bd66]",
     media: [
       {
-        src: `${productsImageBase}/pipe-coating-materials.webp`,
-        alt: "Pipe coating materials showcase panel",
-        fit: "contain",
+        type: "video" as const,
+        src: "/videos/our_products_icad_pipe_coating.mp4",
+        alt: "Pipe coating yard video",
+        fit: "cover",
       },
     ],
     summary: [
-      "Pipe coating is highlighted within the Mussafah Yard product portfolio and supports the delivery of protected pipe systems for energy and marine infrastructure.",
+      "Occupying an area of 140,000 square meters, the ICAD - IV Pipe Coating Yard enables us to offer a wide range of specialist pipe coating services.",
     ],
     sections: [
       {
-        title: "Highlighted Yard Product",
+        title: "",
         bullets: [
-          "Part of the yard product showcase alongside topsides, jackets, bridges, pressure vessels and process skids.",
-          "Supports fabricated product delivery from NMDC Energy yards.",
+          'Coal-Tar Enamel anti-corrosion coating (CTE) plant processing pipes ranging from 4" to 48" in outer diameter.',
+          'Fusion Bonded Epoxy (FBE), Polyethylene (PE), Polypropylene (PP) plant processing coating for pipes ranging from 3" to 48" in outer diameter.',
+          "Concrete Weight Coating (CC) plant with facilities for anode installation.",
+          'Internal pipe cleaning machine with a shot/grit blasting process for pipes from 18" to 48" in diameter.',
+          "On-bottom stability calculators.",
         ],
       },
     ],

@@ -619,7 +619,7 @@ function MussafahYardDetailLayout({
 
           <div className="mt-6 grid gap-5 md:mt-[54px] md:min-h-[846px] md:grid-cols-[minmax(0,641fr)_minmax(0,583fr)] md:gap-4">
             <MussafahTextCard detail={detail} />
-            <div className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#12394d] md:h-auto md:min-h-[846px] md:rounded-[20px]">
+            <div className="relative aspect-square overflow-hidden rounded-[20px] bg-[#12394d] md:h-auto md:rounded-[20px]">
               <Image
                 src={detail.media[0].src}
                 alt={detail.media[0].alt}
@@ -652,7 +652,7 @@ function MussafahTextCard({
   detail: Extract<NmdcGroupProductDetail, { slug: "mussafah-yard" }>;
 }) {
   return (
-    <article className="rounded-[20px] bg-[#213848] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:h-full md:px-6 md:py-7">
+    <article className="rounded-[20px] bg-[#213848] px-5 py-6 shadow-[0_24px_64px_rgba(0,0,0,0.16)] md:h-fit md:px-6 md:py-7">
       <div className="grid gap-4 text-[15px] font-normal leading-[25px] text-white/92 md:text-[17px] md:leading-[28px]">
         {detail.summary.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
@@ -877,42 +877,53 @@ function ProductMediaPanel({
 }) {
   return (
     <div className="grid h-full gap-3">
-      {media.map((image) => {
-        const isContain = image.fit === "contain";
+      {media.map((item) => {
+        const isVideo = "type" in item && item.type === "video";
+        const isContain = item.fit === "contain";
         const imageClassName =
-          "className" in image && image.className
-            ? image.className
+          "className" in item && item.className
+            ? item.className
             : isContain
               ? "object-contain p-8"
               : "object-cover";
         const wrapperClassName =
-          "wrapperClassName" in image && image.wrapperClassName
-            ? image.wrapperClassName
+          "wrapperClassName" in item && item.wrapperClassName
+            ? item.wrapperClassName
             : "";
         const wrapperBackgroundColor =
-          "wrapperBackgroundColor" in image && typeof image.wrapperBackgroundColor === "string"
-            ? image.wrapperBackgroundColor
+          "wrapperBackgroundColor" in item && typeof item.wrapperBackgroundColor === "string"
+            ? item.wrapperBackgroundColor
             : "";
         const backgroundClassName =
           wrapperClassName || (isContain ? "bg-[#033241]" : "bg-[#12394d]");
 
         return (
           <div
-            key={image.src}
+            key={item.src}
             style={
               wrapperBackgroundColor
                 ? { backgroundColor: wrapperBackgroundColor }
                 : undefined
             }
-            className={`relative h-full min-h-[220px] overflow-hidden rounded-[20px] md:min-h-0 ${panelHeightClassName} ${backgroundClassName}`}
+            className={`relative h-full min-h-[220px] rounded-[20px] md:min-h-0 ${isVideo ? "" : "overflow-hidden"} ${panelHeightClassName} ${backgroundClassName}`}
           >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(min-width: 768px) 583px, 100vw"
-              className={imageClassName}
-            />
+            {isVideo ? (
+              <video
+                src={item.src}
+                aria-label={item.alt}
+                controls
+                playsInline
+                className="h-full w-full rounded-[20px] object-contain"
+              />
+            ) : (
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="(min-width: 768px) 583px, 100vw"
+                className={imageClassName}
+              />
+            )}
           </div>
         );
       })}
@@ -970,6 +981,7 @@ function ProductQrImage({ detail }: { detail: NmdcGroupProductDetail }) {
       alt={`${detail.title} QR code`}
       width={154}
       height={154}
+      unoptimized
       className="size-[128px] bg-white md:size-[154px]"
     />
   );
