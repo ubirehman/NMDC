@@ -74,8 +74,9 @@ test("NMDC Energy home follows the supplied desktop and mobile PDF design", () =
   assert.match(content, /Visit Us/);
   assert.match(
     content,
-    /title:\s*"NMDC Product Highlight",\s*href:\s*`\$\{groupAppUrl\}\/products`/s,
+    /title:\s*"NMDC Product Highlight",\s*href:\s*withGroupAppPath\("\/products"\)/s,
   );
+  assert.doesNotMatch(content, /href:\s*`\$\{groupAppUrl\}\/products`/);
   assert.match(css, /--energy-green:\s*#00b765;/);
   assert.match(css, /--color-energy-green:\s*#00b765;/);
   assert.match(page, /NmdcEnergyHomePage/);
@@ -165,9 +166,8 @@ test("NMDC Energy overview follows the supplied desktop and mobile PDF design", 
   assert.match(content, /agent-business-proposal\.png/);
   assert.match(content, /agent-goods\.png/);
   assert.match(content, /agent-worker\.png/);
-  assert.match(page, /label === "Procurement\/Supply Chain"[\s\S]*\? \[label\]/);
+  assert.match(page, /label === "Procurement\/Supply Chain"[\s\S]*\? \["Procurement\/", "Supply Chain"\]/);
   assert.match(page, /whitespace-nowrap/);
-  assert.doesNotMatch(page, /\["Procurement\/", "Supply Chain"\]/);
   assert.match(page, /NmdcEnergyOverviewPage/);
   assert.match(page, /EnergyOverviewHero/);
   assert.match(page, /EnergyIcvSection/);

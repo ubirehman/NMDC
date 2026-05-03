@@ -46,7 +46,7 @@ export const nmdcGroupProductDetails = [
     slug: "marine-vessels",
     layout: "marine-vessels",
     fullTitle: "NMDC Dredging and Marine | Marine Vessels",
-    brandName: "NMDC Dredging and Marine",
+    brandName: null,
     title: "Marine Vessels",
     accentClassName: "text-primary-sky-blue",
     media: [
@@ -139,7 +139,7 @@ export const nmdcGroupProductDetails = [
     slug: "mussafah-yard",
     layout: "mussafah-yard",
     fullTitle: "Mussafah Yard and Its Products",
-    brandName: "NMDC Energy",
+    brandName: null,
     title: "Mussafah Yard and Its Products",
     accentClassName: "text-[#00bd66]",
     media: [
@@ -189,7 +189,7 @@ export const nmdcGroupProductDetails = [
     slug: "coastal-hydrodynamic-center",
     layout: "coastal-hydrodynamic-center",
     fullTitle: "NMDC Dredging and Marine | Coastal & Hydrodynamic Center",
-    brandName: "NMDC Dredging and Marine",
+    brandName: null,
     title: "Coastal & Hydrodynamic Center",
     accentClassName: "text-primary-sky-blue",
     cta: {
@@ -320,7 +320,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "multicat-21",
     fullTitle: "NMDC LTS | Multicad 21",
-    brandName: "NMDC LTS",
+    brandName: null,
     title: "Multicad 21",
     accentClassName: "text-[#ddc19c]",
     panelHeightClassName: "md:min-h-[607px]",
@@ -355,7 +355,7 @@ export const nmdcGroupProductDetails = [
     slug: "valve",
     layout: "valve",
     fullTitle: "NMDC Energy | Valve",
-    brandName: "NMDC Energy",
+    brandName: null,
     title: "Valve",
     accentClassName: "text-[#00bd66]",
     media: [],
@@ -387,7 +387,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "pipe-coating-materials",
     fullTitle: "NMDC Energy | Pipe Coating Materials",
-    brandName: "NMDC Energy",
+    brandName: null,
     title: "Pipe Coating Materials",
     accentClassName: "text-[#00bd66]",
     media: [
@@ -413,7 +413,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "whipstock-system",
     fullTitle: "EMDAD | Whipstock",
-    brandName: "EMDAD",
+    brandName: null,
     title: "Whipstock",
     accentClassName: "text-[#ddc19c]",
     panelHeightClassName: "md:min-h-[581px]",
@@ -438,7 +438,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "esp-pump",
     fullTitle: "NMDC Energy | ESP Pump",
-    brandName: "NMDC Energy",
+    brandName: null,
     title: "ESP Pump",
     accentClassName: "text-[#00bd66]",
     introTitle: "The Emirates' first sovereign artificial-lift capability.",
@@ -489,7 +489,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "safeen-green",
     fullTitle: "Safeen Subsea | Safeen Green",
-    brandName: "Safeen Subsea",
+    brandName: null,
     title: "Safeen Green",
     accentClassName: "text-primary-sky-blue",
     panelHeightClassName: "md:min-h-[328px]",
@@ -509,7 +509,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "safeen-nav",
     fullTitle: "Safeen Subsea | Safeen NAV",
-    brandName: "Safeen Subsea",
+    brandName: null,
     title: "Safeen NAV",
     accentClassName: "text-primary-sky-blue",
     panelHeightClassName: "md:min-h-[370px]",
@@ -530,7 +530,7 @@ export const nmdcGroupProductDetails = [
   {
     slug: "caissons-application",
     fullTitle: "NMDC Dredging and Marine | Caissons Application",
-    brandName: "NMDC Dredging and Marine",
+    brandName: null,
     title: "Caissons Application",
     accentClassName: "text-primary-sky-blue",
     media: [

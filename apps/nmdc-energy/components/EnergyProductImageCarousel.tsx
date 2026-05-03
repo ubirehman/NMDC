@@ -55,9 +55,6 @@ export function EnergyProductImageCarousel({
           className="object-cover"
           style={{ objectPosition: currentImage.objectPosition }}
         />
-        <div className="absolute left-4 top-4 rounded-[8px] bg-energy-green px-7 py-4 text-[20px] font-bold leading-6 text-white md:left-6 md:top-6 md:min-w-[214px] md:text-center md:text-[24px] md:leading-8">
-          {label}
-        </div>
       </div>
 
       <div className="mt-6 mr-auto flex items-center justify-end gap-6 md:mt-8">

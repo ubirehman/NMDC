@@ -156,7 +156,7 @@ export function NmdcOverviewPage() {
           </div>
 
           <Image
-            src="/images/landing/overview-map.webp"
+            src="/images/landing/overview-map.jpeg"
             alt="NMDC Group global presence map"
             width={1240}
             height={774}

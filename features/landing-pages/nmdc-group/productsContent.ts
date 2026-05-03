@@ -36,7 +36,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "Hail and Ghasha Development Projectct",
       href: "/products/hail-ghasha-gop",
-      image: `${productsImageBase}/hail-ghasha-gop.webp`,
+      image: `${productsImageBase}/valve-new.jpg`,
       alt: "Hail and Ghasha development project",
     },
     {
@@ -60,7 +60,7 @@ export const nmdcGroupProductsContent = {
     {
       title: "Whipstock System",
       href: "/products/whipstock-system",
-      image: `${productsImageBase}/whipstock-system.webp`,
+      image: `${productsImageBase}/whipstock-system.jpg`,
       alt: "Whipstock system product render",
     },
     {

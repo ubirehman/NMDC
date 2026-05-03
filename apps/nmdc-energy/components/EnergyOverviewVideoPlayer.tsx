@@ -26,7 +26,7 @@ export function EnergyOverviewVideoPlayer({
   videoClassName = "h-[571px] w-full bg-energy-deep-navy object-cover object-[52%_50%] md:h-[609px]",
   controlsClassName = "mt-9 flex justify-center gap-6 md:mt-8",
   label,
-  labelClassName = "absolute left-4 top-4 z-10 rounded-[8px] bg-energy-green px-7 py-4 text-[20px] font-bold leading-6 text-white md:left-6 md:top-6 md:min-w-[214px] md:text-center md:text-[24px] md:leading-8",
+  labelClassName = "",
 }: EnergyOverviewVideoPlayerProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
@@ -47,7 +47,6 @@ export function EnergyOverviewVideoPlayer({
   return (
     <div>
       <div className={`relative overflow-hidden ${frameClassName}`}>
-        {label ? <div className={labelClassName}>{label}</div> : null}
         <div
           className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}

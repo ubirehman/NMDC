@@ -481,7 +481,7 @@ function EnergyYardRecordLogo({
   logo: typeof content.yardHighlights.keyHighlights.record.logo;
 }) {
   return (
-    <span className="relative block size-[72px] shrink-0 overflow-hidden rounded-full bg-black md:size-[92px]">
+    <span className="relative block size-[72px] shrink-0 overflow-hidden rounded-full bg-white md:size-[92px]">
       <Image
         src={logo.src}
         alt={logo.alt}
@@ -607,10 +607,10 @@ function EnergyYardKeyHighlights() {
             <EnergyYardRecordLogo logo={keyHighlights.record.logo} />
           </div>
           <div>
-            <h3 className="text-[16px] font-bold leading-6 text-energy-green">
+            <h3 className="text-[22px] font-bold leading-6 text-energy-green">
               {keyHighlights.record.title}
             </h3>
-            <p className="mt-2 text-[13px] font-bold leading-5 text-energy-ink md:text-[13px]">
+            <p className="mt-2 text-[13px] font-bold leading-5 text-energy-ink md:text-[20px]">
               {keyHighlights.record.body}
             </p>
           </div>
@@ -1204,9 +1204,6 @@ function EnergyProductMedia({ detail }: { detail: EnergyProductDetail }) {
           className="hidden object-cover md:block"
           style={{ objectPosition: detail.media.image.objectPosition }}
         />
-        <div className="absolute left-4 top-4 rounded-[8px] bg-energy-green px-7 py-4 text-[20px] font-bold leading-6 text-white md:left-6 md:top-6 md:min-w-[214px] md:text-center md:text-[24px] md:leading-8">
-          {detail.media.label}
-        </div>
       </div>
       <EnergyDetailArrowControls />
     </section>
@@ -1560,7 +1557,7 @@ function EnergyTechnologySection() {
       label === "Proposal & Estimation"
         ? ["Proposal &", "Estimation"]
         : label === "Procurement/Supply Chain"
-          ? [label]
+          ? ["Procurement/", "Supply Chain"]
           : [label];
 
     return (
@@ -1776,7 +1773,7 @@ export function NmdcEnergyOverviewPage() {
   return (
     <main className="min-h-screen bg-white">
       <EnergyOverviewHero />
-      <EnergyIcvSection />
+      {/* <EnergyIcvSection /> */}
       <EnergyHighlightsSection />
       <EnergyOverviewVideo />
       <EnergyTechnologySection />
