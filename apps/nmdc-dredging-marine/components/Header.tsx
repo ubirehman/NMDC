@@ -52,18 +52,9 @@ export function Header({ links }: HeaderProps) {
             <Image
               src={content.brand.logo}
               alt={content.brand.logoAlt}
-              width={168}
-              height={52}
-              priority
-              className="hidden h-12 w-[158px] object-cover object-center md:block"
-            />
-            <Image
-              src={content.brand.mobileLogo}
-              alt={content.brand.logoAlt}
-              width={114}
-              height={36}
-              priority
-              className="h-9 w-[114px] object-contain md:hidden"
+              width={146}
+              height={46}
+              className="flex w-full h-8 md:block md:h-10 md:w-32 object-contain object-left md:pb-0"priority
             />
           </Link>
 

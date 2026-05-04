@@ -61,10 +61,10 @@ export function Header({
             <Image
               src={logo}
               alt={logoAlt}
-              width={114}
-              height={36}
+              width={146}
+              height={46}
+              className="flex w-full h-8 md:block md:h-10 md:w-32 object-contain object-left md:pb-0"
               priority
-              className="h-8 w-auto md:h-9"
             />
           </Link>
 

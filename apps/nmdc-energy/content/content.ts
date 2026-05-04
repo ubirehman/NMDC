@@ -24,7 +24,7 @@ const withGroupAppPath = (path: string) =>
 export const nmdcEnergyContent = {
   brand: {
     name: "NMDC Energy",
-    logo: withEnergyBasePath("/images/energy/logo-energy.png"),
+    logo: withEnergyBasePath("/images/energy/logo-energy_new.png"),
     logoAlt: "NMDC Energy",
   },
   metadata: {
@@ -893,17 +893,15 @@ export const nmdcEnergyContent = {
     navigationLabel: "Footer navigation",
     navigationLinks: [
       { label: "Home", href: withGroupAppPath("/") },
-      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
-      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
-      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
-      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
+      { label: "NMDC Energy Overview", href: "/overview" },
+      { label: "Yard Highlights", href: "/yard-highlights" },
+      { label: "Our Products", href: "/products" },
     ],
     mobileNavigationLinks: [
       { label: "Home", href: withGroupAppPath("/") },
-      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
-      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
-      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
-      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
+      { label: "NMDC Energy Overview", href: "/overview" },
+      { label: "Yard Highlights", href: "/yard-highlights" },
+      { label: "Our Products", href: "/products" },
     ],
     emailTitle: "Email",
     emails: [

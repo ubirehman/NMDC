@@ -24,7 +24,7 @@ const withGroupAppPath = (path: string) =>
 export const nmdcLtsContent = {
   brand: {
     name: "NMDC LTS",
-    logo: withLtsBasePath("/images/lts/logo-lts.svg"),
+    logo: withLtsBasePath("/images/lts/logo-lts_new.png"),
     logoAlt: "NMDC LTS",
   },
   metadata: {
@@ -200,7 +200,7 @@ export const nmdcLtsContent = {
           alt: "Multicat M-21 vessel illustration",
         },
         description:
-          "Muticat is a versatile, high-capacity marine vessel designed for heavy duty operations, combining strength, speed, and efficiency. Built for demanding tasks, it handles cargo, lifting, and marine support with unmatched reliability.",
+          "Multicat is a versatile, high-capacity marine vessel designed for heavy duty operations, combining strength, speed, and efficiency. Built for demanding tasks, it handles cargo, lifting, and marine support with unmatched reliability.",
         detailsTitle: "Built with Expertise",
         detailsSubtitle: "Constructed by NMDC LTS -Workshops",
         bullets: [
@@ -358,15 +358,15 @@ export const nmdcLtsContent = {
       alt: "Dark blue contour line background",
     },
     desktopLogo: {
-      src: withLtsBasePath("/images/lts/logo-lts.svg"),
+      src: withLtsBasePath("/images/lts/logo-lts_new.png"),
       alt: "NMDC LTS",
     },
     mobileLogo: {
-      src: withLtsBasePath("/images/lts/logo-lts.svg"),
+      src: withLtsBasePath("/images/lts/logo-lts_new.png"),
       alt: "NMDC LTS",
-    },
+    }, 
     businesses: [
-      { label: "NMDC Group", href: groupAppUrl, color: "#ddc19c" },
+      { label: "NMDC Group", href: groupAppUrl, color: "#009fe3" },
       { label: "NMDC Dredging & Marine", href: dredgingMarineAppUrl, color: "#009fe3" },
       { label: "NMDC Energy", href: energyAppUrl, color: "#10c66b" },
       {
@@ -391,17 +391,15 @@ export const nmdcLtsContent = {
     ],
     desktopNav: [
       { label: "Home", href: withGroupAppPath("/") },
-      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
-      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
-      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
-      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
+      { label: "Key Highlights", href: "/key-highlights" },
+      { label: "Marine Vessels", href: "/marine-vessels" },
+      { label: "Whipstock System", href: "/whipstock-system" },
     ],
     mobileNav: [
       { label: "Home", href: withGroupAppPath("/") },
-      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
-      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
-      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
-      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") },
+      { label: "Key Highlights", href: "/key-highlights" },
+      { label: "Marine Vessels", href: "/marine-vessels" },
+      { label: "Whipstock System", href: "/whipstock-system" },
     ],
     emailTitle: "Email",
     contacts: [

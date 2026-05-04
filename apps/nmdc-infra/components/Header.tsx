@@ -62,11 +62,10 @@ export function Header({ links, mobileSize = "regular" }: HeaderProps) {
             <Image
               src={content.brand.logo}
               alt={content.brand.logoAlt}
-              width={130}
-              height={50}
               priority
-              className="h-[40px] w-[104px] object-contain md:h-[50px] md:w-[130px]"
-            />
+              width={146}
+              height={46}
+              className="flex w-full h-8 md:block md:h-10 md:w-32 object-contain object-left md:pb-0"/>
           </Link>
 
           <nav

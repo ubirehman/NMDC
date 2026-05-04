@@ -87,7 +87,7 @@ export function NmdcSafeenSubseaPage() {
           className="object-cover"
         />
         <div
-          className="absolute inset-0 "
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.24)_0%,rgba(3,15,26,0.52)_64%,rgba(3,15,26,0.78)_100%)]"
           aria-hidden="true"
         />
 
@@ -102,7 +102,7 @@ export function NmdcSafeenSubseaPage() {
       </section>
 
       <section className="bg-white px-5 pb-0 pt-12 md:px-10 md:py-[49px]">
-        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,744px)_438px] md:items-center md:gap-[58px]">
+        <div className="mx-auto grid w-full max-w-[1240px] gap-8 md:grid-cols-[minmax(0,744px)_438px] md:items-center md:gap-[58px] pb-6 md:pb-0">
           <div className="flex flex-col gap-4 text-[16px] leading-6 text-primary-navy-blue md:text-[20px] md:leading-[30px]">
             <p className="text-xl font-bold">
               {safeenOverview.heading}

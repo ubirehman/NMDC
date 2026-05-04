@@ -69,7 +69,7 @@ export const nmdcGroupProductDetails = [
           { label: "Dredging Depth", value: "36.0 m" },
           { label: "Breadth", value: "28 m" },
           { label: "Length Overall", value: "138 m" },
-          { label: "Depth", value: "13.8 m" },
+          { label: "Depth", value: "8 m" },
         ],
       },
       {
@@ -150,7 +150,7 @@ export const nmdcGroupProductDetails = [
       },
     ],
     summary: [
-      "The Company owns four (4) fabrication yards namely: Mussafah Yard, ICAD-4 Yard, NEMY Yard and the Ras Al Khair Yard (KSA). Mussafah Yard is considered the largest among the 4. Our fabrication yard is a fusion of precision and excellence, harmonizing skilled manpower, cutting-edge technology, and robotics to breathe life into our projects with unparalleled quality.",
+      "The company owns four (4) fabrication yards namely: Mussafah Yard, ICAD-4 Yard, NEMY Yard and the Ras Al Khair Yard (KSA). Mussafah Yard is considered the largest among the 4. Our fabrication yard is a fusion of precision and excellence, harmonizing skilled manpower, cutting-edge technology, and robotics to breathe life into our projects with unparalleled quality.",
     ],
     sections: [
       {

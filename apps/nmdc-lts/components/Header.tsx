@@ -52,11 +52,11 @@ export function Header({ links }: HeaderProps) {
             <Image
               src={content.brand.logo}
               alt={content.brand.logoAlt}
-              width={132}
-              height={40}
               priority
-              className="h-[34px] w-[116px] object-contain md:h-[42px] md:w-[142px]"
-            />
+              width={146}
+              height={46}
+              className="flex w-full h-8 md:block md:h-10 md:w-32 object-contain object-left md:pb-0"
+              />
           </Link>
 
           <nav

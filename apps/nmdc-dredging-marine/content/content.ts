@@ -30,7 +30,7 @@ const nmdcDredgingMarineVideoSources = [
 export const nmdcDredgingMarineContent = {
   brand: {
     name: "NMDC Dredging & Marine",
-    logo: withDredgingMarineBasePath("/images/logo-dm.webp"),
+    logo: withDredgingMarineBasePath("/images/logo-dm.png"),
     mobileLogo: withDredgingMarineBasePath("/images/nmdc-group-logo.svg"),
     logoAlt: "NMDC Dredging & Marine"
   },
@@ -333,7 +333,7 @@ export const nmdcDredgingMarineContent = {
           ["Dredging Depth", "36.0 m"],
           ["Breadth", "28 m"],
           ["Length Overall", "138 m"],
-          ["Depth", "138 m"]
+          ["Depth", "8 m"]
         ],
         detail: {
           image: withDredgingMarineBasePath("/images/dm/vessel-al-yassat-detail.jpg"),
@@ -765,7 +765,7 @@ export const nmdcDredgingMarineContent = {
       }
     ],
     capabilities: {
-      title: "CAPABILITIES.",
+      title: "CAPABILITIES",
       items: [
         {
           title: "Hydraulic & Coastal Studies",
@@ -978,10 +978,10 @@ export const nmdcDredgingMarineContent = {
     navigationLabel: "Footer navigation",
     navigationLinks: [
       { label: "Home", href: withGroupAppPath("/") },
-      { label: "NMDC Overview", href: withGroupAppPath("/nmdc-overview") },
-      { label: "People & Culture", href: withGroupAppPath("/people-and-culture") },
-      { label: "Technology & Ai", href: withGroupAppPath("/technology") },
-      { label: "Safeen Subsea", href: withGroupAppPath("/safeen-subsea") }
+      { label: "Overview", href: "/overview" },
+      { label: "Marine Vessels", href: "/marine-vessels" },
+      { label: "Coastal & Hydrodynamic Center", href: "/hydraulic-physical-model" },
+      { label: "Caisson Method", href: "/caisson-method" }
     ],
     emailTitle: "Email",
     emails: [

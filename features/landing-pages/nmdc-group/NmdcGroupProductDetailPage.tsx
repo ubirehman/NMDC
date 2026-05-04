@@ -457,9 +457,9 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
           <p className="text-center text-[10px] font-medium leading-4 text-white md:text-[11px]">
             {vessel.type}
           </p>
-          <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 pb-4 text-[10px] font-medium leading-4 text-white md:text-[11px]">
+          <dl className="mt-4 grid grid-cols-2 justify-between gap-x-6 gap-y-2 pb-4 text-[10px] font-medium leading-4 text-white md:text-[11px]">
             {vessel.specs.map((spec: { label: string; value: string }) => (
-              <div key={spec.label} className="flex justify-between gap-2">
+              <div key={spec.label} className="flex gap-2">
                 <dt className="text-white/86">{spec.label}:</dt>
                 <dd className="text-right text-white">{spec.value}</dd>
               </div>

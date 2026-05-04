@@ -85,6 +85,22 @@ function extractBlock(source, marker) {
   return match.groups.block;
 }
 
+function extractFooterComponentSource(componentPath, source) {
+  if (componentPath === "apps/nmdc-infra/app/pages.tsx") {
+    const match = source.match(/function InfraFooter\(\) \{[\s\S]*?\n\}\n\nfunction InfraProductCard/);
+    assert.ok(match, "NMDC Infra footer source should be extractable");
+    return match[0];
+  }
+
+  if (componentPath === "apps/nmdc-energy/app/pages.tsx") {
+    const match = source.match(/function EnergyFooter\(\) \{[\s\S]*?\n\}\n\nexport function NmdcEnergyOverviewPage/);
+    assert.ok(match, "NMDC Energy footer source should be extractable");
+    return match[0];
+  }
+
+  return source;
+}
+
 test("standalone footer business lists link to the correct app domains", () => {
   for (const footer of standaloneFooters) {
     const content = readFileSync(footer.contentPath, "utf8");
@@ -188,39 +204,36 @@ test("all footers use the same desktop placement shell", () => {
   }
 });
 
-test("all footers use the NMDC LTS typography scale", () => {
-  for (const footer of footerPlacementFiles) {
-    const component = readFileSync(footer.componentPath, "utf8");
+test("shared NMDC footer centers the navigation with mx-auto without padding", () => {
+  const component = readFileSync("app/components/landing/NmdcFooter.tsx", "utf8");
+  const match = component.match(
+    /<nav\s+aria-label="Footer navigation"\s+className="(?<className>[^"]+)"/,
+  );
 
-    assert.match(
-      component,
-      /text-\[20px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
-      `${footer.name} footer business links should match the LTS size`,
+  assert.ok(match?.groups?.className, "shared footer navigation should expose its classes");
+
+  const navClassName = match.groups.className;
+  assert.match(navClassName, /md:mx-auto/);
+  assert.match(navClassName, /md:w-fit/);
+  assert.doesNotMatch(navClassName, /md:mx-auto\]/);
+  assert.doesNotMatch(navClassName, /(?:^|\s)(?:px|md:px)-/);
+});
+
+test("all footers use 16px mobile typography", () => {
+  for (const footer of footerPlacementFiles) {
+    const component = extractFooterComponentSource(
+      footer.componentPath,
+      readFileSync(footer.componentPath, "utf8"),
     );
-    assert.match(
-      component,
-      /text-\[25px\][^"]*md:text-\[16px\][^"]*md:leading-6/,
-      `${footer.name} footer connect label should match the LTS size`,
-    );
-    assert.match(
-      component,
-      /text-\[27px\][^"]*leading-\[32px\]/,
-      `${footer.name} footer mobile nav/contact heading should match the LTS size`,
-    );
-    assert.match(
-      component,
-      /text-\[24px\][^"]*leading-\[30px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
-      `${footer.name} footer contact labels should match the LTS size`,
-    );
-    assert.match(
-      component,
-      /text-\[22px\][^"]*leading-\[28px\][^"]*md:text-\[16px\][^"]*md:leading-5/,
-      `${footer.name} footer contact email values should match the LTS size`,
-    );
-    assert.match(
-      component,
-      /text-\[18px\][^"]*leading-\[26px\][^"]*md:text-\[16px\][^"]*md:leading-6/,
-      `${footer.name} footer copyright should match the LTS size`,
+    const mobileFontSizes = [
+      ...component.matchAll(/(?<!md:)text-\[(?<size>\d+)px\]/g),
+    ].map((match) => match.groups.size);
+
+    assert.ok(mobileFontSizes.length >= 6, `${footer.name} footer should define mobile font sizes`);
+    assert.deepEqual(
+      [...new Set(mobileFontSizes)],
+      ["16"],
+      `${footer.name} footer mobile font sizes should all be 16px`,
     );
   }
 });

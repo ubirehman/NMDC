@@ -1669,7 +1669,7 @@ function EnergyFooter() {
   const mobileFooterLinks = footer.mobileNavigationLinks ?? footerNavigationLinks;
 
   return (
-    <footer className="relative isolate overflow-hidden bg-energy-deep-navy px-5 py-10 text-white md:px-10 md:py-[64px]">
+    <footer className="relative isolate overflow-hidden bg-energy-deep-navy px-5 py-8 text-white md:min-h-[658px] md:px-10 md:py-12">
       <div className="absolute inset-0 -z-10 opacity-80" aria-hidden="true">
           <Image
             src={footer.background.src}
@@ -1681,105 +1681,107 @@ function EnergyFooter() {
           />
       </div>
 
-      <div className="mx-auto grid w-full max-w-[1240px] gap-10 rounded-[16px] bg-[#0b2f3d] px-7 py-10 shadow-[0_28px_80px_rgba(0,0,0,0.30)] md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:gap-0 md:px-12 md:py-[52px]">
-        <div className="flex flex-col justify-between">
-          <div>
-            <Image
-              src={content.brand.logo}
-              alt={content.brand.logoAlt}
-              width={154}
-              height={60}
-              className="h-[58px] w-[148px] object-contain"
-            />
-            <ul className="mt-10 grid gap-5 text-[20px] font-bold leading-6 text-white md:mt-[58px] md:gap-4 md:text-[16px] md:leading-5">
-              {footer.businesses.map((business) => (
-                <li key={business.label}>
-                  <a
-                    href={business.href}
-                    className="flex items-center gap-4 transition-colors hover:text-energy-green md:gap-3"
+      <div className="mx-auto max-w-[1240px] rounded-[16px] bg-[#0b2f3d] px-5 py-8 shadow-[0_28px_80px_rgba(0,0,0,0.30)] md:px-12">
+        <Image
+          src={content.brand.logo}
+          alt={content.brand.logoAlt}
+          width={146}
+          height={46}
+          className="block md:h-10 md:w-32 object-contain object-left pb-8 md:pb-0"
+        />
+        <div className="grid md:gap-0 gap-8 w-full md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:min-h-[407px] md:py-8">
+          <div className="flex flex-col justify-between pb-4 md:pb-0">
+            <div>
+              <ul className="grid gap-5 text-[16px] font-bold leading-5 text-white md:gap-3 md:text-[16px] md:leading-5">
+                {footer.businesses.map((business) => (
+                  <li key={business.label}>
+                    <a
+                      href={business.href}
+                      className="flex items-center gap-3 transition-colors hover:text-energy-green"
+                    >
+                      <span
+                        className={`size-3 shrink-0 rounded-full ${business.dotColor}`}
+                        aria-hidden="true"
+                      />
+                      {business.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-10 flex items-center gap-5 md:mt-0">
+              <Link
+                href={footer.connect.href}
+                className="inline-flex shrink-0 text-[16px] font-normal leading-6 text-white transition-colors hover:text-energy-green md:text-[16px] md:font-bold md:leading-6"
+              >
+                {footer.connect.label}
+              </Link>
+              <div className="flex gap-3" aria-label="Social links">
+                {footer.socialLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={link.label}
+                    className="flex size-[48px] items-center justify-center rounded-full bg-[#effff6] text-[16px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white md:size-[34px] md:text-[14px]"
                   >
-                    <span
-                      className={`size-3 shrink-0 rounded-full ${business.dotColor}`}
-                      aria-hidden="true"
-                    />
-                    {business.label}
+                    {link.label === "Instagram" ? (
+                      <InstagramIcon className="size-[15px]" />
+                    ) : (
+                      link.marker
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <nav
+            aria-label={footer.navigationLabel}
+            className="border-y py-8 md:py-0 px-0 md:px-5  font-bold border-white/12 md:border-x md:border-y-0 md:border-white/16 md:mx-auto] max-h-[541px]"
+          >
+            <ul className="hidden grid-cols-1 gap-[24px] text-[16px] font-bold leading-6 text-white md:grid md:gap-3">
+              {footerNavigationLinks.map((link) => (
+                <li key={`${link.label}-${link.href}`}>
+                  <a href={link.href} className="transition-colors hover:text-energy-green">
+                    {link.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="mt-11 flex flex-wrap items-center gap-5 md:mt-0">
-            <Link
-              href={footer.connect.href}
-              className="inline-flex shrink-0 text-[25px] font-normal leading-[31px] text-white transition-colors hover:text-energy-green md:text-[16px] md:leading-6"
-            >
-              {footer.connect.label}
-            </Link>
-            <div className="flex items-center gap-5 md:gap-4">
-              {footer.socialLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={link.label}
-                  className="grid size-[48px] place-items-center rounded-full bg-[#effff6] text-[18px] font-bold leading-none text-energy-green transition-colors hover:bg-energy-green hover:text-white md:size-[34px] md:text-[14px]"
-                >
-                  {link.label === "Instagram" ? (
-                    <InstagramIcon className="size-[22px] md:size-[16px]" />
-                  ) : (
-                    link.marker
-                  )}
-                </Link>
+            <ul className="grid gap-[24px] text-[16px] font-normal leading-6 text-white md:hidden">
+              {mobileFooterLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="transition-colors hover:text-energy-green">
+                    {link.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
+          </nav>
+
+          <div id="contact" className="border-b px-0 md:px-5 border-white/12 pb-8 md:border-b-0">
+            <h2 className="text-[16px] font-normal leading-6 text-white md:text-[16px] md:font-bold md:leading-6">
+              {footer.emailTitle}
+            </h2>
+            <dl className="mt-5 grid gap-5 md:mt-4 md:gap-4">
+              {footer.emails.map((email) => (
+                <div key={email.label}>
+                  <dt className="text-[16px] font-normal leading-5 text-white md:text-[16px] md:font-medium md:leading-5">{email.label}</dt>
+                  <dd className="mt-1 text-[16px] font-bold leading-5 text-energy-green md:text-[16px] md:font-normal md:leading-5">
+                    {email.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
+
+          <p className="md:border-t border-white/12 text-center text-[16px] leading-6 text-white md:col-span-3 md:mt-8 md:pt-5 md:text-[16px] md:leading-6">
+            {footer.copyright}
+          </p>
         </div>
-
-        <nav
-          aria-label={footer.navigationLabel}
-          className="border-y border-white/12 py-9 md:border-x md:border-y-0 md:px-[88px] md:py-[146px]"
-        >
-          <ul className="hidden gap-6 text-[16px] font-normal leading-6 text-white md:grid md:gap-4">
-            {footerNavigationLinks.map((link) => (
-              <li key={`${link.label}-${link.href}`}>
-                <a href={link.href} className="transition-colors hover:text-energy-green">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <ul className="grid gap-[24px] text-[27px] font-normal leading-[32px] text-white md:hidden">
-            {mobileFooterLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="transition-colors hover:text-energy-green">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div id="contact" className="md:px-[88px] md:pt-[146px]">
-          <h2 className="text-[27px] font-normal leading-[32px] text-white md:text-[16px] md:font-bold md:leading-6">
-            {footer.emailTitle}
-          </h2>
-          <dl className="mt-6 grid gap-6 md:mt-5 md:gap-5">
-            {footer.emails.map((email) => (
-              <div key={email.label}>
-                <dt className="text-[24px] font-normal leading-[30px] text-white md:text-[16px] md:font-medium md:leading-5">{email.label}</dt>
-                <dd className="mt-2 text-[22px] font-bold leading-[28px] text-energy-green md:mt-1 md:text-[16px] md:font-normal md:leading-5">
-                  {email.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <p className="border-t border-white/12 pt-8 text-[18px] leading-[26px] text-white md:col-span-3 md:mt-8 md:text-center md:text-[16px] md:leading-6">
-          {footer.copyright}
-        </p>
       </div>
     </footer>
   );

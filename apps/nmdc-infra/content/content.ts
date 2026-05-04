@@ -24,7 +24,7 @@ const withGroupAppPath = (path: string) =>
 export const nmdcInfraContent = {
   brand: {
     name: "NMDC Infra",
-    logo: withInfraBasePath("/images/infra/logo-infra-new.png"),
+    logo: withInfraBasePath("/images/infra/logo-infra-new_new.png"),
     logoAlt: "NMDC Infra",
   },
   metadata: {

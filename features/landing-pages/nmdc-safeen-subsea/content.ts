@@ -6,7 +6,7 @@ export const nmdcSafeenSubseaNavLinks = getNmdcNavLinks(
 );
 
 export const safeenHero = {
-  image: "/images/landing/safeen-subsea-hero-new__.png",
+  image: "/images/landing/safeen-subsea-hero-new-computer.png",
   alt: "SAFEEN offshore vessel operating in rough sea",
   titlePrefix: "",
   titleAccent: "Safeen Subsea",
