@@ -465,11 +465,11 @@ export const nmdcInfraContent = {
         },
       },
       {
-        title: ["Ebawe", "Anlagentechnik"],
+        title: ["Ebawe", "Anlagen Technik"],
         href: "/products/ebawe-anlagentechnik",
         image: {
           src: withInfraBasePath("/images/infra/product-ebawe-anlagentechnik.png"),
-          alt: "Ebawe Anlagentechnik precast concrete production yard",
+          alt: "Ebawe Anlagen Technik precast concrete production yard",
           objectPosition: "50% 50%",
         },
         contentImage: {
@@ -597,7 +597,7 @@ export const nmdcInfraContent = {
     ebaweDetail: {
       backLabel: "Back",
       backHref: "/products",
-      title: "EBAWE ANLAGENTECHNIK",
+      title: "EBAWE ANLAGEN TECHNIK",
       introLayout: "wideImage",
       paragraphs: [
         "NMDC Infra, a leader in construction services and pre-cast concrete production, is equipped with a state-of-the-art carousel line for the production of solid and sandwich panels for insulated walls, along with a production line for the casting of roof pre-cast, pre-stressed hollow core slabs.",
@@ -619,7 +619,7 @@ export const nmdcInfraContent = {
         playLabel: "Play Ebawe Anlagentechnik video",
         videos: [
           {
-            title: "Ebawe Anlagentechnik",
+            title: "Ebawe Anlagen Technik",
             src: withInfraBasePath("/videos/nmdc_infra_ebawe.mp4"),
             type: "video/mp4",
             poster: withInfraBasePath("/images/infra/video-posters/product-ebawe.png"),
