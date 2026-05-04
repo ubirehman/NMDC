@@ -55,7 +55,7 @@ export const nmdcInfraContent = {
       },
       headline: {
         leading: "Leading the Way with",
-        accent: ["World Class", "Construction", "Services"],
+        accent: ["World Class", "Construction", " Services"],
       },
       subhead:
         "NMDC Infra has been a leader in general construction services since 2018, and prominent in the field of precast concrete production since 2006 under the name Emarat Europe.",

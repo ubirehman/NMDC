@@ -34,7 +34,7 @@ export const nmdcGroupProductsContent = {
       alt: "Coastal and hydrodynamic testing basin",
     },
     {
-      title: "Hail and Ghasha Development Projectct",
+      title: "Hail and Ghasha Development Project",
       href: "/products/hail-ghasha-gop",
       image: `${productsImageBase}/valve-new.jpg`,
       alt: "Hail and Ghasha development project",
