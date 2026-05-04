@@ -87,7 +87,7 @@ export function NmdcSafeenSubseaPage() {
           className="object-cover"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,15,26,0.24)_0%,rgba(3,15,26,0.52)_64%,rgba(3,15,26,0.78)_100%)]"
+          className="absolute inset-0 "
           aria-hidden="true"
         />
 
