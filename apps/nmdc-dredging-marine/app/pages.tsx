@@ -625,7 +625,7 @@ function DmProjectStatusChart({
         </div>
       </div>
 
-      <ul className="grid gap-3 justify-self-start text-[15px] leading-5 text-[#263a55] md:justify-self-end">
+      <ul className="grid md:grid-cols-1 grid-cols-2 gap-3 justify-self-start text-[15px] leading-5 text-[#263a55] md:justify-self-end">
         {legend.map((item) => (
           <li key={item.label} className="flex items-center gap-3">
             <span
@@ -769,7 +769,7 @@ export function DredgingMarineVesselsPage() {
           aria-hidden="true"
         />
         <Header links={getDmNavLinks(marineVessels.hero.activeHref)} />
-        <div className="relative z-10 mx-auto hidden h-full w-full max-w-[1240px] flex-col justify-end pb-[86px] pt-[128px] md:flex">
+        <div className="relative z-10 mx-auto h-full w-full max-w-[1240px] flex-col justify-end pb-[86px] pt-[128px] md:flex">
           <h1 className="flex flex-wrap items-baseline gap-x-[18px] text-[34px] font-bold leading-[1.12] md:text-[48px] md:leading-[58px]">
             <span className="text-dm-cyan">{marineVessels.hero.eyebrow}</span>
             <span className="hidden text-white/90 md:inline">|</span>
@@ -792,7 +792,7 @@ export function DredgingMarineVesselsPage() {
         </div>
       </section>
 
-      <section className="bg-[#f4f4f6] px-5 pb-[263px] pt-[47px] md:px-10 md:pb-[100px] md:pt-[100px]">
+      <section className="bg-[#f4f4f6] px-5 pb-6 pt-[47px] md:px-10 md:pb-[100px] md:pt-[100px]">
         <div className="mx-auto w-full max-w-[1240px]">
           <div className="grid gap-[25px] md:grid-cols-3 md:gap-x-6 md:gap-y-10">
             {marineVessels.items.map((vessel) => (

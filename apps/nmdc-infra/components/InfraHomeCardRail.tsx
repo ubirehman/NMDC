@@ -61,7 +61,7 @@ export function InfraHomeCardRail({ cards }: InfraHomeCardRailProps) {
   };
 
   return (
-    <div className="relative flex w-full flex-col items-center gap-6 md:static md:items-end">
+    <div className="relative flex w-full flex-col items-center gap-6 md:items-end px-6 md:px-0">
       <div
         ref={scrollerRef}
         className="-mx-5 flex w-[calc(100%+2.5rem)] snap-x snap-mandatory gap-[18px] overflow-x-auto px-5 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:w-[822px] md:overflow-visible md:px-0 md:pb-0 [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:w-[calc(100vw-80px)] [@media_(pointer:coarse)_and_(min-width:768px)_and_(max-width:1199px)]:overflow-x-auto"

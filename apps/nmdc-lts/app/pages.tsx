@@ -503,7 +503,7 @@ type WhipstockFeature = (typeof content.whipstockSystem.features)[number];
 
 function WhipstockIntroPanel() {
   return (
-    <article className="order-1 rounded-[24px] bg-lts-navy px-[64px] py-[39px] text-[20px] font-light leading-[49px] text-white md:order-2 md:min-h-[680px] md:rounded-[24px] md:px-[35px] md:py-[37px] md:text-[20px] md:leading-[24px]">
+    <article className="order-1 rounded-[24px] bg-lts-navy p-6 text-[20px] font-light md:leading-[49px] text-white md:order-2 md:min-h-[680px] md:rounded-[24px] md:px-[35px] md:py-[37px] md:text-[20px] md:leading-[24px]">
       <div className="space-y-[46px] md:space-y-[27px]">
         {content.whipstockSystem.introduction.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>

@@ -279,18 +279,30 @@ export const nmdcEnergyContent = {
           unit: "sqm",
           label: "Total Fabrication Area",
           icon: "grid",
+          iconImage: {
+            src: withEnergyBasePath("/images/energy/yard-icon-grid.png"),
+            alt: "Total fabrication area icon",
+          },
         },
         {
           value: "+100,000",
           unit: "metric ton",
           label: "Annual Fabrication Capacity",
           icon: "expand",
+          iconImage: {
+            src: withEnergyBasePath("/images/energy/yard-icon-expand.png"),
+            alt: "Annual fabrication capacity icon",
+          },
         },
         {
           value: "107.03",
           unit: "million",
           label: "Safe Man Hours in 2025",
           icon: "worker",
+          iconImage: {
+            src: withEnergyBasePath("/images/energy/yard-icon-worker.png"),
+            alt: "Safe man hours icon",
+          },
         },
       ],
       record: {

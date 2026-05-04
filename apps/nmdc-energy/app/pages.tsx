@@ -583,10 +583,20 @@ function EnergyYardKeyHighlights() {
                   index === 0 ? "" : "mt-8 border-t border-white/14 pt-8 md:mt-0 md:border-t-0 md:pt-0"
                 } md:grid-cols-[100px_minmax(0,1fr)] md:gap-10`}
               >
-                <EnergyYardIcon
-                  icon={stat.icon}
-                  className="size-[54px] text-energy-green md:size-[76px]"
-                />
+                {"iconImage" in stat && stat.iconImage ? (
+                  <Image
+                    src={stat.iconImage.src}
+                    alt={stat.iconImage.alt}
+                    width={76}
+                    height={76}
+                    className="size-[54px] object-contain md:size-[76px]"
+                  />
+                ) : (
+                  <EnergyYardIcon
+                    icon={stat.icon}
+                    className="size-[54px] text-energy-green md:size-[76px]"
+                  />
+                )}
                 <div className="border-l border-white/30 pl-7 md:pl-10">
                   <p className="text-[32px] font-bold leading-none md:text-[54px]">
                     {stat.value}{" "}
@@ -645,7 +655,7 @@ function EnergyYardAchievements() {
         <div className="mx-auto grid w-full max-w-[1240px] gap-7 md:min-h-[245px] md:grid-cols-[236px_1px_193px_1px_minmax(0,1fr)] md:items-center md:gap-8">
           <div
             data-yard-achievement-icon-card
-            className="mx-auto md:w-[193px] flex md:h-[270px] size-[150px] place-items-center rounded-[14px] bg-[#143a58] text-energy-green "
+            className="mx-auto grid w-full max-w-[270px] rounded-[14px] bg-[#143a58] px-5 py-6 text-center md:h-full md:max-w-none md:content-center text-energy-green"
           >
             <EnergyYardIcon icon="achievement" className="mx-auto size-[100px] md:size-[132px]" />
           </div>
@@ -750,7 +760,7 @@ function EnergyProductCard({
     <Link
       href={product.href}
       aria-label={product.title}
-      className="group relative block h-[580px] min-w-0 overflow-hidden rounded-[34px] border-[4px] border-white bg-energy-navy shadow-[0_26px_44px_rgba(6,40,33,0.30)] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[0_34px_64px_rgba(6,40,33,0.36)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-energy-green md:h-[500px] md:rounded-[42px]"
+      className="group relative block h-[350px] md:h-[580px] min-w-0 overflow-hidden rounded-[34px] border-[4px] border-white bg-energy-navy shadow-[0_26px_44px_rgba(6,40,33,0.30)] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[0_34px_64px_rgba(6,40,33,0.36)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-energy-green md:h-[500px] md:rounded-[42px]"
     >
       <Image
         src={product.image.src}
@@ -764,8 +774,13 @@ function EnergyProductCard({
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,32,42,0.02)_0%,rgba(4,32,42,0.10)_42%,rgba(4,32,42,0.94)_100%)]"
         aria-hidden="true"
       />
-      <h3 className="absolute bottom-[42px] left-[38px] right-7 text-[42px] font-bold leading-[48px] tracking-[0] text-energy-green md:bottom-[42px] md:left-[30px] md:text-[40px] md:leading-[48px]">
+      <h3 className="hidden absolute md:block bottom-[42px] left-[38px] right-7 text-[42px] font-bold leading-[48px] tracking-[0] text-energy-green md:bottom-[42px] md:left-[30px] text-lg md:text-[40px] md:leading-[48px]">
         {product.title}
+      </h3>
+       <h3 className="absolute md:hidden bottom-[42px] left-[38px] right-7 text-[42px] font-bold leading-[48px] tracking-[0] text-energy-green md:bottom-[42px] md:left-[30px] text-lg md:text-[40px] md:leading-[48px]">
+        <p className="relative text-3xl">
+          {product.title}
+          </p>
       </h3>
     </Link>
   );
@@ -1692,7 +1707,7 @@ function EnergyFooter() {
         <div className="grid md:gap-0 gap-8 w-full md:grid-cols-[365px_360px_minmax(0,1fr)] md:grid-rows-[1fr_auto] md:min-h-[407px] md:py-8">
           <div className="flex flex-col justify-between pb-4 md:pb-0">
             <div>
-              <ul className="grid gap-5 text-[16px] font-bold leading-5 text-white md:gap-3 md:text-[16px] md:leading-5">
+              <ul className="grid gap-5 text-[14px] font-bold leading-5 text-white md:gap-3 md:text-[16px] md:leading-5">
                 {footer.businesses.map((business) => (
                   <li key={business.label}>
                     <a
