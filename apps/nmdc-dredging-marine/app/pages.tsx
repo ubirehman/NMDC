@@ -189,7 +189,7 @@ function getVesselCardImageClass(slug: string) {
     case "al-mirfa":
       return `${base} object-[52%_50%] group-hover:scale-[1.03]`;
     case "jananah":
-      return `${base} origin-bottom scale-[2.18] object-[54%_100%] group-hover:scale-[2.25]`;
+      return `${base} origin-bottom object-[54%_100%] group-hover:scale-[1.05]`;
     case "sarb":
       return `${base} object-[50%_44%] group-hover:scale-[1.03]`;
     case "ghasha":

@@ -691,7 +691,6 @@ function InfraProductFeatureCard({
           <span className="block text-[40px] font-bold leading-none text-white md:text-[43px]">
             {feature.number}
           </span>
-          <span className="mt-[13px] block h-[5px] w-[57px] bg-infra-yellow md:w-[72px]" aria-hidden="true" />
         </div>
       </div>
       <h3 className="mt-[18px] text-[17px] font-bold leading-[23px] md:mt-6 md:text-[24px] md:leading-8">
@@ -1243,10 +1242,6 @@ export function NmdcInfraProductsPage() {
               >
                 {products.title}
               </h2>
-              <span
-                className="mt-[5px] block h-[5px] w-[49px] bg-infra-yellow md:mt-[10px] md:w-[94px]"
-                aria-hidden="true"
-              />
             </div>
             <span
               className="mt-[19px] hidden h-px w-[420px] bg-[#a8b4bd] md:block"

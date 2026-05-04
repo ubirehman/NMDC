@@ -46,10 +46,10 @@ export const nmdcGroupProductsContent = {
       alt: "3D printed artificial reef structure underwater",
     },
     {
-      title: "Multicad 21",
+      title: "Multicat 21",
       href: "/products/multicat-21",
       image: `${productsImageBase}/new-multicad-21.jpg`,
-      alt: "Multicad product placeholder panel",
+      alt: "Multicat product placeholder panel",
     },
     {
       title: "Valve",
@@ -281,7 +281,7 @@ export const nmdcGroupProductsContent = {
     { label: "Overview", href: "/nmdc-overview" },
     { label: "Marine Vessels", href: `${dredgingMarineAppUrl}/marine-vessels` },
     {
-      label: "Costal & Hydrodynamic Center",
+      label: "Coastal & Hydrodynamic Center",
       href: `${dredgingMarineAppUrl}/hydraulic-physical-model`,
     },
     { label: "Caisson Method", href: `${dredgingMarineAppUrl}/caisson-method` },

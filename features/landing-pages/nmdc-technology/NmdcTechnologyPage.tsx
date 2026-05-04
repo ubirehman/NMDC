@@ -29,11 +29,11 @@ export function NmdcTechnologyPage() {
           className="object-cover object-center"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,15,26,0.72)_0%,rgba(3,15,26,0.42)_48%,rgba(3,15,26,0.76)_100%)]"
+          className="absolute inset-0"
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.36)_0%,rgba(0,0,0,0.10)_45%,rgba(0,0,0,0.22)_100%)]"
+          className="absolute inset-0 "
           aria-hidden="true"
         />
         <Header

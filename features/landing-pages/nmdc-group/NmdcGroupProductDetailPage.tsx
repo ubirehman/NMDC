@@ -446,6 +446,11 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
       />
       <div className="absolute inset-x-0 bottom-0 translate-y-14 rounded-t-[16px] bg-[#22475b]/92 backdrop-blur-[10px] transition-transform duration-300 ease-out group-hover:translate-y-0">
         <div className="px-4 pb-0 pt-4">
+          <a href={getPdfViewerHref(
+            `/pdfs/${pdfSlug}.pdf`,
+            `${vessel.name} Specification`,
+            "/products/marine-vessels",
+          )}>
           <h2 className="text-center text-[14px] font-bold leading-5 text-primary-sky-blue md:text-[15px]">
             {vessel.name}
           </h2>
@@ -460,6 +465,7 @@ function MarineVesselCard({ vessel }: { vessel: MarineVesselCardData }) {
               </div>
             ))}
           </dl>
+          </a>
         </div>
         <a
           href={getPdfViewerHref(

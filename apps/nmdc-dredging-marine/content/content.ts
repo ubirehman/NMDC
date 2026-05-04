@@ -497,7 +497,7 @@ export const nmdcDredgingMarineContent = {
         name: "Jananah",
         type: "Beavers",
         formalName: "Jannah",
-        image: withDredgingMarineBasePath("/images/dm/vessel-jannah.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/vessel-jannah_new__.png"),
         specs: [
           ["Dredging Depth", "14.0 m"],
           ["Breadth", "8.55 m"],
@@ -551,7 +551,7 @@ export const nmdcDredgingMarineContent = {
         slug: "sarb",
         name: "Sarb",
         type: "Backhoe Dredgers",
-        image: withDredgingMarineBasePath("/images/dm/vessel-sarb.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/vessel-sarb__.png"),
         specs: [
           ["Dredging Depth", "25 m"],
           ["Breadth", "18 m"],
@@ -617,7 +617,7 @@ export const nmdcDredgingMarineContent = {
         name: "Ghasha",
         type: "Hopper Dredger",
         formalName: "GHASHA",
-        image: withDredgingMarineBasePath("/images/dm/vessel-ghasha.jpg"),
+        image: withDredgingMarineBasePath("/images/dm/vessel-ghasha___.png"),
         specs: [
           ["Dredging Depth", "45 m"],
           ["Breadth", "25 m"],
@@ -722,7 +722,7 @@ export const nmdcDredgingMarineContent = {
       image: withDredgingMarineBasePath("/images/dm/hydraulic-center-hero.jpg"),
       title: {
         neutral: "",
-        accent: "Costal & hydrodynamic center"
+        accent: "Coastal & hydrodynamic center"
       }
     },
     overview: {

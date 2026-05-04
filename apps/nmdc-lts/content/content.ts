@@ -135,7 +135,7 @@ export const nmdcLtsContent = {
       },
       paragraphs: [
         "Founded in 2024, NMDC LTS (Logistics & Technical Services) was established to advance NMDC Group’s growth strategy and strengthen its position as the UAE’s largest marine fleet owner and vessel charterer.",
-        "With a versatile fleet comprising 90 owned and 220 chartered vessels, NMDC LTS plays a pivotal role in expanding the Group’s presence in marine logistics and building global networks to support entry into new markets. NMDC LTS focuses on streamlining marine vessel chartering services to enhance operational efficiency",
+        "With a versatile fleet comprising 220 owned and 90 chartered vessels, NMDC LTS plays a pivotal role in expanding the Group’s presence in marine logistics and building global networks to support entry into new markets. NMDC LTS focuses on streamlining marine vessel chartering services to enhance operational efficiency",
       ],
     },
     capabilities: {

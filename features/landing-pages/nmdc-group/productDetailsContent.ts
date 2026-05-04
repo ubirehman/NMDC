@@ -75,7 +75,7 @@ export const nmdcGroupProductDetails = [
       {
         name: "Al Sadr",
         type: "Heavy Duty CSDs",
-        image: `${productsImageBase}/marine-vessel-al-sadr.jpg`,
+        image: `${productsImageBase}/vessel-al-sadr.png`,
         alt: "Al Sadr heavy duty cutter suction dredger",
         specs: [
           { label: "Dredging Depth", value: "27.0 m" },
@@ -99,7 +99,7 @@ export const nmdcGroupProductDetails = [
       {
         name: "Jananah",
         type: "Beavers",
-        image: `${productsImageBase}/marine-vessel-jananah.jpg`,
+        image: `${productsImageBase}/vessel-jannah_new__.png`,
         alt: "Jananah beaver dredger",
         specs: [
           { label: "Dredging Depth", value: "14.0 m" },
@@ -111,7 +111,7 @@ export const nmdcGroupProductDetails = [
       {
         name: "Sarb",
         type: "Backhoe Dredgers",
-        image: `${productsImageBase}/marine-vessel-sarb.jpg`,
+        image: `${productsImageBase}/vessel-sarb__.png`,
         alt: "Sarb backhoe dredger",
         specs: [
           { label: "Dredging Depth", value: "25 m" },
@@ -123,7 +123,7 @@ export const nmdcGroupProductDetails = [
       {
         name: "Ghasha",
         type: "Hopper Dredger",
-        image: `${productsImageBase}/marine-vessel-ghasha.jpg`,
+        image: `${productsImageBase}/vessel-ghasha___.png`,
         alt: "Ghasha hopper dredger",
         specs: [
           { label: "Dredging Depth", value: "45 m" },
@@ -308,9 +308,9 @@ export const nmdcGroupProductDetails = [
   },
   {
     slug: "multicat-21",
-    fullTitle: "NMDC LTS | Multicad 21",
+    fullTitle: "NMDC LTS | Multicat 21",
     brandName: null,
-    title: "Multicad 21",
+    title: "Multicat 21",
     accentClassName: "text-[#ddc19c]",
     panelHeightClassName: "md:min-h-[607px]",
     sectionMinHeightClassName: "md:min-h-[1341px]",

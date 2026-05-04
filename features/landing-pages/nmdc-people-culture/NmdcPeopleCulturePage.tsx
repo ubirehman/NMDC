@@ -99,7 +99,7 @@ export function NmdcPeopleCulturePage() {
 
               <div className="hidden min-h-[88px] items-center rounded-[20px] bg-[#dfe7f0] px-8 md:flex">
                 <h2 className="text-[20px] font-bold leading-6 text-primary-navy-blue">
-                  Masar programm for UAE nationals
+                  Masar program for UAE nationals
                 </h2>
               </div>
 
@@ -252,7 +252,7 @@ function MasarIntroCard() {
   return (
     <div className="rounded-[14px] border-[2px] border-primary-sky-blue bg-[#dfe7f0] px-[15px] py-5 md:hidden">
       <h2 className="text-[18px] font-bold uppercase leading-[1.4] text-primary-navy-blue">
-        Masar programm for UAE nationals
+        Masar program for UAE nationals
       </h2>
       <p className="mt-4 text-[16px] leading-[1.45] text-[#43556c]">
         {masarProgramIntro}

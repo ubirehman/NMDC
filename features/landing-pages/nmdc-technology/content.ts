@@ -74,7 +74,7 @@ export const aiPlatforms = [
 
 export const technologyMedia = [
   {
-    src: "/images/landing/technology-70-ai.jpg",
+    src: "/images/landing/technology-70-ai_.jpg",
     alt: "By 2025, NMDC has developed 70 plus AI agents across its operations",
   },
   {
